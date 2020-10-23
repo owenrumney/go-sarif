@@ -12,7 +12,7 @@ import (
 
 type sarifTest struct {
 	t           *testing.T
-	sarifReport *sarif.SarifReport
+	sarifReport *sarif.Report
 	content     string
 }
 
