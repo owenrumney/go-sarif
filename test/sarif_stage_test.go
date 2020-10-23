@@ -3,10 +3,8 @@ package test
 import (
 	"bytes"
 	"github.com/stretchr/testify/assert"
-
 	"testing"
 
-	"github.com/owenrumney/go-sarif/models"
 	"github.com/owenrumney/go-sarif/sarif"
 )
 
@@ -24,7 +22,7 @@ func createNewSarifTest(t *testing.T) (*sarifTest, *sarifTest, *sarifTest) {
 }
 
 func (st *sarifTest) a_new_sarif_report(version string) {
-	report, err := sarif.New(sarif.SarifVersion(version))
+	report, err := sarif.New(sarif.Version(version))
 	if err != nil {
 		panic(err)
 	}
@@ -49,8 +47,6 @@ func (st *sarifTest) and() *sarifTest {
 }
 
 func (st *sarifTest) a_driver_is_added() *sarifTest {
-	tool := models.NewTool("ESLint", "https://eslint.org")
-	run := models.NewRun(tool)
-	st.sarifReport.AddRun(run)
+	st.sarifReport.AddRun("ESLint", "https://eslint.org")
 	return st
 }

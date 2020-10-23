@@ -32,18 +32,36 @@ type Location struct {
 	Uri string `json:"uri"`
 }
 
-func NewResult(level, message, ruleId string) *Result {
+func newRuleResult(ruleId string) *Result {
 	return &Result{
-		Level: level,
-		Message: &TextBlock{
-			Text: message,
-		},
 		RuleId: ruleId,
 	}
 }
 
-func (r *Result) AddLocation(location *PhysicalLocation) {
-	r.Locations = append(r.Locations, &ResultLocation{
+func (result *Result) WithLevel(level string) *Result {
+	result.Level = level
+	return result
+}
+
+func (result *Result) WithMessage(message string) *Result {
+	result.Message = &TextBlock{
+		Text: message,
+	}
+	return result
+}
+
+func (result *Result) WithLocationDetails(path string, startLine, startColumn int) *Result {
+	location := &PhysicalLocation{
+		ArtifactLocation: &ArtifactLocation{
+			Uri: path,
+		},
+		Region: &Region{
+			StartLine:   startLine,
+			StartColumn: startColumn,
+		},
+	}
+	result.Locations = append(result.Locations, &ResultLocation{
 		PhysicalLocation: location,
 	})
+	return result
 }

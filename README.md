@@ -14,3 +14,7 @@ For more information about SARIF, you can visit the [Oasis Open](https://www.oas
 
 ## Usage
 
+Add an import to `github.com/owenrumney/go-sarif/sarif`
+
+Creating a new Sarif report is done by passing the version, the only supported at the moment is `2.1.0`
+

@@ -42,7 +42,7 @@ func Test_getting_the_location_index_for_an_existing_run(t *testing.T) {
 func Test_create_a_run_with_a_result_added(t *testing.T) {
 	given, when, then := createNewRunTest(t)
 
-	expected := `{"tool":{"driver":{"name":"tfsec","informationUri":"https://tfsec.dev","rules":[{"id":"AWS001","shortDescription":{"text":"S3 Bucket has an ACL defined which allows public access."},"helpUri":"https://www.tfsec.dev/docs/aws/AWS001"}]}},"artifacts":[{"location":{"uri":"/tmp/result/code"}}],"results":[{"level":"error","message":{"text":"Resource 'my_bucket' has an ACL which allows public access."},"ruleId":"AWS001","ruleIndex":0,"locations":[{"physicalLocation":{"artifactLocation":{"uri":"/tmp/result/code","index":0},"region":{"startLine":1,"startColumn":1}}}]}]}`
+	expected := `{"tool":{"driver":{"name":"tfsec","informationUri":"https://tfsec.dev","rules":[{"id":"AWS001","shortDescription":{"text":"S3 Bucket has an ACL defined which allows public access."},"helpUri":"https://www.tfsec.dev/docs/aws/AWS001","properties":{"propertyName":"propertyValue"}}]}},"artifacts":[{"location":{"uri":"/tmp/result/code"}}],"results":[{"level":"error","message":{"text":"Resource 'my_bucket' has an ACL which allows public access."},"ruleId":"AWS001","ruleIndex":0,"locations":[{"physicalLocation":{"artifactLocation":{"uri":"/tmp/result/code","index":0},"region":{"startLine":1,"startColumn":1}}}]}]}`
 
 	given.a_new_run_is_created()
 	when.a_result_is_added_to_the_run().and().

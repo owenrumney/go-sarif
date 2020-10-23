@@ -17,32 +17,35 @@ type Rule struct {
 	Properties       map[string]string `json:"properties,omitempty"`
 }
 
-func (driver *Driver) GetOrCreateRule(rule *Rule) (int, error) {
+func (driver *Driver) getOrCreateRule(rule *Rule) int {
 	for i, r := range driver.Rules {
 		if r.Id == rule.Id {
-			return i, nil
+			return i
 		}
 	}
 	driver.Rules = append(driver.Rules, rule)
-	return len(driver.Rules) - 1, nil
+	return len(driver.Rules) - 1
 }
 
-func NewRule(id, description, helpUri string, properties map[string]string) *Rule {
+func newRule(ruleId string) *Rule {
 	return &Rule{
-		Id: id,
-		ShortDescription: &TextBlock{
-			Text: description,
-		},
-		HelpUri:    helpUri,
-		Properties: properties,
+		Id: ruleId,
 	}
 }
 
-func NewTool(name, informationUri string) *Tool {
-	return &Tool{
-		Driver: &Driver{
-			Name:           name,
-			InformationUri: informationUri,
-		},
+func (rule *Rule) WithDescription(description string) *Rule {
+	rule.ShortDescription = &TextBlock{
+		Text: description,
 	}
+	return rule
+}
+
+func (rule *Rule) WithHelpUri(helpUrl string) *Rule {
+	rule.HelpUri = helpUrl
+	return rule
+}
+
+func (rule *Rule) WithProperties(properties map[string]string) *Rule {
+	rule.Properties = properties
+	return rule
 }

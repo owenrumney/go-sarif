@@ -22,7 +22,12 @@ func createNewResultTest(t *testing.T) (*resultTest, *resultTest, *resultTest) {
 }
 
 func (rt *resultTest) a_new_result() {
-	rt.result = models.NewResult("error", "there was an error", "test-rule")
+	rt.result = &models.Result{
+		RuleId: "test-rule",
+	}
+
+	rt.result.WithLevel("error").
+		WithMessage("there was an error")
 }
 
 func (rt *resultTest) and() *resultTest {
@@ -38,18 +43,7 @@ func (rt *resultTest) the_result_is_displayed_converted_a_string() {
 }
 
 func (rt *resultTest) the_result_has_a_location_added() *resultTest {
-	location := &models.PhysicalLocation{
-		ArtifactLocation: &models.ArtifactLocation{
-			Uri:   "/tmp/code/location",
-			Index: 0,
-		},
-		Region: &models.Region{
-			StartColumn: 1,
-			StartLine:   1,
-		},
-	}
-
-	rt.result.AddLocation(location)
+	rt.result.WithLocationDetails("/tmp/code/location", 1, 1)
 	return rt
 }
 

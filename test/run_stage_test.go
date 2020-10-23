@@ -22,8 +22,14 @@ func createNewRunTest(t *testing.T) (*runTest, *runTest, *runTest) {
 }
 
 func (rt *runTest) a_new_run_is_created() {
-	tool := models.NewTool("tfsec", "https://tfsec.dev")
-	rt.run = models.NewRun(tool)
+	rt.run = &models.Run{
+		Tool: &models.Tool{
+			Driver: &models.Driver{
+				Name:           "tfsec",
+				InformationUri: "https://tfsec.dev",
+			},
+		},
+	}
 }
 
 func (rt *runTest) the_run_is_converted_to_a_string() {
@@ -44,7 +50,7 @@ func (rt *runTest) an_artifact_is_added_to_the_run(locationUri string) *runTest 
 		Uri: locationUri,
 	}
 
-	rt.run.GetOrCreateLocation(location)
+	rt.run.AddArtifact(location)
 
 	return rt
 }
@@ -58,11 +64,7 @@ func (rt *runTest) the_index_of_location_is(locationUri string, expectedIndex in
 		Uri: locationUri,
 	}
 
-	locationIndex, err := rt.run.GetOrCreateLocation(location)
-	if err != nil {
-		rt.t.Error(err)
-	}
-
+	locationIndex := rt.run.AddArtifact(location)
 	assert.Equal(rt.t, expectedIndex, locationIndex)
 	return rt
 }
@@ -70,20 +72,16 @@ func (rt *runTest) the_index_of_location_is(locationUri string, expectedIndex in
 func (rt *runTest) a_result_is_added_to_the_run() *runTest {
 	resultLocation := "/tmp/result/code"
 
-	rule := models.NewRule("AWS001", "S3 Bucket has an ACL defined which allows public access.", "https://www.tfsec.dev/docs/aws/AWS001", nil)
+	rule := rt.run.AddRule("AWS001").
+		WithDescription("S3 Bucket has an ACL defined which allows public access.").
+		WithHelpUri("https://www.tfsec.dev/docs/aws/AWS001").
+		WithProperties(map[string]string{"propertyName": "propertyValue"})
 
-	location := &models.PhysicalLocation{
-		ArtifactLocation: &models.ArtifactLocation{
-			Uri: resultLocation,
-		},
-		Region: &models.Region{
-			StartLine:   1,
-			StartColumn: 1,
-		},
-	}
+	result := rt.run.AddResult(rule.Id).
+		WithLevel("error").
+		WithMessage("Resource 'my_bucket' has an ACL which allows public access.").
+		WithLocationDetails(resultLocation, 1, 1)
 
-	result := models.NewResult("error", "Resource 'my_bucket' has an ACL which allows public access.", rule.Id)
-
-	rt.run.AddResultDetails(rule, location, result)
+	rt.run.AddResultDetails(rule, result, resultLocation)
 	return rt
 }

@@ -9,12 +9,12 @@ import (
 	"github.com/owenrumney/go-sarif/models"
 )
 
-type SarifVersion string
+type Version string
 
-const SarifVersion210 SarifVersion = "2.1.0"
+const Version210 Version = "2.1.0"
 
-var versions = map[SarifVersion]string{
-	SarifVersion210: "http://json.schemastore.org/sarif-2.1.0-rtm.4",
+var versions = map[Version]string{
+	Version210: "http://json.schemastore.org/sarif-2.1.0-rtm.4",
 }
 
 type Report struct {
@@ -23,7 +23,7 @@ type Report struct {
 	Runs    []*models.Run `json:"runs"`
 }
 
-func New(version SarifVersion) (*Report, error) {
+func New(version Version) (*Report, error) {
 	schema, err := getVersionSchema(version)
 	if err != nil {
 		return nil, err
@@ -35,17 +35,27 @@ func New(version SarifVersion) (*Report, error) {
 	}, nil
 }
 
-func getVersionSchema(version SarifVersion) (string, error) {
+func (sarif *Report) AddRun(toolName, informationUri string) *models.Run {
+	tool := &models.Tool{
+		Driver: &models.Driver{
+			Name:           toolName,
+			InformationUri: informationUri,
+		},
+	}
+	run := &models.Run{
+		Tool: tool,
+	}
+	sarif.Runs = append(sarif.Runs, run)
+	return run
+}
+
+func getVersionSchema(version Version) (string, error) {
 	for ver, schema := range versions {
 		if ver == version {
 			return schema, nil
 		}
 	}
 	return "", errors.New(fmt.Sprintf("version [%s] is not supported", version))
-}
-
-func (sarif *Report) AddRun(run *models.Run) {
-	sarif.Runs = append(sarif.Runs, run)
 }
 
 func (sarif *Report) Write(w io.Writer) error {

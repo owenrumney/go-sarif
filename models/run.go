@@ -10,17 +10,11 @@ type LocationWrapper struct {
 	Location *Location `json:"location,omitentry"`
 }
 
-// NewRun will create a new Run
-func NewRun(tool *Tool) *Run {
-	return &Run{
-		Tool: tool,
-	}
-}
-
-func (run *Run) GetOrCreateLocation(location *Location) (int, error) {
+// AddArtifact returns the index of the newly added ArtifactLocation
+func (run *Run) AddArtifact(location *Location) int {
 	for i, l := range run.Artifacts {
 		if l.Location.Uri == location.Uri {
-			return i, nil
+			return i
 		}
 	}
 	run.Artifacts = append(run.Artifacts, &LocationWrapper{
@@ -28,23 +22,44 @@ func (run *Run) GetOrCreateLocation(location *Location) (int, error) {
 			Uri: location.Uri,
 		},
 	})
-	return len(run.Artifacts) - 1, nil
+	return len(run.Artifacts) - 1
+}
+
+func (run *Run) AddRule(ruleId string) *Rule {
+	for _, rule := range run.Tool.Driver.Rules {
+		if rule.Id == ruleId {
+			return rule
+		}
+	}
+	rule := newRule(ruleId)
+	run.Tool.Driver.Rules = append(run.Tool.Driver.Rules, rule)
+	return rule
+}
+
+func (run *Run) AddResult(ruleId string) *Result {
+	for _, result := range run.Results {
+		if result.RuleId == ruleId {
+			return result
+		}
+	}
+	result := newRuleResult(ruleId)
+	run.Results = append(run.Results, result)
+	return result
 }
 
 // AddResultDetails adds rules to the driver and artifact locations if they are missing. It adds the result to the result block as well
-func (run *Run) AddResultDetails(rule *Rule, location *PhysicalLocation, result *Result) error {
-	ruleIndex, err := run.Tool.Driver.GetOrCreateRule(rule)
-	if err != nil {
-		return err
-	}
+func (run *Run) AddResultDetails(rule *Rule, result *Result, location string) {
+	ruleIndex := run.Tool.Driver.getOrCreateRule(rule)
 	result.RuleIndex = ruleIndex
-	locationIndex, err := run.GetOrCreateLocation(&Location{Uri: location.ArtifactLocation.Uri})
-	if err != nil {
-		return nil
-	}
-	location.ArtifactLocation.Index = locationIndex
-	result.AddLocation(location)
+	locationIndex := run.AddArtifact(&Location{Uri: location})
+	updateResultLocationIndex(result, location, locationIndex)
+}
 
-	run.Results = append(run.Results, result)
-	return nil
+func updateResultLocationIndex(result *Result, location string, index int) {
+	for _, resultLocation := range result.Locations {
+		if resultLocation.PhysicalLocation.ArtifactLocation.Uri == location {
+			resultLocation.PhysicalLocation.ArtifactLocation.Index = index
+			break
+		}
+	}
 }
