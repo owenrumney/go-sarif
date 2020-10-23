@@ -14,27 +14,20 @@ type Rule struct {
 	Id               string            `json:"id"`
 	ShortDescription *TextBlock        `json:"shortDescription"`
 	HelpUri          string            `json:"helpUri"`
-	Properties       map[string]string `json:"properties"`
+	Properties       map[string]string `json:"properties,omitempty"`
 }
 
-func CreateDriver(name, informationUri string) *Driver {
-	return &Driver{
-		Name:           name,
-		InformationUri: informationUri,
-	}
-}
-
-func (driver *Driver) GetOrCreate(rule *Rule) (int, error) {
+func (driver *Driver) GetOrCreateRule(rule *Rule) (int, error) {
 	for i, r := range driver.Rules {
 		if r.Id == rule.Id {
 			return i, nil
 		}
 	}
 	driver.Rules = append(driver.Rules, rule)
-	return len(driver.Rules), nil
+	return len(driver.Rules) - 1, nil
 }
 
-func CreateRule(id, description, helpUri string, properties map[string]string) *Rule {
+func NewRule(id, description, helpUri string, properties map[string]string) *Rule {
 	return &Rule{
 		Id: id,
 		ShortDescription: &TextBlock{
@@ -45,8 +38,11 @@ func CreateRule(id, description, helpUri string, properties map[string]string) *
 	}
 }
 
-func CreateTool(driver *Driver) *Tool {
+func NewTool(name, informationUri string) *Tool {
 	return &Tool{
-		Driver: driver,
+		Driver: &Driver{
+			Name:           name,
+			InformationUri: informationUri,
+		},
 	}
 }

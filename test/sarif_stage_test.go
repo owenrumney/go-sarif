@@ -2,7 +2,7 @@ package test
 
 import (
 	"bytes"
-	assert "github.com/stretchr/testify/assert"
+	"github.com/stretchr/testify/assert"
 
 	"testing"
 
@@ -16,8 +16,15 @@ type sarifTest struct {
 	content     string
 }
 
+func createNewSarifTest(t *testing.T) (*sarifTest, *sarifTest, *sarifTest) {
+	sarifTest := &sarifTest{
+		t: t,
+	}
+	return sarifTest, sarifTest, sarifTest
+}
+
 func (st *sarifTest) a_new_sarif_report(version string) {
-	report, err := sarif.New(version)
+	report, err := sarif.New(sarif.SarifVersion(version))
 	if err != nil {
 		panic(err)
 	}
@@ -37,21 +44,13 @@ func (st *sarifTest) content_should_be(expected string) {
 	assert.Equal(st.t, st.content, expected)
 }
 
-func CreateNewSarifHarness(t *testing.T) (*sarifTest, *sarifTest, *sarifTest) {
-	sarifTest := &sarifTest{
-		t: t,
-	}
-	return sarifTest, sarifTest, sarifTest
-}
-
 func (st *sarifTest) and() *sarifTest {
 	return st
 }
 
 func (st *sarifTest) a_driver_is_added() *sarifTest {
-	driver := models.CreateDriver("ESLint", "https://eslint.org")
-	tool := models.CreateTool(driver)
-	run := models.CreateRun(tool)
+	tool := models.NewTool("ESLint", "https://eslint.org")
+	run := models.NewRun(tool)
 	st.sarifReport.AddRun(run)
 	return st
 }

@@ -9,8 +9,12 @@ import (
 	"github.com/owenrumney/go-sarif/models"
 )
 
-var versions = map[string]string{
-	"2.1.0": "http://json.schemastore.org/sarif-2.1.0-rtm.4",
+type SarifVersion string
+
+const SarifVersion210 SarifVersion = "2.1.0"
+
+var versions = map[SarifVersion]string{
+	SarifVersion210: "http://json.schemastore.org/sarif-2.1.0-rtm.4",
 }
 
 type Report struct {
@@ -19,19 +23,19 @@ type Report struct {
 	Runs    []*models.Run `json:"runs"`
 }
 
-func New(version string) (*Report, error) {
+func New(version SarifVersion) (*Report, error) {
 	schema, err := getVersionSchema(version)
 	if err != nil {
 		return nil, err
 	}
 	return &Report{
-		Version: version,
+		Version: string(version),
 		Schema:  schema,
 		Runs:    []*models.Run{},
 	}, nil
 }
 
-func getVersionSchema(version string) (string, error) {
+func getVersionSchema(version SarifVersion) (string, error) {
 	for ver, schema := range versions {
 		if ver == version {
 			return schema, nil
