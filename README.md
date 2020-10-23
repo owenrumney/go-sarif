@@ -1,4 +1,6 @@
-# go-sarif
+# WIP - go-sarif
+
+** This project is still early stages of development and not ready for use **
 
 ## What?
 
