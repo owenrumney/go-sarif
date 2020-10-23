@@ -2,10 +2,12 @@ package test
 
 import (
 	"bytes"
-	"github.com/magiconair/properties/assert"
+	assert "github.com/stretchr/testify/assert"
+
+	"testing"
+
 	"github.com/owenrumney/go-sarif/models"
 	"github.com/owenrumney/go-sarif/sarif"
-	"testing"
 )
 
 type sarifTest struct {
@@ -14,8 +16,8 @@ type sarifTest struct {
 	content     string
 }
 
-func (st *sarifTest) a_new_sarif_report() {
-	report, err := sarif.New("2.1.0")
+func (st *sarifTest) a_new_sarif_report(version string) {
+	report, err := sarif.New(version)
 	if err != nil {
 		panic(err)
 	}
