@@ -5,9 +5,9 @@ type Tool struct {
 }
 
 type Driver struct {
-	Name           string `json:"name"`
-	InformationUri string `json:"informationUri"`
-	Rules          []*Rule
+	Name           string  `json:"name"`
+	InformationUri string  `json:"informationUri"`
+	Rules          []*Rule `json:"rules,omitempty"`
 }
 
 type Rule struct {

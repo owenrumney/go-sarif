@@ -2,8 +2,8 @@ package models
 
 type Run struct {
 	Tool      *Tool       `json:"tool"`
-	Artifacts []*Location `json:"artifacts"`
-	Results   []*Result   `json:"results"`
+	Artifacts []*Location `json:"artifacts,omitempty"`
+	Results   []*Result   `json:"results,omitempty"`
 }
 
 func CreateRun(tool *Tool) *Run {
