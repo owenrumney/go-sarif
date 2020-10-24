@@ -22,14 +22,7 @@ func createNewRunTest(t *testing.T) (*runTest, *runTest, *runTest) {
 }
 
 func (rt *runTest) a_new_run_is_created() {
-	rt.run = &models.Run{
-		Tool: &models.Tool{
-			Driver: &models.Driver{
-				Name:           "tfsec",
-				InformationUri: "https://tfsec.dev",
-			},
-		},
-	}
+	rt.run = models.NewRun("tfsec", "https://tfsec.dev")
 }
 
 func (rt *runTest) the_run_is_converted_to_a_string() {
@@ -45,13 +38,7 @@ func (rt *runTest) the_json_string_representation_of_the_run_should_be(expected 
 }
 
 func (rt *runTest) an_artifact_is_added_to_the_run(locationUri string) *runTest {
-
-	location := &models.Location{
-		Uri: locationUri,
-	}
-
-	rt.run.AddArtifact(location)
-
+	rt.run.AddArtifact(locationUri)
 	return rt
 }
 
@@ -60,11 +47,7 @@ func (rt *runTest) and() *runTest {
 }
 
 func (rt *runTest) the_index_of_location_is(locationUri string, expectedIndex int) *runTest {
-	location := &models.Location{
-		Uri: locationUri,
-	}
-
-	locationIndex := rt.run.AddArtifact(location)
+	locationIndex := rt.run.AddArtifact(locationUri)
 	assert.Equal(rt.t, expectedIndex, locationIndex)
 	return rt
 }

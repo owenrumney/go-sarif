@@ -36,15 +36,7 @@ func New(version Version) (*Report, error) {
 }
 
 func (sarif *Report) AddRun(toolName, informationUri string) *models.Run {
-	tool := &models.Tool{
-		Driver: &models.Driver{
-			Name:           toolName,
-			InformationUri: informationUri,
-		},
-	}
-	run := &models.Run{
-		Tool: tool,
-	}
+	run := models.NewRun(toolName, informationUri)
 	sarif.Runs = append(sarif.Runs, run)
 	return run
 }
