@@ -1,13 +1,6 @@
 # go-sarif
 
-### Important - the implementation has enough at this point to satisfy the requirements of [tfsec](https://tfsec.dev) - the list below details what is include;
-
--run 
-  - tool
-    - driver
-        rules
-  -artifacts
-  -results
+### Important - the implementation has enough at this point to satisfy the requirements of [tfsec](https://tfsec.dev) - the example below is achievable
 
 ## What?
 
