@@ -1,5 +1,8 @@
 # go-sarif
 
+[![Build Status](https://travis-ci.com/owenrumney/go-sarif.svg?branch=main)](https://travis-ci.com/owenrumney/go-sarif) 
+[![Go Report Card](https://goreportcard.com/badge/github.com/owenrumney/go-sarif)](https://goreportcard.com/report/github.com/owenrumney/go-sarif)
+
 ### Important - the implementation has enough at this point to satisfy the requirements of [tfsec](https://tfsec.dev) - the example below is achievable
 
 ## What?
