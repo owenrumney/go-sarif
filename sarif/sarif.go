@@ -58,3 +58,12 @@ func (sarif *Report) Write(w io.Writer) error {
 	_, err = w.Write(marshal)
 	return err
 }
+
+func (sarif *Report) PrettyWrite(w io.Writer) error {
+	marshal, err := json.MarshalIndent(sarif, "", "  ")
+	if err != nil {
+		return err
+	}
+	_, err = w.Write(marshal)
+	return err
+}
