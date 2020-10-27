@@ -2,8 +2,9 @@ package test
 
 import (
 	"encoding/json"
-	"github.com/stretchr/testify/assert"
 	"testing"
+
+	"github.com/stretchr/testify/assert"
 
 	"github.com/owenrumney/go-sarif/models"
 )
@@ -58,6 +59,23 @@ func (rt *runTest) a_result_is_added_to_the_run() *runTest {
 	rule := rt.run.AddRule("AWS001").
 		WithDescription("S3 Bucket has an ACL defined which allows public access.").
 		WithHelpUri("https://www.tfsec.dev/docs/aws/AWS001").
+		WithProperties(map[string]string{"propertyName": "propertyValue"})
+
+	result := rt.run.AddResult(rule.Id).
+		WithLevel("error").
+		WithMessage("Resource 'my_bucket' has an ACL which allows public access.").
+		WithLocationDetails(resultLocation, 1, 1)
+
+	rt.run.AddResultDetails(rule, result, resultLocation)
+	return rt
+}
+
+func (rt *runTest) a_result_is_added_to_the_run_with_help_text() *runTest {
+	resultLocation := "/tmp/result/code"
+
+	rule := rt.run.AddRule("AWS001").
+		WithDescription("S3 Bucket has an ACL defined which allows public access.").
+		WithHelp("you can learn more about this check https://www.tfsec.dev/docs/aws/AWS001").
 		WithProperties(map[string]string{"propertyName": "propertyValue"})
 
 	result := rt.run.AddResult(rule.Id).
