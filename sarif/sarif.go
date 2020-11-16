@@ -2,7 +2,6 @@ package sarif
 
 import (
 	"encoding/json"
-	"errors"
 	"fmt"
 	"io"
 
@@ -47,7 +46,7 @@ func getVersionSchema(version Version) (string, error) {
 			return schema, nil
 		}
 	}
-	return "", errors.New(fmt.Sprintf("version [%s] is not supported", version))
+	return "", fmt.Errorf("version [%s] is not supported", version)
 }
 
 func (sarif *Report) Write(w io.Writer) error {
