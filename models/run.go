@@ -7,7 +7,7 @@ type Run struct {
 }
 
 type LocationWrapper struct {
-	Location *l `json:"location,omitentry"`
+	Location *l `json:"location,omitempty"`
 }
 
 func NewRun(toolName, informationUri string) *Run {
