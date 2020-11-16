@@ -21,9 +21,9 @@ func createNewResultTest(t *testing.T) (*resultTest, *resultTest, *resultTest) {
 	return resultTest, resultTest, resultTest
 }
 
-func (rt *resultTest) a_new_result() {
+func (rt *resultTest) aNewResult() {
 	rt.result = &models.Result{
-		RuleId: "test-rule",
+		RuleID: "test-rule",
 	}
 
 	rt.result.WithLevel("error").
@@ -34,7 +34,7 @@ func (rt *resultTest) and() *resultTest {
 	return rt
 }
 
-func (rt *resultTest) the_result_is_displayed_converted_a_string() {
+func (rt *resultTest) theResultIsDisplayedConvertedAString() {
 	jsonContent, err := json.Marshal(rt.result)
 	if err != nil {
 		rt.t.Error(err)
@@ -42,11 +42,11 @@ func (rt *resultTest) the_result_is_displayed_converted_a_string() {
 	rt.content = string(jsonContent)
 }
 
-func (rt *resultTest) the_result_has_a_location_added() *resultTest {
+func (rt *resultTest) theResultHasALocationAdded() *resultTest {
 	rt.result.WithLocationDetails("/tmp/code/location", 1, 1)
 	return rt
 }
 
-func (rt *resultTest) the_json_string_representation_should_be(expected string) {
+func (rt *resultTest) theJSONStringRepresentationShouldBe(expected string) {
 	assert.Equal(rt.t, expected, rt.content)
 }
