@@ -1,11 +1,9 @@
 language: go
 go:
-  - master
+  - 1.16
 env:
   - GO111MODULE=on
 script:
-  - go vet ./...
-  - go test -v -covermode=atomic -coverpkg ./... -coverprofile coverage.txt ./...
-  
+  - make test
 after_success:
   - bash <(curl -s https://codecov.io/bash)
