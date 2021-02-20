@@ -4,6 +4,8 @@ import (
 	"encoding/json"
 	"fmt"
 	"io"
+	"io/ioutil"
+	"os"
 
 	"github.com/owenrumney/go-sarif/models"
 )
@@ -36,6 +38,31 @@ func New(version Version) (*Report, error) {
 		Schema:  schema,
 		Runs:    []*models.Run{},
 	}, nil
+}
+
+func Open(filename string) (*Report, error) {
+	if _, err := os.Stat(filename); err != nil && os.IsNotExist(err) {
+		return nil, fmt.Errorf("the provided file path doesn't have a file")
+	}
+
+	content, err := ioutil.ReadFile(filename)
+	if err != nil {
+		return nil, fmt.Errorf("the provided filepath could not be opened. %w", err)
+	}
+	return readBytes(content)
+}
+
+
+func FromString(content string) (*Report, error) {
+	return readBytes([]byte(content))
+}
+
+func readBytes(content []byte) (*Report, error) {
+	var report Report
+	if err := json.Unmarshal(content, &report); err != nil{
+		return nil, err
+	}
+	return &report, nil
 }
 
 // AddRun allows adding run information to the current report
