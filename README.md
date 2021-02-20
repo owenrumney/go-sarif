@@ -4,7 +4,6 @@
 [![codecov](https://codecov.io/gh/owenrumney/go-sarif/branch/main/graph/badge.svg?token=2EH55OCCX7)](https://codecov.io/gh/owenrumney/go-sarif)
 [![Go Report Card](https://goreportcard.com/badge/github.com/owenrumney/go-sarif)](https://goreportcard.com/report/github.com/owenrumney/go-sarif) 
 [![Github Release](https://img.shields.io/github/release/owenrumney/go-sarif.svg)](https://github.com/owenrumney/go-sarif/releases)
-[![GitHub All Releases](https://img.shields.io/github/downloads/owenrumney/go-sarif/total)](https://github.com/owenrumney/go-sarif/releases)
 
 
 ### Important - the implementation has enough at this point to satisfy the requirements of [tfsec](https://tfsec.dev) - the example below is achievable
