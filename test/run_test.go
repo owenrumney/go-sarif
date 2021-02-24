@@ -60,3 +60,11 @@ func Test_create_a_run_with_a_result_added_and_help_text_provided(t *testing.T) 
 		theRunIsConvertedToAString()
 	then.theJSONStringRepresentationOfTheRunShouldBe(expected)
 }
+
+func Test_create_a_run_with_a_rule_and_get_the_rule_by_id(t *testing.T) {
+	given, when, then := createNewRunTest(t)
+
+	given.aNewRunIsCreated()
+	when.aResultIsAddedToTheRunWithHelpText()
+	then.gettingRuleByIdReturnsRule()
+}
