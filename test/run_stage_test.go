@@ -86,3 +86,11 @@ func (rt *runTest) aResultIsAddedToTheRunWithHelpText() *runTest {
 	rt.run.AddResultDetails(rule, result, resultLocation)
 	return rt
 }
+
+func (rt *runTest) gettingRuleByIdReturnsRule() {
+	rule, err := rt.run.GetRuleById("AWS001")
+
+	assert.NoError(rt.t, err)
+	assert.Equal(rt.t, "AWS001", rule.ID)
+	assert.Equal(rt.t, "S3 Bucket has an ACL defined which allows public access.", rule.ShortDescription.Text)
+}
