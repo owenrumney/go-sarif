@@ -47,7 +47,7 @@ func (rt *runTest) and() *runTest {
 	return rt
 }
 
-func (rt *runTest) theIndexOfLocationIs(locationURI string, expectedIndex int) *runTest {
+func (rt *runTest) theIndexOfLocationIs(locationURI string, expectedIndex uint) *runTest {
 	locationIndex := rt.run.AddArtifact(locationURI)
 	assert.Equal(rt.t, expectedIndex, locationIndex)
 	return rt

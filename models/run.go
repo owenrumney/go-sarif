@@ -5,26 +5,13 @@ import (
 )
 
 // Run type represents a run of a tool
-type Run struct {
-	Tool		tool		`json:"tool"`
-	Artifacts	[]*artifact	`json:"artifacts,omitempty"`
-	Results		[]*Result	`json:"results"` //	can	be	null
+type Run struct { // https://docs.oasis-open.org/sarif/sarif/v2.1.0/csprd01/sarif-v2.1.0-csprd01.html#_Toc10540922
+	Tool      tool        `json:"tool"`
+	Artifacts []*artifact `json:"artifacts,omitempty"`
+	Results   []*Result   `json:"results,omitempty"` //	can	be	null
 }
 
-type artifact struct {
-	Location *artifactLocation `json:"location,omitempty"`
-	ParentIndex *uint `json:"parentIndex,omitempty"`
-	Offset *uint `json:"offset"`
-	Length *uint `json:"length"`
-	Roles []string `json:"roles"`
-	MimeType *string `json:"mimeType"`
-	Contents *artifactContent `json:"contents"`
-	Encoding *string `json:"encoding"`
-	SourceLanguage *string `json:"sourceLanguage"`
-	Hashes map[string]string `json:"hashes"`
-	LastModifiedTimeUtc *string `json:"lastModifiedTimeUtc"`
-	Description *Message `json:"description"`
-}
+
 
 // NewRun allows the creation of a new Run
 func NewRun(toolName, informationURI string) *Run {
@@ -53,6 +40,8 @@ func (run *Run) AddArtifact(uri string) uint {
 	})
 	return uint(len(run.Artifacts) - 1)
 }
+
+
 
 // AddRule returns an existing Rule for the ruleID or creates a new Rule and returns it
 func (run *Run) AddRule(ruleID string) *Rule {

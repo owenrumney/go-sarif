@@ -7,7 +7,7 @@ import (
 func Test_a_new_result_is_created_as_expected(t *testing.T) {
 	given, when, then := createNewResultTest(t)
 
-	expected := `{"level":"error","message":{"text":"there was an error"},"ruleId":"test-rule","ruleIndex":0}`
+	expected := `{"ruleId":"test-rule","level":"error","message":{"text":"there was an error"}}`
 
 	given.aNewResult()
 	when.theResultIsDisplayedConvertedAString()
@@ -17,7 +17,7 @@ func Test_a_new_result_is_created_as_expected(t *testing.T) {
 func Test_a_new_result_is_created_with_a_location(t *testing.T) {
 	given, when, then := createNewResultTest(t)
 
-	expected := `{"level":"error","message":{"text":"there was an error"},"ruleId":"test-rule","ruleIndex":0,"locations":[{"physicalLocation":{"artifactLocation":{"uri":"/tmp/code/location","index":0},"region":{"startLine":1,"startColumn":1}}}]}`
+	expected := `{"ruleId":"test-rule","level":"error","message":{"text":"there was an error"},"locations":[{"physicalLocation":{"artifactLocation":{"uri":"/tmp/code/location"},"region":{"startLine":1,"startColumn":1}}}]}`
 
 	given.aNewResult()
 	when.theResultHasALocationAdded().
