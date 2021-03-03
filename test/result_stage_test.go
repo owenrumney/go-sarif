@@ -22,8 +22,9 @@ func createNewResultTest(t *testing.T) (*resultTest, *resultTest, *resultTest) {
 }
 
 func (rt *resultTest) aNewResult() {
+	id := "test-rule"
 	rt.result = &models.Result{
-		RuleID: "test-rule",
+		RuleID: &id,
 	}
 
 	rt.result.WithLevel("error").
