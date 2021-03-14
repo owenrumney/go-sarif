@@ -4,3 +4,9 @@ package sarif
 type TextBlock struct {
 	Text string `json:"text"`
 }
+
+func NewTextBlock(text string) *TextBlock {
+	return &TextBlock{
+		Text: text,
+	}
+}
