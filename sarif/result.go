@@ -33,61 +33,110 @@ type Result struct {
 	OccurrenceCount *uint  `json:"occurrenceCount,omitempty"`
 }
 
-type ReportingDescriptorReference struct {
-	Id            *string                 `json:"id,omitempty"`
-	Index         *uint                   `json:"index,omitempty"`
-	Guid          *string                 `json:"guid,omitempty"`
-	ToolComponent *ToolComponentReference `json:"toolComponent,omitempty"`
-}
-
-type ToolComponentReference struct {
-	Name  *string `json:"name"`
-	Index *uint   `json:"index"`
-	Guid  *string `json:"guid"`
-}
-
-type MultiformatMessageString struct {
-	Text     string  `json:"text"`
-	Markdown *string `json:"markdown,omitempty"`
-}
-
-type Address struct {
-	Index              *uint   `json:"index,omitempty"`
-	AbsoluteAddress    *uint   `json:"absoluteAddress,omitempty"`
-	RelativeAddress    *int    `json:"relativeAddress,omitempty"`
-	OffsetFromParent   *int    `json:"offsetFromParent,omitempty"`
-	Length             *int    `json:"length,omitempty"`
-	Name               *string `json:"name,omitempty"`
-	FullyQualifiedName *string `json:"fullyQualifiedName,omitempty"`
-	Kind               *string `json:"kind,omitempty"`
-	ParentIndex        *uint   `json:"parentIndex,omitempty"`
-}
-
-type Suppression struct {
-	Kind          string    `json:"kind"`
-	Status        *string   `json:"status"`
-	Location      *Location `json:"location"`
-	Guid          *string   `json:"guid"`
-	Justification *string   `json:"justification"`
-}
-
-type Fix struct {
-	Description     *Message          `json:"description,omitempty"`
-	ArtifactChanges []*ArtifactChange `json:"artifactChanges"` //	required
-}
-
-type ArtifactChange struct {
-	ArtifactLocation ArtifactLocation `json:"artifactLocation"`
-	Replacements     []*Replacement   `json:"replacements"` //required
-}
-
-type Replacement struct {
-	DeletedRegion   Region           `json:"deletedRegion"`
-	InsertedContent *ArtifactContent `json:"insertedContent,omitempty"`
-}
-
 func newRuleResult(ruleID string) *Result {
 	return &Result{
 		RuleID: &ruleID,
 	}
+}
+
+func (r *Result) WithGuid(guid string) *Result {
+	r.Guid = &guid
+	return r
+}
+
+func (r *Result) WithCorrelationGuid(correlationGuid string) *Result {
+	r.CorrelationGuid = &correlationGuid
+	return r
+}
+
+func (r *Result) WithRuleIndex(ruleIndex int) *Result {
+	index := uint(ruleIndex)
+	r.RuleIndex = &index
+	return r
+}
+
+func (r *Result) WithRule(rdp *ReportingDescriptorReference) *Result {
+	r.Rule = rdp
+	return r
+}
+
+func (r *Result) AddTaxa(rdp *ReportingDescriptorReference) *Result {
+	r.Taxa = append(r.Taxa, rdp)
+	return r
+}
+
+func (r *Result) WithKind(kind string) *Result {
+	r.Kind = &kind
+	return r
+}
+
+func (r *Result) WithLevel(level string) *Result {
+	r.Level = &level
+	return r
+}
+
+func (r *Result) WithMessage(message Message) *Result {
+	r.Message = message
+	return r
+}
+
+func (r *Result) AddLocation(location *Location) *Result {
+	r.Locations = append(r.Locations, location)
+	return r
+}
+
+func (r *Result) WithAnalysisTarget(target *ArtifactLocation) *Result {
+	r.AnalysisTarget = target
+	return r
+}
+
+func (r *Result) WithFingerPrints(fingerPrints map[string]interface{}) *Result {
+	r.Fingerprints = fingerPrints
+	return r
+}
+
+func (r *Result) WithPartialFingerPrints(fingerPrints map[string]interface{}) *Result {
+	r.PartialFingerprints = fingerPrints
+	return r
+}
+
+func (r *Result) AddRelatedLocation(location *Location) *Result {
+	r.RelatedLocations = append(r.RelatedLocations, location)
+	return r
+}
+
+func (r *Result) AddSuppression(suppression *Suppression) *Result {
+	r.Suppressions = append(r.Suppressions, suppression)
+	return r
+}
+
+func (r *Result) WithBaselineState(state string) *Result {
+	r.BaselineState = &state
+	return r
+}
+
+func (r *Result) WithRank(rank float32) *Result {
+	r.Rank = &rank
+	return r
+}
+
+func (r *Result) AddWorkItemUri(workItemUri string) *Result {
+	r.WorkItemUris = append(r.WorkItemUris, workItemUri)
+	return r
+}
+
+func (r *Result) WithHostedViewerUri(hostedViewerUri string) *Result {
+	r.HostedViewerUri = &hostedViewerUri
+	return r
+}
+
+func (r *Result) AddFix(fix *Fix) *Result {
+	r.Fixes = append(r.Fixes, fix)
+	return r
+}
+
+func (r *Result) WithOccurrenceCount(occurrenceCount int) *Result {
+	count := uint(occurrenceCount)
+	r.OccurrenceCount = &count
+	return r
 }

@@ -14,16 +14,3 @@ type Artifact struct { // https://docs.oasis-open.org/sarif/sarif/v2.1.0/csprd01
 	LastModifiedTimeUtc *string           `json:"lastModifiedTimeUtc,omitempty"`
 	Description         *Message          `json:"description,omitempty"`
 }
-
-type ArtifactLocation struct { // https://docs.oasis-open.org/sarif/sarif/v2.1.0/csprd01/sarif-v2.1.0-csprd01.html#_Toc10540865
-	URI         *string  `json:"uri,omitempty"`
-	URIBaseId   *string  `json:"uriBaseId,omitempty"`
-	Index       *uint    `json:"index,omitempty"`
-	Description *Message `json:"description,omitempty"`
-}
-
-type ArtifactContent struct { // https://docs.oasis-open.org/sarif/sarif/v2.1.0/csprd01/sarif-v2.1.0-csprd01.html#_Toc10540860
-	Text     *string                   `json:"text,omitempty"`
-	Binary   *string                   `json:"binary,omitempty"`
-	Rendered *MultiformatMessageString `json:"rendered,omitempty"`
-}

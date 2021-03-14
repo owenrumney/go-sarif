@@ -6,3 +6,27 @@ type Message struct { // https://docs.oasis-open.org/sarif/sarif/v2.1.0/csprd01/
 	Id        *string  `json:"id,omitempty"`
 	Arguments []string `json:"arguments,omitempty"`
 }
+
+func NewMessage() *Message {
+	return &Message{}
+}
+
+func (m *Message) WithText(text string) *Message {
+	m.Text = &text
+	return m
+}
+
+func (m *Message) WithMarkdown(markdown string) *Message {
+	m.Markdown = &markdown
+	return m
+}
+
+func (m *Message) WithId(id string) *Message {
+	m.Id = &id
+	return m
+}
+
+func (m *Message) AddArgument(argument string) *Message {
+	m.Arguments = append(m.Arguments, argument)
+	return m
+}
