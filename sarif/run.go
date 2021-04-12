@@ -47,11 +47,6 @@ func (run *Run) AddRule(ruleID string) *Rule {
 
 // AddResult returns an existing Result or creates a new one and returns a pointer to it
 func (run *Run) AddResult(ruleID string) *Result {
-	for _, result := range run.Results {
-		if *result.RuleID == ruleID {
-			return result
-		}
-	}
 	result := newRuleResult(ruleID)
 	run.Results = append(run.Results, result)
 	return result

@@ -14,7 +14,7 @@ func (f *Fix) WithDescription(message *Message) *Fix {
 	return f
 }
 
-func (f *Fix) AddArtifactChanges(ac *ArtifactChange) *Fix {
+func (f *Fix) WithArtifactChange(ac *ArtifactChange) *Fix {
 	f.ArtifactChanges = append(f.ArtifactChanges, ac)
 	return f
 }

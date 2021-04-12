@@ -29,12 +29,12 @@ func (l *Location) WithMessage(message *Message) *Location {
 	return l
 }
 
-func (l *Location) AddAnnotation(region *Region) *Location {
+func (l *Location) WithAnnotation(region *Region) *Location {
 	l.Annotations = append(l.Annotations, region)
 	return l
 }
 
-func (l *Location) AddRelationship(locationRelationship *LocationRelationship) *Location {
+func (l *Location) WithRelationship(locationRelationship *LocationRelationship) *Location {
 	l.Relationships = append(l.Relationships, locationRelationship)
 	return l
 }

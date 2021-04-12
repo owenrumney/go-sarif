@@ -26,7 +26,7 @@ func (m *Message) WithId(id string) *Message {
 	return m
 }
 
-func (m *Message) AddArgument(argument string) *Message {
+func (m *Message) WithArgument(argument string) *Message {
 	m.Arguments = append(m.Arguments, argument)
 	return m
 }

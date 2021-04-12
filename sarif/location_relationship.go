@@ -13,7 +13,7 @@ func NewLocationRelationship(target int) *LocationRelationship {
 	}
 }
 
-func (l *LocationRelationship) AddKind(kind string) *LocationRelationship {
+func (l *LocationRelationship) WithKind(kind string) *LocationRelationship {
 	l.Kinds = append(l.Kinds, kind)
 	return l
 }

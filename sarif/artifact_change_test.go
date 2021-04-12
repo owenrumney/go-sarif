@@ -8,12 +8,12 @@ import (
 
 func Test_create_simple_artifact_change(t *testing.T) {
 
-	ac := NewArtifactChange(*NewArtifactLocation().
+	ac := NewArtifactChange(NewArtifactLocation().
 		WithIndex(0).
 		WithUri("file://broken.go").
 		WithDescription(NewMessage().WithText("message text")))
 
-	ac.AddReplacement(
+	ac.WithReplacement(
 		NewReplacement(
 			NewRegion().
 				WithSnippet(NewArtifactContent().WithText("file://broken.go")).

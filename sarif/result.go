@@ -60,7 +60,7 @@ func (r *Result) WithRule(rdp *ReportingDescriptorReference) *Result {
 	return r
 }
 
-func (r *Result) AddTaxa(rdp *ReportingDescriptorReference) *Result {
+func (r *Result) WithTaxa(rdp *ReportingDescriptorReference) *Result {
 	r.Taxa = append(r.Taxa, rdp)
 	return r
 }
@@ -80,7 +80,7 @@ func (r *Result) WithMessage(message Message) *Result {
 	return r
 }
 
-func (r *Result) AddLocation(location *Location) *Result {
+func (r *Result) WithLocation(location *Location) *Result {
 	r.Locations = append(r.Locations, location)
 	return r
 }
@@ -100,12 +100,12 @@ func (r *Result) WithPartialFingerPrints(fingerPrints map[string]interface{}) *R
 	return r
 }
 
-func (r *Result) AddRelatedLocation(location *Location) *Result {
+func (r *Result) WithRelatedLocation(location *Location) *Result {
 	r.RelatedLocations = append(r.RelatedLocations, location)
 	return r
 }
 
-func (r *Result) AddSuppression(suppression *Suppression) *Result {
+func (r *Result) WithSuppression(suppression *Suppression) *Result {
 	r.Suppressions = append(r.Suppressions, suppression)
 	return r
 }
@@ -120,7 +120,7 @@ func (r *Result) WithRank(rank float32) *Result {
 	return r
 }
 
-func (r *Result) AddWorkItemUri(workItemUri string) *Result {
+func (r *Result) WithWorkItemUri(workItemUri string) *Result {
 	r.WorkItemUris = append(r.WorkItemUris, workItemUri)
 	return r
 }
@@ -130,7 +130,7 @@ func (r *Result) WithHostedViewerUri(hostedViewerUri string) *Result {
 	return r
 }
 
-func (r *Result) AddFix(fix *Fix) *Result {
+func (r *Result) WithFix(fix *Fix) *Result {
 	r.Fixes = append(r.Fixes, fix)
 	return r
 }

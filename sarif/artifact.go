@@ -41,7 +41,7 @@ func (a *Artifact) WithLength(length int) *Artifact {
 	return a
 }
 
-func (a *Artifact) AddRole(role string) *Artifact {
+func (a *Artifact) WithRole(role string) *Artifact {
 	a.Roles = append(a.Roles, role)
 	return a
 }
