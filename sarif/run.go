@@ -18,7 +18,7 @@ func NewRun(toolName, informationURI string) *Run {
 		Tool: Tool{
 			Driver: &Driver{
 				Name:           toolName,
-				InformationURI: informationURI,
+				InformationURI: &informationURI,
 			},
 		},
 	}

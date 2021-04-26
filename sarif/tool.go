@@ -6,24 +6,24 @@ type Tool struct {
 
 type Driver struct {
 	Name           string  `json:"name"`
-	Version        string  `json:"version,omitempty"`
-	InformationURI string  `json:"informationUri"`
+	Version        *string  `json:"version,omitempty"`
+	InformationURI *string  `json:"informationUri"`
 	Rules          []*Rule `json:"rules,omitempty"`
 }
 
 // WithVersion specifies tool version, in whatever format it natively provides. Returns updated driver.
 func (driver *Driver) WithVersion(version string) *Driver {
-	driver.Version = version
+	driver.Version = &version
 	return driver
 }
 
 // Rule specifies a Sarif Rule object
 type Rule struct {
 	ID               string                    `json:"id"`
-	Name             string                    `json:"name,omitempty"`
+	Name             *string                    `json:"name,omitempty"`
 	ShortDescription *MultiformatMessageString `json:"shortDescription"`
 	FullDescription  *MultiformatMessageString `json:"fullDescription,omitempty"`
-	HelpURI          string                    `json:"helpUri,omitempty"`
+	HelpURI          *string                    `json:"helpUri,omitempty"`
 	Help             *MultiformatMessageString `json:"help,omitempty"`
 	Properties       map[string]string         `json:"properties,omitempty"`
 }
@@ -46,7 +46,7 @@ func newRule(ruleID string) *Rule {
 
 // WithName specifies rule name that is understandable to an end user and returns the updated rule.
 func (rule *Rule) WithName(name string) *Rule {
-	rule.Name = name
+	rule.Name = &name
 	return rule
 }
 
@@ -68,7 +68,7 @@ func (rule *Rule) WithFullDescription(description *MultiformatMessageString) *Ru
 
 // WithHelpURI specifies a helpURI for a rule and returns the updated rule
 func (rule *Rule) WithHelpURI(helpURI string) *Rule {
-	rule.HelpURI = helpURI
+	rule.HelpURI = &helpURI
 	return rule
 }
 
