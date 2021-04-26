@@ -6,9 +6,10 @@ import (
 
 // Run type represents a run of a tool
 type Run struct { // https://docs.oasis-open.org/sarif/sarif/v2.1.0/csprd01/sarif-v2.1.0-csprd01.html#_Toc10540922
-	Tool      Tool        `json:"tool"`
-	Artifacts []*Artifact `json:"artifacts,omitempty"`
-	Results   []*Result   `json:"results,omitempty"` //	can	be	null
+	Tool        Tool          `json:"tool"`
+	Invocations []*Invocation `json:"invocations,omitempty"`
+	Artifacts   []*Artifact   `json:"artifacts,omitempty"`
+	Results     []*Result     `json:"results,omitempty"` //	can	be	null
 }
 
 // NewRun allows the creation of a new Run
@@ -22,6 +23,15 @@ func NewRun(toolName, informationURI string) *Run {
 		},
 	}
 	return run
+}
+
+// AddInvocation adds an invocation to the run and returns a pointer to it
+func (run *Run) AddInvocation(executionSuccessful bool) *Invocation {
+	i := &Invocation{
+		ExecutionSuccessful: executionSuccessful,
+	}
+	run.Invocations = append(run.Invocations, i)
+	return i
 }
 
 // AddArtifact adds an artifact to the run and returns a pointer to it
