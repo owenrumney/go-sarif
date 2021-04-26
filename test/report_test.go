@@ -13,7 +13,7 @@ func Test_new_simple_report_with_single_run(t *testing.T) {
 
 	given.a_new_report().
 		with_a_run_added("tfsec", "https://tfsec.dev")
-	then.report_text_is(`{"version":"2.1.0","$schema":"http://json.schemastore.org/sarif-2.1.0-rtm.4","runs":[{"tool":{"driver":{"name":"tfsec","informationUri":"https://tfsec.dev"}}}]}`)
+	then.report_text_is(`{"version":"2.1.0","$schema":"https://raw.githubusercontent.com/oasis-tcs/sarif-spec/master/Schemata/sarif-schema-2.1.0.json","runs":[{"tool":{"driver":{"name":"tfsec","informationUri":"https://tfsec.dev"}}}]}`)
 }
 
 func Test_new_simple_report_with_artifact(t *testing.T) {
@@ -22,7 +22,7 @@ func Test_new_simple_report_with_artifact(t *testing.T) {
 	run := given.a_new_report().
 		with_a_run_added("tfsec", "https://tfsec.dev")
 	when.an_artifact_is_added_to_the_run(run, "file://broken.go")
-	then.report_text_is(`{"version":"2.1.0","$schema":"http://json.schemastore.org/sarif-2.1.0-rtm.4","runs":[{"tool":{"driver":{"name":"tfsec","informationUri":"https://tfsec.dev"}},"artifacts":[{"location":{"uri":"file://broken.go"},"length":-1}]}]}`)
+	then.report_text_is(`{"version":"2.1.0","$schema":"https://raw.githubusercontent.com/oasis-tcs/sarif-spec/master/Schemata/sarif-schema-2.1.0.json","runs":[{"tool":{"driver":{"name":"tfsec","informationUri":"https://tfsec.dev"}},"artifacts":[{"location":{"uri":"file://broken.go"},"length":-1}]}]}`)
 }
 
 func Test_new_simple_report_with_duplicate_artifact(t *testing.T) {
@@ -33,7 +33,7 @@ func Test_new_simple_report_with_duplicate_artifact(t *testing.T) {
 	when.an_artifact_is_added_to_the_run(run, "file://broken.go").
 		and().
 		an_artifact_is_added_to_the_run(run, "file://broken.go")
-	then.report_text_is(`{"version":"2.1.0","$schema":"http://json.schemastore.org/sarif-2.1.0-rtm.4","runs":[{"tool":{"driver":{"name":"tfsec","informationUri":"https://tfsec.dev"}},"artifacts":[{"location":{"uri":"file://broken.go"},"length":-1},{"location":{"uri":"file://broken.go"},"length":-1}]}]}`)
+	then.report_text_is(`{"version":"2.1.0","$schema":"https://raw.githubusercontent.com/oasis-tcs/sarif-spec/master/Schemata/sarif-schema-2.1.0.json","runs":[{"tool":{"driver":{"name":"tfsec","informationUri":"https://tfsec.dev"}},"artifacts":[{"location":{"uri":"file://broken.go"},"length":-1},{"location":{"uri":"file://broken.go"},"length":-1}]}]}`)
 }
 
 func Test_load_sarif_from_string(t *testing.T) {
@@ -41,7 +41,7 @@ func Test_load_sarif_from_string(t *testing.T) {
 
 	content := `{
   "version": "2.1.0",
-  "$schema": "http://json.schemastore.org/sarif-2.1.0-rtm.4",
+  "$schema": "https://raw.githubusercontent.com/oasis-tcs/sarif-spec/master/Schemata/sarif-schema-2.1.0.json",
   "runs": [
     {
       "tool": {
@@ -63,7 +63,7 @@ func Test_load_sarif_report_from_file(t *testing.T) {
 
 	content := `{
   "version": "2.1.0",
-  "$schema": "http://json.schemastore.org/sarif-2.1.0-rtm.4",
+  "$schema": "https://raw.githubusercontent.com/oasis-tcs/sarif-spec/master/Schemata/sarif-schema-2.1.0.json",
   "runs": [
     {
       "tool": {
