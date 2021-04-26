@@ -1,7 +1,7 @@
 package sarif
 
 type MultiformatMessageString struct {
-	Text     string  `json:"text"`
+	Text     string `json:"text"`
 	Markdown *string `json:"markdown,omitempty"`
 }
 

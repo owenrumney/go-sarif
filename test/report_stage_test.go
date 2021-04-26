@@ -71,7 +71,7 @@ func (r *reportTest) a_report_is_loaded_from_a_string(content string) {
 
 func (r *reportTest) the_report_has_expected_driver_name_and_information_uri(driverName string, informationUri string) {
 	assert.Equal(r.t, driverName, r.report.Runs[0].Tool.Driver.Name)
-	assert.Equal(r.t, informationUri, r.report.Runs[0].Tool.Driver.InformationURI)
+	assert.Equal(r.t, informationUri, *r.report.Runs[0].Tool.Driver.InformationURI)
 }
 
 func (r *reportTest) a_report_is_loaded_from_a_file(filename string) {
