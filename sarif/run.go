@@ -16,7 +16,7 @@ type Run struct { // https://docs.oasis-open.org/sarif/sarif/v2.1.0/csprd01/sari
 	Tool        Tool          `json:"tool"`
 	Invocations []*Invocation `json:"invocations,omitempty"`
 	Artifacts   []*Artifact   `json:"artifacts,omitempty"`
-	Results     []*Result     `json:"results"`
+	Results     []Result      `json:"results"`
 	Properties  Properties    `json:"properties,omitempty"`
 }
 
@@ -67,7 +67,7 @@ func (run *Run) AddRule(ruleID string) *Rule {
 // AddResult returns an existing Result or creates a new one and returns a pointer to it
 func (run *Run) AddResult(ruleID string) *Result {
 	result := newRuleResult(ruleID)
-	run.Results = append(run.Results, result)
+	run.Results = append(run.Results, *result)
 	return result
 }
 
@@ -91,7 +91,7 @@ func (run *Run) GetRuleById(ruleId string) (*Rule, error) {
 func (run *Run) GetResultByRuleId(ruleId string) (*Result, error) {
 	for _, result := range run.Results {
 		if *result.RuleID == ruleId {
-			return result, nil
+			return &result, nil
 		}
 	}
 	return nil, fmt.Errorf("couldn't find a result for rule %s", ruleId)

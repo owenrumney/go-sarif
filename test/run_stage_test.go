@@ -20,7 +20,7 @@ func newRunTest(t *testing.T) (*runTest, *runTest, *runTest) {
 		run: &sarif.Run{
 			Tool:      sarif.Tool{},
 			Artifacts: []*sarif.Artifact{},
-			Results:   []*sarif.Result{},
+			Results:   []sarif.Result{},
 		},
 	}
 	return r, r, r
