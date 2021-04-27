@@ -1,7 +1,6 @@
 # go-sarif
 
 [![Build Status](https://travis-ci.com/owenrumney/go-sarif.svg?branch=main)](https://travis-ci.com/owenrumney/go-sarif) 
-[![codecov](https://codecov.io/gh/owenrumney/go-sarif/branch/main/graph/badge.svg?token=2EH55OCCX7)](https://codecov.io/gh/owenrumney/go-sarif)
 [![Go Report Card](https://goreportcard.com/badge/github.com/owenrumney/go-sarif)](https://goreportcard.com/report/github.com/owenrumney/go-sarif) 
 [![Github Release](https://img.shields.io/github/release/owenrumney/go-sarif.svg)](https://github.com/owenrumney/go-sarif/releases)
 
