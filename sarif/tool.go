@@ -1,13 +1,15 @@
 package sarif
 
 type Tool struct {
+	PropertyBag
 	Driver *Driver `json:"driver"`
 }
 
 type Driver struct {
+	PropertyBag
 	Name           string  `json:"name"`
-	Version        *string  `json:"version,omitempty"`
-	InformationURI *string  `json:"informationUri"`
+	Version        *string `json:"version,omitempty"`
+	InformationURI *string `json:"informationUri"`
 	Rules          []*Rule `json:"rules,omitempty"`
 }
 
@@ -19,11 +21,12 @@ func (driver *Driver) WithVersion(version string) *Driver {
 
 // Rule specifies a Sarif Rule object
 type Rule struct {
+	PropertyBag
 	ID               string                    `json:"id"`
-	Name             *string                    `json:"name,omitempty"`
+	Name             *string                   `json:"name,omitempty"`
 	ShortDescription *MultiformatMessageString `json:"shortDescription"`
 	FullDescription  *MultiformatMessageString `json:"fullDescription,omitempty"`
-	HelpURI          *string                    `json:"helpUri,omitempty"`
+	HelpURI          *string                   `json:"helpUri,omitempty"`
 	Help             *MultiformatMessageString `json:"help,omitempty"`
 	Properties       map[string]string         `json:"properties,omitempty"`
 }

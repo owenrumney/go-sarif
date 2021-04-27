@@ -2,14 +2,22 @@ package sarif
 
 import (
 	"fmt"
+
+	"github.com/zclconf/go-cty/cty"
 )
+
+type RunOption int
+
+const IncludeEmptyResults RunOption = iota
 
 // Run type represents a run of a tool
 type Run struct { // https://docs.oasis-open.org/sarif/sarif/v2.1.0/csprd01/sarif-v2.1.0-csprd01.html#_Toc10540922
+	PropertyBag
 	Tool        Tool          `json:"tool"`
 	Invocations []*Invocation `json:"invocations,omitempty"`
 	Artifacts   []*Artifact   `json:"artifacts,omitempty"`
-	Results     []*Result     `json:"results,omitempty"` //	can	be	null
+	Results     []*Result     `json:"results"`
+	Properties  Properties    `json:"properties,omitempty"`
 }
 
 // NewRun allows the creation of a new Run
@@ -22,6 +30,7 @@ func NewRun(toolName, informationURI string) *Run {
 			},
 		},
 	}
+
 	return run
 }
 
@@ -62,6 +71,10 @@ func (run *Run) AddResult(ruleID string) *Result {
 	return result
 }
 
+func (run *Run) AttachPropertyBag(pb *PropertyBag) {
+	run.Properties = pb.Properties
+}
+
 // GetRuleById finds a rule by a given rule ID and returns a pointer to it
 func (run *Run) GetRuleById(ruleId string) (*Rule, error) {
 	if run.Tool.Driver != nil {
@@ -96,4 +109,8 @@ func (run *Run) DedupeArtifacts() error {
 	}
 	run.Artifacts = deduped
 	return nil
+}
+
+func (run *Run) AddProperties(key string, value cty.Value) {
+	run.Properties[key] = value
 }

@@ -4,6 +4,7 @@ import "time"
 
 // Invocation describes the runtime environment of the analysis tool run.
 type Invocation struct {
+	PropertyBag
 	StartTimeUTC        *time.Time        `json:"startTimeUtc,omitempty"`
 	EndTimeUTC          *time.Time        `json:"endTimeUtc,omitempty"`
 	ExecutionSuccessful bool              `json:"executionSuccessful"`

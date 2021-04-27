@@ -20,6 +20,7 @@ var versions = map[Version]string{
 
 // Report is the encapsulating type representing a Sarif Report
 type Report struct {
+	PropertyBag
 	Version string `json:"version"`
 	Schema  string `json:"$schema"`
 	Runs    []*Run `json:"runs"`

@@ -38,6 +38,12 @@ func (r *reportTest) with_a_run_added(tool, informationUri string) *sarif.Run {
 	return run
 }
 
+func (r *reportTest) with_a_run_with_empty_result_added(tool, informationUri string) *sarif.Run {
+	run := sarif.NewRun(tool, informationUri)
+	r.report.AddRun(run)
+	return run
+}
+
 func (r *reportTest) an_artifact_is_added_to_the_run(run *sarif.Run, filename string) *reportTest {
 	a := run.AddArtifact()
 	a.Location = &sarif.ArtifactLocation{
@@ -46,11 +52,11 @@ func (r *reportTest) an_artifact_is_added_to_the_run(run *sarif.Run, filename st
 	return r
 }
 
-func (r *reportTest) a_result_is_added_to_the_run(run *sarif.Run, ruleId, messageText string) *reportTest {
-	result := run.AddResult(ruleId)
-	result.Message = sarif.Message{
-		Text: &messageText,
-	}
+func (r *reportTest) some_properties_are_added_to_the_run(run *sarif.Run) *reportTest {
+	pb := sarif.NewPropertyBag()
+	pb.AddString("string_property", "this is a string")
+	pb.AddInteger("integer_property", 10)
+	run.AttachPropertyBag(pb)
 	return r
 }
 
