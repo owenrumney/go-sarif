@@ -1,0 +1,20 @@
+name: go-sarif test
+on:
+  pull_request:
+jobs:
+  test:
+    name: testing go-sarif
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Clone repo
+      uses: actions/checkout@main
+
+    - name: Set up Go
+      uses: actions/setup-go@v2
+      with:
+        stable: 'true'
+    - run: go version
+
+    - name: test
+      run: make test
