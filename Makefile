@@ -1,7 +1,7 @@
 
 .PHONY: test
 test: vet
-	go test -v -coverprofile coverage.txt  ./...
+	go test -v  ./...
 
 .PHONY: vet
 vet:

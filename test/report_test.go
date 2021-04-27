@@ -13,7 +13,15 @@ func Test_new_simple_report_with_single_run(t *testing.T) {
 
 	given.a_new_report().
 		with_a_run_added("tfsec", "https://tfsec.dev")
-	then.report_text_is(`{"version":"2.1.0","$schema":"https://raw.githubusercontent.com/oasis-tcs/sarif-spec/master/Schemata/sarif-schema-2.1.0.json","runs":[{"tool":{"driver":{"name":"tfsec","informationUri":"https://tfsec.dev"}}}]}`)
+	then.report_text_is(`{"version":"2.1.0","$schema":"https://raw.githubusercontent.com/oasis-tcs/sarif-spec/master/Schemata/sarif-schema-2.1.0.json","runs":[{"tool":{"driver":{"name":"tfsec","informationUri":"https://tfsec.dev"}},"results":null}]}`)
+}
+
+func Test_new_report_with_empty_run(t *testing.T) {
+	given, _, then := newReportTest(t)
+
+	given.a_new_report().
+		with_a_run_with_empty_result_added("tfsec", "https://tfsec.dev")
+	then.report_text_is(`{"version":"2.1.0","$schema":"https://raw.githubusercontent.com/oasis-tcs/sarif-spec/master/Schemata/sarif-schema-2.1.0.json","runs":[{"tool":{"driver":{"name":"tfsec","informationUri":"https://tfsec.dev"}},"results":null}]}`)
 }
 
 func Test_new_simple_report_with_artifact(t *testing.T) {
@@ -22,7 +30,16 @@ func Test_new_simple_report_with_artifact(t *testing.T) {
 	run := given.a_new_report().
 		with_a_run_added("tfsec", "https://tfsec.dev")
 	when.an_artifact_is_added_to_the_run(run, "file://broken.go")
-	then.report_text_is(`{"version":"2.1.0","$schema":"https://raw.githubusercontent.com/oasis-tcs/sarif-spec/master/Schemata/sarif-schema-2.1.0.json","runs":[{"tool":{"driver":{"name":"tfsec","informationUri":"https://tfsec.dev"}},"artifacts":[{"location":{"uri":"file://broken.go"},"length":-1}]}]}`)
+	then.report_text_is(`{"version":"2.1.0","$schema":"https://raw.githubusercontent.com/oasis-tcs/sarif-spec/master/Schemata/sarif-schema-2.1.0.json","runs":[{"tool":{"driver":{"name":"tfsec","informationUri":"https://tfsec.dev"}},"artifacts":[{"location":{"uri":"file://broken.go"},"length":-1}],"results":null}]}`)
+}
+
+func Test_new_simple_report_with_propertybag(t *testing.T) {
+	given, when, then := newReportTest(t)
+
+	run := given.a_new_report().
+		with_a_run_added("tfsec", "https://tfsec.dev")
+	when.some_properties_are_added_to_the_run(run)
+	then.report_text_is(`{"version":"2.1.0","$schema":"https://raw.githubusercontent.com/oasis-tcs/sarif-spec/master/Schemata/sarif-schema-2.1.0.json","runs":[{"tool":{"driver":{"name":"tfsec","informationUri":"https://tfsec.dev"}},"results":null,"properties":{"integer_property":10,"string_property":"this is a string"}}]}`)
 }
 
 func Test_new_simple_report_with_duplicate_artifact(t *testing.T) {
@@ -33,7 +50,7 @@ func Test_new_simple_report_with_duplicate_artifact(t *testing.T) {
 	when.an_artifact_is_added_to_the_run(run, "file://broken.go").
 		and().
 		an_artifact_is_added_to_the_run(run, "file://broken.go")
-	then.report_text_is(`{"version":"2.1.0","$schema":"https://raw.githubusercontent.com/oasis-tcs/sarif-spec/master/Schemata/sarif-schema-2.1.0.json","runs":[{"tool":{"driver":{"name":"tfsec","informationUri":"https://tfsec.dev"}},"artifacts":[{"location":{"uri":"file://broken.go"},"length":-1},{"location":{"uri":"file://broken.go"},"length":-1}]}]}`)
+	then.report_text_is(`{"version":"2.1.0","$schema":"https://raw.githubusercontent.com/oasis-tcs/sarif-spec/master/Schemata/sarif-schema-2.1.0.json","runs":[{"tool":{"driver":{"name":"tfsec","informationUri":"https://tfsec.dev"}},"artifacts":[{"location":{"uri":"file://broken.go"},"length":-1},{"location":{"uri":"file://broken.go"},"length":-1}],"results":null}]}`)
 }
 
 func Test_load_sarif_from_string(t *testing.T) {
