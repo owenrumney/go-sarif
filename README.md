@@ -81,42 +81,26 @@ For more information about SARIF, you can visit the [Oasis Open](https://www.oas
 
 ## Usage
 
+Add an import to `go get github.com/owenrumney/go-sarif/sarif`
 ### Parsing a Sarif report
 
-###
+There are a number of ways to load in the content of a sarif report.
 
+#### Open
 
-Add an import to `github.com/owenrumney/go-sarif/sarif`
+`sarif.Open` takes a file path and loads the sarif from that location. Returns a report and any corresponding error
+
+#### FromBytes
+
+`sarif.FromBytes` takes a slice of byte and returns a report and any corresponding error.
+
+#### FromString
+
+`sarif.FromString` takes a string of the sarif content and returns a report and any corresponding error.
+
+### Creating a new report
 
 Creating a new Sarif report is done by passing the version, the only supported at the moment is `2.1.0`
 
-The example below is taken from the `tfsec` usage of `go-sarif`. For context, at the end of the process a slice of `Result` objects is returned with the relevant information about the check failures.
-
-```go
-// create the report object
-report, err := sarif.New(sarif.Version210)
-if err != nil {
-	return err
-}
-
-// add a run to the report
-run := report.AddRun("tfsec", "https://tfsec.dev")
-
-// for each result add the rule, location and result to the report
-for _, result := range results {
-	rule := run.AddRule(string(result.RuleID)).
-		WithDescription(result.Description).
-		WithHelpUri(fmt.Sprintf("https://tfsec.dev/%s/%s", strings.ToLower(string(result.RuleProvider)), result.RuleID))
-
-	ruleResult := run.AddResult(rule.Id).
-		WithMessage(string(result.RuleDescription)).
-		WithLevel(string(result.Severity)).
-		WithLocationDetails(result.Range.Filename, result.Range.StartLine, 1)
-
-	run.AddResultDetails(rule, ruleResult, result.Range.Filename)
-}
-
-// print the report to anything that implements `io.Writer`
-return report.Write(w)
-```
+for a detailed example check the example folder [example/main.go](example/main.go)
 
