@@ -60,6 +60,9 @@ func main() {
 			WithHelp(r.Link).
 			WithProperties(pb.Properties)
 
+		// add the location as a unique artifact
+		run.AddDistinctArtifact(r.Location.Filename)
+
 		// add each of the results with the details of where the issue occurred
 		run.AddResult(r.RuleID).
 			WithLevel(strings.ToLower(r.Severity)).
@@ -83,7 +86,9 @@ func main() {
 	report.PrettyWrite(os.Stdout)
 
 	// save the report
-	// report.WriteFile("example-report.sarif")
+	if err := report.WriteFile("example-report.sarif"); err != nil {
+		panic(err)
+	}
 
 }
 
