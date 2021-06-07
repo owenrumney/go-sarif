@@ -112,6 +112,6 @@ func (run *Run) DedupeArtifacts() error {
 	return nil
 }
 
-func (run *Run) AddProperties(key string, value cty.Value) {
+func (run *Run) AddProperty(key string, value cty.Value) {
 	run.Properties[key] = value
 }
