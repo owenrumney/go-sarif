@@ -2,9 +2,6 @@
 [![Go Report Card](https://goreportcard.com/badge/github.com/owenrumney/go-sarif)](https://goreportcard.com/report/github.com/owenrumney/go-sarif) 
 [![Github Release](https://img.shields.io/github/release/owenrumney/go-sarif.svg)](https://github.com/owenrumney/go-sarif/releases)
 
-
-### Important - the implementation has enough at this point to satisfy the requirements of [tfsec](https://tfsec.dev) - the example below is achievable
-
 ## What?
 
 SARIF is the Static Analysis Results Interchange Format, this project seeks to provide a simple interface to generate reports in the SARIF format.
