@@ -13,7 +13,7 @@ This example is taken directly from the [Microsoft sarif pages](https://github.c
 ```json
 {
   "version": "2.1.0",
-  "$schema": "http://json.schemastore.org/sarif-2.1.0-rtm.4",
+  "$schema": "https://json.schemastore.org/sarif-2.1.0-rtm.5.json",
   "runs": [
     {
       "tool": {
