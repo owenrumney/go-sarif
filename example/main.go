@@ -6,7 +6,7 @@ import (
 	"os"
 	"strings"
 
-	"github.com/owenrumney/go-sarif/sarif"
+	"github.com/owenrum/go-sarif/sarif"
 )
 
 // simple structure for the output of tfsec

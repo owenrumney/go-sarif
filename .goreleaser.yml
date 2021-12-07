@@ -3,7 +3,7 @@ builds:
 
 release:
   github:
-    owner: owenrumney
+    owner: owenrum
     name: go-sarif
 
 changelog:
