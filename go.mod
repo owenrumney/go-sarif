@@ -1,4 +1,4 @@
-module github.com/owenrumney/go-sarif/v2
+module github.com/owenrumney/go-sarif
 
 go 1.16
 
