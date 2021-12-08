@@ -6,7 +6,7 @@ import (
 	"os"
 	"strings"
 
-	"github.com/owenrumney/go-sarif/sarif"
+	"github.com/owenrumney/go-sarif/v2/sarif"
 )
 
 // simple structure for the output of tfsec
@@ -58,7 +58,8 @@ func main() {
 		run.AddRule(r.RuleID).
 			WithDescription(r.Description).
 			WithHelp(r.Link).
-			WithProperties(pb.Properties)
+			WithProperties(pb.Properties).
+			WithMarkdownHelp("# markdown")
 
 		// add the location as a unique artifact
 		run.AddDistinctArtifact(r.Location.Filename)
@@ -95,7 +96,7 @@ func main() {
 // load the example results file
 func loadTfsecResults() (TfsecResults, error) {
 
-	jsonResult, err := ioutil.ReadFile("results.json")
+	jsonResult, err := ioutil.ReadFile("./results.json")
 	if err != nil {
 		panic(err)
 	}

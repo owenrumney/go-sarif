@@ -1,6 +1,6 @@
 {
   "version": "2.1.0",
-  "$schema": "https://raw.githubusercontent.com/oasis-tcs/sarif-spec/master/Schemata/sarif-schema-2.1.0.json",
+  "$schema": "https://json.schemastore.org/sarif-2.1.0-rtm.5.json",
   "runs": [
     {
       "tool": {
@@ -14,7 +14,7 @@
                 "text": "Resource 'aws_security_group_rule.my-rule' defines a fully open ingress security group rule."
               },
               "help": {
-                "text": "See https://tfsec.dev/docs/aws/AWS006/ for more information."
+                "markdown": "# markdown"
               },
               "properties": {
                 "impact": "Your port exposed to the internet",
@@ -27,7 +27,7 @@
                 "text": "Resource 'azurerm_managed_disk.source' defines an unencrypted managed disk."
               },
               "help": {
-                "text": "See https://tfsec.dev/docs/azure/AZU003/ for more information."
+                "markdown": "# markdown"
               },
               "properties": {
                 "impact": "",
@@ -40,7 +40,7 @@
                 "text": "Resource 'aws_api_gateway_domain_name.outdated_security_policy' defines outdated SSL/TLS policies (not using TLS_1_2)."
               },
               "help": {
-                "text": "See https://tfsec.dev/docs/aws/AWS025/ for more information."
+                "markdown": "# markdown"
               },
               "properties": {
                 "impact": "Outdated SSL policies increase exposure to known vulnerabilites",
@@ -53,7 +53,7 @@
                 "text": "Resource 'aws_security_group_rule.my-rule' should include a description for auditing purposes."
               },
               "help": {
-                "text": "See https://tfsec.dev/docs/aws/AWS018/ for more information."
+                "markdown": "# markdown"
               },
               "properties": {
                 "impact": "Descriptions provide context for the firewall rule reasons",
@@ -66,7 +66,7 @@
                 "text": "Resource 'aws_alb_listener.my-alb-listener' uses plain HTTP instead of HTTPS."
               },
               "help": {
-                "text": "See https://tfsec.dev/docs/aws/AWS004/ for more information."
+                "markdown": "# markdown"
               },
               "properties": {
                 "impact": "Your traffic is not protected",
@@ -79,7 +79,7 @@
                 "text": "Resource 'aws_db_security_group.my-group' uses EC2 Classic. Use a VPC instead."
               },
               "help": {
-                "text": "See https://tfsec.dev/docs/aws/AWS003/ for more information."
+                "markdown": "# markdown"
               },
               "properties": {
                 "impact": "Classic resources are running in a shared environment with other customers",
@@ -92,7 +92,7 @@
                 "text": "Resource 'aws_dynamodb_table.bad_example' is not using KMS CMK for encryption"
               },
               "help": {
-                "text": "See https://tfsec.dev/docs/aws/AWS092/ for more information."
+                "markdown": "# markdown"
               },
               "properties": {
                 "impact": "Using AWS managed keys does not allow for fine grained control",
@@ -284,6 +284,30 @@
                   "uri": "/home/billybob/supertfsec/example/main.tf"
                 },
                 "region": {
+                  "startLine": 41,
+                  "endLine": 56
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}in.tf"
+                },
+                "region": {
+                  "startLine": 41,
+                  "endLine": 56
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
                   "startLine": 41,
                   "endLine": 56
                 }
