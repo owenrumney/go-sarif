@@ -27,7 +27,7 @@ func newRunTest(t *testing.T) (*runTest, *runTest, *runTest) {
 }
 
 func (r *runTest) a_result_is_added() {
-	r.run.AddResult("rule1")
+	r.run.CreateResultForRule("rule1")
 }
 
 func (r *runTest) properties_added_to_a_run() {
