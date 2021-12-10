@@ -44,7 +44,7 @@ func main() {
 	}
 
 	// create a run for tfsec
-	run := sarif.NewRunWithInformationURI("tfsec", "https://tfsec.dev")
+	run := sarif.NewRun("tfsec", "https://tfsec.dev")
 
 	// for each result, add the
 	for _, r := range tfsecResults.Results {
