@@ -6,7 +6,7 @@ import (
 	"os"
 	"strings"
 
-	"github.com/owenrumney/go-sarif/sarif"
+	"github.com/owenrumney/go-sarif/v2/sarif"
 )
 
 // simple structure for the output of tfsec
@@ -57,7 +57,7 @@ func main() {
 		// create a new rule for each rule id
 		run.AddRule(r.RuleID).
 			WithDescription(r.Description).
-			WithHelp(r.Link).
+			WithHelpURI(r.Link).
 			WithProperties(pb.Properties).
 			WithMarkdownHelp("# markdown")
 
@@ -68,7 +68,7 @@ func main() {
 		run.AddResult(r.RuleID).
 			WithLevel(strings.ToLower(r.Severity)).
 			WithMessage(sarif.NewTextMessage(r.Description)).
-			WithLocation(
+			AddLocation(
 				sarif.NewLocationWithPhysicalLocation(
 					sarif.NewPhysicalLocation().
 						WithArtifactLocation(

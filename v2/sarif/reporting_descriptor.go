@@ -1,13 +1,5 @@
 package sarif
 
-type ReportingConfiguration struct {
-	Enabled    bool         `json:"enabled,omitempty"`
-	Level      interface{}  `json:"level,omitempty"`
-	Parameters *PropertyBag `json:"parameters,omitempty"`
-	Properties *PropertyBag `json:"properties,omitempty"`
-	Rank       float64      `json:"rank,omitempty"`
-}
-
 // ReportingDescriptor specifies a Sarif ReportingDescriptor object
 type ReportingDescriptor struct {
 	PropertyBag
@@ -21,7 +13,7 @@ type ReportingDescriptor struct {
 	Properties           Properties                `json:"properties,omitempty"`
 }
 
-func newRule(ruleID string) *ReportingDescriptor {
+func NewRule(ruleID string) *ReportingDescriptor {
 	return &ReportingDescriptor{
 		ID: ruleID,
 	}
@@ -63,18 +55,27 @@ func (rule *ReportingDescriptor) WithHelpURI(helpURI string) *ReportingDescripto
 	return rule
 }
 
-// WithHelp specifies a help text  for a rule and returns the updated rule
-func (rule *ReportingDescriptor) WithHelp(helpText string) *ReportingDescriptor {
-	rule.Help = NewMultiformatMessageString(helpText)
+// WithHelp sets the rule Help to the provided multiformat message
+func (rule *ReportingDescriptor) WithHelp(help *MultiformatMessageString) *ReportingDescriptor {
+	rule.Help = help
+	return rule
+}
+
+// WithTextHelp specifies a help text  for a rule and returns the updated rule
+func (rule *ReportingDescriptor) WithTextHelp(text string) *ReportingDescriptor {
+	if rule.Help == nil {
+		rule.Help = &MultiformatMessageString{}
+	}
+	rule.Help.Text = &text
 	return rule
 }
 
 // WithMarkdownHelp specifies a help text  for a rule and returns the updated rule
-func (rule *ReportingDescriptor) WithMarkdownHelp(markdownText string) *ReportingDescriptor {
+func (rule *ReportingDescriptor) WithMarkdownHelp(markdown string) *ReportingDescriptor {
 	if rule.Help == nil {
-		rule.Help = NewMultiformatMessageString("")
+		rule.Help = &MultiformatMessageString{}
 	}
-	rule.Help.WithMarkdown(markdownText)
+	rule.Help.Markdown = &markdown
 	return rule
 }
 
