@@ -25,7 +25,7 @@ type ExternalProperties struct {
 	WebResponses           []*WebResponse        `json:"webResponses,omitempty"`
 }
 
-// NewExternalProperties ...
+// NewExternalProperties creates a new ExternalProperties and returns a pointer to it
 func NewExternalProperties() *ExternalProperties {
 	return &ExternalProperties{}
 }

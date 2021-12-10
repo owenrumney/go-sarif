@@ -16,12 +16,12 @@ type Region struct {
 	SourceLanguage *string          `json:"sourceLanguage,omitempty"`
 }
 
-// NewRegion ...
+// NewRegion creates a new Region and returns a pointer to it
 func NewRegion() *Region {
 	return &Region{}
 }
 
-// NewSimpleRegion ...
+// NewSimpleRegion creates a new SimpleRegion and returns a pointer to it
 func NewSimpleRegion(startLine, endLine int) *Region {
 	return NewRegion().
 		WithStartLine(startLine).

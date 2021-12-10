@@ -7,7 +7,7 @@ type Replacement struct {
 	InsertedContent *ArtifactContent `json:"insertedContent,omitempty"`
 }
 
-// NewReplacement ...
+// NewReplacement creates a new Replacement and returns a pointer to it
 func NewReplacement(region *Region) *Replacement {
 	return &Replacement{
 		DeletedRegion: *region,

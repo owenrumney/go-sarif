@@ -22,7 +22,7 @@ type ExternalPropertyFileReferences struct {
 	WebResponses           []*ExternalPropertyFileReference `json:"webResponses,omitempty"`
 }
 
-// NewExternalPropertyFileReferences ...
+// NewExternalPropertyFileReferences creates a new ExternalPropertyFileReferences and returns a pointer to it
 func NewExternalPropertyFileReferences() *ExternalPropertyFileReferences {
 	return &ExternalPropertyFileReferences{}
 }

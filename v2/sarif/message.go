@@ -1,7 +1,7 @@
 package sarif
 
 // Message ...
-type Message struct { // https://docs.oasis-open.org/sarif/sarif/v2.1.0/csprd01/sarif-v2.1.0-csprd01.html#_Toc10540897
+type Message struct { 
 	PropertyBag
 	Text      *string  `json:"text,omitempty"`
 	Markdown  *string  `json:"markdown,omitempty"`
@@ -9,17 +9,17 @@ type Message struct { // https://docs.oasis-open.org/sarif/sarif/v2.1.0/csprd01/
 	Arguments []string `json:"arguments,omitempty"`
 }
 
-// NewMessage ...
+// NewMessage creates a new Message and returns a pointer to it
 func NewMessage() *Message {
 	return &Message{}
 }
 
-// NewTextMessage ...
+// NewTextMessage creates a new TextMessage and returns a pointer to it
 func NewTextMessage(text string) *Message {
 	return NewMessage().WithText(text)
 }
 
-// NewMarkdownMessage ...
+// NewMarkdownMessage creates a new MarkdownMessage and returns a pointer to it
 func NewMarkdownMessage(markdown string) *Message {
 	return NewMessage().WithMarkdown(markdown)
 }

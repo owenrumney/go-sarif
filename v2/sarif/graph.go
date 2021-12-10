@@ -8,7 +8,7 @@ type Graph struct {
 	Nodes       []*Node  `json:"nodes,omitempty"`
 }
 
-// NewGraph ...
+// NewGraph creates a new Graph and returns a pointer to it
 func NewGraph() *Graph {
 	return &Graph{}
 }

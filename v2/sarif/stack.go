@@ -8,7 +8,7 @@ type Stack struct {
 	Properties *PropertyBag  `json:"properties,omitempty"`
 }
 
-// NewStack ...
+// NewStack creates a new Stack and returns a pointer to it
 func NewStack() *Stack {
 	return &Stack{}
 }

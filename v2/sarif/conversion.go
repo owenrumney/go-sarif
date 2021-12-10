@@ -8,7 +8,7 @@ type Conversion struct {
 	Tool                 *Tool               `json:"tool"`
 }
 
-// NewConversion ...
+// NewConversion creates a new Conversion and returns a pointer to it
 func NewConversion() *Conversion {
 	return &Conversion{}
 }

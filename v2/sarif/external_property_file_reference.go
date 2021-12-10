@@ -8,7 +8,7 @@ type ExternalPropertyFileReference struct {
 	Location  *ArtifactLocation `json:"location,omitempty"`
 }
 
-// NewExternalPropertyFileReference ...
+// NewExternalPropertyFileReference creates a new ExternalPropertyFileReference and returns a pointer to it
 func NewExternalPropertyFileReference() *ExternalPropertyFileReference {
 	return &ExternalPropertyFileReference{}
 }

@@ -9,7 +9,7 @@ type StackFrame struct {
 	ThreadID   *int      `json:"threadId,omitempty"`
 }
 
-// NewStackFrame ...
+// NewStackFrame creates a new StackFrame and returns a pointer to it
 func NewStackFrame() *StackFrame {
 	return &StackFrame{}
 }

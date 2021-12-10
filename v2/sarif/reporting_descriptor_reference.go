@@ -9,7 +9,7 @@ type ReportingDescriptorReference struct {
 	ToolComponent *ToolComponentReference `json:"toolComponent,omitempty"`
 }
 
-// NewReportingDescriptorReference ...
+// NewReportingDescriptorReference creates a new ReportingDescriptorReference and returns a pointer to it
 func NewReportingDescriptorReference() *ReportingDescriptorReference {
 	return &ReportingDescriptorReference{}
 }

@@ -11,12 +11,12 @@ type Location struct {
 	Relationships    []*LocationRelationship `json:"relationships,omitempty"`
 }
 
-// NewLocation ...
+// NewLocation creates a new Location and returns a pointer to it
 func NewLocation() *Location {
 	return &Location{}
 }
 
-// NewLocationWithPhysicalLocation ...
+// NewLocationWithPhysicalLocation creates a new LocationWithPhysicalLocation and returns a pointer to it
 func NewLocationWithPhysicalLocation(physicalLocation *PhysicalLocation) *Location {
 	return NewLocation().WithPhysicalLocation(physicalLocation)
 }

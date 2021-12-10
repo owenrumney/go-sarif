@@ -13,7 +13,7 @@ type WebRequest struct {
 	Version    *string           `json:"version,omitempty"`
 }
 
-// NewWebRequest ...
+// NewWebRequest creates a new WebRequest and returns a pointer to it
 func NewWebRequest() *WebRequest {
 	return &WebRequest{}
 }

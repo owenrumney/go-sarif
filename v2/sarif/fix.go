@@ -7,7 +7,7 @@ type Fix struct {
 	ArtifactChanges []*ArtifactChange `json:"artifactChanges"` //	required
 }
 
-// NewFix ...
+// NewFix creates a new Fix and returns a pointer to it
 func NewFix() *Fix {
 	return &Fix{}
 }

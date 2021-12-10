@@ -9,7 +9,7 @@ type Exception struct {
 	Stack           *Stack       `json:"stack,omitempty"`
 }
 
-// NewException ...
+// NewException creates a new Exception and returns a pointer to it
 func NewException() *Exception {
 	return &Exception{}
 }

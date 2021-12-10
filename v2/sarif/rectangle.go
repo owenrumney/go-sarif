@@ -10,7 +10,7 @@ type Rectangle struct {
 	Top     *float64 `json:"top,omitempty"`
 }
 
-// NewRectangle ...
+// NewRectangle creates a new Rectangle and returns a pointer to it
 func NewRectangle() *Rectangle {
 	return &Rectangle{}
 }

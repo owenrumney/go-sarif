@@ -8,7 +8,7 @@ type Attachment struct {
 	Rectangles       []*Rectangle      `json:"rectangles,omitempty"`
 }
 
-// NewAttachment ...
+// NewAttachment creates a new Attachment and returns a pointer to it
 func NewAttachment() *Attachment {
 	return &Attachment{}
 }

@@ -10,7 +10,7 @@ type ThreadFlow struct {
 	Message        *Message                             `json:"message,omitempty"`
 }
 
-// NewThreadFlow ...
+// NewThreadFlow creates a new ThreadFlow and returns a pointer to it
 func NewThreadFlow() *ThreadFlow {
 	return &ThreadFlow{}
 }

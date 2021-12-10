@@ -9,12 +9,12 @@ type ArtifactLocation struct {
 	Description *Message `json:"description,omitempty"`
 }
 
-// NewArtifactLocation ...
+// NewArtifactLocation creates a new ArtifactLocation and returns a pointer to it
 func NewArtifactLocation() *ArtifactLocation {
 	return &ArtifactLocation{}
 }
 
-// NewSimpleArtifactLocation ...
+// NewSimpleArtifactLocation creates a new SimpleArtifactLocation and returns a pointer to it
 func NewSimpleArtifactLocation(uri string) *ArtifactLocation {
 	return NewArtifactLocation().WithUri(uri)
 }

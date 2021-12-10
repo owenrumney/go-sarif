@@ -11,7 +11,7 @@ type GraphTraversal struct {
 	RunGraphIndex    *int                                 `json:"runGraphIndex,omitempty"`
 }
 
-// NewGraphTraversal ...
+// NewGraphTraversal creates a new GraphTraversal and returns a pointer to it
 func NewGraphTraversal() *GraphTraversal {
 	return &GraphTraversal{}
 }

@@ -8,7 +8,7 @@ type ToolComponentReference struct {
 	Guid  *string `json:"guid"`
 }
 
-// NewToolComponentReference ...
+// NewToolComponentReference creates a new ToolComponentReference and returns a pointer to it
 func NewToolComponentReference() *ToolComponentReference {
 	return &ToolComponentReference{}
 }

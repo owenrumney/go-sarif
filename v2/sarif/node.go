@@ -9,7 +9,7 @@ type Node struct {
 	Location *Location `json:"location,omitempty"`
 }
 
-// NewNode ...
+// NewNode creates a new Node and returns a pointer to it
 func NewNode(id string) *Node {
 	return &Node{
 		ID: id,

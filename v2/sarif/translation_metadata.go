@@ -11,7 +11,7 @@ type TranslationMetadata struct {
 	ShortDescription *MultiformatMessageString `json:"shortDescription,omitempty"`
 }
 
-// NewTranslationMetadata ...
+// NewTranslationMetadata creates a new TranslationMetadata and returns a pointer to it
 func NewTranslationMetadata() *TranslationMetadata {
 	return &TranslationMetadata{}
 }

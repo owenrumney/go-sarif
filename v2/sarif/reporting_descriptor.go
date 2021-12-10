@@ -13,7 +13,7 @@ type ReportingDescriptor struct {
 	Properties           Properties                `json:"properties,omitempty"`
 }
 
-// NewRule ...
+// NewRule creates a new Rule and returns a pointer to it
 func NewRule(ruleID string) *ReportingDescriptor {
 	return &ReportingDescriptor{
 		ID: ruleID,

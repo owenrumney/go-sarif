@@ -20,7 +20,7 @@ type ThreadFlowLocation struct {
 	WebResponse      *WebResponse                         `json:"webResponse,omitempty"`
 }
 
-// NewThreadFlowLocation ...
+// NewThreadFlowLocation creates a new ThreadFlowLocation and returns a pointer to it
 func NewThreadFlowLocation() *ThreadFlowLocation {
 	return &ThreadFlowLocation{}
 }

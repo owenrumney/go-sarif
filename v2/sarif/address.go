@@ -14,7 +14,7 @@ type Address struct {
 	ParentIndex        *uint   `json:"parentIndex,omitempty"`
 }
 
-// NewAddress create a new address
+// NewAddress create a new Address and returns a pointer to it
 func NewAddress() *Address {
 	return &Address{}
 }

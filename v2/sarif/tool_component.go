@@ -11,14 +11,14 @@ type ToolComponent struct {
 	Taxa           []*ReportingDescriptor `json:"taxa,omitempty"`
 }
 
-// NewDriver ...
+// NewDriver creates a new Driver and returns a pointer to it
 func NewDriver(name string) *ToolComponent {
 	return &ToolComponent{
 		Name: name,
 	}
 }
 
-// NewVersionedDriver ...
+// NewVersionedDriver creates a new VersionedDriver and returns a pointer to it
 func NewVersionedDriver(name, version string) *ToolComponent {
 	return &ToolComponent{
 		Name:    name,

@@ -9,7 +9,7 @@ type EdgeTraversal struct {
 	StepOverEdgeCount *int                                 `json:"stepOverEdgeCount,omitempty"`
 }
 
-// NewEdgeTraversal ...
+// NewEdgeTraversal creates a new EdgeTraversal and returns a pointer to it
 func NewEdgeTraversal(edgeID string) *EdgeTraversal {
 	return &EdgeTraversal{
 		EdgeID: edgeID,

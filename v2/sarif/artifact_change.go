@@ -7,7 +7,7 @@ type ArtifactChange struct {
 	Replacements     []*Replacement   `json:"replacements"`
 }
 
-// NewArtifactChange ...
+// NewArtifactChange creates a new ArtifactChange and returns a pointer to it
 func NewArtifactChange(artifactLocation *ArtifactLocation) *ArtifactChange {
 	return &ArtifactChange{
 		ArtifactLocation: *artifactLocation,

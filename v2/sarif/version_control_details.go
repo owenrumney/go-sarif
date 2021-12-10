@@ -13,7 +13,7 @@ type VersionControlDetails struct {
 	RevisionTag   *string           `json:"revisionTag,omitempty"`
 }
 
-// NewVersionControlDetails ...
+// NewVersionControlDetails creates a new VersionControlDetails and returns a pointer to it
 func NewVersionControlDetails() *VersionControlDetails {
 	return &VersionControlDetails{}
 }

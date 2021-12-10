@@ -9,7 +9,7 @@ type Edge struct {
 	TargetNodeID string   `json:"targetNodeId"`
 }
 
-// NewEdge ...
+// NewEdge creates a new Edge and returns a pointer to it
 func NewEdge(id, sourceNodeID, targetNodeID string) *Edge {
 	return &Edge{
 		ID:           id,

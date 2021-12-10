@@ -15,7 +15,7 @@ type Notification struct {
 	TimeUTC        *time.Time                    `json:"timeUtc,omitempty"`
 }
 
-// NewNotification ...
+// NewNotification creates a new Notification and returns a pointer to it
 func NewNotification() *Notification {
 	return &Notification{}
 }

@@ -10,7 +10,7 @@ type Suppression struct {
 	Justification *string   `json:"justification"`
 }
 
-// NewSuppression ...
+// NewSuppression creates a new Suppression and returns a pointer to it
 func NewSuppression(kind string) *Suppression {
 	return &Suppression{
 		Kind: kind,

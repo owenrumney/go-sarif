@@ -7,7 +7,7 @@ type CodeFlow struct {
 	ThreadFlows []*ThreadFlow `json:"threadFlows,omitempty"`
 }
 
-// NewCodeFlow ...
+// NewCodeFlow creates a new CodeFlow and returns a pointer to it
 func NewCodeFlow() *CodeFlow {
 	return &CodeFlow{}
 }

@@ -9,7 +9,7 @@ type PhysicalLocation struct {
 	Address          *Address          `json:"address,omitempty"`
 }
 
-// NewPhysicalLocation ...
+// NewPhysicalLocation creates a new PhysicalLocation and returns a pointer to it
 func NewPhysicalLocation() *PhysicalLocation {
 	return &PhysicalLocation{}
 }

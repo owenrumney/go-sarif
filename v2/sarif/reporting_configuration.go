@@ -9,7 +9,7 @@ type ReportingConfiguration struct {
 	Rank       *float64     `json:"rank,omitempty"`
 }
 
-// NewReportingConfiguration ...
+// NewReportingConfiguration creates a new ReportingConfiguration and returns a pointer to it
 func NewReportingConfiguration() *ReportingConfiguration {
 	return &ReportingConfiguration{}
 }

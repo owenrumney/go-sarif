@@ -7,14 +7,14 @@ type MultiformatMessageString struct {
 	Markdown *string `json:"markdown,omitempty"`
 }
 
-// NewMarkdownMultiformatMessageString ...
+// NewMarkdownMultiformatMessageString creates a new MarkdownMultiformatMessageString and returns a pointer to it
 func NewMarkdownMultiformatMessageString(markdown string) *MultiformatMessageString {
 	return &MultiformatMessageString{
 		Markdown: &markdown,
 	}
 }
 
-// NewMultiformatMessageString ...
+// NewMultiformatMessageString creates a new MultiformatMessageString and returns a pointer to it
 func NewMultiformatMessageString(text string) *MultiformatMessageString {
 	return &MultiformatMessageString{
 		Text: &text,

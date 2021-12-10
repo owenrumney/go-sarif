@@ -13,7 +13,7 @@ type ResultProvenance struct {
 	LastDetectionTimeUTC  *time.Time          `json:"lastDetectionTimeUtc,omitempty"`
 }
 
-// NewResultProvenance ...
+// NewResultProvenance creates a new ResultProvenance and returns a pointer to it
 func NewResultProvenance() *ResultProvenance {
 	return &ResultProvenance{}
 }

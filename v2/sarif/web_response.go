@@ -13,7 +13,7 @@ type WebResponse struct {
 	Version            *string           `json:"version,omitempty"`
 }
 
-// NewWebResponse ...
+// NewWebResponse creates a new WebResponse and returns a pointer to it
 func NewWebResponse() *WebResponse {
 	return &WebResponse{}
 }

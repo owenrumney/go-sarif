@@ -32,7 +32,7 @@ type Invocation struct {
 	WorkingDirectory                   *ArtifactLocation        `json:"workingDirectory,omitempty"`
 }
 
-// NewInvocation ...
+// NewInvocation creates a new Invocation and returns a pointer to it
 func NewInvocation() *Invocation {
 	return &Invocation{}
 }

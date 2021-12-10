@@ -8,7 +8,7 @@ type LocationRelationship struct {
 	Description *Message `json:"description,omitempty"`
 }
 
-// NewLocationRelationship ...
+// NewLocationRelationship creates a new LocationRelationship and returns a pointer to it
 func NewLocationRelationship(target int) *LocationRelationship {
 	t := uint(target)
 	return &LocationRelationship{
