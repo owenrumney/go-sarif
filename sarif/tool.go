@@ -4,4 +4,3 @@ type Tool struct {
 	PropertyBag
 	Driver *ToolComponent `json:"driver"`
 }
-

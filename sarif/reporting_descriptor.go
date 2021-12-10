@@ -71,7 +71,10 @@ func (rule *ReportingDescriptor) WithHelp(helpText string) *ReportingDescriptor 
 
 // WithMarkdownHelp specifies a help text  for a rule and returns the updated rule
 func (rule *ReportingDescriptor) WithMarkdownHelp(markdownText string) *ReportingDescriptor {
-	rule.Help = NewMarkdownMultiformatMessageString(markdownText)
+	if rule.Help == nil {
+		rule.Help = NewMultiformatMessageString("")
+	}
+	rule.Help.WithMarkdown(markdownText)
 	return rule
 }
 
