@@ -13,6 +13,7 @@ type ReportingDescriptor struct {
 	Properties           Properties                `json:"properties,omitempty"`
 }
 
+// NewRule ...
 func NewRule(ruleID string) *ReportingDescriptor {
 	return &ReportingDescriptor{
 		ID: ruleID,

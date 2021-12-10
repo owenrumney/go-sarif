@@ -1,5 +1,6 @@
 package sarif
 
+// LocationRelationship ...
 type LocationRelationship struct {
 	PropertyBag
 	Target      uint     `json:"target"`
@@ -7,6 +8,7 @@ type LocationRelationship struct {
 	Description *Message `json:"description,omitempty"`
 }
 
+// NewLocationRelationship ...
 func NewLocationRelationship(target int) *LocationRelationship {
 	t := uint(target)
 	return &LocationRelationship{
@@ -14,20 +16,24 @@ func NewLocationRelationship(target int) *LocationRelationship {
 	}
 }
 
+// WithKinds sets the Kinds
 func (locationRelationship *LocationRelationship) WithKinds(kinds []string) *LocationRelationship {
 	locationRelationship.Kinds = kinds
 	return locationRelationship
 }
 
+// AddKind ...
 func (locationRelationship *LocationRelationship) AddKind(kind string) {
 	locationRelationship.Kinds = append(locationRelationship.Kinds, kind)
 }
 
+// WithDescription sets the Description
 func (locationRelationship *LocationRelationship) WithDescription(message *Message) *LocationRelationship {
 	locationRelationship.Description = message
 	return locationRelationship
 }
 
+// WithDescriptionText sets the DescriptionText
 func (locationRelationship *LocationRelationship) WithDescriptionText(text string) *LocationRelationship {
 	if locationRelationship.Description == nil {
 		locationRelationship.Description = &Message{}
@@ -36,6 +42,7 @@ func (locationRelationship *LocationRelationship) WithDescriptionText(text strin
 	return locationRelationship
 }
 
+// WithDescriptionMarkdown sets the DescriptionMarkdown
 func (locationRelationship *LocationRelationship) WithDescriptionMarkdown(markdown string) *LocationRelationship {
 	if locationRelationship.Description == nil {
 		locationRelationship.Description = &Message{}

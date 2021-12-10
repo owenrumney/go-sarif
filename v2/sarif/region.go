@@ -1,5 +1,6 @@
 package sarif
 
+// Region ...
 type Region struct {
 	PropertyBag
 	StartLine      *int             `json:"startLine,omitempty"`
@@ -15,66 +16,79 @@ type Region struct {
 	SourceLanguage *string          `json:"sourceLanguage,omitempty"`
 }
 
+// NewRegion ...
 func NewRegion() *Region {
 	return &Region{}
 }
 
+// NewSimpleRegion ...
 func NewSimpleRegion(startLine, endLine int) *Region {
 	return NewRegion().
 		WithStartLine(startLine).
 		WithEndLine(endLine)
 }
 
+// WithStartLine sets the StartLine
 func (region *Region) WithStartLine(startLine int) *Region {
 	region.StartLine = &startLine
 	return region
 }
 
+// WithStartColumn sets the StartColumn
 func (region *Region) WithStartColumn(startColumn int) *Region {
 	region.StartColumn = &startColumn
 	return region
 }
 
+// WithEndLine sets the EndLine
 func (region *Region) WithEndLine(endLine int) *Region {
 	region.EndLine = &endLine
 	return region
 }
 
+// WithEndColumn sets the EndColumn
 func (region *Region) WithEndColumn(endColumn int) *Region {
 	region.EndColumn = &endColumn
 	return region
 }
 
+// WithCharOffset sets the CharOffset
 func (region *Region) WithCharOffset(charOffset int) *Region {
 	region.CharOffset = &charOffset
 	return region
 }
 
+// WithCharLength sets the CharLength
 func (region *Region) WithCharLength(charLength int) *Region {
 	region.CharLength = &charLength
 	return region
 }
 
+// WithByteOffset sets the ByteOffset
 func (region *Region) WithByteOffset(byteOffset int) *Region {
 	region.ByteOffset = &byteOffset
 	return region
 }
 
+// WithByteLength sets the ByteLength
 func (region *Region) WithByteLength(byteLength int) *Region {
 	region.ByteLength = &byteLength
 	return region
 }
 
+// WithSnippet sets the Snippet
 func (region *Region) WithSnippet(snippet *ArtifactContent) *Region {
 	region.Snippet = snippet
 	return region
 }
 
+// WithMessage sets the Message
 func (region *Region) WithMessage(message *Message) *Region {
 	region.Message = message
 	return region
 }
 
+// WithTextMessage sets the TextMessage
 func (region *Region) WithTextMessage(text string) *Region {
 	if region.Message == nil {
 		region.Message = &Message{}
@@ -83,6 +97,7 @@ func (region *Region) WithTextMessage(text string) *Region {
 	return region
 }
 
+// WithMessageMarkdown sets the MessageMarkdown
 func (region *Region) WithMessageMarkdown(markdown string) *Region {
 	if region.Message == nil {
 		region.Message = &Message{}
@@ -91,6 +106,7 @@ func (region *Region) WithMessageMarkdown(markdown string) *Region {
 	return region
 }
 
+// WithSourceLanguage sets the SourceLanguage
 func (region *Region) WithSourceLanguage(sourceLanguage string) *Region {
 
 	return region

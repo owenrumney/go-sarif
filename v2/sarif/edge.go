@@ -1,5 +1,6 @@
 package sarif
 
+// Edge ...
 type Edge struct {
 	PropertyBag
 	ID           string   `json:"id"`
@@ -8,6 +9,7 @@ type Edge struct {
 	TargetNodeID string   `json:"targetNodeId"`
 }
 
+// NewEdge ...
 func NewEdge(id, sourceNodeID, targetNodeID string) *Edge {
 	return &Edge{
 		ID:           id,
@@ -16,16 +18,19 @@ func NewEdge(id, sourceNodeID, targetNodeID string) *Edge {
 	}
 }
 
+// WithID sets the ID
 func (edge *Edge) WithID(id string) *Edge {
 	edge.ID = id
 	return edge
 }
 
+// WithLabel sets the Label
 func (edge *Edge) WithLabel(label *Message) *Edge {
 	edge.Label = label
 	return edge
 }
 
+// WithLabelText sets the LabelText
 func (edge *Edge) WithLabelText(text string) *Edge {
 	edge.Label = &Message{
 		Text: &text,
@@ -33,6 +38,7 @@ func (edge *Edge) WithLabelText(text string) *Edge {
 	return edge
 }
 
+// WithLabelMarkdown sets the LabelMarkdown
 func (edge *Edge) WithLabelMarkdown(markdown string) *Edge {
 	edge.Label = &Message{
 		Markdown: &markdown,

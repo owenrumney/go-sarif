@@ -1,20 +1,24 @@
 package sarif
 
+// Fix ...
 type Fix struct {
 	PropertyBag
 	Description     *Message          `json:"description,omitempty"`
 	ArtifactChanges []*ArtifactChange `json:"artifactChanges"` //	required
 }
 
+// NewFix ...
 func NewFix() *Fix {
 	return &Fix{}
 }
 
+// WithDescription sets the Description
 func (fix *Fix) WithDescription(message *Message) *Fix {
 	fix.Description = message
 	return fix
 }
 
+// WithDescriptionText sets the DescriptionText
 func (fix *Fix) WithDescriptionText(text string) *Fix {
 	if fix.Description == nil {
 		fix.Description = &Message{}
@@ -23,6 +27,7 @@ func (fix *Fix) WithDescriptionText(text string) *Fix {
 	return fix
 }
 
+// WithDescriptionMarkdown sets the DescriptionMarkdown
 func (fix *Fix) WithDescriptionMarkdown(markdown string) *Fix {
 	if fix.Description == nil {
 		fix.Description = &Message{}
@@ -31,11 +36,13 @@ func (fix *Fix) WithDescriptionMarkdown(markdown string) *Fix {
 	return fix
 }
 
+// WithArtifactChanges sets the ArtifactChanges
 func (fix *Fix) WithArtifactChanges(artifactChanges []*ArtifactChange) *Fix {
 	fix.ArtifactChanges = artifactChanges
 	return fix
 }
 
+// AddArtifactChanges ...
 func (fix *Fix) AddArtifactChanges(artifactChange *ArtifactChange) {
 	fix.ArtifactChanges = append(fix.ArtifactChanges, artifactChange)
 }

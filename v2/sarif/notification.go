@@ -2,6 +2,7 @@ package sarif
 
 import "time"
 
+// Notification ...
 type Notification struct {
 	PropertyBag
 	AssociatedRule *ReportingDescriptorReference `json:"associatedRule,omitempty"`
@@ -14,49 +15,58 @@ type Notification struct {
 	TimeUTC        *time.Time                    `json:"timeUtc,omitempty"`
 }
 
+// NewNotification ...
 func NewNotification() *Notification {
 	return &Notification{}
 }
 
+// WithAssociatedRule sets the AssociatedRule
 func (notification *Notification) WithAssociatedRule(associatedRule *ReportingDescriptorReference) *Notification {
 	notification.AssociatedRule = associatedRule
 
 	return notification
 }
 
+// WithDescriptor sets the Descriptor
 func (notification *Notification) WithDescriptor(descriptor *ReportingDescriptorReference) *Notification {
 	notification.Descriptor = descriptor
 
 	return notification
 }
 
+// WithException sets the Exception
 func (notification *Notification) WithException(exception *Exception) *Notification {
 	notification.Exception = exception
 
 	return notification
 }
 
+// WithLevel sets the Level
 func (notification *Notification) WithLevel(level string) *Notification {
 	notification.Level = level
 
 	return notification
 }
 
+// WithLocations sets the Locations
 func (notification *Notification) WithLocations(locations []*Location) *Notification {
 	notification.Locations = locations
 
 	return notification
 }
 
+// AddLocation ...
 func (notification *Notification) AddLocation(location *Location) {
 	notification.Locations = append(notification.Locations, location)
 }
 
+// WithMessage sets the Message
 func (notification *Notification) WithMessage(message *Message) *Notification {
 	notification.Message = message
 	return notification
 }
 
+// WithTextMessage sets the TextMessage
 func (notification *Notification) WithTextMessage(text string) *Notification {
 	if notification.Message == nil {
 		notification.Message = &Message{}
@@ -65,6 +75,7 @@ func (notification *Notification) WithTextMessage(text string) *Notification {
 	return notification
 }
 
+// WithMessageMarkdown sets the MessageMarkdown
 func (notification *Notification) WithMessageMarkdown(markdown string) *Notification {
 	if notification.Message == nil {
 		notification.Message = &Message{}
@@ -73,12 +84,14 @@ func (notification *Notification) WithMessageMarkdown(markdown string) *Notifica
 	return notification
 }
 
+// WithThreadID sets the ThreadID
 func (notification *Notification) WithThreadID(threadID int) *Notification {
 	notification.ThreadID = &threadID
 
 	return notification
 }
 
+// WithTimeUTC sets the TimeUTC
 func (notification *Notification) WithTimeUTC(timeUTC *time.Time) *Notification {
 	notification.TimeUTC = timeUTC
 	return notification

@@ -1,5 +1,6 @@
 package sarif
 
+// Conversion ...
 type Conversion struct {
 	PropertyBag
 	AnalysisToolLogFiles []*ArtifactLocation `json:"analysisToolLogFiles,omitempty"`
@@ -7,15 +8,18 @@ type Conversion struct {
 	Tool                 *Tool               `json:"tool"`
 }
 
+// NewConversion ...
 func NewConversion() *Conversion {
 	return &Conversion{}
 }
 
+// WithInvocation sets the Invocation
 func (conversion *Conversion) WithInvocation(invocation *Invocation) *Conversion {
 	conversion.Invocation = invocation
 	return conversion
 }
 
+// WithTool sets the Tool
 func (conversion *Conversion) WithTool(tool *Tool) *Conversion {
 	conversion.Tool = tool
 	return conversion

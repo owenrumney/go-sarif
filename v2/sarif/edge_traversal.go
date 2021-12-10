@@ -1,5 +1,6 @@
 package sarif
 
+// EdgeTraversal ...
 type EdgeTraversal struct {
 	PropertyBag
 	EdgeID            string                               `json:"edgeId"`
@@ -8,17 +9,20 @@ type EdgeTraversal struct {
 	StepOverEdgeCount *int                                 `json:"stepOverEdgeCount,omitempty"`
 }
 
+// NewEdgeTraversal ...
 func NewEdgeTraversal(edgeID string) *EdgeTraversal {
 	return &EdgeTraversal{
 		EdgeID: edgeID,
 	}
 }
 
+// WithDescription sets the Description
 func (edgeTraversal *EdgeTraversal) WithDescription(message *Message) *EdgeTraversal {
 	edgeTraversal.Message = message
 	return edgeTraversal
 }
 
+// WithDescriptionText sets the DescriptionText
 func (edgeTraversal *EdgeTraversal) WithDescriptionText(text string) *EdgeTraversal {
 	edgeTraversal.Message = &Message{
 		Text: &text,
@@ -26,6 +30,7 @@ func (edgeTraversal *EdgeTraversal) WithDescriptionText(text string) *EdgeTraver
 	return edgeTraversal
 }
 
+// WithDescriptionMarkdown sets the DescriptionMarkdown
 func (edgeTraversal *EdgeTraversal) WithDescriptionMarkdown(markdown string) *EdgeTraversal {
 	edgeTraversal.Message = &Message{
 		Markdown: &markdown,
@@ -33,15 +38,18 @@ func (edgeTraversal *EdgeTraversal) WithDescriptionMarkdown(markdown string) *Ed
 	return edgeTraversal
 }
 
+// WithFinalState sets the FinalState
 func (edgeTraversal *EdgeTraversal) WithFinalState(finalState map[string]*MultiformatMessageString) *EdgeTraversal {
 	edgeTraversal.FinalState = finalState
 	return edgeTraversal
 }
 
+// SetFinalState ...
 func (edgeTraversal *EdgeTraversal) SetFinalState(key string, state *MultiformatMessageString) {
 	edgeTraversal.FinalState[key] = state
 }
 
+// WithStepOverEdgeCount sets the StepOverEdgeCount
 func (edgeTraversal *EdgeTraversal) WithStepOverEdgeCount(stepOverEdgeCount int) *EdgeTraversal {
 	edgeTraversal.StepOverEdgeCount = &stepOverEdgeCount
 	return edgeTraversal

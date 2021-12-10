@@ -1,5 +1,6 @@
 package sarif
 
+// ToolComponent ...
 type ToolComponent struct {
 	PropertyBag
 	Name           string                 `json:"name"`
@@ -10,12 +11,14 @@ type ToolComponent struct {
 	Taxa           []*ReportingDescriptor `json:"taxa,omitempty"`
 }
 
+// NewDriver ...
 func NewDriver(name string) *ToolComponent {
 	return &ToolComponent{
 		Name: name,
 	}
 }
 
+// NewVersionedDriver ...
 func NewVersionedDriver(name, version string) *ToolComponent {
 	return &ToolComponent{
 		Name:    name,
@@ -39,34 +42,41 @@ func (driver *ToolComponent) getOrCreateRule(rule *ReportingDescriptor) uint {
 	return uint(len(driver.Rules) - 1)
 }
 
+// WithInformationURI sets the InformationURI
 func (driver *ToolComponent) WithInformationURI(informationURI string) *ToolComponent {
 	driver.InformationURI = &informationURI
 	return driver
 }
 
+// WithNotifications sets the Notifications
 func (driver *ToolComponent) WithNotifications(notifications []*ReportingDescriptor) *ToolComponent {
 	driver.Notifications = notifications
 	return driver
 }
 
+// AddNotification ...
 func (driver *ToolComponent) AddNotification(notification *ReportingDescriptor) {
 	driver.Notifications = append(driver.Notifications, notification)
 }
 
+// WithNRules sets the NRules
 func (driver *ToolComponent) WithNRules(rules []*ReportingDescriptor) *ToolComponent {
 	driver.Rules = rules
 	return driver
 }
 
+// AddRule ...
 func (driver *ToolComponent) AddRule(rule *ReportingDescriptor) {
 	driver.Rules = append(driver.Rules, rule)
 }
 
+// WithTaxa sets the Taxa
 func (driver *ToolComponent) WithTaxa(taxa []*ReportingDescriptor) *ToolComponent {
 	driver.Taxa = taxa
 	return driver
 }
 
+// AddTaxa ...
 func (driver *ToolComponent) AddTaxa(taxa *ReportingDescriptor) {
 	driver.Taxa = append(driver.Taxa, taxa)
 }

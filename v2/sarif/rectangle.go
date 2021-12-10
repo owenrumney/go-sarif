@@ -1,5 +1,6 @@
 package sarif
 
+// Rectangle ...
 type Rectangle struct {
 	PropertyBag
 	Bottom  *float64 `json:"bottom,omitempty"`
@@ -9,35 +10,42 @@ type Rectangle struct {
 	Top     *float64 `json:"top,omitempty"`
 }
 
+// NewRectangle ...
 func NewRectangle() *Rectangle {
 	return &Rectangle{}
 }
 
+// WithBottom sets the Bottom
 func (rectangle *Rectangle) WithBottom(bottom float64) *Rectangle {
 	rectangle.Bottom = &bottom
 	return rectangle
 }
 
+// WithTop sets the Top
 func (rectangle *Rectangle) WithTop(top float64) *Rectangle {
 	rectangle.Top = &top
 	return rectangle
 }
 
+// WithLeft sets the Left
 func (rectangle *Rectangle) WithLeft(withLeft float64) *Rectangle {
 	rectangle.Left = &withLeft
 	return rectangle
 }
 
+// WithRight sets the Right
 func (rectangle *Rectangle) WithRight(right float64) *Rectangle {
 	rectangle.Right = &right
 	return rectangle
 }
 
+// WithMessage sets the Message
 func (rectangle *Rectangle) WithMessage(message *Message) *Rectangle {
 	rectangle.Message = message
 	return rectangle
 }
 
+// WithTextMessage sets the TextMessage
 func (rectangle *Rectangle) WithTextMessage(text string) *Rectangle {
 	if rectangle.Message == nil {
 		rectangle.Message = &Message{}
@@ -46,6 +54,7 @@ func (rectangle *Rectangle) WithTextMessage(text string) *Rectangle {
 	return rectangle
 }
 
+// WithMessageMarkdown sets the MessageMarkdown
 func (rectangle *Rectangle) WithMessageMarkdown(markdown string) *Rectangle {
 	if rectangle.Message == nil {
 		rectangle.Message = &Message{}

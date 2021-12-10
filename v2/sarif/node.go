@@ -1,5 +1,6 @@
 package sarif
 
+// Node ...
 type Node struct {
 	PropertyBag
 	Children []*Node   `json:"children,omitempty"`
@@ -8,26 +9,31 @@ type Node struct {
 	Location *Location `json:"location,omitempty"`
 }
 
+// NewNode ...
 func NewNode(id string) *Node {
 	return &Node{
 		ID: id,
 	}
 }
 
+// WithChildren sets the Children
 func (node *Node) WithChildren(children []*Node) *Node {
 	node.Children = children
 	return node
 }
 
+// AddChild ...
 func (node *Node) AddChild(child *Node) {
 	node.Children = append(node.Children, child)
 }
 
+// WithLabel sets the Label
 func (node *Node) WithLabel(message *Message) *Node {
 	node.Label = message
 	return node
 }
 
+// WithLabelText sets the LabelText
 func (node *Node) WithLabelText(text string) *Node {
 	if node.Label == nil {
 		node.Label = &Message{}
@@ -36,6 +42,7 @@ func (node *Node) WithLabelText(text string) *Node {
 	return node
 }
 
+// WithLabelMarkdown sets the LabelMarkdown
 func (node *Node) WithLabelMarkdown(markdown string) *Node {
 	if node.Label == nil {
 		node.Label = &Message{}

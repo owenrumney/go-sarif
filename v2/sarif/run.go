@@ -6,8 +6,10 @@ import (
 	"github.com/zclconf/go-cty/cty"
 )
 
+// RunOption ...
 type RunOption int
 
+// IncludeEmptyResults ...
 const IncludeEmptyResults RunOption = iota
 
 // Run type represents a run of a tool
@@ -89,6 +91,7 @@ func (run *Run) AddResult(ruleID string) *Result {
 	return result
 }
 
+// AttachPropertyBag ...
 func (run *Run) AttachPropertyBag(pb *PropertyBag) {
 	run.Properties = pb.Properties
 }
@@ -115,6 +118,7 @@ func (run *Run) GetResultByRuleId(ruleId string) (*Result, error) {
 	return nil, fmt.Errorf("couldn't find a result for rule %s", ruleId)
 }
 
+// DedupeArtifacts ...
 func (run *Run) DedupeArtifacts() error {
 	dupes := map[*Artifact]bool{}
 	deduped := []*Artifact{}
@@ -129,6 +133,7 @@ func (run *Run) DedupeArtifacts() error {
 	return nil
 }
 
+// AddProperty ...
 func (run *Run) AddProperty(key string, value cty.Value) {
 	run.Properties[key] = value
 }

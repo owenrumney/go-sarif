@@ -1,5 +1,6 @@
 package sarif
 
+// ArtifactLocation ...
 type ArtifactLocation struct {
 	PropertyBag
 	URI         *string  `json:"uri,omitempty"`
@@ -8,35 +9,42 @@ type ArtifactLocation struct {
 	Description *Message `json:"description,omitempty"`
 }
 
+// NewArtifactLocation ...
 func NewArtifactLocation() *ArtifactLocation {
 	return &ArtifactLocation{}
 }
 
+// NewSimpleArtifactLocation ...
 func NewSimpleArtifactLocation(uri string) *ArtifactLocation {
 	return NewArtifactLocation().WithUri(uri)
 }
 
+// WithUri sets the Uri
 func (artifactLocation *ArtifactLocation) WithUri(uri string) *ArtifactLocation {
 	artifactLocation.URI = &uri
 	return artifactLocation
 }
 
+// WithUriBaseId sets the UriBaseId
 func (artifactLocation *ArtifactLocation) WithUriBaseId(uriBaseId string) *ArtifactLocation {
 	artifactLocation.URIBaseId = &uriBaseId
 	return artifactLocation
 }
 
+// WithIndex sets the Index
 func (artifactLocation *ArtifactLocation) WithIndex(index int) *ArtifactLocation {
 	i := uint(index)
 	artifactLocation.Index = &i
 	return artifactLocation
 }
 
+// WithDescription sets the Description
 func (artifactLocation *ArtifactLocation) WithDescription(message *Message) *ArtifactLocation {
 	artifactLocation.Description = message
 	return artifactLocation
 }
 
+// WithDescriptionText sets the DescriptionText
 func (artifactLocation *ArtifactLocation) WithDescriptionText(text string) *ArtifactLocation {
 	if artifactLocation.Description == nil {
 		artifactLocation.Description = &Message{}
@@ -45,6 +53,7 @@ func (artifactLocation *ArtifactLocation) WithDescriptionText(text string) *Arti
 	return artifactLocation
 }
 
+// WithDescriptionMarkdown sets the DescriptionMarkdown
 func (artifactLocation *ArtifactLocation) WithDescriptionMarkdown(markdown string) *ArtifactLocation {
 	if artifactLocation.Description == nil {
 		artifactLocation.Description = &Message{}
