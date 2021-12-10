@@ -6,10 +6,10 @@ import (
 	"os"
 	"strings"
 
-	"github.com/owenrumney/go-sarif/sarif"
+	"github.com/owenrumney/go-sarif/v2/sarif"
 )
 
-// simple structure for the output of tfsec
+// TfsecResults is a simple structure for the output of tfsec
 type TfsecResults struct {
 	Results []struct {
 		RuleID          string `json:"rule_id"`
@@ -44,7 +44,7 @@ func main() {
 	}
 
 	// create a run for tfsec
-	run := sarif.NewRun("tfsec", "https://tfsec.dev")
+	run := sarif.NewRunWithInformationURI("tfsec", "https://tfsec.dev")
 
 	// for each result, add the
 	for _, r := range tfsecResults.Results {
@@ -57,7 +57,7 @@ func main() {
 		// create a new rule for each rule id
 		run.AddRule(r.RuleID).
 			WithDescription(r.Description).
-			WithHelp(r.Link).
+			WithHelpURI(r.Link).
 			WithProperties(pb.Properties).
 			WithMarkdownHelp("# markdown")
 
@@ -65,10 +65,10 @@ func main() {
 		run.AddDistinctArtifact(r.Location.Filename)
 
 		// add each of the results with the details of where the issue occurred
-		run.AddResult(r.RuleID).
+		run.CreateResultForRule(r.RuleID).
 			WithLevel(strings.ToLower(r.Severity)).
 			WithMessage(sarif.NewTextMessage(r.Description)).
-			WithLocation(
+			AddLocation(
 				sarif.NewLocationWithPhysicalLocation(
 					sarif.NewPhysicalLocation().
 						WithArtifactLocation(
