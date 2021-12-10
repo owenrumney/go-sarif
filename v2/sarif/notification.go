@@ -66,7 +66,7 @@ func (notification *Notification) WithMessage(message *Message) *Notification {
 	return notification
 }
 
-// WithTextMessage sets the TextMessage
+// WithTextMessage sets the Message text
 func (notification *Notification) WithTextMessage(text string) *Notification {
 	if notification.Message == nil {
 		notification.Message = &Message{}
@@ -75,7 +75,7 @@ func (notification *Notification) WithTextMessage(text string) *Notification {
 	return notification
 }
 
-// WithMessageMarkdown sets the MessageMarkdown
+// WithMessageMarkdown sets the Message markdown
 func (notification *Notification) WithMessageMarkdown(markdown string) *Notification {
 	if notification.Message == nil {
 		notification.Message = &Message{}

@@ -30,7 +30,7 @@ func (stack *Stack) WithMessage(message *Message) *Stack {
 	return stack
 }
 
-// WithTextMessage sets the TextMessage
+// WithTextMessage sets the Message text
 func (stack *Stack) WithTextMessage(text string) *Stack {
 	if stack.Message == nil {
 		stack.Message = &Message{}
@@ -39,7 +39,7 @@ func (stack *Stack) WithTextMessage(text string) *Stack {
 	return stack
 }
 
-// WithMessageMarkdown sets the MessageMarkdown
+// WithMessageMarkdown sets the Message markdown
 func (stack *Stack) WithMessageMarkdown(markdown string) *Stack {
 	if stack.Message == nil {
 		stack.Message = &Message{}

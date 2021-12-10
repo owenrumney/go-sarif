@@ -34,7 +34,8 @@ type Result struct {
 	OccurrenceCount     *uint                           `json:"occurrenceCount,omitempty"`
 }
 
-func newRuleResult(ruleID string) *Result {
+// NewRuleResult ...
+func NewRuleResult(ruleID string) *Result {
 	return &Result{
 		RuleID: &ruleID,
 	}
@@ -168,6 +169,7 @@ func (result *Result) AddGraphTraversal(graphTraversal *GraphTraversal) {
 	result.GraphTraversals = append(result.GraphTraversals, graphTraversal)
 
 }
+
 // WithStack sets the Stack
 func (result *Result) WithStack(stacks []*Stack) *Result {
 	result.Stacks = stacks

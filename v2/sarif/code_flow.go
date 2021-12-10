@@ -18,7 +18,7 @@ func (codeFlow *CodeFlow) WithMessage(message *Message) *CodeFlow {
 	return codeFlow
 }
 
-// WithTextMessage sets the TextMessage
+// WithTextMessage sets the Message text
 func (codeFlow *CodeFlow) WithTextMessage(text string) *CodeFlow {
 	if codeFlow.Message == nil {
 		codeFlow.Message = &Message{}
@@ -27,7 +27,7 @@ func (codeFlow *CodeFlow) WithTextMessage(text string) *CodeFlow {
 	return codeFlow
 }
 
-// WithMessageMarkdown sets the MessageMarkdown
+// WithMessageMarkdown sets the Message markdown
 func (codeFlow *CodeFlow) WithMessageMarkdown(markdown string) *CodeFlow {
 	if codeFlow.Message == nil {
 		codeFlow.Message = &Message{}

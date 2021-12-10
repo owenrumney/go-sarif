@@ -88,7 +88,7 @@ func (region *Region) WithMessage(message *Message) *Region {
 	return region
 }
 
-// WithTextMessage sets the TextMessage
+// WithTextMessage sets the Message text
 func (region *Region) WithTextMessage(text string) *Region {
 	if region.Message == nil {
 		region.Message = &Message{}
@@ -97,7 +97,7 @@ func (region *Region) WithTextMessage(text string) *Region {
 	return region
 }
 
-// WithMessageMarkdown sets the MessageMarkdown
+// WithMessageMarkdown sets the Message markdown
 func (region *Region) WithMessageMarkdown(markdown string) *Region {
 	if region.Message == nil {
 		region.Message = &Message{}

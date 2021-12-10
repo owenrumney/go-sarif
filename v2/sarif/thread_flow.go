@@ -50,7 +50,7 @@ func (threadFlow *ThreadFlow) WithMessage(message *Message) *ThreadFlow {
 	return threadFlow
 }
 
-// WithTextMessage sets the TextMessage
+// WithTextMessage sets the Message text
 func (threadFlow *ThreadFlow) WithTextMessage(text string) *ThreadFlow {
 	if threadFlow.Message == nil {
 		threadFlow.Message = &Message{}
@@ -59,7 +59,7 @@ func (threadFlow *ThreadFlow) WithTextMessage(text string) *ThreadFlow {
 	return threadFlow
 }
 
-// WithMessageMarkdown sets the MessageMarkdown
+// WithMessageMarkdown sets the Message markdown
 func (threadFlow *ThreadFlow) WithMessageMarkdown(markdown string) *ThreadFlow {
 	if threadFlow.Message == nil {
 		threadFlow.Message = &Message{}

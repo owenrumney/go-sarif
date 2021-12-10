@@ -45,7 +45,7 @@ func (rectangle *Rectangle) WithMessage(message *Message) *Rectangle {
 	return rectangle
 }
 
-// WithTextMessage sets the TextMessage
+// WithTextMessage sets the Message text
 func (rectangle *Rectangle) WithTextMessage(text string) *Rectangle {
 	if rectangle.Message == nil {
 		rectangle.Message = &Message{}
@@ -54,7 +54,7 @@ func (rectangle *Rectangle) WithTextMessage(text string) *Rectangle {
 	return rectangle
 }
 
-// WithMessageMarkdown sets the MessageMarkdown
+// WithMessageMarkdown sets the Message markdown
 func (rectangle *Rectangle) WithMessageMarkdown(markdown string) *Rectangle {
 	if rectangle.Message == nil {
 		rectangle.Message = &Message{}
