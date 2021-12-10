@@ -2,7 +2,6 @@ package sarif
 
 // ExternalProperties ...
 type ExternalProperties struct {
-	PropertyBag
 	Addresses              []*Address            `json:"addresses,omitempty"`
 	Artifacts              []*Artifact           `json:"artifacts,omitempty"`
 	Conversion             *Conversion           `json:"conversion,omitempty"`
@@ -23,6 +22,8 @@ type ExternalProperties struct {
 	Version                string                `json:"version,omitempty"`
 	WebRequests            []*WebRequest         `json:"webRequests,omitempty"`
 	WebResponses           []*WebResponse        `json:"webResponses,omitempty"`
+	PropertyBag
+
 }
 
 // NewExternalProperties creates a new ExternalProperties and returns a pointer to it

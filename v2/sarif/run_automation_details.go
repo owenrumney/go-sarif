@@ -2,11 +2,11 @@ package sarif
 
 // RunAutomationDetails ...
 type RunAutomationDetails struct {
-	PropertyBag
 	CorrelationGUID *string  `json:"correlationGuid,omitempty"`
 	Description     *Message `json:"description,omitempty"`
 	GUID            *string  `json:"guid,omitempty"`
 	ID              *string  `json:"id,omitempty"`
+	PropertyBag
 }
 
 // NewRunAutomationDetails ...

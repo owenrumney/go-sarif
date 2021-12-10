@@ -2,7 +2,6 @@ package sarif
 
 // Region ...
 type Region struct {
-	PropertyBag
 	StartLine      *int             `json:"startLine,omitempty"`
 	StartColumn    *int             `json:"startColumn,omitempty"`
 	EndLine        *int             `json:"endLine,omitempty"`
@@ -14,6 +13,7 @@ type Region struct {
 	Snippet        *ArtifactContent `json:"snippet,omitempty"`
 	Message        *Message         `json:"message,omitempty"`
 	SourceLanguage *string          `json:"sourceLanguage,omitempty"`
+	PropertyBag
 }
 
 // NewRegion creates a new Region and returns a pointer to it

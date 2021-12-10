@@ -2,10 +2,11 @@ package sarif
 
 // Graph ...
 type Graph struct {
-	PropertyBag
 	Description *Message `json:"description,omitempty"`
 	Edges       []*Edge  `json:"edges,omitempty"`
 	Nodes       []*Node  `json:"nodes,omitempty"`
+	PropertyBag
+
 }
 
 // NewGraph creates a new Graph and returns a pointer to it

@@ -2,12 +2,13 @@ package sarif
 
 // Suppression ...
 type Suppression struct {
-	PropertyBag
 	Kind          string    `json:"kind"`
 	Status        *string   `json:"status"`
 	Location      *Location `json:"location"`
 	Guid          *string   `json:"guid"`
 	Justification *string   `json:"justification"`
+	PropertyBag
+
 }
 
 // NewSuppression creates a new Suppression and returns a pointer to it

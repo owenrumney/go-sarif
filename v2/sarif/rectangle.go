@@ -2,12 +2,13 @@ package sarif
 
 // Rectangle ...
 type Rectangle struct {
-	PropertyBag
 	Bottom  *float64 `json:"bottom,omitempty"`
 	Left    *float64 `json:"left,omitempty"`
-	Message *Message `json:"message,omitempty"`
 	Right   *float64 `json:"right,omitempty"`
 	Top     *float64 `json:"top,omitempty"`
+	Message *Message `json:"message,omitempty"`
+	PropertyBag
+
 }
 
 // NewRectangle creates a new Rectangle and returns a pointer to it

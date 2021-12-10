@@ -4,7 +4,6 @@ import "time"
 
 // Invocation describes the runtime environment of the analysis tool run.
 type Invocation struct {
-	PropertyBag
 	Account                            *string                  `json:"account,omitempty"`
 	Arguments                          []string                 `json:"arguments,omitempty"`
 	CommandLine                        *string                  `json:"commandLine,omitempty"`
@@ -30,6 +29,7 @@ type Invocation struct {
 	ToolConfigurationNotifications     []*Notification          `json:"toolConfigurationNotifications,omitempty"`
 	ToolExecutionNotifications         []*Notification          `json:"toolExecutionNotifications,omitempty"`
 	WorkingDirectory                   *ArtifactLocation        `json:"workingDirectory,omitempty"`
+	PropertyBag
 }
 
 // NewInvocation creates a new Invocation and returns a pointer to it
@@ -83,31 +83,37 @@ func (invocation *Invocation) WithExecutableLocation(executableLocation *Artifac
 	invocation.ExecutableLocation = executableLocation
 	return invocation
 }
+
 // WithExecutionSuccess sets the ExecutionSuccess
 func (invocation *Invocation) WithExecutionSuccess(executionSuccessful bool) *Invocation {
 	invocation.ExecutionSuccessful = &executionSuccessful
 	return invocation
 }
+
 // WithExitCode sets the ExitCode
 func (invocation *Invocation) WithExitCode(exitCode int) *Invocation {
 	invocation.ExitCode = &exitCode
 	return invocation
 }
+
 // WithExitCodeDescription sets the ExitCodeDescription
 func (invocation *Invocation) WithExitCodeDescription(exitCodeDescription string) *Invocation {
 	invocation.ExitCodeDescription = &exitCodeDescription
 	return invocation
 }
+
 // WithExitSignalNumber sets the ExitSignalNumber
 func (invocation *Invocation) WithExitSignalNumber(exitSignalNumber int) *Invocation {
 	invocation.ExitSignalNumber = &exitSignalNumber
 	return invocation
 }
+
 // WithExitSignalName sets the ExitSignalName
 func (invocation *Invocation) WithExitSignalName(exitSignalName string) *Invocation {
 	invocation.ExitSignalName = &exitSignalName
 	return invocation
 }
+
 // WithMachine sets the Machine
 func (invocation *Invocation) WithMachine(machine string) *Invocation {
 	invocation.Machine = &machine
@@ -131,6 +137,7 @@ func (invocation *Invocation) WithProcessID(processID int) *Invocation {
 
 	return invocation
 }
+
 // WithProcessStartFailureMessage sets the ProcessStartFailureMessage
 func (invocation *Invocation) WithProcessStartFailureMessage(failureMessage string) *Invocation {
 	invocation.ProcessStartFailureMessage = &failureMessage
@@ -183,6 +190,7 @@ func (invocation *Invocation) WithStdout(stdOut *ArtifactLocation) *Invocation {
 	invocation.Stdout = stdOut
 	return invocation
 }
+
 // WithStdoutStderr sets the StdoutStderr
 func (invocation *Invocation) WithStdoutStderr(stdoutStderr *ArtifactLocation) *Invocation {
 	invocation.StdoutStderr = stdoutStderr

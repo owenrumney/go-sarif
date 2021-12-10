@@ -2,11 +2,12 @@ package sarif
 
 // Edge ...
 type Edge struct {
-	PropertyBag
 	ID           string   `json:"id"`
 	Label        *Message `json:"label,omitempty"`
 	SourceNodeID string   `json:"sourceNodeId"`
 	TargetNodeID string   `json:"targetNodeId"`
+	PropertyBag
+
 }
 
 // NewEdge creates a new Edge and returns a pointer to it

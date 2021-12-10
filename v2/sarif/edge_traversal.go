@@ -2,11 +2,12 @@ package sarif
 
 // EdgeTraversal ...
 type EdgeTraversal struct {
-	PropertyBag
 	EdgeID            string                               `json:"edgeId"`
 	FinalState        map[string]*MultiformatMessageString `json:"finalState,omitempty"`
 	Message           *Message                             `json:"message,omitempty"`
 	StepOverEdgeCount *int                                 `json:"stepOverEdgeCount,omitempty"`
+	PropertyBag
+
 }
 
 // NewEdgeTraversal creates a new EdgeTraversal and returns a pointer to it

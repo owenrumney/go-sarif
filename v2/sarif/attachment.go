@@ -2,10 +2,10 @@ package sarif
 
 // Attachment ...
 type Attachment struct {
-	PropertyBag
 	ArtifactLocation *ArtifactLocation `json:"artifactLocation,omitempty"`
 	Description      *Message          `json:"description,omitempty"`
 	Rectangles       []*Rectangle      `json:"rectangles,omitempty"`
+	PropertyBag
 }
 
 // NewAttachment creates a new Attachment and returns a pointer to it

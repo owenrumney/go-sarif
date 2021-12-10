@@ -1,14 +1,14 @@
 package sarif
 
 // LogicalLocation ...
-type LogicalLocation struct { 
-	PropertyBag
+type LogicalLocation struct {
 	Index              *uint   `json:"index,omitempty"`
 	Name               *string `json:"name,omitempty"`
 	FullyQualifiedName *string `json:"fullyQualifiedName,omitempty"`
 	DecoratedName      *string `json:"decoratedName,omitempty"`
 	Kind               *string `json:"kind,omitempty"`
 	ParentIndex        *uint   `json:"parentIndex,omitempty"`
+	PropertyBag
 }
 
 // NewLogicalLocation creates a new LogicalLocation and returns a pointer to it

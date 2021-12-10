@@ -2,11 +2,12 @@ package sarif
 
 // ReportingConfiguration ...
 type ReportingConfiguration struct {
-	PropertyBag
 	Enabled    *bool        `json:"enabled,omitempty"`
 	Level      string       `json:"level,omitempty"`
 	Parameters *PropertyBag `json:"parameters,omitempty"`
 	Rank       *float64     `json:"rank,omitempty"`
+	PropertyBag
+
 }
 
 // NewReportingConfiguration creates a new ReportingConfiguration and returns a pointer to it

@@ -2,12 +2,13 @@ package sarif
 
 // ThreadFlow ...
 type ThreadFlow struct {
-	PropertyBag
 	ID             *string                              `json:"id,omitempty"`
 	ImmutableState map[string]*MultiformatMessageString `json:"immutableState,omitempty"`
 	InitialState   map[string]*MultiformatMessageString `json:"initialState,omitempty"`
 	Locations      []*ThreadFlowLocation                `json:"locations"`
 	Message        *Message                             `json:"message,omitempty"`
+	PropertyBag
+
 }
 
 // NewThreadFlow creates a new ThreadFlow and returns a pointer to it

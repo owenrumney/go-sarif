@@ -2,7 +2,6 @@ package sarif
 
 // WebRequest ...
 type WebRequest struct {
-	PropertyBag
 	Body       *ArtifactContent  `json:"body,omitempty"`
 	Headers    map[string]string `json:"headers,omitempty"`
 	Index      *int              `json:"index,omitempty"`
@@ -11,6 +10,8 @@ type WebRequest struct {
 	Protocol   *string           `json:"protocol,omitempty"`
 	Target     *string           `json:"target,omitempty"`
 	Version    *string           `json:"version,omitempty"`
+	PropertyBag
+
 }
 
 // NewWebRequest creates a new WebRequest and returns a pointer to it

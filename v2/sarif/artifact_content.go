@@ -2,10 +2,10 @@ package sarif
 
 // ArtifactContent ...
 type ArtifactContent struct { 
-	PropertyBag
 	Text     *string                   `json:"text,omitempty"`
 	Binary   *string                   `json:"binary,omitempty"`
 	Rendered *MultiformatMessageString `json:"rendered,omitempty"`
+	PropertyBag
 }
 
 // NewArtifactContent creates a new ArtifactContent and returns a pointer to it

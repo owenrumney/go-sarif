@@ -2,10 +2,11 @@ package sarif
 
 // Conversion ...
 type Conversion struct {
-	PropertyBag
 	AnalysisToolLogFiles []*ArtifactLocation `json:"analysisToolLogFiles,omitempty"`
 	Invocation           *Invocation         `json:"invocation,omitempty"`
 	Tool                 *Tool               `json:"tool"`
+	PropertyBag
+
 }
 
 // NewConversion creates a new Conversion and returns a pointer to it

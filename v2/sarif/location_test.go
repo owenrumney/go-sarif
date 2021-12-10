@@ -11,7 +11,7 @@ func Test_create_simple_location(t *testing.T) {
 		WithId(1).
 		WithMessage(
 			NewMessage().
-				WithId("messageId1").
+				WithID("messageId1").
 				WithText("message text")).
 		WithAnnotations(
 			[]*Region{NewRegion().WithByteLength(10)},

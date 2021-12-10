@@ -2,9 +2,9 @@ package sarif
 
 // MultiformatMessageString ...
 type MultiformatMessageString struct {
-	PropertyBag
 	Text     *string `json:"text,omitempty"`
 	Markdown *string `json:"markdown,omitempty"`
+	PropertyBag
 }
 
 // NewMarkdownMultiformatMessageString creates a new MarkdownMultiformatMessageString and returns a pointer to it
@@ -26,6 +26,7 @@ func (multiFormatMessageString *MultiformatMessageString) WithText(text string) 
 	multiFormatMessageString.Text = &text
 	return multiFormatMessageString
 }
+
 // WithMarkdown sets the Markdown
 func (multiFormatMessageString *MultiformatMessageString) WithMarkdown(markdown string) *MultiformatMessageString {
 	multiFormatMessageString.Markdown = &markdown

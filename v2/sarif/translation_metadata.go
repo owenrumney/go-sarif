@@ -2,13 +2,13 @@ package sarif
 
 // TranslationMetadata ...
 type TranslationMetadata struct {
-	PropertyBag
 	DownloadURI      *string                   `json:"downloadUri,omitempty"`
 	FullDescription  *MultiformatMessageString `json:"fullDescription,omitempty"`
 	FullName         *string                   `json:"fullName,omitempty"`
 	InformationURI   *string                   `json:"informationUri,omitempty"`
 	Name             *string                   `json:"name"`
 	ShortDescription *MultiformatMessageString `json:"shortDescription,omitempty"`
+	PropertyBag
 }
 
 // NewTranslationMetadata creates a new TranslationMetadata and returns a pointer to it

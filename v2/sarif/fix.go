@@ -2,9 +2,9 @@ package sarif
 
 // Fix ...
 type Fix struct {
-	PropertyBag
 	Description     *Message          `json:"description,omitempty"`
-	ArtifactChanges []*ArtifactChange `json:"artifactChanges"` //	required
+	ArtifactChanges []*ArtifactChange `json:"artifactChanges"`
+	PropertyBag
 }
 
 // NewFix creates a new Fix and returns a pointer to it

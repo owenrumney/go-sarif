@@ -2,10 +2,11 @@ package sarif
 
 // ToolComponentReference ...
 type ToolComponentReference struct {
-	PropertyBag
 	Name  *string `json:"name"`
 	Index *uint   `json:"index"`
 	Guid  *string `json:"guid"`
+	PropertyBag
+
 }
 
 // NewToolComponentReference creates a new ToolComponentReference and returns a pointer to it

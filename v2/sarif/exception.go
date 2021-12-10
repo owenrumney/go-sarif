@@ -2,11 +2,12 @@ package sarif
 
 // Exception ...
 type Exception struct {
-	PropertyBag
 	InnerExceptions []*Exception `json:"innerExceptions,omitempty"`
 	Kind            *string      `json:"kind,omitempty"`
 	Message         *string      `json:"message,omitempty"`
 	Stack           *Stack       `json:"stack,omitempty"`
+	PropertyBag
+
 }
 
 // NewException creates a new Exception and returns a pointer to it

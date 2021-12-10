@@ -2,9 +2,9 @@ package sarif
 
 // ArtifactChange ...
 type ArtifactChange struct {
-	PropertyBag
 	ArtifactLocation ArtifactLocation `json:"artifactLocation"`
 	Replacements     []*Replacement   `json:"replacements"`
+	PropertyBag
 }
 
 // NewArtifactChange creates a new ArtifactChange and returns a pointer to it

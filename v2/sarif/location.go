@@ -2,13 +2,13 @@ package sarif
 
 // Location ...
 type Location struct {
-	PropertyBag
 	Id               *uint                   `json:"id,omitempty"`
 	PhysicalLocation *PhysicalLocation       `json:"physicalLocation,omitempty"`
 	LogicalLocations []*LogicalLocation      `json:"logicalLocations,omitempty"`
 	Message          *Message                `json:"message,omitempty"`
 	Annotations      []*Region               `json:"annotations,omitempty"`
 	Relationships    []*LocationRelationship `json:"relationships,omitempty"`
+	PropertyBag
 }
 
 // NewLocation creates a new Location and returns a pointer to it

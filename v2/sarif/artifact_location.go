@@ -2,11 +2,11 @@ package sarif
 
 // ArtifactLocation ...
 type ArtifactLocation struct {
-	PropertyBag
 	URI         *string  `json:"uri,omitempty"`
 	URIBaseId   *string  `json:"uriBaseId,omitempty"`
 	Index       *uint    `json:"index,omitempty"`
 	Description *Message `json:"description,omitempty"`
+	PropertyBag
 }
 
 // NewArtifactLocation creates a new ArtifactLocation and returns a pointer to it

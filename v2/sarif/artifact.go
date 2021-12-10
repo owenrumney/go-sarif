@@ -2,7 +2,7 @@ package sarif
 
 // Artifact ...
 type Artifact struct {
-	PropertyBag
+
 	Location            *ArtifactLocation `json:"location,omitempty"`
 	ParentIndex         *uint             `json:"parentIndex,omitempty"`
 	Offset              *uint             `json:"offset,omitempty"`
@@ -15,6 +15,7 @@ type Artifact struct {
 	Hashes              map[string]string `json:"hashes,omitempty"`
 	LastModifiedTimeUtc *string           `json:"lastModifiedTimeUtc,omitempty"`
 	Description         *Message          `json:"description,omitempty"`
+	PropertyBag
 }
 
 // NewArtifact creates a new Artifact and returns a pointer to it

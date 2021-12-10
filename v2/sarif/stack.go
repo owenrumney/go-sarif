@@ -2,10 +2,9 @@ package sarif
 
 // Stack ...
 type Stack struct {
+	Frames  []*StackFrame `json:"frames"`
+	Message *Message      `json:"message,omitempty"`
 	PropertyBag
-	Frames     []*StackFrame `json:"frames"`
-	Message    *Message      `json:"message,omitempty"`
-	Properties *PropertyBag  `json:"properties,omitempty"`
 }
 
 // NewStack creates a new Stack and returns a pointer to it

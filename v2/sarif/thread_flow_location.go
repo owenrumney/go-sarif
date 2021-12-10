@@ -4,7 +4,6 @@ import "time"
 
 // ThreadFlowLocation ...
 type ThreadFlowLocation struct {
-	PropertyBag
 	ExecutionOrder   *int                                 `json:"executionOrder,omitempty"`
 	ExecutionTimeUTC *time.Time                           `json:"executionTimeUtc,omitempty"`
 	Importance       interface{}                          `json:"importance,omitempty"`
@@ -18,6 +17,8 @@ type ThreadFlowLocation struct {
 	Taxa             []*ReportingDescriptorReference      `json:"taxa,omitempty"`
 	WebRequest       *WebRequest                          `json:"webRequest,omitempty"`
 	WebResponse      *WebResponse                         `json:"webResponse,omitempty"`
+	PropertyBag
+
 }
 
 // NewThreadFlowLocation creates a new ThreadFlowLocation and returns a pointer to it

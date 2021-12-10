@@ -2,7 +2,6 @@ package sarif
 
 // Address ...
 type Address struct {
-	PropertyBag
 	Index              *uint   `json:"index,omitempty"`
 	AbsoluteAddress    *uint   `json:"absoluteAddress,omitempty"`
 	RelativeAddress    *int    `json:"relativeAddress,omitempty"`
@@ -12,6 +11,7 @@ type Address struct {
 	FullyQualifiedName *string `json:"fullyQualifiedName,omitempty"`
 	Kind               *string `json:"kind,omitempty"`
 	ParentIndex        *uint   `json:"parentIndex,omitempty"`
+	PropertyBag
 }
 
 // NewAddress create a new Address and returns a pointer to it

@@ -4,13 +4,13 @@ import "time"
 
 // VersionControlDetails ...
 type VersionControlDetails struct {
-	PropertyBag
 	AsOfTimeUTC   *time.Time        `json:"asOfTimeUtc,omitempty"`
 	Branch        *string           `json:"branch,omitempty"`
 	MappedTo      *ArtifactLocation `json:"mappedTo,omitempty"`
 	RepositoryURI *string           `json:"repositoryUri"`
 	RevisionID    *string           `json:"revisionId,omitempty"`
 	RevisionTag   *string           `json:"revisionTag,omitempty"`
+	PropertyBag
 }
 
 // NewVersionControlDetails creates a new VersionControlDetails and returns a pointer to it

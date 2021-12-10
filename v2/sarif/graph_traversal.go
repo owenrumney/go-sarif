@@ -2,13 +2,14 @@ package sarif
 
 // GraphTraversal ...
 type GraphTraversal struct {
-	PropertyBag
 	Description      *Message                             `json:"description,omitempty"`
 	EdgeTraversals   []*EdgeTraversal                     `json:"edgeTraversals,omitempty"`
 	ImmutableState   map[string]*MultiformatMessageString `json:"immutableState,omitempty"`
 	InitialState     map[string]*MultiformatMessageString `json:"initialState,omitempty"`
 	ResultGraphIndex *int                                 `json:"resultGraphIndex,omitempty"`
 	RunGraphIndex    *int                                 `json:"runGraphIndex,omitempty"`
+	PropertyBag
+
 }
 
 // NewGraphTraversal creates a new GraphTraversal and returns a pointer to it

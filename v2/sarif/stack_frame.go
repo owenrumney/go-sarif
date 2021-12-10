@@ -2,11 +2,11 @@ package sarif
 
 // StackFrame ...
 type StackFrame struct {
-	PropertyBag
 	Location   *Location `json:"location,omitempty"`
 	Module     *string   `json:"module,omitempty"`
 	Parameters []string  `json:"parameters,omitempty"`
 	ThreadID   *int      `json:"threadId,omitempty"`
+	PropertyBag
 }
 
 // NewStackFrame creates a new StackFrame and returns a pointer to it

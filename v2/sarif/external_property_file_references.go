@@ -2,7 +2,6 @@ package sarif
 
 // ExternalPropertyFileReferences ...
 type ExternalPropertyFileReferences struct {
-	PropertyBag
 	Addresses              []*ExternalPropertyFileReference `json:"addresses,omitempty"`
 	Artifacts              []*ExternalPropertyFileReference `json:"artifacts,omitempty"`
 	Conversion             *ExternalPropertyFileReference   `json:"conversion,omitempty"`
@@ -20,6 +19,8 @@ type ExternalPropertyFileReferences struct {
 	Translations           []*ExternalPropertyFileReference `json:"translations,omitempty"`
 	WebRequests            []*ExternalPropertyFileReference `json:"webRequests,omitempty"`
 	WebResponses           []*ExternalPropertyFileReference `json:"webResponses,omitempty"`
+	PropertyBag
+
 }
 
 // NewExternalPropertyFileReferences creates a new ExternalPropertyFileReferences and returns a pointer to it

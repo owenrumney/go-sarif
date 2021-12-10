@@ -2,11 +2,11 @@ package sarif
 
 // PhysicalLocation ...
 type PhysicalLocation struct {
-	PropertyBag
 	ArtifactLocation *ArtifactLocation `json:"artifactLocation,omitempty"`
 	Region           *Region           `json:"region,omitempty"`
 	ContextRegion    *Region           `json:"contextRegion,omitempty"`
 	Address          *Address          `json:"address,omitempty"`
+	PropertyBag
 }
 
 // NewPhysicalLocation creates a new PhysicalLocation and returns a pointer to it
@@ -25,6 +25,7 @@ func (pl *PhysicalLocation) WithRegion(region *Region) *PhysicalLocation {
 	pl.Region = region
 	return pl
 }
+
 // WithContextRegion sets the ContextRegion
 func (pl *PhysicalLocation) WithContextRegion(contextRegion *Region) *PhysicalLocation {
 	pl.ContextRegion = contextRegion

@@ -2,7 +2,6 @@ package sarif
 
 // WebResponse ...
 type WebResponse struct {
-	PropertyBag
 	Body               *ArtifactContent  `json:"body,omitempty"`
 	Headers            map[string]string `json:"headers,omitempty"`
 	Index              *int              `json:"index,omitempty"`
@@ -11,6 +10,7 @@ type WebResponse struct {
 	ReasonPhrase       *string           `json:"reasonPhrase,omitempty"`
 	StatusCode         *int              `json:"statusCode,omitempty"`
 	Version            *string           `json:"version,omitempty"`
+	PropertyBag
 }
 
 // NewWebResponse creates a new WebResponse and returns a pointer to it
@@ -58,6 +58,7 @@ func (webResponse *WebResponse) WithReasonPhrase(reason string) *WebResponse {
 	webResponse.ReasonPhrase = &reason
 	return webResponse
 }
+
 // WithStatusCode sets the StatusCode
 func (webResponse *WebResponse) WithStatusCode(statusCode int) *WebResponse {
 	webResponse.StatusCode = &statusCode

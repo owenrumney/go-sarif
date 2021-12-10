@@ -2,13 +2,14 @@ package sarif
 
 // ToolComponent ...
 type ToolComponent struct {
-	PropertyBag
 	Name           string                 `json:"name"`
 	Version        *string                `json:"version,omitempty"`
 	InformationURI *string                `json:"informationUri"`
 	Notifications  []*ReportingDescriptor `json:"notifications,omitempty"`
 	Rules          []*ReportingDescriptor `json:"rules,omitempty"`
 	Taxa           []*ReportingDescriptor `json:"taxa,omitempty"`
+	PropertyBag
+
 }
 
 // NewDriver creates a new Driver and returns a pointer to it

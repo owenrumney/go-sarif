@@ -2,11 +2,11 @@ package sarif
 
 // Node ...
 type Node struct {
-	PropertyBag
 	Children []*Node   `json:"children,omitempty"`
 	ID       string    `json:"id"`
 	Label    *Message  `json:"label,omitempty"`
 	Location *Location `json:"location,omitempty"`
+	PropertyBag
 }
 
 // NewNode creates a new Node and returns a pointer to it

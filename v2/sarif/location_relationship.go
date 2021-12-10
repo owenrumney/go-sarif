@@ -2,10 +2,10 @@ package sarif
 
 // LocationRelationship ...
 type LocationRelationship struct {
-	PropertyBag
 	Target      uint     `json:"target"`
 	Kinds       []string `json:"kinds,omitempty"`
 	Description *Message `json:"description,omitempty"`
+	PropertyBag
 }
 
 // NewLocationRelationship creates a new LocationRelationship and returns a pointer to it

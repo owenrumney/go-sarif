@@ -12,10 +12,12 @@ const IncludeEmptyResults RunOption = iota
 
 // Run type represents a run of a tool
 type Run struct {
-	PropertyBag
+	Tool                           Tool                            `json:"tool"`
+	Artifacts                      []*Artifact                     `json:"artifacts,omitempty"`
+	Invocations                    []*Invocation                   `json:"invocations,omitempty"`
+	LogicalLocations               []*LogicalLocation              `json:"logicalLocations,omitempty"`
 	Results                        []*Result                       `json:"results"`
 	Addresses                      []*Address                      `json:"addresses,omitempty"`
-	Artifacts                      []*Artifact                     `json:"artifacts,omitempty"`
 	AutomationDetails              *RunAutomationDetails           `json:"automationDetails,omitempty"`
 	BaselineGUID                   *string                         `json:"baselineGuid,omitempty"`
 	ColumnKind                     interface{}                     `json:"columnKind,omitempty"`
@@ -24,9 +26,7 @@ type Run struct {
 	DefaultSourceLanguage          *string                         `json:"defaultSourceLanguage,omitempty"`
 	ExternalPropertyFileReferences *ExternalPropertyFileReferences `json:"externalPropertyFileReferences,omitempty"`
 	Graphs                         []*Graph                        `json:"graphs,omitempty"`
-	Invocations                    []*Invocation                   `json:"invocations,omitempty"`
 	Language                       *string                         `json:"language,omitempty"`
-	LogicalLocations               []*LogicalLocation              `json:"logicalLocations,omitempty"`
 	NewlineSequences               []string                        `json:"newlineSequences,omitempty"`
 	OriginalUriBaseIDs             map[string]*ArtifactLocation    `json:"originalUriBaseIds,omitempty"`
 	Policies                       []*ToolComponent                `json:"policies,omitempty"`
@@ -35,11 +35,11 @@ type Run struct {
 	SpecialLocations               *SpecialLocations               `json:"specialLocations,omitempty"`
 	Taxonomies                     []*ToolComponent                `json:"taxonomies,omitempty"`
 	ThreadFlowLocations            []*ThreadFlowLocation           `json:"threadFlowLocations,omitempty"`
-	Tool                           Tool                            `json:"tool"`
 	Translations                   []*ToolComponent                `json:"translations,omitempty"`
 	VersionControlProvenance       []*VersionControlDetails        `json:"versionControlProvenance,omitempty"`
 	WebRequests                    []*WebRequest                   `json:"webRequests,omitempty"`
 	WebResponses                   []*WebResponse                  `json:"webResponses,omitempty"`
+	PropertyBag
 }
 
 // NewRun creates a new Run and returns a pointer to it

@@ -1,12 +1,12 @@
 package sarif
 
 // Message ...
-type Message struct { 
-	PropertyBag
+type Message struct {
 	Text      *string  `json:"text,omitempty"`
 	Markdown  *string  `json:"markdown,omitempty"`
-	Id        *string  `json:"id,omitempty"`
+	ID        *string  `json:"id,omitempty"`
 	Arguments []string `json:"arguments,omitempty"`
+	PropertyBag
 }
 
 // NewMessage creates a new Message and returns a pointer to it
@@ -36,9 +36,9 @@ func (message *Message) WithMarkdown(markdown string) *Message {
 	return message
 }
 
-// WithId sets the Id
-func (message *Message) WithId(id string) *Message {
-	message.Id = &id
+// WithId sets the ID
+func (message *Message) WithID(id string) *Message {
+	message.ID = &id
 	return message
 }
 

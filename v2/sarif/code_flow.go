@@ -2,9 +2,10 @@ package sarif
 
 // CodeFlow ...
 type CodeFlow struct {
-	PropertyBag
 	Message     *Message      `json:"message,omitempty"`
 	ThreadFlows []*ThreadFlow `json:"threadFlows,omitempty"`
+	PropertyBag
+
 }
 
 // NewCodeFlow creates a new CodeFlow and returns a pointer to it

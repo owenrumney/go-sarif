@@ -4,7 +4,6 @@ import "time"
 
 // Notification ...
 type Notification struct {
-	PropertyBag
 	AssociatedRule *ReportingDescriptorReference `json:"associatedRule,omitempty"`
 	Descriptor     *ReportingDescriptorReference `json:"descriptor,omitempty"`
 	Exception      *Exception                    `json:"exception,omitempty"`
@@ -13,6 +12,7 @@ type Notification struct {
 	Message        *Message                      `json:"message"`
 	ThreadID       *int                          `json:"threadId,omitempty"`
 	TimeUTC        *time.Time                    `json:"timeUtc,omitempty"`
+	PropertyBag
 }
 
 // NewNotification creates a new Notification and returns a pointer to it
