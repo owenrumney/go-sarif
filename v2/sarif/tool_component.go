@@ -9,7 +9,6 @@ type ToolComponent struct {
 	Rules          []*ReportingDescriptor `json:"rules,omitempty"`
 	Taxa           []*ReportingDescriptor `json:"taxa,omitempty"`
 	PropertyBag
-
 }
 
 // NewDriver creates a new Driver and returns a pointer to it
@@ -60,15 +59,18 @@ func (driver *ToolComponent) AddNotification(notification *ReportingDescriptor) 
 	driver.Notifications = append(driver.Notifications, notification)
 }
 
-// WithNRules sets the NRules
-func (driver *ToolComponent) WithNRules(rules []*ReportingDescriptor) *ToolComponent {
-	driver.Rules = rules
+// WithRules sets the Rules
+func (driver *ToolComponent) WithRules(rules []*ReportingDescriptor) *ToolComponent {
+	for _, rule := range rules {
+		driver.getOrCreateRule(rule)
+	}
 	return driver
 }
 
 // AddRule ...
 func (driver *ToolComponent) AddRule(rule *ReportingDescriptor) {
-	driver.Rules = append(driver.Rules, rule)
+	driver.getOrCreateRule(rule)
+
 }
 
 // WithTaxa sets the Taxa
@@ -80,4 +82,13 @@ func (driver *ToolComponent) WithTaxa(taxa []*ReportingDescriptor) *ToolComponen
 // AddTaxa ...
 func (driver *ToolComponent) AddTaxa(taxa *ReportingDescriptor) {
 	driver.Taxa = append(driver.Taxa, taxa)
+}
+
+func (driver *ToolComponent) getRuleIndex(id *string) int{
+	for i, rule := range driver.Rules {
+		if rule.ID == *id {
+			return i
+		}
+	}
+	return -1
 }

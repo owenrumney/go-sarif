@@ -120,6 +120,7 @@
       "results": [
         {
           "ruleId": "AWS006",
+          "ruleIndex": 0,
           "level": "warning",
           "message": {
             "text": "Resource 'aws_security_group_rule.my-rule' defines a fully open ingress security group rule."
@@ -140,6 +141,7 @@
         },
         {
           "ruleId": "AZU003",
+          "ruleIndex": 1,
           "level": "error",
           "message": {
             "text": "Resource 'azurerm_managed_disk.source' defines an unencrypted managed disk."
@@ -160,6 +162,7 @@
         },
         {
           "ruleId": "AWS025",
+          "ruleIndex": 2,
           "level": "error",
           "message": {
             "text": "Resource 'aws_api_gateway_domain_name.missing_security_policy' should include security_policy (defauls to outdated SSL/TLS policy)."
@@ -180,6 +183,7 @@
         },
         {
           "ruleId": "AWS025",
+          "ruleIndex": 2,
           "level": "error",
           "message": {
             "text": "Resource 'aws_api_gateway_domain_name.empty_security_policy' defines outdated SSL/TLS policies (not using TLS_1_2)."
@@ -200,6 +204,7 @@
         },
         {
           "ruleId": "AWS025",
+          "ruleIndex": 2,
           "level": "error",
           "message": {
             "text": "Resource 'aws_api_gateway_domain_name.outdated_security_policy' defines outdated SSL/TLS policies (not using TLS_1_2)."
@@ -220,6 +225,7 @@
         },
         {
           "ruleId": "AWS018",
+          "ruleIndex": 3,
           "level": "error",
           "message": {
             "text": "Resource 'aws_security_group_rule.my-rule' should include a description for auditing purposes."
@@ -240,6 +246,7 @@
         },
         {
           "ruleId": "AWS004",
+          "ruleIndex": 4,
           "level": "error",
           "message": {
             "text": "Resource 'aws_alb_listener.my-alb-listener' uses plain HTTP instead of HTTPS."
@@ -260,6 +267,7 @@
         },
         {
           "ruleId": "AWS003",
+          "ruleIndex": 5,
           "level": "error",
           "message": {
             "text": "Resource 'aws_db_security_group.my-group' uses EC2 Classic. Use a VPC instead."
@@ -280,6 +288,7 @@
         },
         {
           "ruleId": "AWS092",
+          "ruleIndex": 6,
           "level": "warning",
           "message": {
             "text": "Resource 'aws_dynamodb_table.bad_example' is not using KMS CMK for encryption"

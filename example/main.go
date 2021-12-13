@@ -84,7 +84,7 @@ func main() {
 	report.AddRun(run)
 
 	// print the report to stdout
-	report.PrettyWrite(os.Stdout)
+	_ = report.PrettyWrite(os.Stdout)
 
 	// save the report
 	if err := report.WriteFile("example-report.sarif"); err != nil {
@@ -96,7 +96,7 @@ func main() {
 // load the example results file
 func loadTfsecResults() (TfsecResults, error) {
 
-	jsonResult, err := ioutil.ReadFile("./results.json")
+	jsonResult, err := ioutil.ReadFile("../example/results.json")
 	if err != nil {
 		panic(err)
 	}

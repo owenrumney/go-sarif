@@ -66,12 +66,15 @@ func NewRunWithInformationURI(toolName, informationURI string) *Run {
 
 // WithResults sets the Results
 func (run *Run) WithResults(results []*Result) *Run {
-	run.Results = results
+	for _, result := range results {
+		run.AddResult(result)
+	}
 	return run
 }
 
 // AddResult ...
 func (run *Run) AddResult(result *Result) {
+	result = result.WithRuleIndex(run.Tool.Driver.getRuleIndex(result.RuleID))
 	run.Results = append(run.Results, result)
 }
 
@@ -330,7 +333,7 @@ func (run *Run) AddRule(ruleID string) *ReportingDescriptor {
 // CreateResultForRule returns an existing Result or creates a new one and returns a pointer to it
 func (run *Run) CreateResultForRule(ruleID string) *Result {
 	result := NewRuleResult(ruleID)
-	run.Results = append(run.Results, result)
+	run.AddResult(result)
 	return result
 }
 
