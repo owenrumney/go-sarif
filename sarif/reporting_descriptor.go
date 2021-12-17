@@ -1,5 +1,6 @@
 package sarif
 
+// ReportingConfiguration ...
 type ReportingConfiguration struct {
 	Enabled    bool         `json:"enabled,omitempty"`
 	Level      interface{}  `json:"level,omitempty"`

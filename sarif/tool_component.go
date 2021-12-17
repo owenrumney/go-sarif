@@ -1,5 +1,6 @@
 package sarif
 
+// ToolComponent ...
 type ToolComponent struct {
 	PropertyBag
 	Name           string                 `json:"name"`

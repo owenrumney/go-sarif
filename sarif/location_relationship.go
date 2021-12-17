@@ -1,5 +1,6 @@
 package sarif
 
+// LocationRelationship ...
 type LocationRelationship struct {
 	PropertyBag
 	Target      uint     `json:"target"`
@@ -7,6 +8,7 @@ type LocationRelationship struct {
 	Description *Message `json:"description,omitempty"`
 }
 
+// NewLocationRelationship ...
 func NewLocationRelationship(target int) *LocationRelationship {
 	t := uint(target)
 	return &LocationRelationship{
@@ -14,11 +16,13 @@ func NewLocationRelationship(target int) *LocationRelationship {
 	}
 }
 
+// WithKind ...
 func (l *LocationRelationship) WithKind(kind string) *LocationRelationship {
 	l.Kinds = append(l.Kinds, kind)
 	return l
 }
 
+// WithDescription ...
 func (l *LocationRelationship) WithDescription(message *Message) *LocationRelationship {
 	l.Description = message
 	return l

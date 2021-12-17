@@ -41,102 +41,122 @@ func newRuleResult(ruleID string) *Result {
 	}
 }
 
+// WithGuid ...
 func (r *Result) WithGuid(guid string) *Result {
 	r.Guid = &guid
 	return r
 }
 
+// WithCorrelationGuid ...
 func (r *Result) WithCorrelationGuid(correlationGuid string) *Result {
 	r.CorrelationGuid = &correlationGuid
 	return r
 }
 
+// WithRuleIndex ...
 func (r *Result) WithRuleIndex(ruleIndex int) *Result {
 	index := uint(ruleIndex)
 	r.RuleIndex = &index
 	return r
 }
 
+// WithRule ...
 func (r *Result) WithRule(rdp *ReportingDescriptorReference) *Result {
 	r.Rule = rdp
 	return r
 }
 
+// WithTaxa ...
 func (r *Result) WithTaxa(rdp *ReportingDescriptorReference) *Result {
 	r.Taxa = append(r.Taxa, rdp)
 	return r
 }
 
+// WithKind ...
 func (r *Result) WithKind(kind string) *Result {
 	r.Kind = &kind
 	return r
 }
 
+// WithLevel ...
 func (r *Result) WithLevel(level string) *Result {
 	r.Level = &level
 	return r
 }
 
+// WithMessage ...
 func (r *Result) WithMessage(message *Message) *Result {
 	r.Message = *message
 	return r
 }
 
+// WithLocation ...
 func (r *Result) WithLocation(location *Location) *Result {
 	r.Locations = append(r.Locations, location)
 	return r
 }
 
+// WithAnalysisTarget ...
 func (r *Result) WithAnalysisTarget(target *ArtifactLocation) *Result {
 	r.AnalysisTarget = target
 	return r
 }
 
+// WithFingerPrints ...
 func (r *Result) WithFingerPrints(fingerPrints map[string]interface{}) *Result {
 	r.Fingerprints = fingerPrints
 	return r
 }
 
+// WithPartialFingerPrints ...
 func (r *Result) WithPartialFingerPrints(fingerPrints map[string]interface{}) *Result {
 	r.PartialFingerprints = fingerPrints
 	return r
 }
 
+// WithRelatedLocation ...
 func (r *Result) WithRelatedLocation(location *Location) *Result {
 	r.RelatedLocations = append(r.RelatedLocations, location)
 	return r
 }
 
+// WithSuppression ...
 func (r *Result) WithSuppression(suppression *Suppression) *Result {
 	r.Suppressions = append(r.Suppressions, suppression)
 	return r
 }
 
+// WithBaselineState ...
 func (r *Result) WithBaselineState(state string) *Result {
 	r.BaselineState = &state
 	return r
 }
 
+// WithRank ...
 func (r *Result) WithRank(rank float32) *Result {
 	r.Rank = &rank
 	return r
 }
 
+// WithWorkItemUri ...
 func (r *Result) WithWorkItemUri(workItemUri string) *Result {
 	r.WorkItemUris = append(r.WorkItemUris, workItemUri)
 	return r
 }
 
+// WithHostedViewerUri ...
 func (r *Result) WithHostedViewerUri(hostedViewerUri string) *Result {
 	r.HostedViewerUri = &hostedViewerUri
 	return r
 }
 
+// WithFix ...
 func (r *Result) WithFix(fix *Fix) *Result {
 	r.Fixes = append(r.Fixes, fix)
 	return r
 }
 
+// WithOccurrenceCount ...
 func (r *Result) WithOccurrenceCount(occurrenceCount int) *Result {
 	count := uint(occurrenceCount)
 	r.OccurrenceCount = &count
