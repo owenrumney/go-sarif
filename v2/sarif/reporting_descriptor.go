@@ -90,3 +90,9 @@ func (rule *ReportingDescriptor) WithProperties(properties Properties) *Reportin
 func (rule *ReportingDescriptor) AttachPropertyBag(pb *PropertyBag) {
 	rule.Properties = pb.Properties
 }
+
+// WithDefaultConfiguration adds the default configuration to the rule
+func (rule *ReportingDescriptor) WithDefaultConfiguration(configuration *ReportingConfiguration) *ReportingDescriptor {
+	rule.DefaultConfiguration = configuration
+	return rule
+}
