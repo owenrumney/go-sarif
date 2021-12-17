@@ -45,7 +45,8 @@ type Run struct {
 // NewRun creates a new Run and returns a pointer to it
 func NewRun(tool Tool) *Run {
 	return &Run{
-		Tool: tool,
+		Tool:    tool,
+		Results: []*Result{},
 	}
 }
 

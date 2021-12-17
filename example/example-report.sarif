@@ -117,9 +117,10 @@
           "length": -1
         }
       ],
-      "results": [
-        {
-          "ruleId": "AWS006",
+      "results": []
+    }
+  ]
+}        "ruleId": "AWS006",
           "ruleIndex": 0,
           "level": "warning",
           "message": {
