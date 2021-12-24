@@ -39,7 +39,8 @@ type ToolComponent struct {
 // NewDriver creates a new Driver and returns a pointer to it
 func NewDriver(name string) *ToolComponent {
 	return &ToolComponent{
-		Name: name,
+		Name:  name,
+		Rules: []*ReportingDescriptor{},
 	}
 }
 
@@ -48,6 +49,7 @@ func NewVersionedDriver(name, version string) *ToolComponent {
 	return &ToolComponent{
 		Name:    name,
 		Version: &version,
+		Rules:   []*ReportingDescriptor{},
 	}
 }
 

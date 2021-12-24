@@ -57,6 +57,7 @@ func NewRunWithInformationURI(toolName, informationURI string) *Run {
 			Driver: &ToolComponent{
 				Name:           toolName,
 				InformationURI: &informationURI,
+				Rules: []*ReportingDescriptor{},
 			},
 		},
 		Results: []*Result{},
