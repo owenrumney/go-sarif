@@ -26,7 +26,7 @@ type ToolComponent struct {
 	Product                                     *string                              `json:"product,omitempty"`
 	ProductSuite                                *string                              `json:"productSuite,omitempty"`
 	ReleaseDateUtc                              *time.Time                           `json:"releaseDateUtc,omitempty"`
-	Rules                                       []*ReportingDescriptor               `json:"rules,omitempty"`
+	Rules                                       []*ReportingDescriptor               `json:"rules"`
 	SemanticVersion                             *string                              `json:"semanticVersion,omitempty"`
 	ShortDescription                            *MultiformatMessageString            `json:"shortDescription,omitempty"`
 	SupportedTaxonomies                         []*ToolComponentReference            `json:"supportedTaxonomies,omitempty"`
