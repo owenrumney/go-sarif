@@ -28,11 +28,17 @@ type Report struct {
 }
 
 // New Creates a new Report or returns an error
-func New(version Version) (*Report, error) {
-	schema, err := getVersionSchema(version)
-	if err != nil {
-		return nil, err
-	}
+func New(version Version, printSchema... bool) (*Report, error) {
+  schema := ""
+
+  if len(printSchema) == 0 || printSchema[0] {
+    var err error
+
+	  schema, err = getVersionSchema(version)
+	  if err != nil {
+		  return nil, err
+	  }
+  }
 	return &Report{
 		Version: string(version),
 		Schema:  schema,
