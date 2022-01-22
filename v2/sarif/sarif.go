@@ -89,7 +89,7 @@ func getVersionSchema(version Version) (string, error) {
 
 // WriteFile will write the report to a file using a pretty formatter
 func (sarif *Report) WriteFile(filename string) error {
-	file, err := os.OpenFile(filename, os.O_CREATE|os.O_WRONLY, os.ModeAppend)
+	file, err := os.OpenFile(filename, os.O_CREATE|os.O_WRONLY, 0644)
 	if err != nil {
 		return err
 	}
