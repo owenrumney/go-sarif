@@ -28,11 +28,17 @@ type Report struct {
 }
 
 // New Creates a new Report or returns an error
-func New(version Version) (*Report, error) {
-	schema, err := getVersionSchema(version)
-	if err != nil {
-		return nil, err
-	}
+func New(version Version, includeSchema... bool) (*Report, error) {
+  schema := ""
+
+  if len(includeSchema) == 0 || includeSchema[0] {
+    var err error
+
+	  schema, err = getVersionSchema(version)
+	  if err != nil {
+		  return nil, err
+	  }
+  }
 	return &Report{
 		Version: string(version),
 		Schema:  schema,
@@ -83,7 +89,7 @@ func getVersionSchema(version Version) (string, error) {
 
 // WriteFile will write the report to a file using a pretty formatter
 func (sarif *Report) WriteFile(filename string) error {
-	file, err := os.OpenFile(filename, os.O_CREATE|os.O_WRONLY, os.ModeAppend)
+	file, err := os.OpenFile(filename, os.O_CREATE|os.O_WRONLY, 0644)
 	if err != nil {
 		return err
 	}
