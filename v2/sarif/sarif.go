@@ -28,17 +28,17 @@ type Report struct {
 }
 
 // New Creates a new Report or returns an error
-func New(version Version, includeSchema... bool) (*Report, error) {
-  schema := ""
+func New(version Version, includeSchema ...bool) (*Report, error) {
+	schema := ""
 
-  if len(includeSchema) == 0 || includeSchema[0] {
-    var err error
+	if len(includeSchema) == 0 || includeSchema[0] {
+		var err error
 
-	  schema, err = getVersionSchema(version)
-	  if err != nil {
-		  return nil, err
-	  }
-  }
+		schema, err = getVersionSchema(version)
+		if err != nil {
+			return nil, err
+		}
+	}
 	return &Report{
 		Version: string(version),
 		Schema:  schema,
@@ -76,6 +76,16 @@ func FromBytes(content []byte) (*Report, error) {
 // AddRun allows adding run information to the current report
 func (sarif *Report) AddRun(run *Run) {
 	sarif.Runs = append(sarif.Runs, run)
+}
+
+func (sarif *Report) GetRunByToolName(toolName string) (*Run, error) {
+	for _, run := range sarif.Runs {
+		if run.Tool.Driver.Name == toolName {
+			return run, nil
+		}
+	}
+
+	return &Run{}, fmt.Errorf("run with tool %s not found", toolName)
 }
 
 func getVersionSchema(version Version) (string, error) {
