@@ -12,10 +12,14 @@ import (
 type Version string
 
 // Version210 represents Version210 of Sarif
-const Version210 Version = "2.1.0"
+const (
+	Version210     Version = "2.1.0"
+	Version210RTM5 Version = "2.1.0-rtm.5"
+)
 
 var versions = map[Version]string{
-	Version210: "https://json.schemastore.org/sarif-2.1.0-rtm.5.json",
+	Version210:     "https://json.schemastore.org/sarif-2.1.0.json",
+	Version210RTM5: "https://json.schemastore.org/sarif-2.1.0-rtm.5.json",
 }
 
 // Report is the encapsulating type representing a Sarif Report
@@ -28,17 +32,17 @@ type Report struct {
 }
 
 // New Creates a new Report or returns an error
-func New(version Version, includeSchema... bool) (*Report, error) {
-  schema := ""
+func New(version Version, includeSchema ...bool) (*Report, error) {
+	schema := ""
 
-  if len(includeSchema) == 0 || includeSchema[0] {
-    var err error
+	if len(includeSchema) == 0 || includeSchema[0] {
+		var err error
 
-	  schema, err = getVersionSchema(version)
-	  if err != nil {
-		  return nil, err
-	  }
-  }
+		schema, err = getVersionSchema(version)
+		if err != nil {
+			return nil, err
+		}
+	}
 	return &Report{
 		Version: string(version),
 		Schema:  schema,
