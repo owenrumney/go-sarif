@@ -10,6 +10,7 @@ type ReportingDescriptor struct {
 	DefaultConfiguration *ReportingConfiguration   `json:"defaultConfiguration,omitempty"`
 	HelpURI              *string                   `json:"helpUri,omitempty"`
 	Help                 *MultiformatMessageString `json:"help,omitempty"`
+	MessageStrings       *MessageStrings           `json:"messageStrings"`
 	Properties           Properties                `json:"properties,omitempty"`
 }
 
