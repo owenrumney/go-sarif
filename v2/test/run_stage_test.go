@@ -18,7 +18,7 @@ func newRunTest(t *testing.T) (*runTest, *runTest, *runTest) {
 	r := &runTest{
 		t: t,
 		run: &sarif.Run{
-			Tool:      sarif.Tool{},
+			Tool:      *sarif.NewTool(sarif.NewDriver("driver1")),
 			Artifacts: []*sarif.Artifact{},
 			Results:   []*sarif.Result{},
 		},
