@@ -13,7 +13,7 @@ type ReportingDescriptor struct {
 	DeprecatedNames      []string                  `json:"deprecatedNames,omitempty"`
 	HelpURI              *string                   `json:"helpUri,omitempty"`
 	Help                 *MultiformatMessageString `json:"help,omitempty"`
-	MessageStrings       *MessageStrings           `json:"messageStrings"`
+	MessageStrings       *MessageStrings           `json:"messageStrings,omitempty"`
 	Properties           Properties                `json:"properties,omitempty"`
 }
 
