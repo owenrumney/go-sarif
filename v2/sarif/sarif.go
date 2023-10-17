@@ -4,7 +4,6 @@ import (
 	"encoding/json"
 	"fmt"
 	"io"
-	"io/ioutil"
 	"os"
 )
 
@@ -58,7 +57,7 @@ func Open(filename string) (*Report, error) {
 		return nil, fmt.Errorf("the provided file path doesn't have a file")
 	}
 
-	content, err := ioutil.ReadFile(filename)
+	content, err := os.ReadFile(filename)
 	if err != nil {
 		return nil, fmt.Errorf("the provided filepath could not be opened. %w", err)
 	}
