@@ -2,7 +2,6 @@ package main
 
 import (
 	"encoding/json"
-	"io/ioutil"
 	"os"
 	"strings"
 
@@ -96,7 +95,7 @@ func main() {
 // load the example results file
 func loadTfsecResults() (TfsecResults, error) {
 
-	jsonResult, err := ioutil.ReadFile("../example/results.json")
+	jsonResult, err := os.ReadFile("../example/results.json")
 	if err != nil {
 		panic(err)
 	}

@@ -1,7 +1,6 @@
 package test
 
 import (
-	"io/ioutil"
 	"os"
 	"testing"
 
@@ -93,11 +92,11 @@ func Test_load_sarif_report_from_file(t *testing.T) {
   ]
 }`
 
-	file, err := ioutil.TempFile(os.TempDir(), "sarifReport")
+	file, err := os.CreateTemp(t.TempDir(), "sarifReport")
 	assert.NoError(t, err)
 	defer file.Close()
 
-	ioutil.WriteFile(file.Name(), []byte(content), 755)
+	os.WriteFile(file.Name(), []byte(content), 755)
 
 	given.a_report_is_loaded_from_a_file(file.Name())
 	then.the_report_has_expected_driver_name_and_information_uri("ESLint", "https://eslint.org")
