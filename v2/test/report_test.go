@@ -12,7 +12,7 @@ func Test_new_simple_report_with_single_run(t *testing.T) {
 
 	given.a_new_report().
 		with_a_run_added("tfsec", "https://tfsec.dev")
-	then.report_text_is(`{"version":"2.1.0","$schema":"https://docs.oasis-open.org/sarif/sarif/v2.1.0/errata01/os/schemas/sarif-schema-2.1.0.json","runs":[{"tool":{"driver":{"name":"tfsec","informationUri":"https://tfsec.dev"}},"results":[]}]}`)
+	then.report_text_is(`{"version":"2.1.0","$schema":"https://raw.githubusercontent.com/oasis-tcs/sarif-spec/master/Schemata/sarif-schema-2.1.0.json","runs":[{"tool":{"driver":{"informationUri":"https://tfsec.dev","name":"tfsec","rules":[]}},"results":[]}]}`)
 }
 
 func Test_new_report_with_empty_run(t *testing.T) {
@@ -20,7 +20,7 @@ func Test_new_report_with_empty_run(t *testing.T) {
 
 	given.a_new_report().
 		with_a_run_with_empty_result_added("tfsec", "https://tfsec.dev")
-	then.report_text_is(`{"version":"2.1.0","$schema":"https://docs.oasis-open.org/sarif/sarif/v2.1.0/errata01/os/schemas/sarif-schema-2.1.0.json","runs":[{"tool":{"driver":{"name":"tfsec","informationUri":"https://tfsec.dev"}},"results":[]}]}`)
+	then.report_text_is(`{"version":"2.1.0","$schema":"https://raw.githubusercontent.com/oasis-tcs/sarif-spec/master/Schemata/sarif-schema-2.1.0.json","runs":[{"tool":{"driver":{"informationUri":"https://tfsec.dev","name":"tfsec","rules":[]}},"results":[]}]}`)
 }
 
 func Test_new_simple_report_with_artifact(t *testing.T) {
@@ -29,7 +29,7 @@ func Test_new_simple_report_with_artifact(t *testing.T) {
 	run := given.a_new_report().
 		with_a_run_added("tfsec", "https://tfsec.dev")
 	when.an_artifact_is_added_to_the_run(run, "file://broken.go")
-	then.report_text_is(`{"version":"2.1.0","$schema":"https://docs.oasis-open.org/sarif/sarif/v2.1.0/errata01/os/schemas/sarif-schema-2.1.0.json","runs":[{"tool":{"driver":{"name":"tfsec","informationUri":"https://tfsec.dev"}},"artifacts":[{"location":{"uri":"file://broken.go"},"length":-1}],"results":[]}]}`)
+	then.report_text_is(`{"version":"2.1.0","$schema":"https://raw.githubusercontent.com/oasis-tcs/sarif-spec/master/Schemata/sarif-schema-2.1.0.json","runs":[{"tool":{"driver":{"informationUri":"https://tfsec.dev","name":"tfsec","rules":[]}},"artifacts":[{"location":{"uri":"file://broken.go"},"length":-1}],"results":[]}]}`)
 }
 
 func Test_new_simple_report_with_propertybag(t *testing.T) {
@@ -38,7 +38,7 @@ func Test_new_simple_report_with_propertybag(t *testing.T) {
 	run := given.a_new_report().
 		with_a_run_added("tfsec", "https://tfsec.dev")
 	when.some_properties_are_added_to_the_run(run)
-	then.report_text_is(`{"version":"2.1.0","$schema":"https://docs.oasis-open.org/sarif/sarif/v2.1.0/errata01/os/schemas/sarif-schema-2.1.0.json","runs":[{"tool":{"driver":{"name":"tfsec","informationUri":"https://tfsec.dev"}},"results":[],"properties":{"integer_property":10,"string_property":"this is a string"}}]}`)
+	then.report_text_is(`{"version":"2.1.0","$schema":"https://raw.githubusercontent.com/oasis-tcs/sarif-spec/master/Schemata/sarif-schema-2.1.0.json","runs":[{"tool":{"driver":{"informationUri":"https://tfsec.dev","name":"tfsec","rules":[]}},"results":[],"properties":{"integer_property":10,"string_property":"this is a string"}}]}`)
 }
 
 func Test_new_simple_report_with_duplicate_artifact(t *testing.T) {
@@ -49,7 +49,7 @@ func Test_new_simple_report_with_duplicate_artifact(t *testing.T) {
 	when.an_artifact_is_added_to_the_run(run, "file://broken.go").
 		and().
 		an_artifact_is_added_to_the_run(run, "file://broken.go")
-	then.report_text_is(`{"version":"2.1.0","$schema":"https://docs.oasis-open.org/sarif/sarif/v2.1.0/errata01/os/schemas/sarif-schema-2.1.0.json","runs":[{"tool":{"driver":{"name":"tfsec","informationUri":"https://tfsec.dev"}},"artifacts":[{"location":{"uri":"file://broken.go"},"length":-1},{"location":{"uri":"file://broken.go"},"length":-1}],"results":[]}]}`)
+	then.report_text_is(`{"version":"2.1.0","$schema":"https://raw.githubusercontent.com/oasis-tcs/sarif-spec/master/Schemata/sarif-schema-2.1.0.json","runs":[{"tool":{"driver":{"informationUri":"https://tfsec.dev","name":"tfsec","rules":[]}},"artifacts":[{"location":{"uri":"file://broken.go"},"length":-1},{"location":{"uri":"file://broken.go"},"length":-1}],"results":[]}]}`)
 }
 
 func Test_load_sarif_from_string(t *testing.T) {
@@ -57,7 +57,7 @@ func Test_load_sarif_from_string(t *testing.T) {
 
 	content := `{
   "version": "2.1.0",
-  "$schema": "https://docs.oasis-open.org/sarif/sarif/v2.1.0/errata01/os/schemas/sarif-schema-2.1.0.json",
+  "$schema": "https://raw.githubusercontent.com/oasis-tcs/sarif-spec/master/Schemata/sarif-schema-2.1.0.json",
   "runs": [
     {
       "tool": {
@@ -74,12 +74,40 @@ func Test_load_sarif_from_string(t *testing.T) {
 	then.the_report_has_expected_driver_name_and_information_uri("ESLint", "https://eslint.org")
 }
 
+func Test_load_sarif_from_string_with_extensions(t *testing.T) {
+	given, _, then := newReportTest(t)
+
+	content := `{
+  "version": "2.1.0",
+  "$schema": "https://raw.githubusercontent.com/oasis-tcs/sarif-spec/master/Schemata/sarif-schema-2.1.0.json",
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "ESLint",
+          "informationUri": "https://eslint.org"
+        },
+        "extensions": [
+            {
+            "name": "Extension1",
+            "semanticVersion": "1.0.0-rc"
+			}
+		]
+      }
+    }
+  ]
+}`
+
+	given.a_report_is_loaded_from_a_string(content)
+	then.the_report_has_expected_extension_name_and_semantic_version("Extension1", "1.0.0-rc")
+}
+
 func Test_load_sarif_report_from_file(t *testing.T) {
 	given, _, then := newReportTest(t)
 
 	content := `{
   "version": "2.1.0",
-  "$schema": "https://docs.oasis-open.org/sarif/sarif/v2.1.0/errata01/os/schemas/sarif-schema-2.1.0.json",
+  "$schema": "https://raw.githubusercontent.com/oasis-tcs/sarif-spec/master/Schemata/sarif-schema-2.1.0.json",
   "runs": [
     {
       "tool": {
@@ -92,7 +120,7 @@ func Test_load_sarif_report_from_file(t *testing.T) {
   ]
 }`
 
-	file, err := os.TempFile(t.TempDir(), "sarifReport")
+	file, err := os.CreateTemp(t.TempDir(), "sarifReport")
 	assert.NoError(t, err)
 	defer file.Close()
 

@@ -4,7 +4,7 @@ import (
 	"bytes"
 	"testing"
 
-	"github.com/owenrumney/go-sarif/sarif"
+	"github.com/owenrumney/go-sarif/v2/sarif"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 )
@@ -33,13 +33,13 @@ func (r *reportTest) and() *reportTest {
 }
 
 func (r *reportTest) with_a_run_added(tool, informationUri string) *sarif.Run {
-	run := sarif.NewRun(tool, informationUri)
+	run := sarif.NewRunWithInformationURI(tool, informationUri)
 	r.report.AddRun(run)
 	return run
 }
 
 func (r *reportTest) with_a_run_with_empty_result_added(tool, informationUri string) *sarif.Run {
-	run := sarif.NewRun(tool, informationUri)
+	run := sarif.NewRunWithInformationURI(tool, informationUri)
 	r.report.AddRun(run)
 	return run
 }
@@ -87,4 +87,9 @@ func (r *reportTest) a_report_is_loaded_from_a_file(filename string) {
 	}
 	r.report = report
 
+}
+
+func (r *reportTest) the_report_has_expected_extension_name_and_semantic_version(extensionName string, semanticVersion string) {
+	assert.Equal(r.t, extensionName, r.report.Runs[0].Tool.Extensions[0].Name)
+	assert.Equal(r.t, semanticVersion, *r.report.Runs[0].Tool.Extensions[0].SemanticVersion)
 }
