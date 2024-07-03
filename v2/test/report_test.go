@@ -20,7 +20,7 @@ func Test_new_report_with_empty_run(t *testing.T) {
 
 	given.a_new_report().
 		with_a_run_with_empty_result_added("tfsec", "https://tfsec.dev")
-	then.report_text_is(`{"version":"2.1.0","$schema":"https://raw.githubusercontent.com/oasis-tcs/sarif-spec/master/Schemata/sarif-schema-2.1.0.json","runs":[{"tool":{"driver":{"informationUri":"https://tfsec.dev","name":"tfsec","rules":[]}},"results":[]}]}`)
+	then.report_text_is(`{"version":"2.1.0","$schema":"https://raw.githubusercontent.com/oasis-tcs/sarif-spec/main/sarif-2.1/schema/sarif-schema-2.1.0.json","runs":[{"tool":{"driver":{"informationUri":"https://tfsec.dev","name":"tfsec","rules":[]}},"results":[]}]}`)
 }
 
 func Test_new_simple_report_with_artifact(t *testing.T) {
