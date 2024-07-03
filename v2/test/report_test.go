@@ -29,7 +29,7 @@ func Test_new_simple_report_with_artifact(t *testing.T) {
 	run := given.a_new_report().
 		with_a_run_added("tfsec", "https://tfsec.dev")
 	when.an_artifact_is_added_to_the_run(run, "file://broken.go")
-	then.report_text_is(`{"version":"2.1.0","$schema":"https://raw.githubusercontent.com/oasis-tcs/sarif-spec/master/Schemata/sarif-schema-2.1.0.json","runs":[{"tool":{"driver":{"informationUri":"https://tfsec.dev","name":"tfsec","rules":[]}},"artifacts":[{"location":{"uri":"file://broken.go"},"length":-1}],"results":[]}]}`)
+	then.report_text_is(`{"version":"2.1.0","$schema":"https://raw.githubusercontent.com/oasis-tcs/sarif-spec/main/sarif-2.1/schema/sarif-schema-2.1.0.json","runs":[{"tool":{"driver":{"informationUri":"https://tfsec.dev","name":"tfsec","rules":[]}},"artifacts":[{"location":{"uri":"file://broken.go"},"length":-1}],"results":[]}]}`)
 }
 
 func Test_new_simple_report_with_propertybag(t *testing.T) {
