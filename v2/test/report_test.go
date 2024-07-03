@@ -107,7 +107,7 @@ func Test_load_sarif_report_from_file(t *testing.T) {
 
 	content := `{
   "version": "2.1.0",
-  "$schema": "https://raw.githubusercontent.com/oasis-tcs/sarif-spec/master/Schemata/sarif-schema-2.1.0.json",
+  "$schema": "https://raw.githubusercontent.com/oasis-tcs/sarif-spec/main/sarif-2.1/schema/sarif-schema-2.1.0.json",
   "runs": [
     {
       "tool": {
