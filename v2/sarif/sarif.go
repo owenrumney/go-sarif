@@ -18,7 +18,7 @@ const (
 )
 
 var versions = map[Version]string{
-	Version210: "https://raw.githubusercontent.com/oasis-tcs/sarif-spec/master/Schemata/sarif-schema-2.1.0.json",
+	Version210: "https://raw.githubusercontent.com/oasis-tcs/sarif-spec/main/sarif-2.1/schema/sarif-schema-2.1.0.json",
 	// keeping this for backwards support but marked as deprecated
 	Version210RTM5: "https://docs.oasis-open.org/sarif/sarif/v2.1.0/errata01/os/schemas/sarif-schema-2.1.0.json",
 }
