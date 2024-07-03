@@ -38,7 +38,7 @@ func Test_new_simple_report_with_propertybag(t *testing.T) {
 	run := given.a_new_report().
 		with_a_run_added("tfsec", "https://tfsec.dev")
 	when.some_properties_are_added_to_the_run(run)
-	then.report_text_is(`{"version":"2.1.0","$schema":"https://raw.githubusercontent.com/oasis-tcs/sarif-spec/master/Schemata/sarif-schema-2.1.0.json","runs":[{"tool":{"driver":{"informationUri":"https://tfsec.dev","name":"tfsec","rules":[]}},"results":[],"properties":{"integer_property":10,"string_property":"this is a string"}}]}`)
+	then.report_text_is(`{"version":"2.1.0","$schema":"https://raw.githubusercontent.com/oasis-tcs/sarif-spec/main/sarif-2.1/schema/sarif-schema-2.1.0.json","runs":[{"tool":{"driver":{"informationUri":"https://tfsec.dev","name":"tfsec","rules":[]}},"results":[],"properties":{"integer_property":10,"string_property":"this is a string"}}]}`)
 }
 
 func Test_new_simple_report_with_duplicate_artifact(t *testing.T) {
