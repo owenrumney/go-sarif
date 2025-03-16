@@ -7,14 +7,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Clone repo
-      uses: actions/checkout@main
+    - uses: actions/checkout@v4
 
     - name: Set up Go
-      uses: actions/setup-go@v2
+      uses: actions/setup-go@v4
       with:
-        stable: 'true'
-    - run: go version
+        go-version-file: ./go.mod
 
     - name: test
       run: make test
