@@ -54,11 +54,13 @@ func (r *Report) Validate() (bool, error) {
 		return false, err
 	}
 
+	var errors []string
+
 	if !result.Valid() {
 		for _, desc := range result.Errors() {
-			println(desc.String())
+			errors = append(errors, desc.String())
 		}
-		return false, nil
+		return false, fmt.Errorf("validation failed: %v", errors)
 	}
 
 	return true, nil
