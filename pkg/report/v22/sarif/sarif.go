@@ -46,8 +46,9 @@ func (r *Report) AddRun(run *Run) *Report {
 	return r
 }
 
+// Validate validates the report against the SARIF schema
 func (r *Report) Validate() (bool, error) {
-	schemaLoader := gojsonschema.NewStringLoader(SarifSchema22)
+	schemaLoader := gojsonschema.NewStringLoader(schema)
 	documentLoader := gojsonschema.NewGoLoader(r)
 	result, err := gojsonschema.Validate(schemaLoader, documentLoader)
 	if err != nil {

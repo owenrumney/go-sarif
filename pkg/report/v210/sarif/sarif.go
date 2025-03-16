@@ -42,21 +42,25 @@ func (r *Report) AddRun(run *Run) *Report {
 	return r
 }
 
+// Validate validates the report against the SARIF schema
 func (r *Report) Validate() (bool, error) {
-	schemaLoader := gojsonschema.NewStringLoader(SarifSchema210)
+	schemaLoader := gojsonschema.NewStringLoader(schema)
 	documentLoader := gojsonschema.NewGoLoader(r)
 	result, err := gojsonschema.Validate(schemaLoader, documentLoader)
 	if err != nil {
 		return false, err
 	}
 
+	var errors []string
+
 	if !result.Valid() {
 		for _, desc := range result.Errors() {
-			println(desc.String())
+			errors = append(errors, desc.String())
 		}
+		return false, fmt.Errorf("validation failed: %v", errors)
 	}
 
-	return false, nil
+	return true, nil
 }
 
 // NewRunWithInformationURI creates a new Run and returns a pointer to it
