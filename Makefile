@@ -1,7 +1,7 @@
 
 .PHONY: test
 test: vet
-	go test -v  ./... && cd v2 && go test -v  ./...
+	go test -v  ./...
 
 .PHONY: vet
 vet:
@@ -10,3 +10,7 @@ vet:
 .PHONY: goimports
 goimports:
 	goimports
+
+.PHONY: fmt
+fmt:
+	go fmt ./...

@@ -16,3 +16,4 @@ coverage.txt
 # vendor/
 .idea/
 dist/
+.vscode/
