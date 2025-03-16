@@ -19,14 +19,14 @@ This example is taken directly from the [Microsoft sarif pages](https://github.c
       "tool": {
         "driver": {
           "name": "ESLint",
-          "informationUri": "https://eslint.org",
+          "informationURI": "https://eslint.org",
           "rules": [
             {
               "id": "no-unused-vars",
               "shortDescription": {
                 "text": "disallow unused variables"
               },
-              "helpUri": "https://eslint.org/docs/rules/no-unused-vars",
+              "helpURI": "https://eslint.org/docs/rules/no-unused-vars",
               "properties": {
                 "category": "Variables"
               }

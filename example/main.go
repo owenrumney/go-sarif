@@ -5,7 +5,8 @@ import (
 	"os"
 	"strings"
 
-	"github.com/owenrumney/go-sarif/v2/sarif"
+	"github.com/owenrumney/go-sarif/v3/pkg/report"
+	"github.com/owenrumney/go-sarif/v3/pkg/report/v22/sarif"
 )
 
 // TfsecResults is a simple structure for the output of tfsec
@@ -37,10 +38,7 @@ func main() {
 	}
 
 	// create a new report object
-	report, err := sarif.New(sarif.Version210)
-	if err != nil {
-		panic(err)
-	}
+	report := report.NewV22Report()
 
 	// create a run for tfsec
 	run := sarif.NewRunWithInformationURI("tfsec", "https://tfsec.dev")
@@ -57,7 +55,7 @@ func main() {
 		run.AddRule(r.RuleID).
 			WithDescription(r.Description).
 			WithHelpURI(r.Link).
-			WithProperties(pb.Properties).
+			WithProperties(pb).
 			WithMarkdownHelp("# markdown")
 
 		// add the location as a unique artifact
@@ -82,8 +80,19 @@ func main() {
 	// add the run to the report
 	report.AddRun(run)
 
+	isValid, err := report.Validate()
+	if err != nil {
+		panic(err)
+	}
+
+	if !isValid {
+		panic("report is not valid")
+	}
+
+	println("Report is valid")
+
 	// print the report to stdout
-	_ = report.PrettyWrite(os.Stdout)
+	// _ = report.PrettyWrite(os.Stdout)
 
 	// save the report
 	if err := report.WriteFile("example-report.sarif"); err != nil {
@@ -95,7 +104,7 @@ func main() {
 // load the example results file
 func loadTfsecResults() (TfsecResults, error) {
 
-	jsonResult, err := os.ReadFile("../example/results.json")
+	jsonResult, err := os.ReadFile("./example/results.json")
 	if err != nil {
 		panic(err)
 	}

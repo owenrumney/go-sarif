@@ -4,7 +4,7 @@
 			"rule_id": "AWS006",
 			"rule_description": "An ingress security group rule allows traffic from /0.",
 			"rule_provider": "aws",
-			"link": "See https://tfsec.dev/docs/aws/AWS006/ for more information.",
+			"link": "https://tfsec.dev/docs/aws/AWS006/",
 			"location": {
 				"filename": "/home/billybob/supertfsec/example/main.tf",
 				"start_line": 4,
@@ -20,7 +20,7 @@
 			"rule_id": "AZU003",
 			"rule_description": "Unencrypted managed disk.",
 			"rule_provider": "azure",
-			"link": "See https://tfsec.dev/docs/azure/AZU003/ for more information.",
+			"link": "https://tfsec.dev/docs/azure/AZU003/",
 			"location": {
 				"filename": "/home/billybob/supertfsec/example/main.tf",
 				"start_line": 22,
@@ -36,7 +36,7 @@
 			"rule_id": "AWS025",
 			"rule_description": "API Gateway domain name uses outdated SSL/TLS protocols.",
 			"rule_provider": "aws",
-			"link": "See https://tfsec.dev/docs/aws/AWS025/ for more information.",
+			"link": "https://tfsec.dev/docs/aws/AWS025/",
 			"location": {
 				"filename": "/home/billybob/supertfsec/example/main.tf",
 				"start_line": 26,
@@ -52,7 +52,7 @@
 			"rule_id": "AWS025",
 			"rule_description": "API Gateway domain name uses outdated SSL/TLS protocols.",
 			"rule_provider": "aws",
-			"link": "See https://tfsec.dev/docs/aws/AWS025/ for more information.",
+			"link": "https://tfsec.dev/docs/aws/AWS025/",
 			"location": {
 				"filename": "/home/billybob/supertfsec/example/main.tf",
 				"start_line": 30,
@@ -68,7 +68,7 @@
 			"rule_id": "AWS025",
 			"rule_description": "API Gateway domain name uses outdated SSL/TLS protocols.",
 			"rule_provider": "aws",
-			"link": "See https://tfsec.dev/docs/aws/AWS025/ for more information.",
+			"link": "https://tfsec.dev/docs/aws/AWS025/",
 			"location": {
 				"filename": "/home/billybob/supertfsec/example/main.tf",
 				"start_line": 34,
@@ -84,7 +84,7 @@
 			"rule_id": "AWS018",
 			"rule_description": "Missing description for security group/security group rule.",
 			"rule_provider": "aws",
-			"link": "See https://tfsec.dev/docs/aws/AWS018/ for more information.",
+			"link": "https://tfsec.dev/docs/aws/AWS018/",
 			"location": {
 				"filename": "/home/billybob/supertfsec/example/main.tf",
 				"start_line": 2,
@@ -100,7 +100,7 @@
 			"rule_id": "AWS004",
 			"rule_description": "Use of plain HTTP.",
 			"rule_provider": "aws",
-			"link": "See https://tfsec.dev/docs/aws/AWS004/ for more information.",
+			"link": "https://tfsec.dev/docs/aws/AWS004/",
 			"location": {
 				"filename": "/home/billybob/supertfsec/example/main.tf",
 				"start_line": 9,
@@ -116,7 +116,7 @@
 			"rule_id": "AWS003",
 			"rule_description": "AWS Classic resource usage.",
 			"rule_provider": "aws",
-			"link": "See https://tfsec.dev/docs/aws/AWS003/ for more information.",
+			"link": "https://tfsec.dev/docs/aws/AWS003/",
 			"location": {
 				"filename": "/home/billybob/supertfsec/example/main.tf",
 				"start_line": 12,
@@ -132,7 +132,7 @@
 			"rule_id": "AWS092",
 			"rule_description": "DynamoDB tables should use at rest encyption with a Customer Managed Key",
 			"rule_provider": "aws",
-			"link": "See https://tfsec.dev/docs/aws/AWS092/ for more information.",
+			"link": "https://tfsec.dev/docs/aws/AWS092/",
 			"location": {
 				"filename": "/home/billybob/supertfsec/example/main.tf",
 				"start_line": 41,
