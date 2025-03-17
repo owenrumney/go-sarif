@@ -80,13 +80,8 @@ func main() {
 	// add the run to the report
 	report.AddRun(run)
 
-	isValid, err := report.Validate()
-	if err != nil {
+	if err := report.Validate(); err != nil {
 		panic(err)
-	}
-
-	if !isValid {
-		panic("report is not valid")
 	}
 
 	println("Report is valid")
