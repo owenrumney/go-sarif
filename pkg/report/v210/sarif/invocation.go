@@ -118,7 +118,7 @@ func (e *Invocation) WithExecutionSuccessful(executionSuccessful int) *Invocatio
 }
 
 // AddEnvironmentVariable - add a single EnvironmentVariable to the Invocation
-func (e *Invocation) AddEnvironmentVariable(key string, environmentVariable string) *Invocation {
+func (e *Invocation) AddEnvironmentVariable(key, environmentVariable string) *Invocation {
 	e.EnvironmentVariables[key] = environmentVariable
 	return e
 }

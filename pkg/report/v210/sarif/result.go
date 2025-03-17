@@ -183,7 +183,7 @@ func (l *Result) AddLocation(location *Location) *Result {
 }
 
 // AddPartialFingerprint - add a single PartialFingerprint to the Result
-func (p *Result) AddPartialFingerprint(key string, partialFingerprint string) *Result {
+func (p *Result) AddPartialFingerprint(key, partialFingerprint string) *Result {
 	p.PartialFingerprints[key] = partialFingerprint
 	return p
 }
@@ -243,7 +243,7 @@ func (k *Result) WithKind(kind string) *Result {
 }
 
 // AddFingerprint - add a single Fingerprint to the Result
-func (f *Result) AddFingerprint(key string, fingerprint string) *Result {
+func (f *Result) AddFingerprint(key, fingerprint string) *Result {
 	f.Fingerprints[key] = fingerprint
 	return f
 }

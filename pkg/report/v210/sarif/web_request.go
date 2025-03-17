@@ -36,7 +36,7 @@ func NewWebRequest() *WebRequest {
 }
 
 // AddHeader - add a single Header to the WebRequest
-func (h *WebRequest) AddHeader(key string, header string) *WebRequest {
+func (h *WebRequest) AddHeader(key, header string) *WebRequest {
 	h.Headers[key] = header
 	return h
 }
@@ -48,7 +48,7 @@ func (h *WebRequest) WithHeaders(headers map[string]string) *WebRequest {
 }
 
 // AddParameter - add a single Parameter to the WebRequest
-func (p *WebRequest) AddParameter(key string, parameter string) *WebRequest {
+func (p *WebRequest) AddParameter(key, parameter string) *WebRequest {
 	p.Parameters[key] = parameter
 	return p
 }

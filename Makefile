@@ -13,4 +13,9 @@ goimports:
 
 .PHONY: fmt
 fmt:
-	go fmt ./...
+	gofmt -w -s ./..
+
+.PHONY: lint
+lint:
+	which golangci-lint || go install github.com/golangci/golangci-lint/cmd/golangci-lint@v1.64.7
+	golangci-lint run

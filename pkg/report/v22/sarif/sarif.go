@@ -2,6 +2,7 @@ package sarif
 
 import (
 	"encoding/json"
+	"errors"
 	"fmt"
 	"io"
 	"os"
@@ -47,12 +48,12 @@ func (r *Report) AddRun(run *Run) *Report {
 }
 
 // Validate validates the report against the SARIF schema
-func (r *Report) Validate() (bool, error) {
+func (r *Report) Validate() error {
 	schemaLoader := gojsonschema.NewStringLoader(schema)
 	documentLoader := gojsonschema.NewGoLoader(r)
 	result, err := gojsonschema.Validate(schemaLoader, documentLoader)
 	if err != nil {
-		return false, err
+		return err
 	}
 
 	var errors []string
@@ -61,10 +62,10 @@ func (r *Report) Validate() (bool, error) {
 		for _, desc := range result.Errors() {
 			errors = append(errors, desc.String())
 		}
-		return false, fmt.Errorf("validation failed: %v", errors)
+		return fmt.Errorf("validation failed: %v", errors)
 	}
 
-	return true, nil
+	return nil
 }
 
 // NewRunWithInformationURI creates a new Run and returns a pointer to it
@@ -80,7 +81,7 @@ func NewRunWithInformationURI(toolName, informationURI string) *Run {
 // Open loads a Report from a file
 func Open(filename string) (*Report, error) {
 	if _, err := os.Stat(filename); err != nil && os.IsNotExist(err) {
-		return nil, fmt.Errorf("the provided file path doesn't have a file")
+		return nil, errors.New("the provided file path doesn't have a file")
 	}
 
 	content, err := os.ReadFile(filename)
