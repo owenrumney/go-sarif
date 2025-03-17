@@ -1,0 +1,111 @@
+linters-settings:
+  depguard:
+    rules:
+      main:
+        list-mode: lax
+        deny:
+          # Cannot use gomodguard, which examines go.mod, as "golang.org/x/exp/slices" is not a module and doesn't appear in go.mod.
+          - pkg: "golang.org/x/exp/slices"
+            desc: "Use 'slices' instead"
+          - pkg: "golang.org/x/exp/maps"
+            desc: "Use 'maps' or 'github.com/samber/lo' instead"
+  dupl:
+    threshold: 100
+  errcheck:
+    check-type-assertions: true
+    check-blank: true
+  gci:
+    sections:
+      - standard
+      - default
+      - prefix(github.com/aquasecurity/)
+      - blank
+      - dot
+  goconst:
+    min-len: 3
+    min-occurrences: 3
+  gocritic:
+    disabled-checks:
+      - appendAssign
+      - unnamedResult
+      - whyNoLint
+      - indexAlloc
+      - octalLiteral
+      - hugeParam
+      - rangeValCopy
+      - regexpSimplify
+      - sloppyReassign
+      - commentedOutCode
+    enabled-tags:
+      - diagnostic
+      - style
+      - performance
+      - experimental
+      - opinionated
+  gocyclo:
+    min-complexity: 20
+  gofmt:
+    simplify: false
+    rewrite-rules:
+      - pattern: 'interface{}'
+        replacement: 'any'
+  gosec:
+    excludes:
+      - G101
+      - G114
+      - G115
+      - G204
+      - G304
+      - G402
+  govet:
+    disable:
+      - shadow
+  misspell:
+    locale: US
+    ignore-words:
+      - behaviour
+      - licence
+      - optimise
+      - simmilar
+  perfsprint:
+    # Optimizes even if it requires an int or uint type cast.
+    int-conversion: true
+    # Optimizes into `err.Error()` even if it is only equivalent for non-nil errors.
+    err-error: true
+    # Optimizes `fmt.Errorf`.
+    errorf: true
+    # Optimizes `fmt.Sprintf` with only one argument.
+    sprintf1: false
+    # Optimizes into strings concatenation.
+    strconcat: false
+  revive:
+    ignore-generated-header: true
+  testifylint:
+    enable-all: true
+linters:
+  disable-all: true
+  enable:
+    - bodyclose
+    - depguard
+    - gci
+    - goconst
+    - gocritic
+    - gocyclo
+    - gomodguard
+    - gosec
+    - govet
+    - ineffassign
+    - misspell
+    - perfsprint
+    - revive
+    - usetesting
+    - testifylint
+    - typecheck
+    - unconvert
+    - unused
+    - usestdlibvars
+
+run:
+  go: '1.24'
+  timeout: 30m
+

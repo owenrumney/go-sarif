@@ -6,6 +6,7 @@ import (
 
 	"github.com/owenrumney/go-sarif/v3/pkg/report/v210/sarif"
 	"github.com/stretchr/testify/assert"
+	"github.com/stretchr/testify/require"
 )
 
 type runTest struct {
@@ -37,7 +38,7 @@ func (r *runTest) properties_added_to_a_run() {
 
 func (r *runTest) the_run_is_json() {
 	b, err := json.Marshal(r.run)
-	assert.Nil(r.t, err)
+	require.NoError(r.t, err)
 	r.jsonString = string(b)
 }
 

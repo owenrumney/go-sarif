@@ -60,7 +60,7 @@ func (r *WebResponse) WithReasonPhrase(reasonPhrase string) *WebResponse {
 }
 
 // AddHeader - add a single Header to the WebResponse
-func (h *WebResponse) AddHeader(key string, header string) *WebResponse {
+func (h *WebResponse) AddHeader(key, header string) *WebResponse {
 	h.Headers[key] = header
 	return h
 }

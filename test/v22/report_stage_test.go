@@ -71,12 +71,12 @@ func (r *reportTest) report_text_is(expected string) {
 
 func (r *reportTest) a_report_is_loaded_from_a_string(content string) {
 	report, err := sarif.FromString(content)
-	assert.NoError(r.t, err)
+	require.NoError(r.t, err)
 	assert.NotNil(r.t, report)
 	r.report = report
 }
 
-func (r *reportTest) the_report_has_expected_driver_name_and_information_uri(driverName string, informationURI string) {
+func (r *reportTest) the_report_has_expected_driver_name_and_information_uri(driverName, informationURI string) {
 	assert.Equal(r.t, driverName, r.report.Runs[0].Tool.Driver.Name)
 	assert.Equal(r.t, informationURI, r.report.Runs[0].Tool.Driver.InformationURI)
 }

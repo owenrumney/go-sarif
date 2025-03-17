@@ -122,7 +122,7 @@ func (s *Artifact) WithSourceLanguage(sourceLanguage string) *Artifact {
 }
 
 // AddHash - add a single Hash to the Artifact
-func (h *Artifact) AddHash(key string, hash string) *Artifact {
+func (h *Artifact) AddHash(key, hash string) *Artifact {
 	h.Hashes[key] = hash
 	return h
 }

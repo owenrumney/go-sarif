@@ -2,6 +2,7 @@ package sarif
 
 import (
 	"encoding/json"
+	"errors"
 	"fmt"
 	"io"
 	"os"
@@ -80,7 +81,7 @@ func NewRunWithInformationURI(toolName, informationURI string) *Run {
 // Open loads a Report from a file
 func Open(filename string) (*Report, error) {
 	if _, err := os.Stat(filename); err != nil && os.IsNotExist(err) {
-		return nil, fmt.Errorf("the provided file path doesn't have a file")
+		return nil, errors.New("the provided file path doesn't have a file")
 	}
 
 	content, err := os.ReadFile(filename)

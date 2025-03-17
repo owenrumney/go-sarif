@@ -5,6 +5,7 @@ import (
 	"testing"
 
 	"github.com/stretchr/testify/assert"
+	"github.com/stretchr/testify/require"
 )
 
 func Test_new_simple_report_with_single_run(t *testing.T) {
@@ -93,10 +94,10 @@ func Test_load_sarif_report_from_file(t *testing.T) {
 }`
 
 	file, err := os.CreateTemp(t.TempDir(), "sarifReport")
-	assert.NoError(t, err)
+	require.NoError(t, err)
 	defer file.Close()
 
-	os.WriteFile(file.Name(), []byte(content), 755)
+	os.WriteFile(file.Name(), []byte(content), 0600)
 
 	given.a_report_is_loaded_from_a_file(file.Name())
 	then.the_report_has_expected_driver_name_and_information_uri("ESLint", "https://eslint.org")
