@@ -2,6 +2,9 @@ package sarif
 
 // Node - Represents a node in a graph.
 type Node struct {
+	// Array of child nodes.
+	Children []*Node `json:"children,omitempty"`
+
 	// A string that uniquely identifies the node within its graph.
 	ID string `json:"id,omitempty"`
 
@@ -10,9 +13,6 @@ type Node struct {
 
 	// A code location associated with the node.
 	Location *Location `json:"location,omitempty"`
-
-	// Array of child nodes.
-	Children []*Node `json:"children"`
 
 	// Key/value pairs that provide additional information about the node.
 	Properties *PropertyBag `json:"properties,omitempty"`
@@ -23,6 +23,18 @@ func NewNode() *Node {
 	return &Node{
 		Children: make([]*Node, 0),
 	}
+}
+
+// WithChildren - add a Children to the Node
+func (c *Node) WithChildren(children []*Node) *Node {
+	c.Children = children
+	return c
+}
+
+// AddChildren - add a single Children to the Node
+func (c *Node) AddChildren(children *Node) *Node {
+	c.Children = append(c.Children, children)
+	return c
 }
 
 // WithID - add a ID to the Node
@@ -41,18 +53,6 @@ func (l *Node) WithLabel(label *Message) *Node {
 func (l *Node) WithLocation(location *Location) *Node {
 	l.Location = location
 	return l
-}
-
-// WithChildren - add a Children to the Node
-func (c *Node) WithChildren(children []*Node) *Node {
-	c.Children = children
-	return c
-}
-
-// AddChildren - add a single Children to the Node
-func (c *Node) AddChildren(children *Node) *Node {
-	c.Children = append(c.Children, children)
-	return c
 }
 
 // WithProperties - add a Properties to the Node

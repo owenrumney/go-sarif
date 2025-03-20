@@ -5,11 +5,11 @@ type CodeFlow struct {
 	// A message relevant to the code flow.
 	Message *Message `json:"message,omitempty"`
 
-	// An array of one or more unique threadFlow objects, each of which describes the progress of a program through a thread of execution.
-	ThreadFlows []*ThreadFlow `json:"threadFlows"`
-
 	// Key/value pairs that provide additional information about the code flow.
 	Properties *PropertyBag `json:"properties,omitempty"`
+
+	// An array of one or more unique threadFlow objects, each of which describes the progress of a program through a thread of execution.
+	ThreadFlows []*ThreadFlow `json:"threadFlows,omitempty"`
 }
 
 // NewCodeFlow - creates a new
@@ -25,6 +25,12 @@ func (m *CodeFlow) WithMessage(message *Message) *CodeFlow {
 	return m
 }
 
+// WithProperties - add a Properties to the CodeFlow
+func (p *CodeFlow) WithProperties(properties *PropertyBag) *CodeFlow {
+	p.Properties = properties
+	return p
+}
+
 // WithThreadFlows - add a ThreadFlows to the CodeFlow
 func (t *CodeFlow) WithThreadFlows(threadFlows []*ThreadFlow) *CodeFlow {
 	t.ThreadFlows = threadFlows
@@ -35,10 +41,4 @@ func (t *CodeFlow) WithThreadFlows(threadFlows []*ThreadFlow) *CodeFlow {
 func (t *CodeFlow) AddThreadFlow(threadFlow *ThreadFlow) *CodeFlow {
 	t.ThreadFlows = append(t.ThreadFlows, threadFlow)
 	return t
-}
-
-// WithProperties - add a Properties to the CodeFlow
-func (p *CodeFlow) WithProperties(properties *PropertyBag) *CodeFlow {
-	p.Properties = properties
-	return p
 }

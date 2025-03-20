@@ -43,5 +43,5 @@ func (r *runTest) the_run_is_json() {
 }
 
 func (r *runTest) string_is_as_expected(expected string) {
-	assert.Equal(r.t, expected, r.jsonString)
+	assert.JSONEq(r.t, expected, r.jsonString)
 }

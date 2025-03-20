@@ -2,23 +2,23 @@ package sarif
 
 // TranslationMetadata - Provides additional metadata related to translation.
 type TranslationMetadata struct {
+	// The absolute URI from which the translation metadata can be downloaded.
+	DownloadURI string `json:"downloadURI,omitempty"`
+
 	// A comprehensive description of the translation metadata.
 	FullDescription *MultiformatMessageString `json:"fullDescription,omitempty"`
 
-	// The absolute URI from which the translation metadata can be downloaded.
-	DownloadURI string `json:"downloadURI,omitempty"`
+	// The full name associated with the translation metadata.
+	FullName string `json:"fullName,omitempty"`
 
 	// The absolute URI from which information related to the translation metadata can be downloaded.
 	InformationURI string `json:"informationURI,omitempty"`
 
-	// Key/value pairs that provide additional information about the translation metadata.
-	Properties *PropertyBag `json:"properties,omitempty"`
-
 	// The name associated with the translation metadata.
 	Name string `json:"name,omitempty"`
 
-	// The full name associated with the translation metadata.
-	FullName string `json:"fullName,omitempty"`
+	// Key/value pairs that provide additional information about the translation metadata.
+	Properties *PropertyBag `json:"properties,omitempty"`
 
 	// A brief description of the translation metadata.
 	ShortDescription *MultiformatMessageString `json:"shortDescription,omitempty"`
@@ -29,16 +29,22 @@ func NewTranslationMetadata() *TranslationMetadata {
 	return &TranslationMetadata{}
 }
 
+// WithDownloadURI - add a DownloadURI to the TranslationMetadata
+func (d *TranslationMetadata) WithDownloadURI(downloadURI string) *TranslationMetadata {
+	d.DownloadURI = downloadURI
+	return d
+}
+
 // WithFullDescription - add a FullDescription to the TranslationMetadata
 func (f *TranslationMetadata) WithFullDescription(fullDescription *MultiformatMessageString) *TranslationMetadata {
 	f.FullDescription = fullDescription
 	return f
 }
 
-// WithDownloadURI - add a DownloadURI to the TranslationMetadata
-func (d *TranslationMetadata) WithDownloadURI(downloadURI string) *TranslationMetadata {
-	d.DownloadURI = downloadURI
-	return d
+// WithFullName - add a FullName to the TranslationMetadata
+func (f *TranslationMetadata) WithFullName(fullName string) *TranslationMetadata {
+	f.FullName = fullName
+	return f
 }
 
 // WithInformationURI - add a InformationURI to the TranslationMetadata
@@ -47,22 +53,16 @@ func (i *TranslationMetadata) WithInformationURI(informationURI string) *Transla
 	return i
 }
 
-// WithProperties - add a Properties to the TranslationMetadata
-func (p *TranslationMetadata) WithProperties(properties *PropertyBag) *TranslationMetadata {
-	p.Properties = properties
-	return p
-}
-
 // WithName - add a Name to the TranslationMetadata
 func (n *TranslationMetadata) WithName(name string) *TranslationMetadata {
 	n.Name = name
 	return n
 }
 
-// WithFullName - add a FullName to the TranslationMetadata
-func (f *TranslationMetadata) WithFullName(fullName string) *TranslationMetadata {
-	f.FullName = fullName
-	return f
+// WithProperties - add a Properties to the TranslationMetadata
+func (p *TranslationMetadata) WithProperties(properties *PropertyBag) *TranslationMetadata {
+	p.Properties = properties
+	return p
 }
 
 // WithShortDescription - add a ShortDescription to the TranslationMetadata

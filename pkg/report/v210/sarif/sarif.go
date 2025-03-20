@@ -18,18 +18,18 @@ type Report struct {
 	Version string `json:"version"`
 
 	// The set of runs contained in this log file.
-	Runs []*Run `json:"runs"`
+	Runs []*Run `json:"runs,omitempty"`
 
 	// References to external property files that should be inlined with the content of a root log file.
-	InlineExternalProperties []*ExternalProperties `json:"inlineExternalProperties"`
+	InlineExternalProperties []*ExternalProperties `json:"inlineExternalProperties,omitempty"`
 
 	// Key/value pairs that provide additional information about the report.
-	Properties PropertyBag `json:"properties"`
+	Properties PropertyBag `json:"properties,omitempty"`
 }
 
 func NewReport() *Report {
 	return &Report{
-		Schema:                   "https://raw.githubusercontent.com/oasis-tcs/sarif-spec/master/Schemata/sarif-schema-2.1.0.json",
+		Schema:                   "https://raw.githubusercontent.com/oasis-tcs/sarif-spec/main/sarif-2.1/schema/sarif-schema-2.1.0.json",
 		Version:                  "2.1.0",
 		Runs:                     []*Run{},
 		InlineExternalProperties: []*ExternalProperties{},

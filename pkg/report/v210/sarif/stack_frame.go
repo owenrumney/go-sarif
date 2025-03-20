@@ -8,14 +8,14 @@ type StackFrame struct {
 	// The name of the module that contains the code of this stack frame.
 	Module string `json:"module,omitempty"`
 
-	// The thread identifier of the stack frame.
-	ThreadID int `json:"threadId,omitempty"`
-
 	// The parameters of the call that is executing.
-	Parameters []string `json:"parameters"`
+	Parameters []string `json:"parameters,omitempty"`
 
 	// Key/value pairs that provide additional information about the stack frame.
 	Properties *PropertyBag `json:"properties,omitempty"`
+
+	// The thread identifier of the stack frame.
+	ThreadID int `json:"threadId,omitempty"`
 }
 
 // NewStackFrame - creates a new
@@ -37,12 +37,6 @@ func (m *StackFrame) WithModule(module string) *StackFrame {
 	return m
 }
 
-// WithThreadID - add a ThreadID to the StackFrame
-func (t *StackFrame) WithThreadID(threadId int) *StackFrame {
-	t.ThreadID = threadId
-	return t
-}
-
 // WithParameters - add a Parameters to the StackFrame
 func (p *StackFrame) WithParameters(parameters []string) *StackFrame {
 	p.Parameters = parameters
@@ -59,4 +53,10 @@ func (p *StackFrame) AddParameter(parameter string) *StackFrame {
 func (p *StackFrame) WithProperties(properties *PropertyBag) *StackFrame {
 	p.Properties = properties
 	return p
+}
+
+// WithThreadID - add a ThreadID to the StackFrame
+func (t *StackFrame) WithThreadID(threadId int) *StackFrame {
+	t.ThreadID = threadId
+	return t
 }

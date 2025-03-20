@@ -8,14 +8,14 @@ type Edge struct {
 	// A short description of the edge.
 	Label *Message `json:"label,omitempty"`
 
+	// Key/value pairs that provide additional information about the edge.
+	Properties *PropertyBag `json:"properties,omitempty"`
+
 	// Identifies the source node (the node at which the edge starts).
 	SourceNodeID string `json:"sourceNodeId,omitempty"`
 
 	// Identifies the target node (the node at which the edge ends).
 	TargetNodeID string `json:"targetNodeId,omitempty"`
-
-	// Key/value pairs that provide additional information about the edge.
-	Properties *PropertyBag `json:"properties,omitempty"`
 }
 
 // NewEdge - creates a new
@@ -35,6 +35,12 @@ func (l *Edge) WithLabel(label *Message) *Edge {
 	return l
 }
 
+// WithProperties - add a Properties to the Edge
+func (p *Edge) WithProperties(properties *PropertyBag) *Edge {
+	p.Properties = properties
+	return p
+}
+
 // WithSourceNodeID - add a SourceNodeID to the Edge
 func (s *Edge) WithSourceNodeID(sourceNodeId string) *Edge {
 	s.SourceNodeID = sourceNodeId
@@ -45,10 +51,4 @@ func (s *Edge) WithSourceNodeID(sourceNodeId string) *Edge {
 func (t *Edge) WithTargetNodeID(targetNodeId string) *Edge {
 	t.TargetNodeID = targetNodeId
 	return t
-}
-
-// WithProperties - add a Properties to the Edge
-func (p *Edge) WithProperties(properties *PropertyBag) *Edge {
-	p.Properties = properties
-	return p
 }

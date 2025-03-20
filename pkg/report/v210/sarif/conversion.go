@@ -2,11 +2,11 @@ package sarif
 
 // Conversion - Describes how a converter transformed the output of a static analysis tool from the analysis tool's native output format into the SARIF format.
 type Conversion struct {
+	// The locations of the analysis tool's per-run log files.
+	AnalysisToolLogFiles []*ArtifactLocation `json:"analysisToolLogFiles,omitempty"`
+
 	// An invocation object that describes the invocation of the converter.
 	Invocation *Invocation `json:"invocation,omitempty"`
-
-	// The locations of the analysis tool's per-run log files.
-	AnalysisToolLogFiles []*ArtifactLocation `json:"analysisToolLogFiles"`
 
 	// Key/value pairs that provide additional information about the conversion.
 	Properties *PropertyBag `json:"properties,omitempty"`
@@ -22,12 +22,6 @@ func NewConversion() *Conversion {
 	}
 }
 
-// WithInvocation - add a Invocation to the Conversion
-func (i *Conversion) WithInvocation(invocation *Invocation) *Conversion {
-	i.Invocation = invocation
-	return i
-}
-
 // WithAnalysisToolLogFiles - add a AnalysisToolLogFiles to the Conversion
 func (a *Conversion) WithAnalysisToolLogFiles(analysisToolLogFiles []*ArtifactLocation) *Conversion {
 	a.AnalysisToolLogFiles = analysisToolLogFiles
@@ -38,6 +32,12 @@ func (a *Conversion) WithAnalysisToolLogFiles(analysisToolLogFiles []*ArtifactLo
 func (a *Conversion) AddAnalysisToolLogFile(analysisToolLogFile *ArtifactLocation) *Conversion {
 	a.AnalysisToolLogFiles = append(a.AnalysisToolLogFiles, analysisToolLogFile)
 	return a
+}
+
+// WithInvocation - add a Invocation to the Conversion
+func (i *Conversion) WithInvocation(invocation *Invocation) *Conversion {
+	i.Invocation = invocation
+	return i
 }
 
 // WithProperties - add a Properties to the Conversion

@@ -5,6 +5,9 @@ type VersionControlDetails struct {
 	// A Coordinated Universal Time (UTC) date and time that can be used to synchronize an enlistment to the state of the repository at that time.
 	AsOfTimeUtc string `json:"asOfTimeUtc,omitempty"`
 
+	// The name of a branch containing the revision.
+	Branch string `json:"branch,omitempty"`
+
 	// The location in the local file system to which the root of the repository was mapped at the time of the analysis.
 	MappedTo *ArtifactLocation `json:"mappedTo,omitempty"`
 
@@ -16,9 +19,6 @@ type VersionControlDetails struct {
 
 	// A string that uniquely and permanently identifies the revision within the repository.
 	RevisionID string `json:"revisionId,omitempty"`
-
-	// The name of a branch containing the revision.
-	Branch string `json:"branch,omitempty"`
 
 	// A tag that has been applied to the revision.
 	RevisionTag string `json:"revisionTag,omitempty"`
@@ -33,6 +33,12 @@ func NewVersionControlDetails() *VersionControlDetails {
 func (a *VersionControlDetails) WithAsOfTimeUtc(asOfTimeUtc string) *VersionControlDetails {
 	a.AsOfTimeUtc = asOfTimeUtc
 	return a
+}
+
+// WithBranch - add a Branch to the VersionControlDetails
+func (b *VersionControlDetails) WithBranch(branch string) *VersionControlDetails {
+	b.Branch = branch
+	return b
 }
 
 // WithMappedTo - add a MappedTo to the VersionControlDetails
@@ -57,12 +63,6 @@ func (r *VersionControlDetails) WithRepositoryURI(repositoryURI string) *Version
 func (r *VersionControlDetails) WithRevisionID(revisionId string) *VersionControlDetails {
 	r.RevisionID = revisionId
 	return r
-}
-
-// WithBranch - add a Branch to the VersionControlDetails
-func (b *VersionControlDetails) WithBranch(branch string) *VersionControlDetails {
-	b.Branch = branch
-	return b
 }
 
 // WithRevisionTag - add a RevisionTag to the VersionControlDetails

@@ -2,14 +2,14 @@ package sarif
 
 // ExternalPropertyFileReference - Contains information that enables a SARIF consumer to locate the external property file that contains the value of an externalized property associated with the run.
 type ExternalPropertyFileReference struct {
-	// The location of the external property file.
-	Location *ArtifactLocation `json:"location,omitempty"`
-
 	// A stable, unique identifier for the external property file in the form of a GUID.
 	GuID string `json:"guid,omitempty"`
 
 	// A non-negative integer specifying the number of items contained in the external property file.
 	ItemCount int `json:"itemCount,omitempty"`
+
+	// The location of the external property file.
+	Location *ArtifactLocation `json:"location,omitempty"`
 
 	// Key/value pairs that provide additional information about the external property file.
 	Properties *PropertyBag `json:"properties,omitempty"`
@@ -18,12 +18,6 @@ type ExternalPropertyFileReference struct {
 // NewExternalPropertyFileReference - creates a new
 func NewExternalPropertyFileReference() *ExternalPropertyFileReference {
 	return &ExternalPropertyFileReference{}
-}
-
-// WithLocation - add a Location to the ExternalPropertyFileReference
-func (l *ExternalPropertyFileReference) WithLocation(location *ArtifactLocation) *ExternalPropertyFileReference {
-	l.Location = location
-	return l
 }
 
 // WithGuID - add a GuID to the ExternalPropertyFileReference
@@ -36,6 +30,12 @@ func (g *ExternalPropertyFileReference) WithGuID(guid string) *ExternalPropertyF
 func (i *ExternalPropertyFileReference) WithItemCount(itemCount int) *ExternalPropertyFileReference {
 	i.ItemCount = itemCount
 	return i
+}
+
+// WithLocation - add a Location to the ExternalPropertyFileReference
+func (l *ExternalPropertyFileReference) WithLocation(location *ArtifactLocation) *ExternalPropertyFileReference {
+	l.Location = location
+	return l
 }
 
 // WithProperties - add a Properties to the ExternalPropertyFileReference
