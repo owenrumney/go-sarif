@@ -18,22 +18,22 @@ type Report struct {
 	Version string `json:"version"`
 
 	// The set of runs contained in this log file.
-	Runs []*Run `json:"runs"`
+	Runs []*Run `json:"runs,omitempty"`
 
 	// References to external property files that should be inlined with the content of a root log file.
-	InlineExternalProperties []*ExternalProperties `json:"inlineExternalProperties"`
+	InlineExternalProperties []*ExternalProperties `json:"inlineExternalProperties,omitempty"`
 
 	// A stable, unique identifier for the report in the form of a GUID.
 	Guid Guid `json:"guid"`
 
 	// Key/value pairs that provide additional information about the report.
-	Properties *PropertyBag `json:"properties"`
+	Properties *PropertyBag `json:"properties,omitempty"`
 }
 
 func NewReport() *Report {
 	return &Report{
 		Version:                  "2.2",
-		Schema:                   "https://raw.githubusercontent.com/oasis-tcs/sarif-spec/refs/heads/main/sarif-2.2/schema/sarif-2-2.schema.json",
+		Schema:                   "https://raw.githubusercontent.com/oasis-tcs/sarif-spec/main/sarif-2.2/schema/sarif-2-2.schema.json",
 		Runs:                     []*Run{},
 		InlineExternalProperties: []*ExternalProperties{},
 		Properties:               NewPropertyBag(),

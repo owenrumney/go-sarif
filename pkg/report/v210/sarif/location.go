@@ -2,35 +2,53 @@ package sarif
 
 // Location - A location within a programming artifact.
 type Location struct {
-	// The logical locations associated with the result.
-	LogicalLocations []*LogicalLocation `json:"logicalLocations"`
-
-	// A message relevant to the location.
-	Message *Message `json:"message,omitempty"`
-
 	// A set of regions relevant to the location.
-	Annotations []*Region `json:"annotations"`
-
-	// An array of objects that describe relationships between this location and others.
-	Relationships []*LocationRelationship `json:"relationships"`
-
-	// Key/value pairs that provide additional information about the location.
-	Properties *PropertyBag `json:"properties,omitempty"`
+	Annotations []*Region `json:"annotations,omitempty"`
 
 	// Value that distinguishes this location from all other locations within a single result object.
 	ID int `json:"id,omitempty"`
 
+	// The logical locations associated with the result.
+	LogicalLocations []*LogicalLocation `json:"logicalLocations,omitempty"`
+
+	// A message relevant to the location.
+	Message *Message `json:"message,omitempty"`
+
 	// Identifies the artifact and region.
 	PhysicalLocation *PhysicalLocation `json:"physicalLocation,omitempty"`
+
+	// Key/value pairs that provide additional information about the location.
+	Properties *PropertyBag `json:"properties,omitempty"`
+
+	// An array of objects that describe relationships between this location and others.
+	Relationships []*LocationRelationship `json:"relationships,omitempty"`
 }
 
 // NewLocation - creates a new
 func NewLocation() *Location {
 	return &Location{
-		LogicalLocations: make([]*LogicalLocation, 0),
 		Annotations:      make([]*Region, 0),
+		LogicalLocations: make([]*LogicalLocation, 0),
 		Relationships:    make([]*LocationRelationship, 0),
 	}
+}
+
+// WithAnnotations - add a Annotations to the Location
+func (a *Location) WithAnnotations(annotations []*Region) *Location {
+	a.Annotations = annotations
+	return a
+}
+
+// AddAnnotation - add a single Annotation to the Location
+func (a *Location) AddAnnotation(annotation *Region) *Location {
+	a.Annotations = append(a.Annotations, annotation)
+	return a
+}
+
+// WithID - add a ID to the Location
+func (i *Location) WithID(id int) *Location {
+	i.ID = id
+	return i
 }
 
 // WithLogicalLocations - add a LogicalLocations to the Location
@@ -51,16 +69,16 @@ func (m *Location) WithMessage(message *Message) *Location {
 	return m
 }
 
-// WithAnnotations - add a Annotations to the Location
-func (a *Location) WithAnnotations(annotations []*Region) *Location {
-	a.Annotations = annotations
-	return a
+// WithPhysicalLocation - add a PhysicalLocation to the Location
+func (p *Location) WithPhysicalLocation(physicalLocation *PhysicalLocation) *Location {
+	p.PhysicalLocation = physicalLocation
+	return p
 }
 
-// AddAnnotation - add a single Annotation to the Location
-func (a *Location) AddAnnotation(annotation *Region) *Location {
-	a.Annotations = append(a.Annotations, annotation)
-	return a
+// WithProperties - add a Properties to the Location
+func (p *Location) WithProperties(properties *PropertyBag) *Location {
+	p.Properties = properties
+	return p
 }
 
 // WithRelationships - add a Relationships to the Location
@@ -73,22 +91,4 @@ func (r *Location) WithRelationships(relationships []*LocationRelationship) *Loc
 func (r *Location) AddRelationship(relationship *LocationRelationship) *Location {
 	r.Relationships = append(r.Relationships, relationship)
 	return r
-}
-
-// WithProperties - add a Properties to the Location
-func (p *Location) WithProperties(properties *PropertyBag) *Location {
-	p.Properties = properties
-	return p
-}
-
-// WithID - add a ID to the Location
-func (i *Location) WithID(id int) *Location {
-	i.ID = id
-	return i
-}
-
-// WithPhysicalLocation - add a PhysicalLocation to the Location
-func (p *Location) WithPhysicalLocation(physicalLocation *PhysicalLocation) *Location {
-	p.PhysicalLocation = physicalLocation
-	return p
 }

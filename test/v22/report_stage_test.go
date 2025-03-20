@@ -66,7 +66,7 @@ func (r *reportTest) report_text_is(expected string) {
 	err := r.report.Write(buffer)
 	require.NoError(r.t, err)
 
-	assert.Equal(r.t, expected, buffer.String())
+	assert.JSONEq(r.t, expected, buffer.String())
 }
 
 func (r *reportTest) a_report_is_loaded_from_a_string(content string) {

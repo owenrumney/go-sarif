@@ -11,7 +11,7 @@ func Test_new_result_on_run(t *testing.T) {
 func Test_properties_on_a_run(t *testing.T) {
 	given, when, then := newRunTest(t)
 
-	expected := `{"taxonomies":[],"invocations":[],"addresses":[],"properties":{"properties":{"boolean_key":false,"string_key":"string_value"},"tags":[]},"artifacts":[],"threadFlowLocations":[],"webRequests":[],"webResponses":[],"versionControlProvenance":[],"results":[],"runAggregates":[],"newlineSequences":["\r\n","\n"],"translations":[],"policies":[],"tool":{"extensions":[]},"logicalLocations":[],"graphs":[],"redactionTokens":[]}`
+	expected := `{"newlineSequences":["\r\n","\n"],"properties":{"properties":{"boolean_key":false,"string_key":"string_value"}},"tool":{}}`
 
 	given.properties_added_to_a_run()
 	when.the_run_is_json()

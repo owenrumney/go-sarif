@@ -2,26 +2,26 @@ package sarif
 
 // GraphTraversal - Represents a path through a graph.
 type GraphTraversal struct {
-	// The index within the run.graphs to be associated with the result.
-	RunGraphIndex int `json:"runGraphIndex,omitempty"`
-
-	// The index within the result.graphs to be associated with the result.
-	ResultGraphIndex int `json:"resultGraphIndex,omitempty"`
-
-	// A description of this graph traversal.
-	Description *Message `json:"description,omitempty"`
-
 	// Values of relevant expressions at the start of the graph traversal that may change during graph traversal.
 	InitialState map[string]MultiformatMessageString `json:"initialState,omitempty"`
 
 	// Values of relevant expressions at the start of the graph traversal that remain constant for the graph traversal.
 	ImmutableState map[string]MultiformatMessageString `json:"immutableState,omitempty"`
 
+	// A description of this graph traversal.
+	Description *Message `json:"description,omitempty"`
+
 	// The sequences of edges traversed by this graph traversal.
-	EdgeTraversals []*EdgeTraversal `json:"edgeTraversals"`
+	EdgeTraversals []*EdgeTraversal `json:"edgeTraversals,omitempty"`
 
 	// Key/value pairs that provide additional information about the graph traversal.
 	Properties *PropertyBag `json:"properties,omitempty"`
+
+	// The index within the result.graphs to be associated with the result.
+	ResultGraphIndex int `json:"resultGraphIndex,omitempty"`
+
+	// The index within the run.graphs to be associated with the result.
+	RunGraphIndex int `json:"runGraphIndex,omitempty"`
 }
 
 // NewGraphTraversal - creates a new
@@ -29,24 +29,6 @@ func NewGraphTraversal() *GraphTraversal {
 	return &GraphTraversal{
 		EdgeTraversals: make([]*EdgeTraversal, 0),
 	}
-}
-
-// WithRunGraphIndex - add a RunGraphIndex to the GraphTraversal
-func (r *GraphTraversal) WithRunGraphIndex(runGraphIndex int) *GraphTraversal {
-	r.RunGraphIndex = runGraphIndex
-	return r
-}
-
-// WithResultGraphIndex - add a ResultGraphIndex to the GraphTraversal
-func (r *GraphTraversal) WithResultGraphIndex(resultGraphIndex int) *GraphTraversal {
-	r.ResultGraphIndex = resultGraphIndex
-	return r
-}
-
-// WithDescription - add a Description to the GraphTraversal
-func (d *GraphTraversal) WithDescription(description *Message) *GraphTraversal {
-	d.Description = description
-	return d
 }
 
 // AddInitialState - add a single InitialState to the GraphTraversal
@@ -73,6 +55,12 @@ func (i *GraphTraversal) WithImmutableState(immutableState map[string]Multiforma
 	return i
 }
 
+// WithDescription - add a Description to the GraphTraversal
+func (d *GraphTraversal) WithDescription(description *Message) *GraphTraversal {
+	d.Description = description
+	return d
+}
+
 // WithEdgeTraversals - add a EdgeTraversals to the GraphTraversal
 func (e *GraphTraversal) WithEdgeTraversals(edgeTraversals []*EdgeTraversal) *GraphTraversal {
 	e.EdgeTraversals = edgeTraversals
@@ -89,4 +77,16 @@ func (e *GraphTraversal) AddEdgeTraversal(edgeTraversal *EdgeTraversal) *GraphTr
 func (p *GraphTraversal) WithProperties(properties *PropertyBag) *GraphTraversal {
 	p.Properties = properties
 	return p
+}
+
+// WithResultGraphIndex - add a ResultGraphIndex to the GraphTraversal
+func (r *GraphTraversal) WithResultGraphIndex(resultGraphIndex int) *GraphTraversal {
+	r.ResultGraphIndex = resultGraphIndex
+	return r
+}
+
+// WithRunGraphIndex - add a RunGraphIndex to the GraphTraversal
+func (r *GraphTraversal) WithRunGraphIndex(runGraphIndex int) *GraphTraversal {
+	r.RunGraphIndex = runGraphIndex
+	return r
 }

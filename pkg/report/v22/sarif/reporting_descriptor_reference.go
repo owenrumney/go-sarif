@@ -2,25 +2,31 @@ package sarif
 
 // ReportingDescriptorReference - Information about how to locate a relevant reporting descriptor.
 type ReportingDescriptorReference struct {
+	// A guid that uniquely identifies the descriptor.
+	Guid *Guid `json:"guid,omitempty"`
+
 	// The id of the descriptor.
 	ID string `json:"id,omitempty"`
 
 	// The index into an array of descriptors in toolComponent.ruleDescriptors, toolComponent.notificationDescriptors, or toolComponent.taxonomyDescriptors, depending on context.
 	Index int `json:"index,omitempty"`
 
-	// A guid that uniquely identifies the descriptor.
-	Guid *Guid `json:"guid,omitempty"`
+	// Key/value pairs that provide additional information about the reporting descriptor reference.
+	Properties *PropertyBag `json:"properties,omitempty"`
 
 	// A reference used to locate the toolComponent associated with the descriptor.
 	ToolComponent *ToolComponentReference `json:"toolComponent,omitempty"`
-
-	// Key/value pairs that provide additional information about the reporting descriptor reference.
-	Properties *PropertyBag `json:"properties,omitempty"`
 }
 
 // NewReportingDescriptorReference - creates a new
 func NewReportingDescriptorReference() *ReportingDescriptorReference {
 	return &ReportingDescriptorReference{}
+}
+
+// WithGuid - add a Guid to the ReportingDescriptorReference
+func (g *ReportingDescriptorReference) WithGuid(guid *Guid) *ReportingDescriptorReference {
+	g.Guid = guid
+	return g
 }
 
 // WithID - add a ID to the ReportingDescriptorReference
@@ -35,20 +41,14 @@ func (i *ReportingDescriptorReference) WithIndex(index int) *ReportingDescriptor
 	return i
 }
 
-// WithGuid - add a Guid to the ReportingDescriptorReference
-func (g *ReportingDescriptorReference) WithGuid(guid *Guid) *ReportingDescriptorReference {
-	g.Guid = guid
-	return g
+// WithProperties - add a Properties to the ReportingDescriptorReference
+func (p *ReportingDescriptorReference) WithProperties(properties *PropertyBag) *ReportingDescriptorReference {
+	p.Properties = properties
+	return p
 }
 
 // WithToolComponent - add a ToolComponent to the ReportingDescriptorReference
 func (t *ReportingDescriptorReference) WithToolComponent(toolComponent *ToolComponentReference) *ReportingDescriptorReference {
 	t.ToolComponent = toolComponent
 	return t
-}
-
-// WithProperties - add a Properties to the ReportingDescriptorReference
-func (p *ReportingDescriptorReference) WithProperties(properties *PropertyBag) *ReportingDescriptorReference {
-	p.Properties = properties
-	return p
 }

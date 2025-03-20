@@ -6,7 +6,7 @@ type Tool struct {
 	Driver *ToolComponent `json:"driver,omitempty"`
 
 	// Tool extensions that contributed to or reconfigured the analysis tool that was run.
-	Extensions []*ToolComponent `json:"extensions"`
+	Extensions []*ToolComponent `json:"extensions,omitempty"`
 
 	// Key/value pairs that provide additional information about the tool.
 	Properties *PropertyBag `json:"properties,omitempty"`
