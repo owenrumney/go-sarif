@@ -16,7 +16,7 @@ There are a number of ways to load in the content of a SARIF report.
 
 For a `v2.1.0` report use `import "github.com/owenrumney/go-sarif/v3/pkg/report/v210/sarif"`
 
-For a `v2.2` report, use `import "github.com/owenrumney/go-sarif/v3/pkg/report/v22/sarif"
+For a `v2.2` report, use `import "github.com/owenrumney/go-sarif/v3/pkg/report/v22/sarif"`
 
 
 #### Open
