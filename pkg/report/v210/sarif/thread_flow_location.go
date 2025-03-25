@@ -48,9 +48,9 @@ type ThreadFlowLocation struct {
 // NewThreadFlowLocation - creates a new
 func NewThreadFlowLocation() *ThreadFlowLocation {
 	return &ThreadFlowLocation{
-		ExecutionOrder: -1.000000,
+		ExecutionOrder: -1,
 		Importance:     "important",
-		Index:          -1.000000,
+		Index:          -1,
 		Kinds:          make([]string, 0),
 		Taxa:           make([]*ReportingDescriptorReference, 0),
 	}

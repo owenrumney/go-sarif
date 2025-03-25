@@ -28,7 +28,7 @@ type Location struct {
 func NewLocation() *Location {
 	return &Location{
 		Annotations:      make([]*Region, 0),
-		ID:               -1.000000,
+		ID:               -1,
 		LogicalLocations: make([]*LogicalLocation, 0),
 		Relationships:    make([]*LocationRelationship, 0),
 	}

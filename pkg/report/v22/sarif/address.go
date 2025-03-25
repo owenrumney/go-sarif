@@ -36,9 +36,9 @@ type Address struct {
 // NewAddress - creates a new
 func NewAddress() *Address {
 	return &Address{
-		AbsoluteAddress: -1.000000,
-		Index:           -1.000000,
-		ParentIndex:     -1.000000,
+		AbsoluteAddress: -1,
+		Index:           -1,
+		ParentIndex:     -1,
 	}
 }
 

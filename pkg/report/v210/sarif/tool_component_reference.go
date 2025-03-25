@@ -18,7 +18,7 @@ type ToolComponentReference struct {
 // NewToolComponentReference - creates a new
 func NewToolComponentReference() *ToolComponentReference {
 	return &ToolComponentReference{
-		Index: -1.000000,
+		Index: -1,
 	}
 }
 

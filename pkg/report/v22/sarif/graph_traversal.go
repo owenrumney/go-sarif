@@ -28,8 +28,8 @@ type GraphTraversal struct {
 func NewGraphTraversal() *GraphTraversal {
 	return &GraphTraversal{
 		EdgeTraversals:   make([]*EdgeTraversal, 0),
-		ResultGraphIndex: -1.000000,
-		RunGraphIndex:    -1.000000,
+		ResultGraphIndex: -1,
+		RunGraphIndex:    -1,
 	}
 }
 

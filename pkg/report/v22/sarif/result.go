@@ -106,7 +106,7 @@ func NewResult() *Result {
 		Locations:        make([]*Location, 0),
 		Rank:             -1.000000,
 		RelatedLocations: make([]*Location, 0),
-		RuleIndex:        -1.000000,
+		RuleIndex:        -1,
 		Stacks:           make([]*Stack, 0),
 		Suppressions:     make([]*Suppression, 0),
 		Taxa:             make([]*ReportingDescriptorReference, 0),

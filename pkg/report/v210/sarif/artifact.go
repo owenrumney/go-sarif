@@ -45,8 +45,8 @@ type Artifact struct {
 // NewArtifact - creates a new
 func NewArtifact() *Artifact {
 	return &Artifact{
-		Length:      -1.000000,
-		ParentIndex: -1.000000,
+		Length:      -1,
+		ParentIndex: -1,
 		Roles:       make([]string, 0),
 	}
 }

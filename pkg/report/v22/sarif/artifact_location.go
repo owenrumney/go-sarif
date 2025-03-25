@@ -21,7 +21,7 @@ type ArtifactLocation struct {
 // NewArtifactLocation - creates a new
 func NewArtifactLocation() *ArtifactLocation {
 	return &ArtifactLocation{
-		Index: -1.000000,
+		Index: -1,
 	}
 }
 

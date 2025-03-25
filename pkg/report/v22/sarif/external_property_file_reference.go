@@ -18,7 +18,7 @@ type ExternalPropertyFileReference struct {
 // NewExternalPropertyFileReference - creates a new
 func NewExternalPropertyFileReference() *ExternalPropertyFileReference {
 	return &ExternalPropertyFileReference{
-		ItemCount: -1.000000,
+		ItemCount: -1,
 	}
 }
 

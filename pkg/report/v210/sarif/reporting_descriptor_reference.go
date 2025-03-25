@@ -21,7 +21,7 @@ type ReportingDescriptorReference struct {
 // NewReportingDescriptorReference - creates a new
 func NewReportingDescriptorReference() *ReportingDescriptorReference {
 	return &ReportingDescriptorReference{
-		Index: -1.000000,
+		Index: -1,
 	}
 }
 

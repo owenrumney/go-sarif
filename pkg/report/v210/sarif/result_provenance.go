@@ -28,7 +28,7 @@ type ResultProvenance struct {
 func NewResultProvenance() *ResultProvenance {
 	return &ResultProvenance{
 		ConversionSources: make([]*PhysicalLocation, 0),
-		InvocationIndex:   -1.000000,
+		InvocationIndex:   -1,
 	}
 }
 

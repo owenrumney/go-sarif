@@ -33,7 +33,7 @@ type WebRequest struct {
 // NewWebRequest - creates a new
 func NewWebRequest() *WebRequest {
 	return &WebRequest{
-		Index: -1.000000,
+		Index: -1,
 	}
 }
 

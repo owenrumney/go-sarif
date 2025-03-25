@@ -42,8 +42,8 @@ type Region struct {
 // NewRegion - creates a new
 func NewRegion() *Region {
 	return &Region{
-		ByteOffset: -1.000000,
-		CharOffset: -1.000000,
+		ByteOffset: -1,
+		CharOffset: -1,
 	}
 }
 

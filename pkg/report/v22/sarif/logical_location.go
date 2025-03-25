@@ -27,8 +27,8 @@ type LogicalLocation struct {
 // NewLogicalLocation - creates a new
 func NewLogicalLocation() *LogicalLocation {
 	return &LogicalLocation{
-		Index:       -1.000000,
-		ParentIndex: -1.000000,
+		Index:       -1,
+		ParentIndex: -1,
 	}
 }
 

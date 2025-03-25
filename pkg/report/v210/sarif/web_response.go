@@ -33,7 +33,7 @@ type WebResponse struct {
 // NewWebResponse - creates a new
 func NewWebResponse() *WebResponse {
 	return &WebResponse{
-		Index:              -1.000000,
+		Index:              -1,
 		NoResponseReceived: false,
 	}
 }
