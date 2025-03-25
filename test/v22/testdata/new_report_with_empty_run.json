@@ -1,0 +1,1 @@
+{"$schema":"https://raw.githubusercontent.com/oasis-tcs/sarif-spec/main/sarif-2.2/schema/sarif-2-2.schema.json","version":"2.2","runs":[{"newlineSequences":["\r\n","\n"],"tool":{"driver":{"contents":["localizedData","nonLocalizedData"],"informationURI":"https://tfsec.dev","name":"tfsec"}}}],"guid":"516d8cc4-18b1-463e-9e0e-417473149927","properties":{}}

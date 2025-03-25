@@ -12,10 +12,10 @@ type Artifact struct {
 	Description *Message `json:"description,omitempty"`
 
 	// Specifies the encoding for an artifact object that refers to a text file.
-	Encoding string `json:"encoding,omitempty"`
+	Encoding *string `json:"encoding,omitempty"`
 
 	// The Coordinated Universal Time (UTC) date and time at which the artifact was most recently modified. See "Date/time properties" in the SARIF spec for the required format.
-	LastModifiedTimeUtc string `json:"lastModifiedTimeUtc,omitempty"`
+	LastModifiedTimeUtc *string `json:"lastModifiedTimeUtc,omitempty"`
 
 	// The length of the artifact in bytes.
 	Length int `json:"length,omitempty"`
@@ -24,10 +24,10 @@ type Artifact struct {
 	Location *ArtifactLocation `json:"location,omitempty"`
 
 	// The MIME type (RFC 2045) of the artifact.
-	MimeType string `json:"mimeType,omitempty"`
+	MimeType *string `json:"mimeType,omitempty"`
 
 	// The offset in bytes of the artifact within its containing artifact.
-	Offset int `json:"offset,omitempty"`
+	Offset *int `json:"offset,omitempty"`
 
 	// Identifies the index of the immediate parent of the artifact, if this artifact is nested.
 	ParentIndex int `json:"parentIndex,omitempty"`
@@ -39,13 +39,15 @@ type Artifact struct {
 	Roles []string `json:"roles,omitempty"`
 
 	// Specifies the source language for any artifact object that refers to a text file that contains source code.
-	SourceLanguage string `json:"sourceLanguage,omitempty"`
+	SourceLanguage *string `json:"sourceLanguage,omitempty"`
 }
 
 // NewArtifact - creates a new
 func NewArtifact() *Artifact {
 	return &Artifact{
-		Roles: make([]string, 0),
+		Length:      -1,
+		ParentIndex: -1,
+		Roles:       make([]string, 0),
 	}
 }
 
@@ -75,13 +77,13 @@ func (d *Artifact) WithDescription(description *Message) *Artifact {
 
 // WithEncoding - add a Encoding to the Artifact
 func (e *Artifact) WithEncoding(encoding string) *Artifact {
-	e.Encoding = encoding
+	e.Encoding = &encoding
 	return e
 }
 
 // WithLastModifiedTimeUtc - add a LastModifiedTimeUtc to the Artifact
 func (l *Artifact) WithLastModifiedTimeUtc(lastModifiedTimeUtc string) *Artifact {
-	l.LastModifiedTimeUtc = lastModifiedTimeUtc
+	l.LastModifiedTimeUtc = &lastModifiedTimeUtc
 	return l
 }
 
@@ -99,13 +101,13 @@ func (l *Artifact) WithLocation(location *ArtifactLocation) *Artifact {
 
 // WithMimeType - add a MimeType to the Artifact
 func (m *Artifact) WithMimeType(mimeType string) *Artifact {
-	m.MimeType = mimeType
+	m.MimeType = &mimeType
 	return m
 }
 
 // WithOffset - add a Offset to the Artifact
 func (o *Artifact) WithOffset(offset int) *Artifact {
-	o.Offset = offset
+	o.Offset = &offset
 	return o
 }
 
@@ -135,6 +137,6 @@ func (r *Artifact) AddRole(role string) *Artifact {
 
 // WithSourceLanguage - add a SourceLanguage to the Artifact
 func (s *Artifact) WithSourceLanguage(sourceLanguage string) *Artifact {
-	s.SourceLanguage = sourceLanguage
+	s.SourceLanguage = &sourceLanguage
 	return s
 }

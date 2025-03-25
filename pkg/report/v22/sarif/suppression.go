@@ -6,10 +6,10 @@ type Suppression struct {
 	Guid *Guid `json:"guid,omitempty"`
 
 	// A string representing the justification for the suppression.
-	Justification string `json:"justification,omitempty"`
+	Justification *string `json:"justification,omitempty"`
 
 	// A string that indicates where the suppression is persisted.
-	Kind string `json:"kind,omitempty"`
+	Kind *string `json:"kind,omitempty"`
 
 	// Identifies the location associated with the suppression.
 	Location *Location `json:"location,omitempty"`
@@ -18,7 +18,7 @@ type Suppression struct {
 	Properties *PropertyBag `json:"properties,omitempty"`
 
 	// A string that indicates the review status of the suppression.
-	Status string `json:"status,omitempty"`
+	Status *string `json:"status,omitempty"`
 }
 
 // NewSuppression - creates a new
@@ -34,13 +34,13 @@ func (g *Suppression) WithGuid(guid *Guid) *Suppression {
 
 // WithJustification - add a Justification to the Suppression
 func (j *Suppression) WithJustification(justification string) *Suppression {
-	j.Justification = justification
+	j.Justification = &justification
 	return j
 }
 
 // WithKind - add a Kind to the Suppression
 func (k *Suppression) WithKind(kind string) *Suppression {
-	k.Kind = kind
+	k.Kind = &kind
 	return k
 }
 
@@ -58,6 +58,6 @@ func (p *Suppression) WithProperties(properties *PropertyBag) *Suppression {
 
 // WithStatus - add a Status to the Suppression
 func (s *Suppression) WithStatus(status string) *Suppression {
-	s.Status = status
+	s.Status = &status
 	return s
 }

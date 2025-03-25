@@ -12,7 +12,7 @@ type LocationRelationship struct {
 	Properties *PropertyBag `json:"properties,omitempty"`
 
 	// A reference to the related location.
-	Target int `json:"target,omitempty"`
+	Target *int `json:"target,omitempty"`
 }
 
 // NewLocationRelationship - creates a new
@@ -48,6 +48,6 @@ func (p *LocationRelationship) WithProperties(properties *PropertyBag) *Location
 
 // WithTarget - add a Target to the LocationRelationship
 func (t *LocationRelationship) WithTarget(target int) *LocationRelationship {
-	t.Target = target
+	t.Target = &target
 	return t
 }

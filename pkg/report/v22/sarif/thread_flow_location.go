@@ -9,7 +9,7 @@ type ThreadFlowLocation struct {
 	ExecutionOrder int `json:"executionOrder,omitempty"`
 
 	// The Coordinated Universal Time (UTC) date and time at which this location was executed.
-	ExecutionTimeUtc string `json:"executionTimeUtc,omitempty"`
+	ExecutionTimeUtc *string `json:"executionTimeUtc,omitempty"`
 
 	// Specifies the importance of this location in understanding the code flow in which it occurs. The order from most to least important is "essential", "important", "unimportant". Default: "important".
 	Importance string `json:"importance,omitempty"`
@@ -24,10 +24,10 @@ type ThreadFlowLocation struct {
 	Location *Location `json:"location,omitempty"`
 
 	// The name of the module that contains the code that is executing.
-	Module string `json:"module,omitempty"`
+	Module *string `json:"module,omitempty"`
 
 	// An integer representing a containment hierarchy within the thread flow.
-	NestingLevel int `json:"nestingLevel,omitempty"`
+	NestingLevel *int `json:"nestingLevel,omitempty"`
 
 	// Key/value pairs that provide additional information about the threadflow location.
 	Properties *PropertyBag `json:"properties,omitempty"`
@@ -48,8 +48,11 @@ type ThreadFlowLocation struct {
 // NewThreadFlowLocation - creates a new
 func NewThreadFlowLocation() *ThreadFlowLocation {
 	return &ThreadFlowLocation{
-		Kinds: make([]string, 0),
-		Taxa:  make([]*ReportingDescriptorReference, 0),
+		ExecutionOrder: -1,
+		Importance:     "important",
+		Index:          -1,
+		Kinds:          make([]string, 0),
+		Taxa:           make([]*ReportingDescriptorReference, 0),
 	}
 }
 
@@ -73,7 +76,7 @@ func (e *ThreadFlowLocation) WithExecutionOrder(executionOrder int) *ThreadFlowL
 
 // WithExecutionTimeUtc - add a ExecutionTimeUtc to the ThreadFlowLocation
 func (e *ThreadFlowLocation) WithExecutionTimeUtc(executionTimeUtc string) *ThreadFlowLocation {
-	e.ExecutionTimeUtc = executionTimeUtc
+	e.ExecutionTimeUtc = &executionTimeUtc
 	return e
 }
 
@@ -109,13 +112,13 @@ func (l *ThreadFlowLocation) WithLocation(location *Location) *ThreadFlowLocatio
 
 // WithModule - add a Module to the ThreadFlowLocation
 func (m *ThreadFlowLocation) WithModule(module string) *ThreadFlowLocation {
-	m.Module = module
+	m.Module = &module
 	return m
 }
 
 // WithNestingLevel - add a NestingLevel to the ThreadFlowLocation
 func (n *ThreadFlowLocation) WithNestingLevel(nestingLevel int) *ThreadFlowLocation {
-	n.NestingLevel = nestingLevel
+	n.NestingLevel = &nestingLevel
 	return n
 }
 

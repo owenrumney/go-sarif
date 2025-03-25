@@ -9,7 +9,7 @@ type ToolComponentReference struct {
 	Index int `json:"index,omitempty"`
 
 	// The 'name' property of the referenced toolComponent.
-	Name string `json:"name,omitempty"`
+	Name *string `json:"name,omitempty"`
 
 	// Key/value pairs that provide additional information about the toolComponentReference.
 	Properties *PropertyBag `json:"properties,omitempty"`
@@ -17,7 +17,9 @@ type ToolComponentReference struct {
 
 // NewToolComponentReference - creates a new
 func NewToolComponentReference() *ToolComponentReference {
-	return &ToolComponentReference{}
+	return &ToolComponentReference{
+		Index: -1,
+	}
 }
 
 // WithGuid - add a Guid to the ToolComponentReference
@@ -34,7 +36,7 @@ func (i *ToolComponentReference) WithIndex(index int) *ToolComponentReference {
 
 // WithName - add a Name to the ToolComponentReference
 func (n *ToolComponentReference) WithName(name string) *ToolComponentReference {
-	n.Name = name
+	n.Name = &name
 	return n
 }
 

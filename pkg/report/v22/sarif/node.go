@@ -6,7 +6,7 @@ type Node struct {
 	Children []*Node `json:"children,omitempty"`
 
 	// A string that uniquely identifies the node within its graph.
-	ID string `json:"id,omitempty"`
+	ID *string `json:"id,omitempty"`
 
 	// A short description of the node.
 	Label *Message `json:"label,omitempty"`
@@ -39,7 +39,7 @@ func (c *Node) AddChildren(children *Node) *Node {
 
 // WithID - add a ID to the Node
 func (i *Node) WithID(id string) *Node {
-	i.ID = id
+	i.ID = &id
 	return i
 }
 

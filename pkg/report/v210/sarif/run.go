@@ -15,19 +15,19 @@ type Run struct {
 	AutomationDetails *RunAutomationDetails `json:"automationDetails,omitempty"`
 
 	// The 'guid' property of a previous SARIF 'run' that comprises the baseline that was used to compute result 'baselineState' properties for the run.
-	BaselineGuID string `json:"baselineGuid,omitempty"`
+	BaselineGuID *string `json:"baselineGuid,omitempty"`
 
 	// Specifies the unit in which the tool measures columns.
-	ColumnKind string `json:"columnKind,omitempty"`
+	ColumnKind *string `json:"columnKind,omitempty"`
 
 	// A conversion object that describes how a converter transformed an analysis tool's native reporting format into the SARIF format.
 	Conversion *Conversion `json:"conversion,omitempty"`
 
 	// Specifies the default encoding for any artifact object that refers to a text file.
-	DefaultEncoding string `json:"defaultEncoding,omitempty"`
+	DefaultEncoding *string `json:"defaultEncoding,omitempty"`
 
 	// Specifies the default source language for any artifact object that refers to a text file that contains source code.
-	DefaultSourceLanguage string `json:"defaultSourceLanguage,omitempty"`
+	DefaultSourceLanguage *string `json:"defaultSourceLanguage,omitempty"`
 
 	// References to external property files that should be inlined with the content of a root log file.
 	ExternalPropertyFileReferences *ExternalPropertyFileReferences `json:"externalPropertyFileReferences,omitempty"`
@@ -94,6 +94,7 @@ func NewRun() *Run {
 		Artifacts:                make([]*Artifact, 0),
 		Graphs:                   make([]*Graph, 0),
 		Invocations:              make([]*Invocation, 0),
+		Language:                 "en-US",
 		LogicalLocations:         make([]*LogicalLocation, 0),
 		NewlineSequences:         []string{"\r\n", "\n"},
 		Policies:                 make([]*ToolComponent, 0),
@@ -153,13 +154,13 @@ func (a *Run) WithAutomationDetails(automationDetails *RunAutomationDetails) *Ru
 
 // WithBaselineGuID - add a BaselineGuID to the Run
 func (b *Run) WithBaselineGuID(baselineGuid string) *Run {
-	b.BaselineGuID = baselineGuid
+	b.BaselineGuID = &baselineGuid
 	return b
 }
 
 // WithColumnKind - add a ColumnKind to the Run
 func (c *Run) WithColumnKind(columnKind string) *Run {
-	c.ColumnKind = columnKind
+	c.ColumnKind = &columnKind
 	return c
 }
 
@@ -171,13 +172,13 @@ func (c *Run) WithConversion(conversion *Conversion) *Run {
 
 // WithDefaultEncoding - add a DefaultEncoding to the Run
 func (d *Run) WithDefaultEncoding(defaultEncoding string) *Run {
-	d.DefaultEncoding = defaultEncoding
+	d.DefaultEncoding = &defaultEncoding
 	return d
 }
 
 // WithDefaultSourceLanguage - add a DefaultSourceLanguage to the Run
 func (d *Run) WithDefaultSourceLanguage(defaultSourceLanguage string) *Run {
-	d.DefaultSourceLanguage = defaultSourceLanguage
+	d.DefaultSourceLanguage = &defaultSourceLanguage
 	return d
 }
 

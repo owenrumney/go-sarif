@@ -3,19 +3,19 @@ package sarif
 // TranslationMetadata - Provides additional metadata related to translation.
 type TranslationMetadata struct {
 	// The absolute URI from which the translation metadata can be downloaded.
-	DownloadURI string `json:"downloadURI,omitempty"`
+	DownloadURI *string `json:"downloadURI,omitempty"`
 
 	// A comprehensive description of the translation metadata.
 	FullDescription *MultiformatMessageString `json:"fullDescription,omitempty"`
 
 	// The full name associated with the translation metadata.
-	FullName string `json:"fullName,omitempty"`
+	FullName *string `json:"fullName,omitempty"`
 
 	// The absolute URI from which information related to the translation metadata can be downloaded.
-	InformationURI string `json:"informationURI,omitempty"`
+	InformationURI *string `json:"informationURI,omitempty"`
 
 	// The name associated with the translation metadata.
-	Name string `json:"name,omitempty"`
+	Name *string `json:"name,omitempty"`
 
 	// Key/value pairs that provide additional information about the translation metadata.
 	Properties *PropertyBag `json:"properties,omitempty"`
@@ -31,7 +31,7 @@ func NewTranslationMetadata() *TranslationMetadata {
 
 // WithDownloadURI - add a DownloadURI to the TranslationMetadata
 func (d *TranslationMetadata) WithDownloadURI(downloadURI string) *TranslationMetadata {
-	d.DownloadURI = downloadURI
+	d.DownloadURI = &downloadURI
 	return d
 }
 
@@ -43,19 +43,19 @@ func (f *TranslationMetadata) WithFullDescription(fullDescription *MultiformatMe
 
 // WithFullName - add a FullName to the TranslationMetadata
 func (f *TranslationMetadata) WithFullName(fullName string) *TranslationMetadata {
-	f.FullName = fullName
+	f.FullName = &fullName
 	return f
 }
 
 // WithInformationURI - add a InformationURI to the TranslationMetadata
 func (i *TranslationMetadata) WithInformationURI(informationURI string) *TranslationMetadata {
-	i.InformationURI = informationURI
+	i.InformationURI = &informationURI
 	return i
 }
 
 // WithName - add a Name to the TranslationMetadata
 func (n *TranslationMetadata) WithName(name string) *TranslationMetadata {
-	n.Name = name
+	n.Name = &name
 	return n
 }
 

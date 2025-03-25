@@ -60,7 +60,7 @@ func (r *Report) Validate() error {
 
 	if !result.Valid() {
 		for _, desc := range result.Errors() {
-			errors = append(errors, desc.String())
+			errors = append(errors, fmt.Sprintf("%s\n", desc.String()))
 		}
 		return fmt.Errorf("validation failed: %v", errors)
 	}
@@ -73,8 +73,8 @@ func NewRunWithInformationURI(toolName, informationURI string) *Run {
 	run := NewRun()
 	run.Tool = NewTool()
 	run.Tool.Driver = NewToolComponent()
-	run.Tool.Driver.Name = toolName
-	run.Tool.Driver.InformationURI = informationURI
+	run.Tool.Driver.Name = &toolName
+	run.Tool.Driver.InformationURI = &informationURI
 	return run
 }
 

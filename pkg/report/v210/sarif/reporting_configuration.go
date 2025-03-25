@@ -20,7 +20,11 @@ type ReportingConfiguration struct {
 
 // NewReportingConfiguration - creates a new
 func NewReportingConfiguration() *ReportingConfiguration {
-	return &ReportingConfiguration{}
+	return &ReportingConfiguration{
+		Enabled: true,
+		Level:   "warning",
+		Rank:    -1.000000,
+	}
 }
 
 // WithEnabled - add a Enabled to the ReportingConfiguration

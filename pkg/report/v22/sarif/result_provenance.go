@@ -6,19 +6,19 @@ type ResultProvenance struct {
 	ConversionSources []*PhysicalLocation `json:"conversionSources,omitempty"`
 
 	// A GUID-valued string equal to the automationDetails.guid property of the run in which the result was first detected.
-	FirstDetectionRunGuID string `json:"firstDetectionRunGuid,omitempty"`
+	FirstDetectionRunGuID *string `json:"firstDetectionRunGuid,omitempty"`
 
 	// The Coordinated Universal Time (UTC) date and time at which the result was first detected. See "Date/time properties" in the SARIF spec for the required format.
-	FirstDetectionTimeUtc string `json:"firstDetectionTimeUtc,omitempty"`
+	FirstDetectionTimeUtc *string `json:"firstDetectionTimeUtc,omitempty"`
 
 	// The index within the run.invocations array of the invocation object which describes the tool invocation that detected the result.
 	InvocationIndex int `json:"invocationIndex,omitempty"`
 
 	// A GUID-valued string equal to the automationDetails.guid property of the run in which the result was most recently detected.
-	LastDetectionRunGuID string `json:"lastDetectionRunGuid,omitempty"`
+	LastDetectionRunGuID *string `json:"lastDetectionRunGuid,omitempty"`
 
 	// The Coordinated Universal Time (UTC) date and time at which the result was most recently detected. See "Date/time properties" in the SARIF spec for the required format.
-	LastDetectionTimeUtc string `json:"lastDetectionTimeUtc,omitempty"`
+	LastDetectionTimeUtc *string `json:"lastDetectionTimeUtc,omitempty"`
 
 	// Key/value pairs that provide additional information about the result.
 	Properties *PropertyBag `json:"properties,omitempty"`
@@ -28,6 +28,7 @@ type ResultProvenance struct {
 func NewResultProvenance() *ResultProvenance {
 	return &ResultProvenance{
 		ConversionSources: make([]*PhysicalLocation, 0),
+		InvocationIndex:   -1,
 	}
 }
 
@@ -45,13 +46,13 @@ func (c *ResultProvenance) AddConversionSource(conversionSource *PhysicalLocatio
 
 // WithFirstDetectionRunGuID - add a FirstDetectionRunGuID to the ResultProvenance
 func (f *ResultProvenance) WithFirstDetectionRunGuID(firstDetectionRunGuid string) *ResultProvenance {
-	f.FirstDetectionRunGuID = firstDetectionRunGuid
+	f.FirstDetectionRunGuID = &firstDetectionRunGuid
 	return f
 }
 
 // WithFirstDetectionTimeUtc - add a FirstDetectionTimeUtc to the ResultProvenance
 func (f *ResultProvenance) WithFirstDetectionTimeUtc(firstDetectionTimeUtc string) *ResultProvenance {
-	f.FirstDetectionTimeUtc = firstDetectionTimeUtc
+	f.FirstDetectionTimeUtc = &firstDetectionTimeUtc
 	return f
 }
 
@@ -63,13 +64,13 @@ func (i *ResultProvenance) WithInvocationIndex(invocationIndex int) *ResultProve
 
 // WithLastDetectionRunGuID - add a LastDetectionRunGuID to the ResultProvenance
 func (l *ResultProvenance) WithLastDetectionRunGuID(lastDetectionRunGuid string) *ResultProvenance {
-	l.LastDetectionRunGuID = lastDetectionRunGuid
+	l.LastDetectionRunGuID = &lastDetectionRunGuid
 	return l
 }
 
 // WithLastDetectionTimeUtc - add a LastDetectionTimeUtc to the ResultProvenance
 func (l *ResultProvenance) WithLastDetectionTimeUtc(lastDetectionTimeUtc string) *ResultProvenance {
-	l.LastDetectionTimeUtc = lastDetectionTimeUtc
+	l.LastDetectionTimeUtc = &lastDetectionTimeUtc
 	return l
 }
 

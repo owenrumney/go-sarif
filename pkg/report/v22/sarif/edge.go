@@ -3,7 +3,7 @@ package sarif
 // Edge - Represents a directed edge in a graph.
 type Edge struct {
 	// A string that uniquely identifies the edge within its graph.
-	ID string `json:"id,omitempty"`
+	ID *string `json:"id,omitempty"`
 
 	// A short description of the edge.
 	Label *Message `json:"label,omitempty"`
@@ -12,10 +12,10 @@ type Edge struct {
 	Properties *PropertyBag `json:"properties,omitempty"`
 
 	// Identifies the source node (the node at which the edge starts).
-	SourceNodeID string `json:"sourceNodeId,omitempty"`
+	SourceNodeID *string `json:"sourceNodeId,omitempty"`
 
 	// Identifies the target node (the node at which the edge ends).
-	TargetNodeID string `json:"targetNodeId,omitempty"`
+	TargetNodeID *string `json:"targetNodeId,omitempty"`
 }
 
 // NewEdge - creates a new
@@ -25,7 +25,7 @@ func NewEdge() *Edge {
 
 // WithID - add a ID to the Edge
 func (i *Edge) WithID(id string) *Edge {
-	i.ID = id
+	i.ID = &id
 	return i
 }
 
@@ -43,12 +43,12 @@ func (p *Edge) WithProperties(properties *PropertyBag) *Edge {
 
 // WithSourceNodeID - add a SourceNodeID to the Edge
 func (s *Edge) WithSourceNodeID(sourceNodeId string) *Edge {
-	s.SourceNodeID = sourceNodeId
+	s.SourceNodeID = &sourceNodeId
 	return s
 }
 
 // WithTargetNodeID - add a TargetNodeID to the Edge
 func (t *Edge) WithTargetNodeID(targetNodeId string) *Edge {
-	t.TargetNodeID = targetNodeId
+	t.TargetNodeID = &targetNodeId
 	return t
 }

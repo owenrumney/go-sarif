@@ -17,7 +17,9 @@ type ExternalPropertyFileReference struct {
 
 // NewExternalPropertyFileReference - creates a new
 func NewExternalPropertyFileReference() *ExternalPropertyFileReference {
-	return &ExternalPropertyFileReference{}
+	return &ExternalPropertyFileReference{
+		ItemCount: -1,
+	}
 }
 
 // WithGuid - add a Guid to the ExternalPropertyFileReference

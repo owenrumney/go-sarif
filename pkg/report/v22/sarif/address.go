@@ -6,22 +6,22 @@ type Address struct {
 	AbsoluteAddress int `json:"absoluteAddress,omitempty"`
 
 	// A human-readable fully qualified name that is associated with the address.
-	FullyQualifiedName string `json:"fullyQualifiedName,omitempty"`
+	FullyQualifiedName *string `json:"fullyQualifiedName,omitempty"`
 
 	// The index within run.addresses of the cached object for this address.
 	Index int `json:"index,omitempty"`
 
 	// An open-ended string that identifies the address kind. 'data', 'function', 'header','instruction', 'module', 'page', 'section', 'segment', 'stack', 'stackFrame', 'table' are well-known values.
-	Kind string `json:"kind,omitempty"`
+	Kind *string `json:"kind,omitempty"`
 
 	// The number of bytes in this range of addresses.
-	Length int `json:"length,omitempty"`
+	Length *int `json:"length,omitempty"`
 
 	// A name that is associated with the address, e.g., '.text'.
-	Name string `json:"name,omitempty"`
+	Name *string `json:"name,omitempty"`
 
 	// The byte offset of this address from the absolute or relative address of the parent object.
-	OffsetFromParent int `json:"offsetFromParent,omitempty"`
+	OffsetFromParent *int `json:"offsetFromParent,omitempty"`
 
 	// The index within run.addresses of the parent object.
 	ParentIndex int `json:"parentIndex,omitempty"`
@@ -30,12 +30,16 @@ type Address struct {
 	Properties *PropertyBag `json:"properties,omitempty"`
 
 	// The address expressed as a byte offset from the absolute address of the top-most parent object.
-	RelativeAddress int `json:"relativeAddress,omitempty"`
+	RelativeAddress *int `json:"relativeAddress,omitempty"`
 }
 
 // NewAddress - creates a new
 func NewAddress() *Address {
-	return &Address{}
+	return &Address{
+		AbsoluteAddress: -1,
+		Index:           -1,
+		ParentIndex:     -1,
+	}
 }
 
 // WithAbsoluteAddress - add a AbsoluteAddress to the Address
@@ -46,7 +50,7 @@ func (a *Address) WithAbsoluteAddress(absoluteAddress int) *Address {
 
 // WithFullyQualifiedName - add a FullyQualifiedName to the Address
 func (f *Address) WithFullyQualifiedName(fullyQualifiedName string) *Address {
-	f.FullyQualifiedName = fullyQualifiedName
+	f.FullyQualifiedName = &fullyQualifiedName
 	return f
 }
 
@@ -58,25 +62,25 @@ func (i *Address) WithIndex(index int) *Address {
 
 // WithKind - add a Kind to the Address
 func (k *Address) WithKind(kind string) *Address {
-	k.Kind = kind
+	k.Kind = &kind
 	return k
 }
 
 // WithLength - add a Length to the Address
 func (l *Address) WithLength(length int) *Address {
-	l.Length = length
+	l.Length = &length
 	return l
 }
 
 // WithName - add a Name to the Address
 func (n *Address) WithName(name string) *Address {
-	n.Name = name
+	n.Name = &name
 	return n
 }
 
 // WithOffsetFromParent - add a OffsetFromParent to the Address
 func (o *Address) WithOffsetFromParent(offsetFromParent int) *Address {
-	o.OffsetFromParent = offsetFromParent
+	o.OffsetFromParent = &offsetFromParent
 	return o
 }
 
@@ -94,6 +98,6 @@ func (p *Address) WithProperties(properties *PropertyBag) *Address {
 
 // WithRelativeAddress - add a RelativeAddress to the Address
 func (r *Address) WithRelativeAddress(relativeAddress int) *Address {
-	r.RelativeAddress = relativeAddress
+	r.RelativeAddress = &relativeAddress
 	return r
 }

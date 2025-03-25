@@ -1,9 +1,11 @@
 package sarif
 
+import "github.com/owenrumney/go-sarif/v3/pkg/report/utils"
+
 // AddRule returns an existing ReportingDescriptor for the ruleID or creates a new ReportingDescriptor and returns a pointer to it
 func (run *Run) AddRule(ruleID string) *ReportingDescriptor {
 	for _, rule := range run.Tool.Driver.Rules {
-		if rule.ID == ruleID {
+		if *rule.ID == ruleID {
 			return rule
 		}
 	}
@@ -15,12 +17,12 @@ func (run *Run) AddRule(ruleID string) *ReportingDescriptor {
 // AddDistinctArtifact will handle deduplication of simple artifact additions
 func (run *Run) AddDistinctArtifact(uri string) *Artifact {
 	for _, artifact := range run.Artifacts {
-		if artifact.Location.URI == uri {
+		if *artifact.Location.URI == uri {
 			return artifact
 		}
 	}
 
-	a := NewArtifact().WithLength(-1)
+	a := NewArtifact().WithLength(utils.DefaultLengthInt)
 	a.WithLocation(NewSimpleArtifactLocation(uri))
 
 	run.Artifacts = append(run.Artifacts, a)

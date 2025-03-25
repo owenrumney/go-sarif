@@ -3,7 +3,7 @@ package sarif
 // ExternalPropertyFileReference - Contains information that enables a SARIF consumer to locate the external property file that contains the value of an externalized property associated with the run.
 type ExternalPropertyFileReference struct {
 	// A stable, unique identifier for the external property file in the form of a GUID.
-	GuID string `json:"guid,omitempty"`
+	GuID *string `json:"guid,omitempty"`
 
 	// A non-negative integer specifying the number of items contained in the external property file.
 	ItemCount int `json:"itemCount,omitempty"`
@@ -17,12 +17,14 @@ type ExternalPropertyFileReference struct {
 
 // NewExternalPropertyFileReference - creates a new
 func NewExternalPropertyFileReference() *ExternalPropertyFileReference {
-	return &ExternalPropertyFileReference{}
+	return &ExternalPropertyFileReference{
+		ItemCount: -1,
+	}
 }
 
 // WithGuID - add a GuID to the ExternalPropertyFileReference
 func (g *ExternalPropertyFileReference) WithGuID(guid string) *ExternalPropertyFileReference {
-	g.GuID = guid
+	g.GuID = &guid
 	return g
 }
 

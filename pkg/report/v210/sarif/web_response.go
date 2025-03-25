@@ -12,27 +12,30 @@ type WebResponse struct {
 	Index int `json:"index,omitempty"`
 
 	// Specifies whether a response was received from the server.
-	NoResponseReceived int `json:"noResponseReceived,omitempty"`
+	NoResponseReceived bool `json:"noResponseReceived,omitempty"`
 
 	// Key/value pairs that provide additional information about the response.
 	Properties *PropertyBag `json:"properties,omitempty"`
 
 	// The response protocol. Example: 'http'.
-	Protocol string `json:"protocol,omitempty"`
+	Protocol *string `json:"protocol,omitempty"`
 
 	// The response reason. Example: 'Not found'.
-	ReasonPhrase string `json:"reasonPhrase,omitempty"`
+	ReasonPhrase *string `json:"reasonPhrase,omitempty"`
 
 	// The response status code. Example: 451.
-	StatusCode int `json:"statusCode,omitempty"`
+	StatusCode *int `json:"statusCode,omitempty"`
 
 	// The response version. Example: '1.1'.
-	Version string `json:"version,omitempty"`
+	Version *string `json:"version,omitempty"`
 }
 
 // NewWebResponse - creates a new
 func NewWebResponse() *WebResponse {
-	return &WebResponse{}
+	return &WebResponse{
+		Index:              -1,
+		NoResponseReceived: false,
+	}
 }
 
 // AddHeader - add a single Header to the WebResponse
@@ -60,7 +63,7 @@ func (i *WebResponse) WithIndex(index int) *WebResponse {
 }
 
 // WithNoResponseReceived - add a NoResponseReceived to the WebResponse
-func (n *WebResponse) WithNoResponseReceived(noResponseReceived int) *WebResponse {
+func (n *WebResponse) WithNoResponseReceived(noResponseReceived bool) *WebResponse {
 	n.NoResponseReceived = noResponseReceived
 	return n
 }
@@ -73,24 +76,24 @@ func (p *WebResponse) WithProperties(properties *PropertyBag) *WebResponse {
 
 // WithProtocol - add a Protocol to the WebResponse
 func (p *WebResponse) WithProtocol(protocol string) *WebResponse {
-	p.Protocol = protocol
+	p.Protocol = &protocol
 	return p
 }
 
 // WithReasonPhrase - add a ReasonPhrase to the WebResponse
 func (r *WebResponse) WithReasonPhrase(reasonPhrase string) *WebResponse {
-	r.ReasonPhrase = reasonPhrase
+	r.ReasonPhrase = &reasonPhrase
 	return r
 }
 
 // WithStatusCode - add a StatusCode to the WebResponse
 func (s *WebResponse) WithStatusCode(statusCode int) *WebResponse {
-	s.StatusCode = statusCode
+	s.StatusCode = &statusCode
 	return s
 }
 
 // WithVersion - add a Version to the WebResponse
 func (v *WebResponse) WithVersion(version string) *WebResponse {
-	v.Version = version
+	v.Version = &version
 	return v
 }

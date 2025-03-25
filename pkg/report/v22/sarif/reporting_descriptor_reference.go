@@ -6,7 +6,7 @@ type ReportingDescriptorReference struct {
 	Guid *Guid `json:"guid,omitempty"`
 
 	// The id of the descriptor.
-	ID string `json:"id,omitempty"`
+	ID *string `json:"id,omitempty"`
 
 	// The index into an array of descriptors in toolComponent.ruleDescriptors, toolComponent.notificationDescriptors, or toolComponent.taxonomyDescriptors, depending on context.
 	Index int `json:"index,omitempty"`
@@ -20,7 +20,9 @@ type ReportingDescriptorReference struct {
 
 // NewReportingDescriptorReference - creates a new
 func NewReportingDescriptorReference() *ReportingDescriptorReference {
-	return &ReportingDescriptorReference{}
+	return &ReportingDescriptorReference{
+		Index: -1,
+	}
 }
 
 // WithGuid - add a Guid to the ReportingDescriptorReference
@@ -31,7 +33,7 @@ func (g *ReportingDescriptorReference) WithGuid(guid *Guid) *ReportingDescriptor
 
 // WithID - add a ID to the ReportingDescriptorReference
 func (i *ReportingDescriptorReference) WithID(id string) *ReportingDescriptorReference {
-	i.ID = id
+	i.ID = &id
 	return i
 }
 

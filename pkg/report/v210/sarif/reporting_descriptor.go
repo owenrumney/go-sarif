@@ -21,19 +21,19 @@ type ReportingDescriptor struct {
 	FullDescription *MultiformatMessageString `json:"fullDescription,omitempty"`
 
 	// A unique identifier for the reporting descriptor in the form of a GUID.
-	GuID string `json:"guid,omitempty"`
+	GuID *string `json:"guid,omitempty"`
 
 	// Provides the primary documentation for the report, useful when there is no online documentation.
 	Help *MultiformatMessageString `json:"help,omitempty"`
 
 	// A URI where the primary documentation for the report can be found.
-	HelpURI string `json:"helpURI,omitempty"`
+	HelpURI *string `json:"helpURI,omitempty"`
 
 	// A stable, opaque identifier for the report.
-	ID string `json:"id,omitempty"`
+	ID *string `json:"id,omitempty"`
 
 	// A report identifier that is understandable to an end user.
-	Name string `json:"name,omitempty"`
+	Name *string `json:"name,omitempty"`
 
 	// Key/value pairs that provide additional information about the report.
 	Properties *PropertyBag `json:"properties,omitempty"`
@@ -117,7 +117,7 @@ func (f *ReportingDescriptor) WithFullDescription(fullDescription *MultiformatMe
 
 // WithGuID - add a GuID to the ReportingDescriptor
 func (g *ReportingDescriptor) WithGuID(guid string) *ReportingDescriptor {
-	g.GuID = guid
+	g.GuID = &guid
 	return g
 }
 
@@ -129,19 +129,19 @@ func (h *ReportingDescriptor) WithHelp(help *MultiformatMessageString) *Reportin
 
 // WithHelpURI - add a HelpURI to the ReportingDescriptor
 func (h *ReportingDescriptor) WithHelpURI(helpURI string) *ReportingDescriptor {
-	h.HelpURI = helpURI
+	h.HelpURI = &helpURI
 	return h
 }
 
 // WithID - add a ID to the ReportingDescriptor
 func (i *ReportingDescriptor) WithID(id string) *ReportingDescriptor {
-	i.ID = id
+	i.ID = &id
 	return i
 }
 
 // WithName - add a Name to the ReportingDescriptor
 func (n *ReportingDescriptor) WithName(name string) *ReportingDescriptor {
-	n.Name = name
+	n.Name = &name
 	return n
 }
 

@@ -12,15 +12,17 @@ type ArtifactLocation struct {
 	Properties *PropertyBag `json:"properties,omitempty"`
 
 	// A string containing a valid relative or absolute URI.
-	URI string `json:"uri,omitempty"`
+	URI *string `json:"uri,omitempty"`
 
 	// A string which indirectly specifies the absolute URI with respect to which a relative URI in the "uri" property is interpreted.
-	URIBaseID string `json:"uriBaseId,omitempty"`
+	URIBaseID *string `json:"uriBaseId,omitempty"`
 }
 
 // NewArtifactLocation - creates a new
 func NewArtifactLocation() *ArtifactLocation {
-	return &ArtifactLocation{}
+	return &ArtifactLocation{
+		Index: -1,
+	}
 }
 
 // WithDescription - add a Description to the ArtifactLocation
@@ -43,12 +45,12 @@ func (p *ArtifactLocation) WithProperties(properties *PropertyBag) *ArtifactLoca
 
 // WithURI - add a URI to the ArtifactLocation
 func (u *ArtifactLocation) WithURI(uri string) *ArtifactLocation {
-	u.URI = uri
+	u.URI = &uri
 	return u
 }
 
 // WithURIBaseID - add a URIBaseID to the ArtifactLocation
 func (u *ArtifactLocation) WithURIBaseID(uriBaseId string) *ArtifactLocation {
-	u.URIBaseID = uriBaseId
+	u.URIBaseID = &uriBaseId
 	return u
 }

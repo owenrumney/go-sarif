@@ -2,11 +2,11 @@ package sarif
 
 // Result - A result produced by an analysis tool.
 type Result struct {
-	// A set of strings each of which individually defines a stable, unique identity for the result.
-	Fingerprints map[string]string `json:"fingerprints,omitempty"`
-
 	// A set of strings that contribute to the stable, unique identity of the result.
 	PartialFingerprints map[string]string `json:"partialFingerprints,omitempty"`
+
+	// A set of strings each of which individually defines a stable, unique identity for the result.
+	Fingerprints map[string]string `json:"fingerprints,omitempty"`
 
 	// Identifies the artifact that the analysis tool was instructed to scan. This need not be the same as the artifact where the result actually occurred.
 	AnalysisTarget *ArtifactLocation `json:"analysisTarget,omitempty"`
@@ -15,13 +15,13 @@ type Result struct {
 	Attachments []*Attachment `json:"attachments,omitempty"`
 
 	// The state of a result relative to a baseline of a previous run.
-	BaselineState string `json:"baselineState,omitempty"`
+	BaselineState *string `json:"baselineState,omitempty"`
 
 	// An array of 'codeFlow' objects relevant to the result.
 	CodeFlows []*CodeFlow `json:"codeFlows,omitempty"`
 
 	// A stable, unique identifier for the equivalence class of logically identical results to which this result belongs, in the form of a GUID.
-	CorrelationGuID string `json:"correlationGuid,omitempty"`
+	CorrelationGuID *string `json:"correlationGuid,omitempty"`
 
 	// An array of 'fix' objects, each of which represents a proposed fix to the problem indicated by the result.
 	Fixes []*Fix `json:"fixes,omitempty"`
@@ -33,10 +33,10 @@ type Result struct {
 	Graphs []*Graph `json:"graphs,omitempty"`
 
 	// A stable, unique identifier for the result in the form of a GUID.
-	GuID string `json:"guid,omitempty"`
+	GuID *string `json:"guid,omitempty"`
 
 	// An absolute URI at which the result can be viewed.
-	HostedViewerURI string `json:"hostedViewerURI,omitempty"`
+	HostedViewerURI *string `json:"hostedViewerURI,omitempty"`
 
 	// A value that categorizes results by evaluation state.
 	Kind string `json:"kind,omitempty"`
@@ -51,7 +51,7 @@ type Result struct {
 	Message *Message `json:"message,omitempty"`
 
 	// A positive integer specifying the number of times this logically unique result was observed in this run.
-	OccurrenceCount int `json:"occurrenceCount,omitempty"`
+	OccurrenceCount *int `json:"occurrenceCount,omitempty"`
 
 	// Key/value pairs that provide additional information about the result.
 	Properties *PropertyBag `json:"properties,omitempty"`
@@ -69,7 +69,7 @@ type Result struct {
 	Rule *ReportingDescriptorReference `json:"rule,omitempty"`
 
 	// The stable, unique identifier of the rule, if any, to which this result is relevant.
-	RuleID string `json:"ruleId,omitempty"`
+	RuleID *string `json:"ruleId,omitempty"`
 
 	// The index within the tool component rules array of the rule object associated with this result.
 	RuleIndex int `json:"ruleIndex,omitempty"`
@@ -101,25 +101,17 @@ func NewResult() *Result {
 		Fixes:            make([]*Fix, 0),
 		GraphTraversals:  make([]*GraphTraversal, 0),
 		Graphs:           make([]*Graph, 0),
+		Kind:             "fail",
+		Level:            "warning",
 		Locations:        make([]*Location, 0),
+		Rank:             -1.000000,
 		RelatedLocations: make([]*Location, 0),
+		RuleIndex:        -1,
 		Stacks:           make([]*Stack, 0),
 		Suppressions:     make([]*Suppression, 0),
 		Taxa:             make([]*ReportingDescriptorReference, 0),
 		WorkItemURIs:     make([]string, 0),
 	}
-}
-
-// AddFingerprint - add a single Fingerprint to the Result
-func (f *Result) AddFingerprint(key, fingerprint string) *Result {
-	f.Fingerprints[key] = fingerprint
-	return f
-}
-
-// WithFingerprints - add a Fingerprints to the Result
-func (f *Result) WithFingerprints(fingerprints map[string]string) *Result {
-	f.Fingerprints = fingerprints
-	return f
 }
 
 // AddPartialFingerprint - add a single PartialFingerprint to the Result
@@ -132,6 +124,18 @@ func (p *Result) AddPartialFingerprint(key, partialFingerprint string) *Result {
 func (p *Result) WithPartialFingerprints(partialFingerprints map[string]string) *Result {
 	p.PartialFingerprints = partialFingerprints
 	return p
+}
+
+// AddFingerprint - add a single Fingerprint to the Result
+func (f *Result) AddFingerprint(key, fingerprint string) *Result {
+	f.Fingerprints[key] = fingerprint
+	return f
+}
+
+// WithFingerprints - add a Fingerprints to the Result
+func (f *Result) WithFingerprints(fingerprints map[string]string) *Result {
+	f.Fingerprints = fingerprints
+	return f
 }
 
 // WithAnalysisTarget - add a AnalysisTarget to the Result
@@ -154,7 +158,7 @@ func (a *Result) AddAttachment(attachment *Attachment) *Result {
 
 // WithBaselineState - add a BaselineState to the Result
 func (b *Result) WithBaselineState(baselineState string) *Result {
-	b.BaselineState = baselineState
+	b.BaselineState = &baselineState
 	return b
 }
 
@@ -172,7 +176,7 @@ func (c *Result) AddCodeFlow(codeFlow *CodeFlow) *Result {
 
 // WithCorrelationGuID - add a CorrelationGuID to the Result
 func (c *Result) WithCorrelationGuID(correlationGuid string) *Result {
-	c.CorrelationGuID = correlationGuid
+	c.CorrelationGuID = &correlationGuid
 	return c
 }
 
@@ -214,13 +218,13 @@ func (g *Result) AddGraph(graph *Graph) *Result {
 
 // WithGuID - add a GuID to the Result
 func (g *Result) WithGuID(guid string) *Result {
-	g.GuID = guid
+	g.GuID = &guid
 	return g
 }
 
 // WithHostedViewerURI - add a HostedViewerURI to the Result
 func (h *Result) WithHostedViewerURI(hostedViewerURI string) *Result {
-	h.HostedViewerURI = hostedViewerURI
+	h.HostedViewerURI = &hostedViewerURI
 	return h
 }
 
@@ -256,7 +260,7 @@ func (m *Result) WithMessage(message *Message) *Result {
 
 // WithOccurrenceCount - add a OccurrenceCount to the Result
 func (o *Result) WithOccurrenceCount(occurrenceCount int) *Result {
-	o.OccurrenceCount = occurrenceCount
+	o.OccurrenceCount = &occurrenceCount
 	return o
 }
 
@@ -298,7 +302,7 @@ func (r *Result) WithRule(rule *ReportingDescriptorReference) *Result {
 
 // WithRuleID - add a RuleID to the Result
 func (r *Result) WithRuleID(ruleId string) *Result {
-	r.RuleID = ruleId
+	r.RuleID = &ruleId
 	return r
 }
 

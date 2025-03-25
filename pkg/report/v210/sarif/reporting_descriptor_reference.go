@@ -3,10 +3,10 @@ package sarif
 // ReportingDescriptorReference - Information about how to locate a relevant reporting descriptor.
 type ReportingDescriptorReference struct {
 	// A guid that uniquely identifies the descriptor.
-	GuID string `json:"guid,omitempty"`
+	GuID *string `json:"guid,omitempty"`
 
 	// The id of the descriptor.
-	ID string `json:"id,omitempty"`
+	ID *string `json:"id,omitempty"`
 
 	// The index into an array of descriptors in toolComponent.ruleDescriptors, toolComponent.notificationDescriptors, or toolComponent.taxonomyDescriptors, depending on context.
 	Index int `json:"index,omitempty"`
@@ -20,18 +20,20 @@ type ReportingDescriptorReference struct {
 
 // NewReportingDescriptorReference - creates a new
 func NewReportingDescriptorReference() *ReportingDescriptorReference {
-	return &ReportingDescriptorReference{}
+	return &ReportingDescriptorReference{
+		Index: -1,
+	}
 }
 
 // WithGuID - add a GuID to the ReportingDescriptorReference
 func (g *ReportingDescriptorReference) WithGuID(guid string) *ReportingDescriptorReference {
-	g.GuID = guid
+	g.GuID = &guid
 	return g
 }
 
 // WithID - add a ID to the ReportingDescriptorReference
 func (i *ReportingDescriptorReference) WithID(id string) *ReportingDescriptorReference {
-	i.ID = id
+	i.ID = &id
 	return i
 }
 
