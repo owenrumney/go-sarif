@@ -21,10 +21,10 @@ type Invocation struct {
 	ExecutableLocation *ArtifactLocation `json:"executableLocation,omitempty"`
 
 	// Specifies whether the tool's execution completed successfully.
-	ExecutionSuccessful int `json:"executionSuccessful,omitempty"`
+	ExecutionSuccessful *bool `json:"executionSuccessful,omitempty"`
 
 	// The process exit code.
-	ExitCode int `json:"exitCode,omitempty"`
+	ExitCode *int `json:"exitCode,omitempty"`
 
 	// The reason for the process exit.
 	ExitCodeDescription string `json:"exitCodeDescription,omitempty"`
@@ -142,14 +142,14 @@ func (e *Invocation) WithExecutableLocation(executableLocation *ArtifactLocation
 }
 
 // WithExecutionSuccessful - add a ExecutionSuccessful to the Invocation
-func (e *Invocation) WithExecutionSuccessful(executionSuccessful int) *Invocation {
-	e.ExecutionSuccessful = executionSuccessful
+func (e *Invocation) WithExecutionSuccessful(executionSuccessful bool) *Invocation {
+	e.ExecutionSuccessful = &executionSuccessful
 	return e
 }
 
 // WithExitCode - add a ExitCode to the Invocation
 func (e *Invocation) WithExitCode(exitCode int) *Invocation {
-	e.ExitCode = exitCode
+	e.ExitCode = &exitCode
 	return e
 }
 
