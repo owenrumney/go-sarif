@@ -3,7 +3,7 @@ package sarif
 // ArtifactContent - Represents the contents of an artifact.
 type ArtifactContent struct {
 	// MIME Base64-encoded content from a binary artifact, or from a text artifact in its original encoding.
-	Binary string `json:"binary,omitempty"`
+	Binary *string `json:"binary,omitempty"`
 
 	// Key/value pairs that provide additional information about the artifact content.
 	Properties *PropertyBag `json:"properties,omitempty"`
@@ -12,7 +12,7 @@ type ArtifactContent struct {
 	Rendered *MultiformatMessageString `json:"rendered,omitempty"`
 
 	// UTF-8-encoded content from a text artifact.
-	Text string `json:"text,omitempty"`
+	Text *string `json:"text,omitempty"`
 }
 
 // NewArtifactContent - creates a new
@@ -22,7 +22,7 @@ func NewArtifactContent() *ArtifactContent {
 
 // WithBinary - add a Binary to the ArtifactContent
 func (b *ArtifactContent) WithBinary(binary string) *ArtifactContent {
-	b.Binary = binary
+	b.Binary = &binary
 	return b
 }
 
@@ -40,6 +40,6 @@ func (r *ArtifactContent) WithRendered(rendered *MultiformatMessageString) *Arti
 
 // WithText - add a Text to the ArtifactContent
 func (t *ArtifactContent) WithText(text string) *ArtifactContent {
-	t.Text = text
+	t.Text = &text
 	return t
 }

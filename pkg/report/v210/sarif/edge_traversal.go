@@ -6,7 +6,7 @@ type EdgeTraversal struct {
 	FinalState map[string]MultiformatMessageString `json:"finalState,omitempty"`
 
 	// Identifies the edge being traversed.
-	EdgeID string `json:"edgeId,omitempty"`
+	EdgeID *string `json:"edgeId,omitempty"`
 
 	// A message to display to the user as the edge is traversed.
 	Message *Message `json:"message,omitempty"`
@@ -15,7 +15,7 @@ type EdgeTraversal struct {
 	Properties *PropertyBag `json:"properties,omitempty"`
 
 	// The number of edge traversals necessary to return from a nested graph.
-	StepOverEdgeCount int `json:"stepOverEdgeCount,omitempty"`
+	StepOverEdgeCount *int `json:"stepOverEdgeCount,omitempty"`
 }
 
 // NewEdgeTraversal - creates a new
@@ -37,7 +37,7 @@ func (f *EdgeTraversal) WithFinalState(finalState map[string]MultiformatMessageS
 
 // WithEdgeID - add a EdgeID to the EdgeTraversal
 func (e *EdgeTraversal) WithEdgeID(edgeId string) *EdgeTraversal {
-	e.EdgeID = edgeId
+	e.EdgeID = &edgeId
 	return e
 }
 
@@ -55,6 +55,6 @@ func (p *EdgeTraversal) WithProperties(properties *PropertyBag) *EdgeTraversal {
 
 // WithStepOverEdgeCount - add a StepOverEdgeCount to the EdgeTraversal
 func (s *EdgeTraversal) WithStepOverEdgeCount(stepOverEdgeCount int) *EdgeTraversal {
-	s.StepOverEdgeCount = stepOverEdgeCount
+	s.StepOverEdgeCount = &stepOverEdgeCount
 	return s
 }

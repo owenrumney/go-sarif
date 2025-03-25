@@ -13,7 +13,7 @@ func Test_new_simple_report_with_single_run(t *testing.T) {
 
 	given.a_new_report().
 		with_a_run_added("tfsec", "https://tfsec.dev")
-	then.report_text_is(`{"$schema":"https://raw.githubusercontent.com/oasis-tcs/sarif-spec/main/sarif-2.2/schema/sarif-2-2.schema.json","version":"2.2","runs":[{"newlineSequences":["\r\n","\n"],"tool":{"driver":{"informationURI":"https://tfsec.dev","contents":["localizedData","nonLocalizedData"],"name":"tfsec"}}}],"guid":"516d8cc4-18b1-463e-9e0e-417473149927","properties":{}}`)
+	then.report_text_is("new_simple_report_with_single_run.json")
 }
 
 func Test_new_report_with_empty_run(t *testing.T) {
@@ -21,7 +21,7 @@ func Test_new_report_with_empty_run(t *testing.T) {
 
 	given.a_new_report().
 		with_a_run_with_empty_result_added("tfsec", "https://tfsec.dev")
-	then.report_text_is(`{"$schema":"https://raw.githubusercontent.com/oasis-tcs/sarif-spec/main/sarif-2.2/schema/sarif-2-2.schema.json","version":"2.2","runs":[{"newlineSequences":["\r\n","\n"],"tool":{"driver":{"informationURI":"https://tfsec.dev","contents":["localizedData","nonLocalizedData"],"name":"tfsec"}}}],"guid":"516d8cc4-18b1-463e-9e0e-417473149927","properties":{}}`)
+	then.report_text_is("new_report_with_empty_run.json")
 }
 
 func Test_new_simple_report_with_artifact(t *testing.T) {
@@ -30,7 +30,7 @@ func Test_new_simple_report_with_artifact(t *testing.T) {
 	run := given.a_new_report().
 		with_a_run_added("tfsec", "https://tfsec.dev")
 	when.an_artifact_is_added_to_the_run(run, "file://broken.go")
-	then.report_text_is(`{"$schema":"https://raw.githubusercontent.com/oasis-tcs/sarif-spec/main/sarif-2.2/schema/sarif-2-2.schema.json","version":"2.2","runs":[{"newlineSequences":["\r\n","\n"],"tool":{"driver":{"informationURI":"https://tfsec.dev","contents":["localizedData","nonLocalizedData"],"name":"tfsec"}},"artifacts":[{"location":{"uri":"file://broken.go"}}]}],"guid":"516d8cc4-18b1-463e-9e0e-417473149927","properties":{}}`)
+	then.report_text_is("new_simple_report_with_artifact.json")
 }
 
 func Test_new_simple_report_with_propertybag(t *testing.T) {
@@ -39,7 +39,7 @@ func Test_new_simple_report_with_propertybag(t *testing.T) {
 	run := given.a_new_report().
 		with_a_run_added("tfsec", "https://tfsec.dev")
 	when.some_properties_are_added_to_the_run(run)
-	then.report_text_is(`{"$schema":"https://raw.githubusercontent.com/oasis-tcs/sarif-spec/main/sarif-2.2/schema/sarif-2-2.schema.json","version":"2.2","runs":[{"newlineSequences":["\r\n","\n"],"tool":{"driver":{"informationURI":"https://tfsec.dev","contents":["localizedData","nonLocalizedData"],"name":"tfsec"}},"properties":{"properties":{"integer_property":10,"string_property":"this is a string"}}}],"guid":"516d8cc4-18b1-463e-9e0e-417473149927","properties":{}}`)
+	then.report_text_is("new_simple_report_with_propertybag.json")
 }
 
 func Test_new_simple_report_with_duplicate_artifact(t *testing.T) {
@@ -50,7 +50,7 @@ func Test_new_simple_report_with_duplicate_artifact(t *testing.T) {
 	when.an_artifact_is_added_to_the_run(run, "file://broken.go").
 		and().
 		an_artifact_is_added_to_the_run(run, "file://broken.go")
-	then.report_text_is(`{"$schema":"https://raw.githubusercontent.com/oasis-tcs/sarif-spec/main/sarif-2.2/schema/sarif-2-2.schema.json","version":"2.2","runs":[{"newlineSequences":["\r\n","\n"],"tool":{"driver":{"informationURI":"https://tfsec.dev","contents":["localizedData","nonLocalizedData"],"name":"tfsec"}},"artifacts":[{"location":{"uri":"file://broken.go"}},{"location":{"uri":"file://broken.go"}}]}],"guid":"516d8cc4-18b1-463e-9e0e-417473149927","properties":{}}`)
+	then.report_text_is("new_simple_report_with_duplicate_artifact.json")
 }
 
 func Test_load_sarif_from_string(t *testing.T) {

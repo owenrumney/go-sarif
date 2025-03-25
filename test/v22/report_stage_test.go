@@ -2,6 +2,8 @@ package test
 
 import (
 	"bytes"
+	"os"
+	"path/filepath"
 	"testing"
 
 	"github.com/owenrumney/go-sarif/v3/pkg/report"
@@ -60,13 +62,21 @@ func (r *reportTest) some_properties_are_added_to_the_run(run *sarif.Run) *repor
 	return r
 }
 
-func (r *reportTest) report_text_is(expected string) {
+func (r *reportTest) report_text_is(testFile string) {
 	buffer := bytes.NewBufferString("")
 	r.report.Guid = "516d8cc4-18b1-463e-9e0e-417473149927"
 	err := r.report.Write(buffer)
 	require.NoError(r.t, err)
 
-	assert.JSONEq(r.t, expected, buffer.String())
+	got := buffer.String()
+
+	testFile = filepath.Join("testdata", testFile)
+	// os.WriteFile(testFile, []byte(got), 0644)
+
+	expected, err := os.ReadFile(testFile)
+	require.NoError(r.t, err)
+
+	assert.JSONEq(r.t, string(expected), got)
 }
 
 func (r *reportTest) a_report_is_loaded_from_a_string(content string) {
@@ -77,8 +87,8 @@ func (r *reportTest) a_report_is_loaded_from_a_string(content string) {
 }
 
 func (r *reportTest) the_report_has_expected_driver_name_and_information_uri(driverName, informationURI string) {
-	assert.Equal(r.t, driverName, r.report.Runs[0].Tool.Driver.Name)
-	assert.Equal(r.t, informationURI, r.report.Runs[0].Tool.Driver.InformationURI)
+	assert.Equal(r.t, driverName, *r.report.Runs[0].Tool.Driver.Name)
+	assert.Equal(r.t, informationURI, *r.report.Runs[0].Tool.Driver.InformationURI)
 }
 
 func (r *reportTest) a_report_is_loaded_from_a_file(filename string) {

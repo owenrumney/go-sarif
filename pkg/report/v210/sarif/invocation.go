@@ -6,46 +6,46 @@ type Invocation struct {
 	EnvironmentVariables map[string]string `json:"environmentVariables,omitempty"`
 
 	// The account under which the invocation occurred.
-	Account string `json:"account,omitempty"`
+	Account *string `json:"account,omitempty"`
 
 	// An array of strings, containing in order the command line arguments passed to the tool from the operating system.
 	Arguments []string `json:"arguments,omitempty"`
 
 	// The command line used to invoke the tool.
-	CommandLine string `json:"commandLine,omitempty"`
+	CommandLine *string `json:"commandLine,omitempty"`
 
 	// The Coordinated Universal Time (UTC) date and time at which the invocation ended. See "Date/time properties" in the SARIF spec for the required format.
-	EndTimeUtc string `json:"endTimeUtc,omitempty"`
+	EndTimeUtc *string `json:"endTimeUtc,omitempty"`
 
 	// An absolute URI specifying the location of the executable that was invoked.
 	ExecutableLocation *ArtifactLocation `json:"executableLocation,omitempty"`
 
 	// Specifies whether the tool's execution completed successfully.
-	ExecutionSuccessful int `json:"executionSuccessful,omitempty"`
+	ExecutionSuccessful *bool `json:"executionSuccessful,omitempty"`
 
 	// The process exit code.
-	ExitCode int `json:"exitCode,omitempty"`
+	ExitCode *int `json:"exitCode,omitempty"`
 
 	// The reason for the process exit.
-	ExitCodeDescription string `json:"exitCodeDescription,omitempty"`
+	ExitCodeDescription *string `json:"exitCodeDescription,omitempty"`
 
 	// The name of the signal that caused the process to exit.
-	ExitSignalName string `json:"exitSignalName,omitempty"`
+	ExitSignalName *string `json:"exitSignalName,omitempty"`
 
 	// The numeric value of the signal that caused the process to exit.
-	ExitSignalNumber int `json:"exitSignalNumber,omitempty"`
+	ExitSignalNumber *int `json:"exitSignalNumber,omitempty"`
 
 	// The machine on which the invocation occurred.
-	Machine string `json:"machine,omitempty"`
+	Machine *string `json:"machine,omitempty"`
 
 	// An array of configurationOverride objects that describe notifications related runtime overrides.
 	NotificationConfigurationOverrides []*ConfigurationOverride `json:"notificationConfigurationOverrides,omitempty"`
 
 	// The id of the process in which the invocation occurred.
-	ProcessID int `json:"processId,omitempty"`
+	ProcessID *int `json:"processId,omitempty"`
 
 	// The reason given by the operating system that the process failed to start.
-	ProcessStartFailureMessage string `json:"processStartFailureMessage,omitempty"`
+	ProcessStartFailureMessage *string `json:"processStartFailureMessage,omitempty"`
 
 	// Key/value pairs that provide additional information about the invocation.
 	Properties *PropertyBag `json:"properties,omitempty"`
@@ -57,7 +57,7 @@ type Invocation struct {
 	RuleConfigurationOverrides []*ConfigurationOverride `json:"ruleConfigurationOverrides,omitempty"`
 
 	// The Coordinated Universal Time (UTC) date and time at which the invocation started. See "Date/time properties" in the SARIF spec for the required format.
-	StartTimeUtc string `json:"startTimeUtc,omitempty"`
+	StartTimeUtc *string `json:"startTimeUtc,omitempty"`
 
 	// A file containing the standard error stream from the process that was invoked.
 	Stderr *ArtifactLocation `json:"stderr,omitempty"`
@@ -107,7 +107,7 @@ func (e *Invocation) WithEnvironmentVariables(environmentVariables map[string]st
 
 // WithAccount - add a Account to the Invocation
 func (a *Invocation) WithAccount(account string) *Invocation {
-	a.Account = account
+	a.Account = &account
 	return a
 }
 
@@ -125,13 +125,13 @@ func (a *Invocation) AddArgument(argument string) *Invocation {
 
 // WithCommandLine - add a CommandLine to the Invocation
 func (c *Invocation) WithCommandLine(commandLine string) *Invocation {
-	c.CommandLine = commandLine
+	c.CommandLine = &commandLine
 	return c
 }
 
 // WithEndTimeUtc - add a EndTimeUtc to the Invocation
 func (e *Invocation) WithEndTimeUtc(endTimeUtc string) *Invocation {
-	e.EndTimeUtc = endTimeUtc
+	e.EndTimeUtc = &endTimeUtc
 	return e
 }
 
@@ -142,38 +142,38 @@ func (e *Invocation) WithExecutableLocation(executableLocation *ArtifactLocation
 }
 
 // WithExecutionSuccessful - add a ExecutionSuccessful to the Invocation
-func (e *Invocation) WithExecutionSuccessful(executionSuccessful int) *Invocation {
-	e.ExecutionSuccessful = executionSuccessful
+func (e *Invocation) WithExecutionSuccessful(executionSuccessful bool) *Invocation {
+	e.ExecutionSuccessful = &executionSuccessful
 	return e
 }
 
 // WithExitCode - add a ExitCode to the Invocation
 func (e *Invocation) WithExitCode(exitCode int) *Invocation {
-	e.ExitCode = exitCode
+	e.ExitCode = &exitCode
 	return e
 }
 
 // WithExitCodeDescription - add a ExitCodeDescription to the Invocation
 func (e *Invocation) WithExitCodeDescription(exitCodeDescription string) *Invocation {
-	e.ExitCodeDescription = exitCodeDescription
+	e.ExitCodeDescription = &exitCodeDescription
 	return e
 }
 
 // WithExitSignalName - add a ExitSignalName to the Invocation
 func (e *Invocation) WithExitSignalName(exitSignalName string) *Invocation {
-	e.ExitSignalName = exitSignalName
+	e.ExitSignalName = &exitSignalName
 	return e
 }
 
 // WithExitSignalNumber - add a ExitSignalNumber to the Invocation
 func (e *Invocation) WithExitSignalNumber(exitSignalNumber int) *Invocation {
-	e.ExitSignalNumber = exitSignalNumber
+	e.ExitSignalNumber = &exitSignalNumber
 	return e
 }
 
 // WithMachine - add a Machine to the Invocation
 func (m *Invocation) WithMachine(machine string) *Invocation {
-	m.Machine = machine
+	m.Machine = &machine
 	return m
 }
 
@@ -191,13 +191,13 @@ func (n *Invocation) AddNotificationConfigurationOverride(notificationConfigurat
 
 // WithProcessID - add a ProcessID to the Invocation
 func (p *Invocation) WithProcessID(processId int) *Invocation {
-	p.ProcessID = processId
+	p.ProcessID = &processId
 	return p
 }
 
 // WithProcessStartFailureMessage - add a ProcessStartFailureMessage to the Invocation
 func (p *Invocation) WithProcessStartFailureMessage(processStartFailureMessage string) *Invocation {
-	p.ProcessStartFailureMessage = processStartFailureMessage
+	p.ProcessStartFailureMessage = &processStartFailureMessage
 	return p
 }
 
@@ -233,7 +233,7 @@ func (r *Invocation) AddRuleConfigurationOverride(ruleConfigurationOverride *Con
 
 // WithStartTimeUtc - add a StartTimeUtc to the Invocation
 func (s *Invocation) WithStartTimeUtc(startTimeUtc string) *Invocation {
-	s.StartTimeUtc = startTimeUtc
+	s.StartTimeUtc = &startTimeUtc
 	return s
 }
 

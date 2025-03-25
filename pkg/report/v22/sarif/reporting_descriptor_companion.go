@@ -18,7 +18,7 @@ func (rule *ReportingDescriptor) WithMarkdownHelp(markdown string) *ReportingDes
 	if rule.Help == nil {
 		rule.Help = NewMultiformatMessageString()
 	}
-	rule.Help.Text = markdown
-	rule.Help.Markdown = markdown
+	rule.Help.Text = &markdown
+	rule.Help.Markdown = &markdown
 	return rule
 }

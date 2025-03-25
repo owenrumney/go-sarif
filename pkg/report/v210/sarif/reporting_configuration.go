@@ -3,7 +3,7 @@ package sarif
 // ReportingConfiguration - Information about a rule or notification that can be configured at runtime.
 type ReportingConfiguration struct {
 	// Specifies whether the report may be produced during the scan.
-	Enabled int `json:"enabled,omitempty"`
+	Enabled bool `json:"enabled,omitempty"`
 
 	// Specifies the failure level for the report.
 	Level string `json:"level,omitempty"`
@@ -20,11 +20,15 @@ type ReportingConfiguration struct {
 
 // NewReportingConfiguration - creates a new
 func NewReportingConfiguration() *ReportingConfiguration {
-	return &ReportingConfiguration{}
+	return &ReportingConfiguration{
+		Enabled: true,
+		Level:   "warning",
+		Rank:    -1.000000,
+	}
 }
 
 // WithEnabled - add a Enabled to the ReportingConfiguration
-func (e *ReportingConfiguration) WithEnabled(enabled int) *ReportingConfiguration {
+func (e *ReportingConfiguration) WithEnabled(enabled bool) *ReportingConfiguration {
 	e.Enabled = enabled
 	return e
 }

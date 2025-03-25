@@ -3,16 +3,16 @@ package sarif
 // RunAutomationDetails - Information that describes a run's identity and role within an engineering system process.
 type RunAutomationDetails struct {
 	// A stable, unique identifier for the equivalence class of runs to which this object's containing run object belongs in the form of a GUID.
-	CorrelationGuID string `json:"correlationGuid,omitempty"`
+	CorrelationGuID *string `json:"correlationGuid,omitempty"`
 
 	// A description of the identity and role played within the engineering system by this object's containing run object.
 	Description *Message `json:"description,omitempty"`
 
 	// A stable, unique identifier for this object's containing run object in the form of a GUID.
-	GuID string `json:"guid,omitempty"`
+	GuID *string `json:"guid,omitempty"`
 
 	// A hierarchical string that uniquely identifies this object's containing run object.
-	ID string `json:"id,omitempty"`
+	ID *string `json:"id,omitempty"`
 
 	// Key/value pairs that provide additional information about the run automation details.
 	Properties *PropertyBag `json:"properties,omitempty"`
@@ -25,7 +25,7 @@ func NewRunAutomationDetails() *RunAutomationDetails {
 
 // WithCorrelationGuID - add a CorrelationGuID to the RunAutomationDetails
 func (c *RunAutomationDetails) WithCorrelationGuID(correlationGuid string) *RunAutomationDetails {
-	c.CorrelationGuID = correlationGuid
+	c.CorrelationGuID = &correlationGuid
 	return c
 }
 
@@ -37,13 +37,13 @@ func (d *RunAutomationDetails) WithDescription(description *Message) *RunAutomat
 
 // WithGuID - add a GuID to the RunAutomationDetails
 func (g *RunAutomationDetails) WithGuID(guid string) *RunAutomationDetails {
-	g.GuID = guid
+	g.GuID = &guid
 	return g
 }
 
 // WithID - add a ID to the RunAutomationDetails
 func (i *RunAutomationDetails) WithID(id string) *RunAutomationDetails {
-	i.ID = id
+	i.ID = &id
 	return i
 }
 

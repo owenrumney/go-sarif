@@ -9,7 +9,7 @@ type ThreadFlow struct {
 	ImmutableState map[string]MultiformatMessageString `json:"immutableState,omitempty"`
 
 	// An string that uniquely identifies the threadFlow within the codeFlow in which it occurs.
-	ID string `json:"id,omitempty"`
+	ID *string `json:"id,omitempty"`
 
 	// A temporally ordered array of 'threadFlowLocation' objects, each of which describes a location visited by the tool while producing the result.
 	Locations []*ThreadFlowLocation `json:"locations,omitempty"`
@@ -54,7 +54,7 @@ func (i *ThreadFlow) WithImmutableState(immutableState map[string]MultiformatMes
 
 // WithID - add a ID to the ThreadFlow
 func (i *ThreadFlow) WithID(id string) *ThreadFlow {
-	i.ID = id
+	i.ID = &id
 	return i
 }
 

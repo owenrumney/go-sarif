@@ -6,10 +6,10 @@ type Exception struct {
 	InnerExceptions []*Exception `json:"innerExceptions,omitempty"`
 
 	// A string that identifies the kind of exception, for example, the fully qualified type name of an object that was thrown, or the symbolic name of a signal.
-	Kind string `json:"kind,omitempty"`
+	Kind *string `json:"kind,omitempty"`
 
 	// A message that describes the exception.
-	Message string `json:"message,omitempty"`
+	Message *string `json:"message,omitempty"`
 
 	// Key/value pairs that provide additional information about the exception.
 	Properties *PropertyBag `json:"properties,omitempty"`
@@ -39,13 +39,13 @@ func (i *Exception) AddInnerException(innerException *Exception) *Exception {
 
 // WithKind - add a Kind to the Exception
 func (k *Exception) WithKind(kind string) *Exception {
-	k.Kind = kind
+	k.Kind = &kind
 	return k
 }
 
 // WithMessage - add a Message to the Exception
 func (m *Exception) WithMessage(message string) *Exception {
-	m.Message = message
+	m.Message = &message
 	return m
 }
 

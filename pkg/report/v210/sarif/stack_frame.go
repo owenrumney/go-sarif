@@ -6,7 +6,7 @@ type StackFrame struct {
 	Location *Location `json:"location,omitempty"`
 
 	// The name of the module that contains the code of this stack frame.
-	Module string `json:"module,omitempty"`
+	Module *string `json:"module,omitempty"`
 
 	// The parameters of the call that is executing.
 	Parameters []string `json:"parameters,omitempty"`
@@ -15,7 +15,7 @@ type StackFrame struct {
 	Properties *PropertyBag `json:"properties,omitempty"`
 
 	// The thread identifier of the stack frame.
-	ThreadID int `json:"threadId,omitempty"`
+	ThreadID *int `json:"threadId,omitempty"`
 }
 
 // NewStackFrame - creates a new
@@ -33,7 +33,7 @@ func (l *StackFrame) WithLocation(location *Location) *StackFrame {
 
 // WithModule - add a Module to the StackFrame
 func (m *StackFrame) WithModule(module string) *StackFrame {
-	m.Module = module
+	m.Module = &module
 	return m
 }
 
@@ -57,6 +57,6 @@ func (p *StackFrame) WithProperties(properties *PropertyBag) *StackFrame {
 
 // WithThreadID - add a ThreadID to the StackFrame
 func (t *StackFrame) WithThreadID(threadId int) *StackFrame {
-	t.ThreadID = threadId
+	t.ThreadID = &threadId
 	return t
 }

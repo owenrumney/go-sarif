@@ -27,15 +27,16 @@ type Notification struct {
 	RelatedLocations []*Location `json:"relatedLocations,omitempty"`
 
 	// The thread identifier of the code that generated the notification.
-	ThreadID int `json:"threadId,omitempty"`
+	ThreadID *int `json:"threadId,omitempty"`
 
 	// The Coordinated Universal Time (UTC) date and time at which the analysis tool generated the notification.
-	TimeUtc string `json:"timeUtc,omitempty"`
+	TimeUtc *string `json:"timeUtc,omitempty"`
 }
 
 // NewNotification - creates a new
 func NewNotification() *Notification {
 	return &Notification{
+		Level:            "warning",
 		Locations:        make([]*Location, 0),
 		RelatedLocations: make([]*Location, 0),
 	}
@@ -103,12 +104,12 @@ func (r *Notification) AddRelatedLocation(relatedLocation *Location) *Notificati
 
 // WithThreadID - add a ThreadID to the Notification
 func (t *Notification) WithThreadID(threadId int) *Notification {
-	t.ThreadID = threadId
+	t.ThreadID = &threadId
 	return t
 }
 
 // WithTimeUtc - add a TimeUtc to the Notification
 func (t *Notification) WithTimeUtc(timeUtc string) *Notification {
-	t.TimeUtc = timeUtc
+	t.TimeUtc = &timeUtc
 	return t
 }

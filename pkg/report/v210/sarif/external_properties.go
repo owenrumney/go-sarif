@@ -24,7 +24,7 @@ type ExternalProperties struct {
 	Graphs []*Graph `json:"graphs,omitempty"`
 
 	// A stable, unique identifier for this external properties object, in the form of a GUID.
-	GuID string `json:"guid,omitempty"`
+	GuID *string `json:"guid,omitempty"`
 
 	// Describes the invocation of the analysis tool that will be merged with a separate run.
 	Invocations []*Invocation `json:"invocations,omitempty"`
@@ -42,10 +42,10 @@ type ExternalProperties struct {
 	Results []*Result `json:"results,omitempty"`
 
 	// A stable, unique identifier for the run associated with this external properties object, in the form of a GUID.
-	RunGuID string `json:"runGuid,omitempty"`
+	RunGuID *string `json:"runGuid,omitempty"`
 
 	// The URI of the JSON schema corresponding to the version of the external property file format.
-	Schema string `json:"schema,omitempty"`
+	Schema *string `json:"schema,omitempty"`
 
 	// Tool taxonomies that will be merged with a separate run.
 	Taxonomies []*ToolComponent `json:"taxonomies,omitempty"`
@@ -57,7 +57,7 @@ type ExternalProperties struct {
 	Translations []*ToolComponent `json:"translations,omitempty"`
 
 	// The SARIF format version of this external properties object.
-	Version string `json:"version,omitempty"`
+	Version *string `json:"version,omitempty"`
 
 	// Requests that will be merged with a separate run.
 	WebRequests []*WebRequest `json:"webRequests,omitempty"`
@@ -153,7 +153,7 @@ func (g *ExternalProperties) AddGraph(graph *Graph) *ExternalProperties {
 
 // WithGuID - add a GuID to the ExternalProperties
 func (g *ExternalProperties) WithGuID(guid string) *ExternalProperties {
-	g.GuID = guid
+	g.GuID = &guid
 	return g
 }
 
@@ -213,13 +213,13 @@ func (r *ExternalProperties) AddResult(result *Result) *ExternalProperties {
 
 // WithRunGuID - add a RunGuID to the ExternalProperties
 func (r *ExternalProperties) WithRunGuID(runGuid string) *ExternalProperties {
-	r.RunGuID = runGuid
+	r.RunGuID = &runGuid
 	return r
 }
 
 // WithSchema - add a Schema to the ExternalProperties
 func (s *ExternalProperties) WithSchema(schema string) *ExternalProperties {
-	s.Schema = schema
+	s.Schema = &schema
 	return s
 }
 
@@ -261,7 +261,7 @@ func (t *ExternalProperties) AddTranslation(translation *ToolComponent) *Externa
 
 // WithVersion - add a Version to the ExternalProperties
 func (v *ExternalProperties) WithVersion(version string) *ExternalProperties {
-	v.Version = version
+	v.Version = &version
 	return v
 }
 

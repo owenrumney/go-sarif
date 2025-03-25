@@ -6,16 +6,16 @@ type Message struct {
 	Arguments []string `json:"arguments,omitempty"`
 
 	// The identifier for this message.
-	ID string `json:"id,omitempty"`
+	ID *string `json:"id,omitempty"`
 
 	// A Markdown message string.
-	Markdown string `json:"markdown,omitempty"`
+	Markdown *string `json:"markdown,omitempty"`
 
 	// Key/value pairs that provide additional information about the message.
 	Properties *PropertyBag `json:"properties,omitempty"`
 
 	// A plain text message string.
-	Text string `json:"text,omitempty"`
+	Text *string `json:"text,omitempty"`
 }
 
 // NewMessage - creates a new
@@ -39,13 +39,13 @@ func (a *Message) AddArgument(argument string) *Message {
 
 // WithID - add a ID to the Message
 func (i *Message) WithID(id string) *Message {
-	i.ID = id
+	i.ID = &id
 	return i
 }
 
 // WithMarkdown - add a Markdown to the Message
 func (m *Message) WithMarkdown(markdown string) *Message {
-	m.Markdown = markdown
+	m.Markdown = &markdown
 	return m
 }
 
@@ -57,6 +57,6 @@ func (p *Message) WithProperties(properties *PropertyBag) *Message {
 
 // WithText - add a Text to the Message
 func (t *Message) WithText(text string) *Message {
-	t.Text = text
+	t.Text = &text
 	return t
 }

@@ -12,64 +12,64 @@ type ToolComponent struct {
 	Contents []string `json:"contents,omitempty"`
 
 	// The binary version of the tool component's primary executable file expressed as four non-negative integers separated by a period (for operating systems that express file versions in this way).
-	DottedQuadFileVersion string `json:"dottedQuadFileVersion,omitempty"`
+	DottedQuadFileVersion *string `json:"dottedQuadFileVersion,omitempty"`
 
 	// The absolute URI from which the tool component can be downloaded.
-	DownloadURI string `json:"downloadURI,omitempty"`
+	DownloadURI *string `json:"downloadURI,omitempty"`
 
 	// A comprehensive description of the tool component.
 	FullDescription *MultiformatMessageString `json:"fullDescription,omitempty"`
 
 	// The name of the tool component along with its version and any other useful identifying information, such as its locale.
-	FullName string `json:"fullName,omitempty"`
+	FullName *string `json:"fullName,omitempty"`
 
 	// A unique identifier for the tool component in the form of a GUID.
 	Guid *Guid `json:"guid,omitempty"`
 
 	// The absolute URI at which information about this version of the tool component can be found.
-	InformationURI string `json:"informationURI,omitempty"`
+	InformationURI *string `json:"informationURI,omitempty"`
 
 	// Specifies whether this object contains a complete definition of the localizable and/or non-localizable data for this component, as opposed to including only data that is relevant to the results persisted to this log file.
-	IsComprehensive int `json:"isComprehensive,omitempty"`
+	IsComprehensive bool `json:"isComprehensive,omitempty"`
 
 	// The language of the messages emitted into the log file during this run (expressed as an ISO 639-1 two-letter lowercase language code) and an optional region (expressed as an ISO 3166-1 two-letter uppercase subculture code associated with a country or region). The casing is recommended but not required (in order for this data to conform to RFC5646).
 	Language *Language `json:"language,omitempty"`
 
 	// The semantic version of the localized strings defined in this component; maintained by components that provide translations.
-	LocalizedDataSemanticVersion string `json:"localizedDataSemanticVersion,omitempty"`
+	LocalizedDataSemanticVersion *string `json:"localizedDataSemanticVersion,omitempty"`
 
 	// An array of the artifactLocation objects associated with the tool component.
 	Locations []*ArtifactLocation `json:"locations,omitempty"`
 
 	// The minimum value of localizedDataSemanticVersion required in translations consumed by this component; used by components that consume translations.
-	MinimumRequiredLocalizedDataSemanticVersion string `json:"minimumRequiredLocalizedDataSemanticVersion,omitempty"`
+	MinimumRequiredLocalizedDataSemanticVersion *string `json:"minimumRequiredLocalizedDataSemanticVersion,omitempty"`
 
 	// The name of the tool component.
-	Name string `json:"name,omitempty"`
+	Name *string `json:"name,omitempty"`
 
 	// An array of reportingDescriptor objects relevant to the notifications related to the configuration and runtime execution of the tool component.
 	Notifications []*ReportingDescriptor `json:"notifications,omitempty"`
 
 	// The organization or company that produced the tool component.
-	Organization string `json:"organization,omitempty"`
+	Organization *string `json:"organization,omitempty"`
 
 	// A product suite to which the tool component belongs.
-	Product string `json:"product,omitempty"`
+	Product *string `json:"product,omitempty"`
 
 	// A localizable string containing the name of the suite of products to which the tool component belongs.
-	ProductSuite string `json:"productSuite,omitempty"`
+	ProductSuite *string `json:"productSuite,omitempty"`
 
 	// Key/value pairs that provide additional information about the tool component.
 	Properties *PropertyBag `json:"properties,omitempty"`
 
 	// A string specifying the UTC date (and optionally, the time) of the component's release.
-	ReleaseDateUtc string `json:"releaseDateUtc,omitempty"`
+	ReleaseDateUtc *string `json:"releaseDateUtc,omitempty"`
 
 	// An array of reportingDescriptor objects relevant to the analysis performed by the tool component.
 	Rules []*ReportingDescriptor `json:"rules,omitempty"`
 
 	// The tool component version in the format specified by Semantic Versioning 2.0.
-	SemanticVersion string `json:"semanticVersion,omitempty"`
+	SemanticVersion *string `json:"semanticVersion,omitempty"`
 
 	// A brief description of the tool component.
 	ShortDescription *MultiformatMessageString `json:"shortDescription,omitempty"`
@@ -84,13 +84,14 @@ type ToolComponent struct {
 	TranslationMetadata *TranslationMetadata `json:"translationMetadata,omitempty"`
 
 	// The tool component version, in whatever format the component natively provides.
-	Version string `json:"version,omitempty"`
+	Version *string `json:"version,omitempty"`
 }
 
 // NewToolComponent - creates a new
 func NewToolComponent() *ToolComponent {
 	return &ToolComponent{
 		Contents:            []string{"localizedData", "nonLocalizedData"},
+		IsComprehensive:     false,
 		Locations:           make([]*ArtifactLocation, 0),
 		Notifications:       make([]*ReportingDescriptor, 0),
 		Rules:               make([]*ReportingDescriptor, 0),
@@ -131,13 +132,13 @@ func (c *ToolComponent) AddContent(content string) *ToolComponent {
 
 // WithDottedQuadFileVersion - add a DottedQuadFileVersion to the ToolComponent
 func (d *ToolComponent) WithDottedQuadFileVersion(dottedQuadFileVersion string) *ToolComponent {
-	d.DottedQuadFileVersion = dottedQuadFileVersion
+	d.DottedQuadFileVersion = &dottedQuadFileVersion
 	return d
 }
 
 // WithDownloadURI - add a DownloadURI to the ToolComponent
 func (d *ToolComponent) WithDownloadURI(downloadURI string) *ToolComponent {
-	d.DownloadURI = downloadURI
+	d.DownloadURI = &downloadURI
 	return d
 }
 
@@ -149,7 +150,7 @@ func (f *ToolComponent) WithFullDescription(fullDescription *MultiformatMessageS
 
 // WithFullName - add a FullName to the ToolComponent
 func (f *ToolComponent) WithFullName(fullName string) *ToolComponent {
-	f.FullName = fullName
+	f.FullName = &fullName
 	return f
 }
 
@@ -161,12 +162,12 @@ func (g *ToolComponent) WithGuid(guid *Guid) *ToolComponent {
 
 // WithInformationURI - add a InformationURI to the ToolComponent
 func (i *ToolComponent) WithInformationURI(informationURI string) *ToolComponent {
-	i.InformationURI = informationURI
+	i.InformationURI = &informationURI
 	return i
 }
 
 // WithIsComprehensive - add a IsComprehensive to the ToolComponent
-func (i *ToolComponent) WithIsComprehensive(isComprehensive int) *ToolComponent {
+func (i *ToolComponent) WithIsComprehensive(isComprehensive bool) *ToolComponent {
 	i.IsComprehensive = isComprehensive
 	return i
 }
@@ -179,7 +180,7 @@ func (l *ToolComponent) WithLanguage(language *Language) *ToolComponent {
 
 // WithLocalizedDataSemanticVersion - add a LocalizedDataSemanticVersion to the ToolComponent
 func (l *ToolComponent) WithLocalizedDataSemanticVersion(localizedDataSemanticVersion string) *ToolComponent {
-	l.LocalizedDataSemanticVersion = localizedDataSemanticVersion
+	l.LocalizedDataSemanticVersion = &localizedDataSemanticVersion
 	return l
 }
 
@@ -197,13 +198,13 @@ func (l *ToolComponent) AddLocation(location *ArtifactLocation) *ToolComponent {
 
 // WithMinimumRequiredLocalizedDataSemanticVersion - add a MinimumRequiredLocalizedDataSemanticVersion to the ToolComponent
 func (m *ToolComponent) WithMinimumRequiredLocalizedDataSemanticVersion(minimumRequiredLocalizedDataSemanticVersion string) *ToolComponent {
-	m.MinimumRequiredLocalizedDataSemanticVersion = minimumRequiredLocalizedDataSemanticVersion
+	m.MinimumRequiredLocalizedDataSemanticVersion = &minimumRequiredLocalizedDataSemanticVersion
 	return m
 }
 
 // WithName - add a Name to the ToolComponent
 func (n *ToolComponent) WithName(name string) *ToolComponent {
-	n.Name = name
+	n.Name = &name
 	return n
 }
 
@@ -221,19 +222,19 @@ func (n *ToolComponent) AddNotification(notification *ReportingDescriptor) *Tool
 
 // WithOrganization - add a Organization to the ToolComponent
 func (o *ToolComponent) WithOrganization(organization string) *ToolComponent {
-	o.Organization = organization
+	o.Organization = &organization
 	return o
 }
 
 // WithProduct - add a Product to the ToolComponent
 func (p *ToolComponent) WithProduct(product string) *ToolComponent {
-	p.Product = product
+	p.Product = &product
 	return p
 }
 
 // WithProductSuite - add a ProductSuite to the ToolComponent
 func (p *ToolComponent) WithProductSuite(productSuite string) *ToolComponent {
-	p.ProductSuite = productSuite
+	p.ProductSuite = &productSuite
 	return p
 }
 
@@ -245,7 +246,7 @@ func (p *ToolComponent) WithProperties(properties *PropertyBag) *ToolComponent {
 
 // WithReleaseDateUtc - add a ReleaseDateUtc to the ToolComponent
 func (r *ToolComponent) WithReleaseDateUtc(releaseDateUtc string) *ToolComponent {
-	r.ReleaseDateUtc = releaseDateUtc
+	r.ReleaseDateUtc = &releaseDateUtc
 	return r
 }
 
@@ -263,7 +264,7 @@ func (r *ToolComponent) AddRule(rule *ReportingDescriptor) *ToolComponent {
 
 // WithSemanticVersion - add a SemanticVersion to the ToolComponent
 func (s *ToolComponent) WithSemanticVersion(semanticVersion string) *ToolComponent {
-	s.SemanticVersion = semanticVersion
+	s.SemanticVersion = &semanticVersion
 	return s
 }
 
@@ -305,6 +306,6 @@ func (t *ToolComponent) WithTranslationMetadata(translationMetadata *Translation
 
 // WithVersion - add a Version to the ToolComponent
 func (v *ToolComponent) WithVersion(version string) *ToolComponent {
-	v.Version = version
+	v.Version = &version
 	return v
 }
