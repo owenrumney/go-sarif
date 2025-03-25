@@ -30,7 +30,7 @@ type ToolComponent struct {
 	InformationURI string `json:"informationURI,omitempty"`
 
 	// Specifies whether this object contains a complete definition of the localizable and/or non-localizable data for this component, as opposed to including only data that is relevant to the results persisted to this log file.
-	IsComprehensive int `json:"isComprehensive,omitempty"`
+	IsComprehensive bool `json:"isComprehensive,omitempty"`
 
 	// The language of the messages emitted into the log file during this run (expressed as an ISO 639-1 two-letter lowercase language code) and an optional region (expressed as an ISO 3166-1 two-letter uppercase subculture code associated with a country or region). The casing is recommended but not required (in order for this data to conform to RFC5646).
 	Language *Language `json:"language,omitempty"`
@@ -166,7 +166,7 @@ func (i *ToolComponent) WithInformationURI(informationURI string) *ToolComponent
 }
 
 // WithIsComprehensive - add a IsComprehensive to the ToolComponent
-func (i *ToolComponent) WithIsComprehensive(isComprehensive int) *ToolComponent {
+func (i *ToolComponent) WithIsComprehensive(isComprehensive bool) *ToolComponent {
 	i.IsComprehensive = isComprehensive
 	return i
 }
