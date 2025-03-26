@@ -29,7 +29,7 @@ type ExternalProperties struct {
 	// Describes the invocation of the analysis tool that will be merged with a separate run.
 	Invocations []*Invocation `json:"invocations,omitempty"`
 
-	// An array of logical locations such as namespaces, types or Functions that will be merged with a separate run.
+	// An array of logical locations such as namespaces, types or functions that will be merged with a separate run.
 	LogicalLocations []*LogicalLocation `json:"logicalLocations,omitempty"`
 
 	// Tool policies that will be merged with a separate run.

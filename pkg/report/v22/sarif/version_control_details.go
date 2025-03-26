@@ -54,8 +54,8 @@ func (p *VersionControlDetails) WithProperties(properties *PropertyBag) *Version
 }
 
 // WithRepositoryURI - add a RepositoryURI to the VersionControlDetails
-func (r *VersionControlDetails) WithRepositoryURI(repositoryURI string) *VersionControlDetails {
-	r.RepositoryURI = &repositoryURI
+func (r *VersionControlDetails) WithRepositoryURI(repositoryUri string) *VersionControlDetails {
+	r.RepositoryURI = &repositoryUri
 	return r
 }
 

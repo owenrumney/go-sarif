@@ -2,11 +2,11 @@ package sarif
 
 // Result - A result produced by an analysis tool.
 type Result struct {
-	// A set of strings that contribute to the stable, unique identity of the result.
-	PartialFingerprints map[string]string `json:"partialFingerprints,omitempty"`
-
 	// A set of strings each of which individually defines a stable, unique identity for the result.
 	Fingerprints map[string]string `json:"fingerprints,omitempty"`
+
+	// A set of strings that contribute to the stable, unique identity of the result.
+	PartialFingerprints map[string]string `json:"partialFingerprints,omitempty"`
 
 	// Identifies the artifact that the analysis tool was instructed to scan. This need not be the same as the artifact where the result actually occurred.
 	AnalysisTarget *ArtifactLocation `json:"analysisTarget,omitempty"`
@@ -90,7 +90,7 @@ type Result struct {
 	WebResponse *WebResponse `json:"webResponse,omitempty"`
 
 	// The URIs of the work items associated with this result.
-	WorkItemURIs []string `json:"workItemUris,omitempty"`
+	WorkItemUris []string `json:"workItemUris,omitempty"`
 }
 
 // NewResult - creates a new
@@ -110,20 +110,8 @@ func NewResult() *Result {
 		Stacks:           make([]*Stack, 0),
 		Suppressions:     make([]*Suppression, 0),
 		Taxa:             make([]*ReportingDescriptorReference, 0),
-		WorkItemURIs:     make([]string, 0),
+		WorkItemUris:     make([]string, 0),
 	}
-}
-
-// AddPartialFingerprint - add a single PartialFingerprint to the Result
-func (p *Result) AddPartialFingerprint(key, partialFingerprint string) *Result {
-	p.PartialFingerprints[key] = partialFingerprint
-	return p
-}
-
-// WithPartialFingerprints - add a PartialFingerprints to the Result
-func (p *Result) WithPartialFingerprints(partialFingerprints map[string]string) *Result {
-	p.PartialFingerprints = partialFingerprints
-	return p
 }
 
 // AddFingerprint - add a single Fingerprint to the Result
@@ -136,6 +124,18 @@ func (f *Result) AddFingerprint(key, fingerprint string) *Result {
 func (f *Result) WithFingerprints(fingerprints map[string]string) *Result {
 	f.Fingerprints = fingerprints
 	return f
+}
+
+// AddPartialFingerprint - add a single PartialFingerprint to the Result
+func (p *Result) AddPartialFingerprint(key, partialFingerprint string) *Result {
+	p.PartialFingerprints[key] = partialFingerprint
+	return p
+}
+
+// WithPartialFingerprints - add a PartialFingerprints to the Result
+func (p *Result) WithPartialFingerprints(partialFingerprints map[string]string) *Result {
+	p.PartialFingerprints = partialFingerprints
+	return p
 }
 
 // WithAnalysisTarget - add a AnalysisTarget to the Result
@@ -223,8 +223,8 @@ func (g *Result) WithGuID(guid string) *Result {
 }
 
 // WithHostedViewerURI - add a HostedViewerURI to the Result
-func (h *Result) WithHostedViewerURI(hostedViewerURI string) *Result {
-	h.HostedViewerURI = &hostedViewerURI
+func (h *Result) WithHostedViewerURI(hostedViewerUri string) *Result {
+	h.HostedViewerURI = &hostedViewerUri
 	return h
 }
 
@@ -360,14 +360,14 @@ func (w *Result) WithWebResponse(webResponse *WebResponse) *Result {
 	return w
 }
 
-// WithWorkItemURIs - add a WorkItemURIs to the Result
-func (w *Result) WithWorkItemURIs(workItemURIs []string) *Result {
-	w.WorkItemURIs = workItemURIs
+// WithWorkItemUris - add a WorkItemUris to the Result
+func (w *Result) WithWorkItemUris(workItemUris []string) *Result {
+	w.WorkItemUris = workItemUris
 	return w
 }
 
-// AddWorkItemURI - add a single WorkItemURI to the Result
-func (w *Result) AddWorkItemURI(workItemURI string) *Result {
-	w.WorkItemURIs = append(w.WorkItemURIs, workItemURI)
+// AddWorkItemUri - add a single WorkItemUri to the Result
+func (w *Result) AddWorkItemUri(workItemUri string) *Result {
+	w.WorkItemUris = append(w.WorkItemUris, workItemUri)
 	return w
 }
