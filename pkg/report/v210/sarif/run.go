@@ -3,7 +3,7 @@ package sarif
 // Run - Describes a single run of an analysis tool, and contains the reported output of that run.
 type Run struct {
 	// The artifact location specified by each uriBaseId symbol on the machine where the tool originally ran.
-	OriginalURIBaseIds map[string]ArtifactLocation `json:"originalUriBaseIds,omitempty"`
+	OriginalUriBaseIds map[string]ArtifactLocation `json:"originalUriBaseIds,omitempty"`
 
 	// Addresses associated with this run instance, if any.
 	Addresses []*Address `json:"addresses,omitempty"`
@@ -41,7 +41,7 @@ type Run struct {
 	// The language of the messages emitted into the log file during this run (expressed as an ISO 639-1 two-letter lowercase culture code) and an optional region (expressed as an ISO 3166-1 two-letter uppercase subculture code associated with a country or region). The casing is recommended but not required (in order for this data to conform to RFC5646).
 	Language string `json:"language,omitempty"`
 
-	// An array of logical locations such as namespaces, types or Functions.
+	// An array of logical locations such as namespaces, types or functions.
 	LogicalLocations []*LogicalLocation `json:"logicalLocations,omitempty"`
 
 	// An ordered list of character sequences that were treated as line breaks when computing region information for the run.
@@ -110,15 +110,15 @@ func NewRun() *Run {
 	}
 }
 
-// AddOriginalURIBaseId - add a single OriginalURIBaseId to the Run
-func (o *Run) AddOriginalURIBaseId(key string, originalURIBaseId ArtifactLocation) *Run {
-	o.OriginalURIBaseIds[key] = originalURIBaseId
+// AddOriginalUriBaseId - add a single OriginalUriBaseId to the Run
+func (o *Run) AddOriginalUriBaseId(key string, originalUriBaseId ArtifactLocation) *Run {
+	o.OriginalUriBaseIds[key] = originalUriBaseId
 	return o
 }
 
-// WithOriginalURIBaseIds - add a OriginalURIBaseIds to the Run
-func (o *Run) WithOriginalURIBaseIds(originalURIBaseIds map[string]ArtifactLocation) *Run {
-	o.OriginalURIBaseIds = originalURIBaseIds
+// WithOriginalUriBaseIds - add a OriginalUriBaseIds to the Run
+func (o *Run) WithOriginalUriBaseIds(originalUriBaseIds map[string]ArtifactLocation) *Run {
+	o.OriginalUriBaseIds = originalUriBaseIds
 	return o
 }
 

@@ -30,8 +30,8 @@ func NewTranslationMetadata() *TranslationMetadata {
 }
 
 // WithDownloadURI - add a DownloadURI to the TranslationMetadata
-func (d *TranslationMetadata) WithDownloadURI(downloadURI string) *TranslationMetadata {
-	d.DownloadURI = &downloadURI
+func (d *TranslationMetadata) WithDownloadURI(downloadUri string) *TranslationMetadata {
+	d.DownloadURI = &downloadUri
 	return d
 }
 
@@ -48,8 +48,8 @@ func (f *TranslationMetadata) WithFullName(fullName string) *TranslationMetadata
 }
 
 // WithInformationURI - add a InformationURI to the TranslationMetadata
-func (i *TranslationMetadata) WithInformationURI(informationURI string) *TranslationMetadata {
-	i.InformationURI = &informationURI
+func (i *TranslationMetadata) WithInformationURI(informationUri string) *TranslationMetadata {
+	i.InformationURI = &informationUri
 	return i
 }
 

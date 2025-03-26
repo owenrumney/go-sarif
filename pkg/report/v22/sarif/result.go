@@ -90,7 +90,7 @@ type Result struct {
 	WebResponse *WebResponse `json:"webResponse,omitempty"`
 
 	// The URIs of the work items associated with this result.
-	WorkItemURIs []string `json:"workItemUris,omitempty"`
+	WorkItemUris []string `json:"workItemUris,omitempty"`
 }
 
 // NewResult - creates a new
@@ -110,7 +110,7 @@ func NewResult() *Result {
 		Stacks:           make([]*Stack, 0),
 		Suppressions:     make([]*Suppression, 0),
 		Taxa:             make([]*ReportingDescriptorReference, 0),
-		WorkItemURIs:     make([]string, 0),
+		WorkItemUris:     make([]string, 0),
 	}
 }
 
@@ -223,8 +223,8 @@ func (g *Result) WithGuid(guid *Guid) *Result {
 }
 
 // WithHostedViewerURI - add a HostedViewerURI to the Result
-func (h *Result) WithHostedViewerURI(hostedViewerURI string) *Result {
-	h.HostedViewerURI = &hostedViewerURI
+func (h *Result) WithHostedViewerURI(hostedViewerUri string) *Result {
+	h.HostedViewerURI = &hostedViewerUri
 	return h
 }
 
@@ -360,14 +360,14 @@ func (w *Result) WithWebResponse(webResponse *WebResponse) *Result {
 	return w
 }
 
-// WithWorkItemURIs - add a WorkItemURIs to the Result
-func (w *Result) WithWorkItemURIs(workItemURIs []string) *Result {
-	w.WorkItemURIs = workItemURIs
+// WithWorkItemUris - add a WorkItemUris to the Result
+func (w *Result) WithWorkItemUris(workItemUris []string) *Result {
+	w.WorkItemUris = workItemUris
 	return w
 }
 
-// AddWorkItemURI - add a single WorkItemURI to the Result
-func (w *Result) AddWorkItemURI(workItemURI string) *Result {
-	w.WorkItemURIs = append(w.WorkItemURIs, workItemURI)
+// AddWorkItemUri - add a single WorkItemUri to the Result
+func (w *Result) AddWorkItemUri(workItemUri string) *Result {
+	w.WorkItemUris = append(w.WorkItemUris, workItemUri)
 	return w
 }

@@ -138,8 +138,8 @@ func (d *ToolComponent) WithDottedQuadFileVersion(dottedQuadFileVersion string) 
 }
 
 // WithDownloadURI - add a DownloadURI to the ToolComponent
-func (d *ToolComponent) WithDownloadURI(downloadURI string) *ToolComponent {
-	d.DownloadURI = &downloadURI
+func (d *ToolComponent) WithDownloadURI(downloadUri string) *ToolComponent {
+	d.DownloadURI = &downloadUri
 	return d
 }
 
@@ -162,8 +162,8 @@ func (g *ToolComponent) WithGuID(guid string) *ToolComponent {
 }
 
 // WithInformationURI - add a InformationURI to the ToolComponent
-func (i *ToolComponent) WithInformationURI(informationURI string) *ToolComponent {
-	i.InformationURI = &informationURI
+func (i *ToolComponent) WithInformationURI(informationUri string) *ToolComponent {
+	i.InformationURI = &informationUri
 	return i
 }
 

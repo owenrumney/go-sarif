@@ -2,11 +2,11 @@ package sarif
 
 // WebRequest - Describes an HTTP request.
 type WebRequest struct {
-	// The request headers.
-	Headers map[string]string `json:"headers,omitempty"`
-
 	// The request parameters.
 	Parameters map[string]string `json:"parameters,omitempty"`
+
+	// The request headers.
+	Headers map[string]string `json:"headers,omitempty"`
 
 	// The body of the request.
 	Body *ArtifactContent `json:"body,omitempty"`
@@ -37,18 +37,6 @@ func NewWebRequest() *WebRequest {
 	}
 }
 
-// AddHeader - add a single Header to the WebRequest
-func (h *WebRequest) AddHeader(key, header string) *WebRequest {
-	h.Headers[key] = header
-	return h
-}
-
-// WithHeaders - add a Headers to the WebRequest
-func (h *WebRequest) WithHeaders(headers map[string]string) *WebRequest {
-	h.Headers = headers
-	return h
-}
-
 // AddParameter - add a single Parameter to the WebRequest
 func (p *WebRequest) AddParameter(key, parameter string) *WebRequest {
 	p.Parameters[key] = parameter
@@ -59,6 +47,18 @@ func (p *WebRequest) AddParameter(key, parameter string) *WebRequest {
 func (p *WebRequest) WithParameters(parameters map[string]string) *WebRequest {
 	p.Parameters = parameters
 	return p
+}
+
+// AddHeader - add a single Header to the WebRequest
+func (h *WebRequest) AddHeader(key, header string) *WebRequest {
+	h.Headers[key] = header
+	return h
+}
+
+// WithHeaders - add a Headers to the WebRequest
+func (h *WebRequest) WithHeaders(headers map[string]string) *WebRequest {
+	h.Headers = headers
+	return h
 }
 
 // WithBody - add a Body to the WebRequest
