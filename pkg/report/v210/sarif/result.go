@@ -36,7 +36,7 @@ type Result struct {
 	GuID *string `json:"guid,omitempty"`
 
 	// An absolute URI at which the result can be viewed.
-	HostedViewerURI *string `json:"hostedViewerURI,omitempty"`
+	HostedViewerURI *string `json:"hostedViewerUri,omitempty"`
 
 	// A value that categorizes results by evaluation state.
 	Kind string `json:"kind,omitempty"`
@@ -90,7 +90,7 @@ type Result struct {
 	WebResponse *WebResponse `json:"webResponse,omitempty"`
 
 	// The URIs of the work items associated with this result.
-	WorkItemURIs []string `json:"workItemURIs,omitempty"`
+	WorkItemURIs []string `json:"workItemUris,omitempty"`
 }
 
 // NewResult - creates a new
