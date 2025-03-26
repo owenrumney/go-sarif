@@ -15,7 +15,7 @@ type VersionControlDetails struct {
 	Properties *PropertyBag `json:"properties,omitempty"`
 
 	// The absolute URI of the repository.
-	RepositoryURI *string `json:"repositoryURI,omitempty"`
+	RepositoryURI *string `json:"repositoryUri,omitempty"`
 
 	// A string that uniquely and permanently identifies the revision within the repository.
 	RevisionID *string `json:"revisionId,omitempty"`

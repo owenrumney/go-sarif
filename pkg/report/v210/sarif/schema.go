@@ -650,7 +650,7 @@ const schema = `{
         },
 
         "logicalLocations": {
-          "description": "An array of logical locations such as namespaces, types or Functions that will be merged with a separate run.",
+          "description": "An array of logical locations such as namespaces, types or functions that will be merged with a separate run.",
           "type": "array",
           "minItems": 0,
           "uniqueItems": true,
@@ -1891,7 +1891,7 @@ const schema = `{
           "$ref": "#/definitions/reportingConfiguration"
         },
 
-        "helpURI": {
+        "helpUri": {
           "description": "A URI where the primary documentation for the report can be found.",
           "type": "string",
           "format": "uri"
@@ -2222,13 +2222,13 @@ const schema = `{
           }
         },
 
-        "hostedViewerURI": {
+        "hostedViewerUri": {
           "description": "An absolute URI at which the result can be viewed.",
           "type": "string",
           "format": "uri"
         },
 
-        "workItemURIs": {
+        "workItemUris": {
           "description": "The URIs of the work items associated with this result.",
           "type": "array",
           "minItems": 0,
@@ -2384,7 +2384,7 @@ const schema = `{
           }
         },
 
-        "originalURIBaseIds": {
+        "originalUriBaseIds": {
           "description": "The artifact location specified by each uriBaseId symbol on the machine where the tool originally ran.",
           "type": "object",
           "additionalProperties": {
@@ -2403,7 +2403,7 @@ const schema = `{
         },
 
         "logicalLocations": {
-          "description": "An array of logical locations such as namespaces, types or Functions.",
+          "description": "An array of logical locations such as namespaces, types or functions.",
           "type": "array",
           "minItems": 0,
           "uniqueItems": true,
@@ -3013,13 +3013,13 @@ const schema = `{
           "type": "string"
         },
 
-        "downloadURI": {
+        "downloadUri": {
           "description": "The absolute URI from which the tool component can be downloaded.",
           "type": "string",
           "format": "uri"
         },
 
-        "informationURI": {
+        "informationUri": {
           "description": "The absolute URI at which information about this version of the tool component can be found.",
           "type": "string",
           "format": "uri"
@@ -3200,13 +3200,13 @@ const schema = `{
           "$ref": "#/definitions/multiformatMessageString"
         },
 
-        "downloadURI": {
+        "downloadUri": {
           "description": "The absolute URI from which the translation metadata can be downloaded.",
           "type": "string",
           "format": "uri"
         },
 
-        "informationURI": {
+        "informationUri": {
           "description": "The absolute URI from which information related to the translation metadata can be downloaded.",
           "type": "string",
           "format": "uri"
@@ -3226,7 +3226,7 @@ const schema = `{
       "additionalProperties": false,
       "properties": {
 
-        "repositoryURI": {
+        "repositoryUri": {
           "description": "The absolute URI of the repository.",
           "type": "string",
           "format": "uri"
@@ -3264,7 +3264,7 @@ const schema = `{
         }
       },
 
-      "required": [ "repositoryURI" ]
+      "required": [ "repositoryUri" ]
     },
 
     "webRequest": {

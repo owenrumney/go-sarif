@@ -27,7 +27,7 @@ type ReportingDescriptor struct {
 	Help *MultiformatMessageString `json:"help,omitempty"`
 
 	// A URI where the primary documentation for the report can be found.
-	HelpURI *string `json:"helpURI,omitempty"`
+	HelpURI *string `json:"helpUri,omitempty"`
 
 	// A stable, opaque identifier for the report.
 	ID *string `json:"id,omitempty"`

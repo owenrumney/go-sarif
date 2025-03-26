@@ -3,7 +3,7 @@ package sarif
 // Run - Describes a single run of an analysis tool, and contains the reported output of that run.
 type Run struct {
 	// The artifact location specified by each uriBaseId symbol on the machine where the tool originally ran.
-	OriginalURIBaseIds map[string]ArtifactLocation `json:"originalURIBaseIds,omitempty"`
+	OriginalURIBaseIds map[string]ArtifactLocation `json:"originalUriBaseIds,omitempty"`
 
 	// Addresses associated with this run instance, if any.
 	Addresses []*Address `json:"addresses,omitempty"`

@@ -3,7 +3,7 @@ package sarif
 // TranslationMetadata - Provides additional metadata related to translation.
 type TranslationMetadata struct {
 	// The absolute URI from which the translation metadata can be downloaded.
-	DownloadURI *string `json:"downloadURI,omitempty"`
+	DownloadURI *string `json:"downloadUri,omitempty"`
 
 	// A comprehensive description of the translation metadata.
 	FullDescription *MultiformatMessageString `json:"fullDescription,omitempty"`
@@ -12,7 +12,7 @@ type TranslationMetadata struct {
 	FullName *string `json:"fullName,omitempty"`
 
 	// The absolute URI from which information related to the translation metadata can be downloaded.
-	InformationURI *string `json:"informationURI,omitempty"`
+	InformationURI *string `json:"informationUri,omitempty"`
 
 	// The name associated with the translation metadata.
 	Name *string `json:"name,omitempty"`

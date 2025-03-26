@@ -108,14 +108,14 @@ This example is taken directly from the [Microsoft SARIF pages](https://github.c
       "tool": {
         "driver": {
           "name": "ESLint",
-          "informationURI": "https://eslint.org",
+          "informationUri": "https://eslint.org",
           "rules": [
             {
               "id": "no-unused-vars",
               "shortDescription": {
                 "text": "disallow unused variables"
               },
-              "helpURI": "https://eslint.org/docs/rules/no-unused-vars",
+              "helpUri": "https://eslint.org/docs/rules/no-unused-vars",
               "properties": {
                 "category": "Variables"
               }
