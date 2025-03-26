@@ -650,7 +650,7 @@ const schema = `{
         },
 
         "logicalLocations": {
-          "description": "An array of logical locations such as namespaces, types or Functions that will be merged with a separate run.",
+          "description": "An array of logical locations such as namespaces, types or functions that will be merged with a separate run.",
           "type": "array",
           "minItems": 0,
           "uniqueItems": true,
@@ -2403,7 +2403,7 @@ const schema = `{
         },
 
         "logicalLocations": {
-          "description": "An array of logical locations such as namespaces, types or Functions.",
+          "description": "An array of logical locations such as namespaces, types or functions.",
           "type": "array",
           "minItems": 0,
           "uniqueItems": true,
