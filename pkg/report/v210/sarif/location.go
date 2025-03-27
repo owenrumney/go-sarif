@@ -6,7 +6,7 @@ type Location struct {
 	Annotations []*Region `json:"annotations,omitempty"`
 
 	// Value that distinguishes this location from all other locations within a single result object.
-	ID int `json:"id,omitempty"`
+	ID int `json:"id"`
 
 	// The logical locations associated with the result.
 	LogicalLocations []*LogicalLocation `json:"logicalLocations,omitempty"`

@@ -6,7 +6,7 @@ type ArtifactLocation struct {
 	Description *Message `json:"description,omitempty"`
 
 	// The index within the run artifacts array of the artifact object associated with the artifact location.
-	Index int `json:"index,omitempty"`
+	Index int `json:"index"`
 
 	// Key/value pairs that provide additional information about the artifact location.
 	Properties *PropertyBag `json:"properties,omitempty"`

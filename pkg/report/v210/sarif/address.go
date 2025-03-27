@@ -3,13 +3,13 @@ package sarif
 // Address - A physical or virtual address, or a range of addresses, in an 'addressable region' (memory or a binary file).
 type Address struct {
 	// The address expressed as a byte offset from the start of the addressable region.
-	AbsoluteAddress int `json:"absoluteAddress,omitempty"`
+	AbsoluteAddress int `json:"absoluteAddress"`
 
 	// A human-readable fully qualified name that is associated with the address.
 	FullyQualifiedName *string `json:"fullyQualifiedName,omitempty"`
 
 	// The index within run.addresses of the cached object for this address.
-	Index int `json:"index,omitempty"`
+	Index int `json:"index"`
 
 	// An open-ended string that identifies the address kind. 'data', 'function', 'header','instruction', 'module', 'page', 'section', 'segment', 'stack', 'stackFrame', 'table' are well-known values.
 	Kind *string `json:"kind,omitempty"`
@@ -24,7 +24,7 @@ type Address struct {
 	OffsetFromParent *int `json:"offsetFromParent,omitempty"`
 
 	// The index within run.addresses of the parent object.
-	ParentIndex int `json:"parentIndex,omitempty"`
+	ParentIndex int `json:"parentIndex"`
 
 	// Key/value pairs that provide additional information about the address.
 	Properties *PropertyBag `json:"properties,omitempty"`

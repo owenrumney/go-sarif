@@ -9,7 +9,7 @@ type WebResponse struct {
 	Body *ArtifactContent `json:"body,omitempty"`
 
 	// The index within the run.webResponses array of the response object associated with this result.
-	Index int `json:"index,omitempty"`
+	Index int `json:"index"`
 
 	// Specifies whether a response was received from the server.
 	NoResponseReceived bool `json:"noResponseReceived,omitempty"`

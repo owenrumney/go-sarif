@@ -2,11 +2,11 @@ package sarif
 
 // Result - A result produced by an analysis tool.
 type Result struct {
-	// A set of strings each of which individually defines a stable, unique identity for the result.
-	Fingerprints map[string]string `json:"fingerprints,omitempty"`
-
 	// A set of strings that contribute to the stable, unique identity of the result.
 	PartialFingerprints map[string]string `json:"partialFingerprints,omitempty"`
+
+	// A set of strings each of which individually defines a stable, unique identity for the result.
+	Fingerprints map[string]string `json:"fingerprints,omitempty"`
 
 	// Identifies the artifact that the analysis tool was instructed to scan. This need not be the same as the artifact where the result actually occurred.
 	AnalysisTarget *ArtifactLocation `json:"analysisTarget,omitempty"`
@@ -60,7 +60,7 @@ type Result struct {
 	Provenance *ResultProvenance `json:"provenance,omitempty"`
 
 	// A number representing the priority or importance of the result.
-	Rank float64 `json:"rank,omitempty"`
+	Rank float64 `json:"rank"`
 
 	// A set of locations relevant to this result.
 	RelatedLocations []*Location `json:"relatedLocations,omitempty"`
@@ -72,7 +72,7 @@ type Result struct {
 	RuleID *string `json:"ruleId,omitempty"`
 
 	// The index within the tool component rules array of the rule object associated with this result.
-	RuleIndex int `json:"ruleIndex,omitempty"`
+	RuleIndex int `json:"ruleIndex"`
 
 	// An array of 'stack' objects relevant to the result.
 	Stacks []*Stack `json:"stacks,omitempty"`
@@ -114,18 +114,6 @@ func NewResult() *Result {
 	}
 }
 
-// AddFingerprint - add a single Fingerprint to the Result
-func (f *Result) AddFingerprint(key, fingerprint string) *Result {
-	f.Fingerprints[key] = fingerprint
-	return f
-}
-
-// WithFingerprints - add a Fingerprints to the Result
-func (f *Result) WithFingerprints(fingerprints map[string]string) *Result {
-	f.Fingerprints = fingerprints
-	return f
-}
-
 // AddPartialFingerprint - add a single PartialFingerprint to the Result
 func (p *Result) AddPartialFingerprint(key, partialFingerprint string) *Result {
 	p.PartialFingerprints[key] = partialFingerprint
@@ -136,6 +124,18 @@ func (p *Result) AddPartialFingerprint(key, partialFingerprint string) *Result {
 func (p *Result) WithPartialFingerprints(partialFingerprints map[string]string) *Result {
 	p.PartialFingerprints = partialFingerprints
 	return p
+}
+
+// AddFingerprint - add a single Fingerprint to the Result
+func (f *Result) AddFingerprint(key, fingerprint string) *Result {
+	f.Fingerprints[key] = fingerprint
+	return f
+}
+
+// WithFingerprints - add a Fingerprints to the Result
+func (f *Result) WithFingerprints(fingerprints map[string]string) *Result {
+	f.Fingerprints = fingerprints
+	return f
 }
 
 // WithAnalysisTarget - add a AnalysisTarget to the Result

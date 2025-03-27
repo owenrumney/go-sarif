@@ -18,7 +18,7 @@ type Artifact struct {
 	LastModifiedTimeUtc *string `json:"lastModifiedTimeUtc,omitempty"`
 
 	// The length of the artifact in bytes.
-	Length int `json:"length,omitempty"`
+	Length int `json:"length"`
 
 	// The location of the artifact.
 	Location *ArtifactLocation `json:"location,omitempty"`
@@ -30,7 +30,7 @@ type Artifact struct {
 	Offset *int `json:"offset,omitempty"`
 
 	// Identifies the index of the immediate parent of the artifact, if this artifact is nested.
-	ParentIndex int `json:"parentIndex,omitempty"`
+	ParentIndex int `json:"parentIndex"`
 
 	// Key/value pairs that provide additional information about the artifact.
 	Properties *PropertyBag `json:"properties,omitempty"`

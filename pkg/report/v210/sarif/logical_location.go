@@ -9,7 +9,7 @@ type LogicalLocation struct {
 	FullyQualifiedName *string `json:"fullyQualifiedName,omitempty"`
 
 	// The index within the logical locations array.
-	Index int `json:"index,omitempty"`
+	Index int `json:"index"`
 
 	// The type of construct this logical location component refers to. Should be one of 'function', 'member', 'module', 'namespace', 'parameter', 'resource', 'returnType', 'type', 'variable', 'object', 'array', 'property', 'value', 'element', 'text', 'attribute', 'comment', 'declaration', 'dtd' or 'processingInstruction', if any of those accurately describe the construct.
 	Kind *string `json:"kind,omitempty"`
@@ -18,7 +18,7 @@ type LogicalLocation struct {
 	Name *string `json:"name,omitempty"`
 
 	// Identifies the index of the immediate parent of the construct in which the result was detected. For example, this property might point to a logical location that represents the namespace that holds a type.
-	ParentIndex int `json:"parentIndex,omitempty"`
+	ParentIndex int `json:"parentIndex"`
 
 	// Key/value pairs that provide additional information about the logical location.
 	Properties *PropertyBag `json:"properties,omitempty"`
