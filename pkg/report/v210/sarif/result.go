@@ -72,7 +72,7 @@ type Result struct {
 	RuleID *string `json:"ruleId,omitempty"`
 
 	// The index within the tool component rules array of the rule object associated with this result.
-	RuleIndex int `json:"ruleIndex,omitempty"`
+	RuleIndex int `json:"ruleIndex"`
 
 	// An array of 'stack' objects relevant to the result.
 	Stacks []*Stack `json:"stacks,omitempty"`
