@@ -6,7 +6,7 @@ type ToolComponentReference struct {
 	Guid *Guid `json:"guid,omitempty"`
 
 	// An index into the referenced toolComponent in tool.extensions.
-	Index int `json:"index,omitempty"`
+	Index int `json:"index"`
 
 	// The 'name' property of the referenced toolComponent.
 	Name *string `json:"name,omitempty"`

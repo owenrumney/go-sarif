@@ -6,13 +6,13 @@ type Region struct {
 	ByteLength *int `json:"byteLength,omitempty"`
 
 	// The zero-based offset from the beginning of the artifact of the first byte in the region.
-	ByteOffset int `json:"byteOffset,omitempty"`
+	ByteOffset int `json:"byteOffset"`
 
 	// The length of the region in characters.
 	CharLength *int `json:"charLength,omitempty"`
 
 	// The zero-based offset from the beginning of the artifact of the first character in the region.
-	CharOffset int `json:"charOffset,omitempty"`
+	CharOffset int `json:"charOffset"`
 
 	// The column number of the character following the end of the region.
 	EndColumn *int `json:"endColumn,omitempty"`
