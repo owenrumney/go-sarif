@@ -6,7 +6,7 @@ type ExternalPropertyFileReference struct {
 	GuID *string `json:"guid,omitempty"`
 
 	// A non-negative integer specifying the number of items contained in the external property file.
-	ItemCount int `json:"itemCount,omitempty"`
+	ItemCount int `json:"itemCount"`
 
 	// The location of the external property file.
 	Location *ArtifactLocation `json:"location,omitempty"`

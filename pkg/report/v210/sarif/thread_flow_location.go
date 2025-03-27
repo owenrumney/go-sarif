@@ -6,7 +6,7 @@ type ThreadFlowLocation struct {
 	State map[string]MultiformatMessageString `json:"state,omitempty"`
 
 	// An integer representing the temporal order in which execution reached this location.
-	ExecutionOrder int `json:"executionOrder,omitempty"`
+	ExecutionOrder int `json:"executionOrder"`
 
 	// The Coordinated Universal Time (UTC) date and time at which this location was executed.
 	ExecutionTimeUtc *string `json:"executionTimeUtc,omitempty"`
@@ -15,7 +15,7 @@ type ThreadFlowLocation struct {
 	Importance string `json:"importance,omitempty"`
 
 	// The index within the run threadFlowLocations array.
-	Index int `json:"index,omitempty"`
+	Index int `json:"index"`
 
 	// A set of distinct strings that categorize the thread flow location. Well-known kinds include 'acquire', 'release', 'enter', 'exit', 'call', 'return', 'branch', 'implicit', 'false', 'true', 'caution', 'danger', 'unknown', 'unreachable', 'taint', 'function', 'handler', 'lock', 'memory', 'resource', 'scope' and 'value'.
 	Kinds []string `json:"kinds,omitempty"`

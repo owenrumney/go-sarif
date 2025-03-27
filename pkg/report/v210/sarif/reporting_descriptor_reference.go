@@ -9,7 +9,7 @@ type ReportingDescriptorReference struct {
 	ID *string `json:"id,omitempty"`
 
 	// The index into an array of descriptors in toolComponent.ruleDescriptors, toolComponent.notificationDescriptors, or toolComponent.taxonomyDescriptors, depending on context.
-	Index int `json:"index,omitempty"`
+	Index int `json:"index"`
 
 	// Key/value pairs that provide additional information about the reporting descriptor reference.
 	Properties *PropertyBag `json:"properties,omitempty"`

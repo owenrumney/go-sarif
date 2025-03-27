@@ -12,7 +12,7 @@ type ResultProvenance struct {
 	FirstDetectionTimeUtc *string `json:"firstDetectionTimeUtc,omitempty"`
 
 	// The index within the run.invocations array of the invocation object which describes the tool invocation that detected the result.
-	InvocationIndex int `json:"invocationIndex,omitempty"`
+	InvocationIndex int `json:"invocationIndex"`
 
 	// A GUID-valued string equal to the automationDetails.guid property of the run in which the result was most recently detected.
 	LastDetectionRunGuID *string `json:"lastDetectionRunGuid,omitempty"`

@@ -15,7 +15,7 @@ type ReportingConfiguration struct {
 	Properties *PropertyBag `json:"properties,omitempty"`
 
 	// Specifies the relative priority of the report. Used for analysis output only.
-	Rank float64 `json:"rank,omitempty"`
+	Rank float64 `json:"rank"`
 }
 
 // NewReportingConfiguration - creates a new

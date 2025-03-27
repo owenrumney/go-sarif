@@ -12,7 +12,7 @@ type WebRequest struct {
 	Body *ArtifactContent `json:"body,omitempty"`
 
 	// The index within the run.webRequests array of the request object associated with this result.
-	Index int `json:"index,omitempty"`
+	Index int `json:"index"`
 
 	// The HTTP method. Well-known values are 'GET', 'PUT', 'POST', 'DELETE', 'PATCH', 'HEAD', 'OPTIONS', 'TRACE', 'CONNECT'.
 	Method *string `json:"method,omitempty"`

@@ -18,10 +18,10 @@ type GraphTraversal struct {
 	Properties *PropertyBag `json:"properties,omitempty"`
 
 	// The index within the result.graphs to be associated with the result.
-	ResultGraphIndex int `json:"resultGraphIndex,omitempty"`
+	ResultGraphIndex int `json:"resultGraphIndex"`
 
 	// The index within the run.graphs to be associated with the result.
-	RunGraphIndex int `json:"runGraphIndex,omitempty"`
+	RunGraphIndex int `json:"runGraphIndex"`
 }
 
 // NewGraphTraversal - creates a new
