@@ -14,6 +14,20 @@ func (run *Run) AddRule(ruleID string) *ReportingDescriptor {
 	return rule
 }
 
+// GetRuleIndex returns the index of the rule with the given ID, or -1 if it does not exist
+func (run *Run) GetRuleIndex(ruleID string) int {
+	if run.Tool == nil || run.Tool.Driver == nil || run.Tool.Driver.Rules == nil || ruleID == "" {
+		return -1
+	}
+
+	for i, rule := range run.Tool.Driver.Rules {
+		if *rule.ID == ruleID {
+			return i
+		}
+	}
+	return -1
+}
+
 // AddDistinctArtifact will handle deduplication of simple artifact additions
 func (run *Run) AddDistinctArtifact(uri string) *Artifact {
 	for _, artifact := range run.Artifacts {
@@ -31,7 +45,8 @@ func (run *Run) AddDistinctArtifact(uri string) *Artifact {
 
 // CreateResultForRule returns an existing Result or creates a new one and returns a pointer to it
 func (run *Run) CreateResultForRule(ruleID string) *Result {
-	result := NewRuleResult(ruleID)
+	ruleIndex := run.GetRuleIndex(ruleID)
+	result := NewRuleResult(ruleID).WithRuleIndex(ruleIndex)
 	run.AddResult(result)
 	return result
 }
