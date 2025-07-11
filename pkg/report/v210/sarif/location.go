@@ -3,13 +3,13 @@ package sarif
 // Location - A location within a programming artifact.
 type Location struct {
 	// A set of regions relevant to the location.
-	Annotations []*Region `json:"annotations,omitempty"`
+	Annotations []*Region `json:"annotations"`
 
 	// Value that distinguishes this location from all other locations within a single result object.
 	ID int `json:"id"`
 
 	// The logical locations associated with the result.
-	LogicalLocations []*LogicalLocation `json:"logicalLocations,omitempty"`
+	LogicalLocations []*LogicalLocation `json:"logicalLocations"`
 
 	// A message relevant to the location.
 	Message *Message `json:"message,omitempty"`
@@ -21,7 +21,7 @@ type Location struct {
 	Properties *PropertyBag `json:"properties,omitempty"`
 
 	// An array of objects that describe relationships between this location and others.
-	Relationships []*LocationRelationship `json:"relationships,omitempty"`
+	Relationships []*LocationRelationship `json:"relationships"`
 }
 
 // NewLocation - creates a new

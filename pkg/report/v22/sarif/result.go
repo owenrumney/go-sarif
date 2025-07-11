@@ -2,35 +2,35 @@ package sarif
 
 // Result - A result produced by an analysis tool.
 type Result struct {
-	// A set of strings that contribute to the stable, unique identity of the result.
-	PartialFingerprints map[string]string `json:"partialFingerprints,omitempty"`
-
 	// A set of strings each of which individually defines a stable, unique identity for the result.
 	Fingerprints map[string]string `json:"fingerprints,omitempty"`
+
+	// A set of strings that contribute to the stable, unique identity of the result.
+	PartialFingerprints map[string]string `json:"partialFingerprints,omitempty"`
 
 	// Identifies the artifact that the analysis tool was instructed to scan. This need not be the same as the artifact where the result actually occurred.
 	AnalysisTarget *ArtifactLocation `json:"analysisTarget,omitempty"`
 
 	// A set of artifacts relevant to the result.
-	Attachments []*Attachment `json:"attachments,omitempty"`
+	Attachments []*Attachment `json:"attachments"`
 
 	// The state of a result relative to a baseline of a previous run.
 	BaselineState *string `json:"baselineState,omitempty"`
 
 	// An array of 'codeFlow' objects relevant to the result.
-	CodeFlows []*CodeFlow `json:"codeFlows,omitempty"`
+	CodeFlows []*CodeFlow `json:"codeFlows"`
 
 	// A stable, unique identifier for the equivalence class of logically identical results to which this result belongs, in the form of a GUID.
 	CorrelationGuID *string `json:"correlationGuid,omitempty"`
 
 	// An array of 'fix' objects, each of which represents a proposed fix to the problem indicated by the result.
-	Fixes []*Fix `json:"fixes,omitempty"`
+	Fixes []*Fix `json:"fixes"`
 
 	// An array of one or more unique 'graphTraversal' objects.
-	GraphTraversals []*GraphTraversal `json:"graphTraversals,omitempty"`
+	GraphTraversals []*GraphTraversal `json:"graphTraversals"`
 
 	// An array of zero or more unique graph objects associated with the result.
-	Graphs []*Graph `json:"graphs,omitempty"`
+	Graphs []*Graph `json:"graphs"`
 
 	// A stable, unique identifier for the result in the form of a GUID.
 	Guid *Guid `json:"guid,omitempty"`
@@ -39,13 +39,13 @@ type Result struct {
 	HostedViewerURI *string `json:"hostedViewerUri,omitempty"`
 
 	// A value that categorizes results by evaluation state.
-	Kind string `json:"kind,omitempty"`
+	Kind string `json:"kind"`
 
 	// A value specifying the severity level of the result.
-	Level string `json:"level,omitempty"`
+	Level string `json:"level"`
 
 	// The set of locations where the result was detected. Specify only one location unless the problem indicated by the result can only be corrected by making a change at every specified location.
-	Locations []*Location `json:"locations,omitempty"`
+	Locations []*Location `json:"locations"`
 
 	// A message that describes the result. The first sentence of the message only will be displayed when visible space is limited.
 	Message *Message `json:"message,omitempty"`
@@ -63,7 +63,7 @@ type Result struct {
 	Rank float64 `json:"rank"`
 
 	// A set of locations relevant to this result.
-	RelatedLocations []*Location `json:"relatedLocations,omitempty"`
+	RelatedLocations []*Location `json:"relatedLocations"`
 
 	// A reference used to locate the rule descriptor relevant to this result.
 	Rule *ReportingDescriptorReference `json:"rule,omitempty"`
@@ -75,13 +75,13 @@ type Result struct {
 	RuleIndex int `json:"ruleIndex"`
 
 	// An array of 'stack' objects relevant to the result.
-	Stacks []*Stack `json:"stacks,omitempty"`
+	Stacks []*Stack `json:"stacks"`
 
 	// A set of suppressions relevant to this result.
 	Suppressions []*Suppression `json:"suppressions,omitempty"`
 
 	// An array of references to taxonomy reporting descriptors that are applicable to the result.
-	Taxa []*ReportingDescriptorReference `json:"taxa,omitempty"`
+	Taxa []*ReportingDescriptorReference `json:"taxa"`
 
 	// A web request associated with this result.
 	WebRequest *WebRequest `json:"webRequest,omitempty"`
@@ -114,18 +114,6 @@ func NewResult() *Result {
 	}
 }
 
-// AddPartialFingerprint - add a single PartialFingerprint to the Result
-func (p *Result) AddPartialFingerprint(key, partialFingerprint string) *Result {
-	p.PartialFingerprints[key] = partialFingerprint
-	return p
-}
-
-// WithPartialFingerprints - add a PartialFingerprints to the Result
-func (p *Result) WithPartialFingerprints(partialFingerprints map[string]string) *Result {
-	p.PartialFingerprints = partialFingerprints
-	return p
-}
-
 // AddFingerprint - add a single Fingerprint to the Result
 func (f *Result) AddFingerprint(key, fingerprint string) *Result {
 	f.Fingerprints[key] = fingerprint
@@ -136,6 +124,18 @@ func (f *Result) AddFingerprint(key, fingerprint string) *Result {
 func (f *Result) WithFingerprints(fingerprints map[string]string) *Result {
 	f.Fingerprints = fingerprints
 	return f
+}
+
+// AddPartialFingerprint - add a single PartialFingerprint to the Result
+func (p *Result) AddPartialFingerprint(key, partialFingerprint string) *Result {
+	p.PartialFingerprints[key] = partialFingerprint
+	return p
+}
+
+// WithPartialFingerprints - add a PartialFingerprints to the Result
+func (p *Result) WithPartialFingerprints(partialFingerprints map[string]string) *Result {
+	p.PartialFingerprints = partialFingerprints
+	return p
 }
 
 // WithAnalysisTarget - add a AnalysisTarget to the Result

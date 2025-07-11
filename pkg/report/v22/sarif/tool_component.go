@@ -9,7 +9,7 @@ type ToolComponent struct {
 	AssociatedComponent *ToolComponentReference `json:"associatedComponent,omitempty"`
 
 	// The kinds of data contained in this object.
-	Contents []string `json:"contents,omitempty"`
+	Contents []string `json:"contents"`
 
 	// The binary version of the tool component's primary executable file expressed as four non-negative integers separated by a period (for operating systems that express file versions in this way).
 	DottedQuadFileVersion *string `json:"dottedQuadFileVersion,omitempty"`
@@ -30,7 +30,7 @@ type ToolComponent struct {
 	InformationURI *string `json:"informationUri,omitempty"`
 
 	// Specifies whether this object contains a complete definition of the localizable and/or non-localizable data for this component, as opposed to including only data that is relevant to the results persisted to this log file.
-	IsComprehensive bool `json:"isComprehensive,omitempty"`
+	IsComprehensive bool `json:"isComprehensive"`
 
 	// The language of the messages emitted into the log file during this run (expressed as an ISO 639-1 two-letter lowercase language code) and an optional region (expressed as an ISO 3166-1 two-letter uppercase subculture code associated with a country or region). The casing is recommended but not required (in order for this data to conform to RFC5646).
 	Language *Language `json:"language,omitempty"`
@@ -39,7 +39,7 @@ type ToolComponent struct {
 	LocalizedDataSemanticVersion *string `json:"localizedDataSemanticVersion,omitempty"`
 
 	// An array of the artifactLocation objects associated with the tool component.
-	Locations []*ArtifactLocation `json:"locations,omitempty"`
+	Locations []*ArtifactLocation `json:"locations"`
 
 	// The minimum value of localizedDataSemanticVersion required in translations consumed by this component; used by components that consume translations.
 	MinimumRequiredLocalizedDataSemanticVersion *string `json:"minimumRequiredLocalizedDataSemanticVersion,omitempty"`
@@ -48,7 +48,7 @@ type ToolComponent struct {
 	Name *string `json:"name,omitempty"`
 
 	// An array of reportingDescriptor objects relevant to the notifications related to the configuration and runtime execution of the tool component.
-	Notifications []*ReportingDescriptor `json:"notifications,omitempty"`
+	Notifications []*ReportingDescriptor `json:"notifications"`
 
 	// The organization or company that produced the tool component.
 	Organization *string `json:"organization,omitempty"`
@@ -66,7 +66,7 @@ type ToolComponent struct {
 	ReleaseDateUtc *string `json:"releaseDateUtc,omitempty"`
 
 	// An array of reportingDescriptor objects relevant to the analysis performed by the tool component.
-	Rules []*ReportingDescriptor `json:"rules,omitempty"`
+	Rules []*ReportingDescriptor `json:"rules"`
 
 	// The tool component version in the format specified by Semantic Versioning 2.0.
 	SemanticVersion *string `json:"semanticVersion,omitempty"`
@@ -75,10 +75,10 @@ type ToolComponent struct {
 	ShortDescription *MultiformatMessageString `json:"shortDescription,omitempty"`
 
 	// An array of toolComponentReference objects to declare the taxonomies supported by the tool component.
-	SupportedTaxonomies []*ToolComponentReference `json:"supportedTaxonomies,omitempty"`
+	SupportedTaxonomies []*ToolComponentReference `json:"supportedTaxonomies"`
 
 	// An array of reportingDescriptor objects relevant to the definitions of both standalone and tool-defined taxonomies.
-	Taxa []*ReportingDescriptor `json:"taxa,omitempty"`
+	Taxa []*ReportingDescriptor `json:"taxa"`
 
 	// Translation metadata, required for a translation, not populated by other component types.
 	TranslationMetadata *TranslationMetadata `json:"translationMetadata,omitempty"`

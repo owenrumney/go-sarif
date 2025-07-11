@@ -6,7 +6,7 @@ type LocationRelationship struct {
 	Description *Message `json:"description,omitempty"`
 
 	// A set of distinct strings that categorize the relationship. Well-known kinds include 'includes', 'isIncludedBy' and 'relevant'.
-	Kinds []string `json:"kinds,omitempty"`
+	Kinds []string `json:"kinds"`
 
 	// Key/value pairs that provide additional information about the location relationship.
 	Properties *PropertyBag `json:"properties,omitempty"`

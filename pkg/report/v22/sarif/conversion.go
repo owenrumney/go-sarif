@@ -3,7 +3,7 @@ package sarif
 // Conversion - Describes how a converter transformed the output of a static analysis tool from the analysis tool's native output format into the SARIF format.
 type Conversion struct {
 	// The locations of the analysis tool's per-run log files.
-	AnalysisToolLogFiles []*ArtifactLocation `json:"analysisToolLogFiles,omitempty"`
+	AnalysisToolLogFiles []*ArtifactLocation `json:"analysisToolLogFiles"`
 
 	// An invocation object that describes the invocation of the converter.
 	Invocation *Invocation `json:"invocation,omitempty"`

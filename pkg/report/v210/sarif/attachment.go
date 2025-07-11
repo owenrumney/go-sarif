@@ -12,10 +12,10 @@ type Attachment struct {
 	Properties *PropertyBag `json:"properties,omitempty"`
 
 	// An array of rectangles specifying areas of interest within the image.
-	Rectangles []*Rectangle `json:"rectangles,omitempty"`
+	Rectangles []*Rectangle `json:"rectangles"`
 
 	// An array of regions of interest within the attachment.
-	Regions []*Region `json:"regions,omitempty"`
+	Regions []*Region `json:"regions"`
 }
 
 // NewAttachment - creates a new

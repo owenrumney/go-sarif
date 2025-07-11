@@ -3,7 +3,7 @@ package sarif
 // Exception - Describes a runtime exception encountered during the execution of an analysis tool.
 type Exception struct {
 	// An array of exception objects each of which is considered a cause of this exception.
-	InnerExceptions []*Exception `json:"innerExceptions,omitempty"`
+	InnerExceptions []*Exception `json:"innerExceptions"`
 
 	// A string that identifies the kind of exception, for example, the fully qualified type name of an object that was thrown, or the symbolic name of a signal.
 	Kind *string `json:"kind,omitempty"`

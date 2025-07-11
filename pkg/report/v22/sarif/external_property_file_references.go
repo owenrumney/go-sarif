@@ -3,10 +3,10 @@ package sarif
 // ExternalPropertyFileReferences - References to external property files that should be inlined with the content of a root log file.
 type ExternalPropertyFileReferences struct {
 	// An array of external property files containing run.addresses arrays to be merged with the root log file.
-	Addresses []*ExternalPropertyFileReference `json:"addresses,omitempty"`
+	Addresses []*ExternalPropertyFileReference `json:"addresses"`
 
 	// An array of external property files containing run.artifacts arrays to be merged with the root log file.
-	Artifacts []*ExternalPropertyFileReference `json:"artifacts,omitempty"`
+	Artifacts []*ExternalPropertyFileReference `json:"artifacts"`
 
 	// An external property file containing a run.conversion object to be merged with the root log file.
 	Conversion *ExternalPropertyFileReference `json:"conversion,omitempty"`
@@ -15,43 +15,43 @@ type ExternalPropertyFileReferences struct {
 	Driver *ExternalPropertyFileReference `json:"driver,omitempty"`
 
 	// An array of external property files containing run.extensions arrays to be merged with the root log file.
-	Extensions []*ExternalPropertyFileReference `json:"extensions,omitempty"`
+	Extensions []*ExternalPropertyFileReference `json:"extensions"`
 
 	// An external property file containing a run.properties object to be merged with the root log file.
 	ExternalizedProperties *ExternalPropertyFileReference `json:"externalizedProperties,omitempty"`
 
 	// An array of external property files containing a run.graphs object to be merged with the root log file.
-	Graphs []*ExternalPropertyFileReference `json:"graphs,omitempty"`
+	Graphs []*ExternalPropertyFileReference `json:"graphs"`
 
 	// An array of external property files containing run.invocations arrays to be merged with the root log file.
-	Invocations []*ExternalPropertyFileReference `json:"invocations,omitempty"`
+	Invocations []*ExternalPropertyFileReference `json:"invocations"`
 
 	// An array of external property files containing run.logicalLocations arrays to be merged with the root log file.
-	LogicalLocations []*ExternalPropertyFileReference `json:"logicalLocations,omitempty"`
+	LogicalLocations []*ExternalPropertyFileReference `json:"logicalLocations"`
 
 	// An array of external property files containing run.policies arrays to be merged with the root log file.
-	Policies []*ExternalPropertyFileReference `json:"policies,omitempty"`
+	Policies []*ExternalPropertyFileReference `json:"policies"`
 
 	// Key/value pairs that provide additional information about the external property files.
 	Properties *PropertyBag `json:"properties,omitempty"`
 
 	// An array of external property files containing run.results arrays to be merged with the root log file.
-	Results []*ExternalPropertyFileReference `json:"results,omitempty"`
+	Results []*ExternalPropertyFileReference `json:"results"`
 
 	// An array of external property files containing run.taxonomies arrays to be merged with the root log file.
-	Taxonomies []*ExternalPropertyFileReference `json:"taxonomies,omitempty"`
+	Taxonomies []*ExternalPropertyFileReference `json:"taxonomies"`
 
 	// An array of external property files containing run.threadFlowLocations arrays to be merged with the root log file.
-	ThreadFlowLocations []*ExternalPropertyFileReference `json:"threadFlowLocations,omitempty"`
+	ThreadFlowLocations []*ExternalPropertyFileReference `json:"threadFlowLocations"`
 
 	// An array of external property files containing run.translations arrays to be merged with the root log file.
-	Translations []*ExternalPropertyFileReference `json:"translations,omitempty"`
+	Translations []*ExternalPropertyFileReference `json:"translations"`
 
 	// An array of external property files containing run.requests arrays to be merged with the root log file.
-	WebRequests []*ExternalPropertyFileReference `json:"webRequests,omitempty"`
+	WebRequests []*ExternalPropertyFileReference `json:"webRequests"`
 
 	// An array of external property files containing run.responses arrays to be merged with the root log file.
-	WebResponses []*ExternalPropertyFileReference `json:"webResponses,omitempty"`
+	WebResponses []*ExternalPropertyFileReference `json:"webResponses"`
 }
 
 // NewExternalPropertyFileReferences - creates a new

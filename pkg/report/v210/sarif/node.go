@@ -3,7 +3,7 @@ package sarif
 // Node - Represents a node in a graph.
 type Node struct {
 	// Array of child nodes.
-	Children []*Node `json:"children,omitempty"`
+	Children []*Node `json:"children"`
 
 	// A string that uniquely identifies the node within its graph.
 	ID *string `json:"id,omitempty"`

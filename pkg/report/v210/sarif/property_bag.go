@@ -6,7 +6,7 @@ type PropertyBag struct {
 	Properties Properties `json:"properties,omitempty"`
 
 	// A set of distinct strings that provide additional information.
-	Tags []string `json:"tags,omitempty"`
+	Tags []string `json:"tags"`
 }
 
 // NewPropertyBag - creates a new
