@@ -39,7 +39,7 @@ type Invocation struct {
 	Machine *string `json:"machine,omitempty"`
 
 	// An array of configurationOverride objects that describe notifications related runtime overrides.
-	NotificationConfigurationOverrides []*ConfigurationOverride `json:"notificationConfigurationOverrides,omitempty"`
+	NotificationConfigurationOverrides []*ConfigurationOverride `json:"notificationConfigurationOverrides"`
 
 	// The id of the process in which the invocation occurred.
 	ProcessID *int `json:"processId,omitempty"`
@@ -54,7 +54,7 @@ type Invocation struct {
 	ResponseFiles []*ArtifactLocation `json:"responseFiles,omitempty"`
 
 	// An array of configurationOverride objects that describe rules related runtime overrides.
-	RuleConfigurationOverrides []*ConfigurationOverride `json:"ruleConfigurationOverrides,omitempty"`
+	RuleConfigurationOverrides []*ConfigurationOverride `json:"ruleConfigurationOverrides"`
 
 	// The Coordinated Universal Time (UTC) date and time at which the invocation started. See "Date/time properties" in the SARIF spec for the required format.
 	StartTimeUtc *string `json:"startTimeUtc,omitempty"`
@@ -72,10 +72,10 @@ type Invocation struct {
 	StdoutStderr *ArtifactLocation `json:"stdoutStderr,omitempty"`
 
 	// A list of conditions detected by the tool that are relevant to the tool's configuration.
-	ToolConfigurationNotifications []*Notification `json:"toolConfigurationNotifications,omitempty"`
+	ToolConfigurationNotifications []*Notification `json:"toolConfigurationNotifications"`
 
 	// A list of runtime conditions detected by the tool during the analysis.
-	ToolExecutionNotifications []*Notification `json:"toolExecutionNotifications,omitempty"`
+	ToolExecutionNotifications []*Notification `json:"toolExecutionNotifications"`
 
 	// The working directory for the invocation.
 	WorkingDirectory *ArtifactLocation `json:"workingDirectory,omitempty"`

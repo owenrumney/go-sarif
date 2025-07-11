@@ -2,6 +2,10 @@
 [![Go Report Card](https://goreportcard.com/badge/github.com/owenrumney/go-sarif/v3)](https://goreportcard.com/report/github.com/owenrumney/go-sarif/v3)
 [![Github Release](https://img.shields.io/github/release/owenrumney/go-sarif.svg)](https://github.com/owenrumney/go-sarif/releases)
 
+>[!IMPORTANT]
+>go-sarif is true to the specifications with a single deviation to accomodate GitHub processing of SARIF reports. the `run.Results` attribute is not a required field per the spec but is required by GitHub to successfully process the report. To that end, the `omitEmpty` is removed on the attribute.
+
+
 ## Overview
 
 SARIF is the Static Analysis Results Interchange Format, this project seeks to provide a simple interface to generate reports in the SARIF format.

@@ -12,7 +12,7 @@ type GraphTraversal struct {
 	Description *Message `json:"description,omitempty"`
 
 	// The sequences of edges traversed by this graph traversal.
-	EdgeTraversals []*EdgeTraversal `json:"edgeTraversals,omitempty"`
+	EdgeTraversals []*EdgeTraversal `json:"edgeTraversals"`
 
 	// Key/value pairs that provide additional information about the graph traversal.
 	Properties *PropertyBag `json:"properties,omitempty"`

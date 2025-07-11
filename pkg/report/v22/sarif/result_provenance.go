@@ -3,7 +3,7 @@ package sarif
 // ResultProvenance - Contains information about how and when a result was detected.
 type ResultProvenance struct {
 	// An array of physicalLocation objects which specify the portions of an analysis tool's output that a converter transformed into the result.
-	ConversionSources []*PhysicalLocation `json:"conversionSources,omitempty"`
+	ConversionSources []*PhysicalLocation `json:"conversionSources"`
 
 	// A GUID-valued string equal to the automationDetails.guid property of the run in which the result was first detected.
 	FirstDetectionRunGuID *string `json:"firstDetectionRunGuid,omitempty"`

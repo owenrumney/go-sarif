@@ -6,10 +6,10 @@ type Graph struct {
 	Description *Message `json:"description,omitempty"`
 
 	// An array of edge objects representing the edges of the graph.
-	Edges []*Edge `json:"edges,omitempty"`
+	Edges []*Edge `json:"edges"`
 
 	// An array of node objects representing the nodes of the graph.
-	Nodes []*Node `json:"nodes,omitempty"`
+	Nodes []*Node `json:"nodes"`
 
 	// Key/value pairs that provide additional information about the graph.
 	Properties *PropertyBag `json:"properties,omitempty"`

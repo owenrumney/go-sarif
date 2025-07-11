@@ -6,7 +6,7 @@ type ReportingDescriptorRelationship struct {
 	Description *Message `json:"description,omitempty"`
 
 	// A set of distinct strings that categorize the relationship. Well-known kinds include 'canPrecede', 'canFollow', 'willPrecede', 'willFollow', 'superset', 'subset', 'equal', 'disjoint', 'relevant', and 'incomparable'.
-	Kinds []string `json:"kinds,omitempty"`
+	Kinds []string `json:"kinds"`
 
 	// Key/value pairs that provide additional information about the reporting descriptor reference.
 	Properties *PropertyBag `json:"properties,omitempty"`

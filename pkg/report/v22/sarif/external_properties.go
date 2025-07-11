@@ -3,7 +3,7 @@ package sarif
 // ExternalProperties - The top-level element of an external property file.
 type ExternalProperties struct {
 	// Addresses that will be merged with a separate run.
-	Addresses []*Address `json:"addresses,omitempty"`
+	Addresses []*Address `json:"addresses"`
 
 	// An array of artifact objects that will be merged with a separate run.
 	Artifacts []*Artifact `json:"artifacts,omitempty"`
@@ -15,31 +15,31 @@ type ExternalProperties struct {
 	Driver *ToolComponent `json:"driver,omitempty"`
 
 	// Tool extensions that will be merged with a separate run.
-	Extensions []*ToolComponent `json:"extensions,omitempty"`
+	Extensions []*ToolComponent `json:"extensions"`
 
 	// Key/value pairs that provide additional information that will be merged with a separate run.
 	ExternalizedProperties *PropertyBag `json:"externalizedProperties,omitempty"`
 
 	// An array of graph objects that will be merged with a separate run.
-	Graphs []*Graph `json:"graphs,omitempty"`
+	Graphs []*Graph `json:"graphs"`
 
 	// A stable, unique identifier for this external properties object, in the form of a GUID.
 	Guid *Guid `json:"guid,omitempty"`
 
 	// Describes the invocation of the analysis tool that will be merged with a separate run.
-	Invocations []*Invocation `json:"invocations,omitempty"`
+	Invocations []*Invocation `json:"invocations"`
 
 	// An array of logical locations such as namespaces, types or functions that will be merged with a separate run.
-	LogicalLocations []*LogicalLocation `json:"logicalLocations,omitempty"`
+	LogicalLocations []*LogicalLocation `json:"logicalLocations"`
 
 	// Tool policies that will be merged with a separate run.
-	Policies []*ToolComponent `json:"policies,omitempty"`
+	Policies []*ToolComponent `json:"policies"`
 
 	// Key/value pairs that provide additional information about the external properties.
 	Properties *PropertyBag `json:"properties,omitempty"`
 
 	// An array of result objects that will be merged with a separate run.
-	Results []*Result `json:"results,omitempty"`
+	Results []*Result `json:"results"`
 
 	// A stable, unique identifier for the run associated with this external properties object, in the form of a GUID.
 	RunGuID *string `json:"runGuid,omitempty"`
@@ -48,22 +48,22 @@ type ExternalProperties struct {
 	Schema *string `json:"schema,omitempty"`
 
 	// Tool taxonomies that will be merged with a separate run.
-	Taxonomies []*ToolComponent `json:"taxonomies,omitempty"`
+	Taxonomies []*ToolComponent `json:"taxonomies"`
 
 	// An array of threadFlowLocation objects that will be merged with a separate run.
-	ThreadFlowLocations []*ThreadFlowLocation `json:"threadFlowLocations,omitempty"`
+	ThreadFlowLocations []*ThreadFlowLocation `json:"threadFlowLocations"`
 
 	// Tool translations that will be merged with a separate run.
-	Translations []*ToolComponent `json:"translations,omitempty"`
+	Translations []*ToolComponent `json:"translations"`
 
 	// The SARIF format version of this external properties object.
 	Version *string `json:"version,omitempty"`
 
 	// Requests that will be merged with a separate run.
-	WebRequests []*WebRequest `json:"webRequests,omitempty"`
+	WebRequests []*WebRequest `json:"webRequests"`
 
 	// Responses that will be merged with a separate run.
-	WebResponses []*WebResponse `json:"webResponses,omitempty"`
+	WebResponses []*WebResponse `json:"webResponses"`
 }
 
 // NewExternalProperties - creates a new

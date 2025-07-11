@@ -39,7 +39,7 @@ type ReportingDescriptor struct {
 	Properties *PropertyBag `json:"properties,omitempty"`
 
 	// An array of objects that describe relationships between this reporting descriptor and others.
-	Relationships []*ReportingDescriptorRelationship `json:"relationships,omitempty"`
+	Relationships []*ReportingDescriptorRelationship `json:"relationships"`
 
 	// A concise description of the report. Should be a single sentence that is understandable when visible space is limited to a single line of text.
 	ShortDescription *MultiformatMessageString `json:"shortDescription,omitempty"`

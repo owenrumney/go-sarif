@@ -3,7 +3,7 @@ package sarif
 // Message - Encapsulates a message intended to be read by the end user.
 type Message struct {
 	// An array of strings to substitute into the message string.
-	Arguments []string `json:"arguments,omitempty"`
+	Arguments []string `json:"arguments"`
 
 	// The identifier for this message.
 	ID *string `json:"id,omitempty"`

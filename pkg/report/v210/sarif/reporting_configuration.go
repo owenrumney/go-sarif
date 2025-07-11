@@ -3,10 +3,10 @@ package sarif
 // ReportingConfiguration - Information about a rule or notification that can be configured at runtime.
 type ReportingConfiguration struct {
 	// Specifies whether the report may be produced during the scan.
-	Enabled bool `json:"enabled,omitempty"`
+	Enabled bool `json:"enabled"`
 
 	// Specifies the failure level for the report.
-	Level string `json:"level,omitempty"`
+	Level string `json:"level"`
 
 	// Contains configuration information specific to a report.
 	Parameters *PropertyBag `json:"parameters,omitempty"`

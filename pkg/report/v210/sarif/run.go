@@ -6,7 +6,7 @@ type Run struct {
 	OriginalUriBaseIds map[string]ArtifactLocation `json:"originalUriBaseIds,omitempty"`
 
 	// Addresses associated with this run instance, if any.
-	Addresses []*Address `json:"addresses,omitempty"`
+	Addresses []*Address `json:"addresses"`
 
 	// An array of artifact objects relevant to the run.
 	Artifacts []*Artifact `json:"artifacts,omitempty"`
@@ -33,58 +33,58 @@ type Run struct {
 	ExternalPropertyFileReferences *ExternalPropertyFileReferences `json:"externalPropertyFileReferences,omitempty"`
 
 	// An array of zero or more unique graph objects associated with the run.
-	Graphs []*Graph `json:"graphs,omitempty"`
+	Graphs []*Graph `json:"graphs"`
 
 	// Describes the invocation of the analysis tool.
-	Invocations []*Invocation `json:"invocations,omitempty"`
+	Invocations []*Invocation `json:"invocations"`
 
 	// The language of the messages emitted into the log file during this run (expressed as an ISO 639-1 two-letter lowercase culture code) and an optional region (expressed as an ISO 3166-1 two-letter uppercase subculture code associated with a country or region). The casing is recommended but not required (in order for this data to conform to RFC5646).
-	Language string `json:"language,omitempty"`
+	Language string `json:"language"`
 
 	// An array of logical locations such as namespaces, types or functions.
-	LogicalLocations []*LogicalLocation `json:"logicalLocations,omitempty"`
+	LogicalLocations []*LogicalLocation `json:"logicalLocations"`
 
 	// An ordered list of character sequences that were treated as line breaks when computing region information for the run.
-	NewlineSequences []string `json:"newlineSequences,omitempty"`
+	NewlineSequences []string `json:"newlineSequences"`
 
 	// Contains configurations that may potentially override both reportingDescriptor.defaultConfiguration (the tool's default severities) and invocation.configurationOverrides (severities established at run-time from the command line).
-	Policies []*ToolComponent `json:"policies,omitempty"`
+	Policies []*ToolComponent `json:"policies"`
 
 	// Key/value pairs that provide additional information about the run.
 	Properties *PropertyBag `json:"properties,omitempty"`
 
 	// An array of strings used to replace sensitive information in a redaction-aware property.
-	RedactionTokens []string `json:"redactionTokens,omitempty"`
+	RedactionTokens []string `json:"redactionTokens"`
 
 	// The set of results contained in an SARIF log. The results array can be omitted when a run is solely exporting rules metadata. It must be present (but may be empty) if a log file represents an actual scan.
-	Results []*Result `json:"results,omitempty"`
+	Results []*Result `json:"results"`
 
 	// Automation details that describe the aggregate of runs to which this run belongs.
-	RunAggregates []*RunAutomationDetails `json:"runAggregates,omitempty"`
+	RunAggregates []*RunAutomationDetails `json:"runAggregates"`
 
 	// A specialLocations object that defines locations of special significance to SARIF consumers.
 	SpecialLocations *SpecialLocations `json:"specialLocations,omitempty"`
 
 	// An array of toolComponent objects relevant to a taxonomy in which results are categorized.
-	Taxonomies []*ToolComponent `json:"taxonomies,omitempty"`
+	Taxonomies []*ToolComponent `json:"taxonomies"`
 
 	// An array of threadFlowLocation objects cached at run level.
-	ThreadFlowLocations []*ThreadFlowLocation `json:"threadFlowLocations,omitempty"`
+	ThreadFlowLocations []*ThreadFlowLocation `json:"threadFlowLocations"`
 
 	// Information about the tool or tool pipeline that generated the results in this run. A run can only contain results produced by a single tool or tool pipeline. A run can aggregate results from multiple log files, as long as context around the tool run (tool command-line arguments and the like) is identical for all aggregated files.
 	Tool *Tool `json:"tool,omitempty"`
 
 	// The set of available translations of the localized data provided by the tool.
-	Translations []*ToolComponent `json:"translations,omitempty"`
+	Translations []*ToolComponent `json:"translations"`
 
 	// Specifies the revision in version control of the artifacts that were scanned.
-	VersionControlProvenance []*VersionControlDetails `json:"versionControlProvenance,omitempty"`
+	VersionControlProvenance []*VersionControlDetails `json:"versionControlProvenance"`
 
 	// An array of request objects cached at run level.
-	WebRequests []*WebRequest `json:"webRequests,omitempty"`
+	WebRequests []*WebRequest `json:"webRequests"`
 
 	// An array of response objects cached at run level.
-	WebResponses []*WebResponse `json:"webResponses,omitempty"`
+	WebResponses []*WebResponse `json:"webResponses"`
 }
 
 // NewRun - creates a new

@@ -36,7 +36,7 @@ type Artifact struct {
 	Properties *PropertyBag `json:"properties,omitempty"`
 
 	// The role or roles played by the artifact in the analysis.
-	Roles []string `json:"roles,omitempty"`
+	Roles []string `json:"roles"`
 
 	// Specifies the source language for any artifact object that refers to a text file that contains source code.
 	SourceLanguage *string `json:"sourceLanguage,omitempty"`

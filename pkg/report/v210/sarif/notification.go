@@ -12,10 +12,10 @@ type Notification struct {
 	Exception *Exception `json:"exception,omitempty"`
 
 	// A value specifying the severity level of the notification.
-	Level string `json:"level,omitempty"`
+	Level string `json:"level"`
 
 	// The locations relevant to this notification.
-	Locations []*Location `json:"locations,omitempty"`
+	Locations []*Location `json:"locations"`
 
 	// A message that describes the condition that was encountered.
 	Message *Message `json:"message,omitempty"`

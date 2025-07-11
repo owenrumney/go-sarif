@@ -9,7 +9,7 @@ type StackFrame struct {
 	Module *string `json:"module,omitempty"`
 
 	// The parameters of the call that is executing.
-	Parameters []string `json:"parameters,omitempty"`
+	Parameters []string `json:"parameters"`
 
 	// Key/value pairs that provide additional information about the stack frame.
 	Properties *PropertyBag `json:"properties,omitempty"`

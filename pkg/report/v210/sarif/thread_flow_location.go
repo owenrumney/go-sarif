@@ -12,13 +12,13 @@ type ThreadFlowLocation struct {
 	ExecutionTimeUtc *string `json:"executionTimeUtc,omitempty"`
 
 	// Specifies the importance of this location in understanding the code flow in which it occurs. The order from most to least important is "essential", "important", "unimportant". Default: "important".
-	Importance string `json:"importance,omitempty"`
+	Importance string `json:"importance"`
 
 	// The index within the run threadFlowLocations array.
 	Index int `json:"index"`
 
 	// A set of distinct strings that categorize the thread flow location. Well-known kinds include 'acquire', 'release', 'enter', 'exit', 'call', 'return', 'branch', 'implicit', 'false', 'true', 'caution', 'danger', 'unknown', 'unreachable', 'taint', 'function', 'handler', 'lock', 'memory', 'resource', 'scope' and 'value'.
-	Kinds []string `json:"kinds,omitempty"`
+	Kinds []string `json:"kinds"`
 
 	// The code location.
 	Location *Location `json:"location,omitempty"`
@@ -36,7 +36,7 @@ type ThreadFlowLocation struct {
 	Stack *Stack `json:"stack,omitempty"`
 
 	// An array of references to rule or taxonomy reporting descriptors that are applicable to the thread flow location.
-	Taxa []*ReportingDescriptorReference `json:"taxa,omitempty"`
+	Taxa []*ReportingDescriptorReference `json:"taxa"`
 
 	// A web request associated with this thread flow location.
 	WebRequest *WebRequest `json:"webRequest,omitempty"`

@@ -12,7 +12,7 @@ type WebResponse struct {
 	Index int `json:"index"`
 
 	// Specifies whether a response was received from the server.
-	NoResponseReceived bool `json:"noResponseReceived,omitempty"`
+	NoResponseReceived bool `json:"noResponseReceived"`
 
 	// Key/value pairs that provide additional information about the response.
 	Properties *PropertyBag `json:"properties,omitempty"`
