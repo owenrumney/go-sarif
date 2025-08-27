@@ -18,7 +18,7 @@ type Report struct {
 	Version string `json:"version"`
 
 	// The set of runs contained in this log file.
-	Runs []*Run `json:"runs,omitempty"`
+	Runs []*Run `json:"runs"`
 
 	// References to external property files that should be inlined with the content of a root log file.
 	InlineExternalProperties []*ExternalProperties `json:"inlineExternalProperties,omitempty"`
