@@ -6,7 +6,7 @@ type ReportingConfiguration struct {
 	Enabled bool `json:"enabled"`
 
 	// Specifies the failure level for the report.
-	Level string `json:"level"`
+	Level string `json:"level,omitempty"`
 
 	// Contains configuration information specific to a report.
 	Parameters *PropertyBag `json:"parameters,omitempty"`
