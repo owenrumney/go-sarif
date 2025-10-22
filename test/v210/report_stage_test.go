@@ -90,11 +90,19 @@ func (r *reportTest) the_report_has_expected_driver_name_and_information_uri(dri
 	assert.Equal(r.t, informationURI, *r.report.Runs[0].Tool.Driver.InformationURI)
 }
 
-func (r *reportTest) a_report_is_loaded_from_a_file(filename string) {
-	report, err := sarif.Open(filename)
+func (r *reportTest) a_report_is_loaded_from_a_file(filename string, options ...sarif.OpenOption) {
+	report, err := sarif.Open(filename, options...)
 	if err != nil {
 		panic(err)
 	}
 	r.report = report
 
+}
+
+func (r *reportTest) the_report_is_valid() {
+	require.NoError(r.t, r.report.Validate())
+}
+
+func (r *reportTest) the_report_is_invalid() {
+	require.Error(r.t, r.report.Validate())
 }

@@ -4,6 +4,7 @@ import (
 	"os"
 	"testing"
 
+	"github.com/owenrumney/go-sarif/v3/pkg/report/v210/sarif"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 )
@@ -121,4 +122,25 @@ func Test_err_on_load_sarif_report_from_file_when_file_not_legit(t *testing.T) {
 		}
 	}()
 	given.a_report_is_loaded_from_a_file("/tmp")
+}
+
+func Test_validate_report(t *testing.T) {
+	given, _, then := newReportTest(t)
+
+	given.a_report_is_loaded_from_a_file("testdata/new_simple_report_with_single_run.json")
+	then.the_report_is_valid()
+}
+
+func Test_validate_with_strict_validation_report(t *testing.T) {
+	given, _, then := newReportTest(t)
+
+	given.a_report_is_loaded_from_a_file("testdata/new_simple_report_with_single_run_with_errors.json", sarif.WithStrictValidation())
+	then.the_report_is_invalid()
+}
+
+func Test_validate_report_with_strict_validation_disabled(t *testing.T) {
+	given, _, then := newReportTest(t)
+
+	given.a_report_is_loaded_from_a_file("testdata/new_simple_report_with_single_run_with_errors.json")
+	then.the_report_is_valid()
 }

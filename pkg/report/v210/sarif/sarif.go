@@ -27,6 +27,18 @@ type Report struct {
 	Properties PropertyBag `json:"properties,omitempty"`
 }
 
+type OpenOption func(*openConfig)
+
+type openConfig struct {
+	strict bool
+}
+
+func WithStrictValidation() OpenOption {
+	return func(cfg *openConfig) {
+		cfg.strict = true
+	}
+}
+
 func NewReport() *Report {
 	return &Report{
 		Schema:                   "https://raw.githubusercontent.com/oasis-tcs/sarif-spec/main/sarif-2.1/schema/sarif-schema-2.1.0.json",
@@ -75,7 +87,7 @@ func NewRunWithInformationURI(toolName, informationURI string) *Run {
 }
 
 // Open loads a Report from a file
-func Open(filename string) (*Report, error) {
+func Open(filename string, options ...OpenOption) (*Report, error) {
 	if _, err := os.Stat(filename); err != nil && os.IsNotExist(err) {
 		return nil, errors.New("the provided file path doesn't have a file")
 	}
@@ -84,19 +96,28 @@ func Open(filename string) (*Report, error) {
 	if err != nil {
 		return nil, fmt.Errorf("the provided filepath could not be opened. %w", err)
 	}
-	return FromBytes(content)
+	return FromBytes(content, options...)
 }
 
 // FromString loads a Report from string content
-func FromString(content string) (*Report, error) {
-	return FromBytes([]byte(content))
+func FromString(content string, options ...OpenOption) (*Report, error) {
+	return FromBytes([]byte(content), options...)
 }
 
 // FromBytes loads a Report from a byte array
-func FromBytes(content []byte) (*Report, error) {
+func FromBytes(content []byte, options ...OpenOption) (*Report, error) {
 	var report Report
 	if err := json.Unmarshal(content, &report); err != nil {
 		return nil, err
+	}
+
+	cfg := &openConfig{}
+	for _, opt := range options {
+		opt(cfg)
+	}
+
+	if !cfg.strict {
+		initializeArrays(&report)
 	}
 	return &report, nil
 }

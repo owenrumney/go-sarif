@@ -105,62 +105,65 @@ This example is taken directly from the [Microsoft SARIF pages](https://github.c
 
 ```json
 {
-  "version": "2.1.0",
-  "$schema": "(https://raw.githubusercontent.com/oasis-tcs/sarif-spec/master/Schemata/sarif-schema-2.1.0.json)",
-  "runs": [
-    {
-      "tool": {
-        "driver": {
-          "name": "ESLint",
-          "informationUri": "https://eslint.org",
-          "rules": [
-            {
-              "id": "no-unused-vars",
-              "shortDescription": {
-                "text": "disallow unused variables"
-              },
-              "helpUri": "https://eslint.org/docs/rules/no-unused-vars",
-              "properties": {
-                "category": "Variables"
-              }
-            }
-          ]
-        }
-      },
-      "artifacts": [
-        {
-          "location": {
-            "uri": "file:///C:/dev/sarif/sarif-tutorials/samples/Introduction/simple-example.js"
-          }
-        }
-      ],
-      "results": [
-        {
-          "level": "error",
-          "message": {
-            "text": "'x' is assigned a value but never used."
-          },
-          "locations": [
-            {
-              "physicalLocation": {
-                "artifactLocation": {
-                  "uri": "file:///C:/dev/sarif/sarif-tutorials/samples/Introduction/simple-example.js",
-                  "index": 0
+    "version": "2.1.0",
+    "$schema": "https://raw.githubusercontent.com/oasis-tcs/sarif-spec/master/Schemata/sarif-schema-2.1.0.json",
+    "runs": [
+      {
+        "tool": {
+          "driver": {
+            "name": "ESLint",
+            "informationUri": "https://eslint.org",
+            "language": "en-US",
+            "rules": [
+              {
+                "id": "no-unused-vars",
+                "shortDescription": {
+                  "text": "disallow unused variables"
                 },
-                "region": {
-                  "startLine": 1,
-                  "startColumn": 5
+                "helpUri": "https://eslint.org/docs/rules/no-unused-vars",
+                "properties": {
+                  "category": "Variables"
                 }
               }
+            ]
+          }
+        },
+        "language": "en-US",
+        "newlineSequences": ["\r\n", "\n"],
+        "artifacts": [
+          {
+            "location": {
+              "uri": "file:///C:/dev/sarif/sarif-tutorials/samples/Introduction/simple-example.js"
             }
-          ],
-          "ruleId": "no-unused-vars",
-          "ruleIndex": 0
-        }
-      ]
-    }
-  ]
-}
+          }
+        ],
+        "results": [
+          {
+            "level": "error",
+            "message": {
+              "text": "'x' is assigned a value but never used."
+            },
+            "locations": [
+              {
+                "physicalLocation": {
+                  "artifactLocation": {
+                    "uri": "file:///C:/dev/sarif/sarif-tutorials/samples/Introduction/simple-example.js",
+                    "index": 0
+                  },
+                  "region": {
+                    "startLine": 1,
+                    "startColumn": 5
+                  }
+                }
+              }
+            ],
+            "ruleId": "no-unused-vars",
+            "ruleIndex": 0
+          }
+        ]
+      }
+    ]
+  }
 ```
 
 
