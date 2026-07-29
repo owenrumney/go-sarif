@@ -97,6 +97,50 @@ if err := rep.Validate(); err != nil {
 
 ```
 
+### Merging reports
+
+`github.com/owenrumney/go-sarif/v3/pkg/report/merge` combines several reports of the same version into one, which is handy for collecting the output of several scanners, or of one scanner sharded across a build matrix.
+
+```go
+import "github.com/owenrumney/go-sarif/v3/pkg/report/merge"
+
+merged, err := merge.V22(first, second, third)
+// or merge.V210(first, second, third)
+```
+
+A SARIF log is a list of runs, so merging appends the runs of each report in order rather than folding them into a single run. That is what keeps it safe: SARIF refers to run level arrays by index from a dozen places (`result.ruleIndex`, `artifactLocation.index`, `threadFlowLocation.index` and so on), and leaving each run intact leaves every one of those references valid.
+
+The merged report is given a fresh `guid`, since it is a new document. Report level properties are unioned with the earliest report winning any duplicated key, and tags are unioned and deduplicated. Note that the merged report shares run pointers with its inputs — it is not a deep copy.
+
+### Converting between versions
+
+`github.com/owenrumney/go-sarif/v3/pkg/report/convert` translates reports between `2.1.0` and `2.2`.
+
+```go
+import "github.com/owenrumney/go-sarif/v3/pkg/report/convert"
+
+// 2.1.0 -> 2.2, lossless
+upgraded, err := convert.ToV22(v210Report)
+
+// 2.2 -> 2.1.0, drops anything 2.1.0 cannot represent
+downgraded, err := convert.ToV210(v22Report)
+```
+
+Upgrading is lossless. Downgrading is not — `2.2` added a report level `guid` and `relatedLocations` on `notification`, neither of which `2.1.0` has a home for. By default those fields are dropped; pass `WithLossHandler` to see what went, or `WithStrictConversion` to fail instead.
+
+```go
+// report what was dropped
+downgraded, err := convert.ToV210(v22Report, convert.WithLossHandler(func(l convert.Loss) {
+    slog.Warn("dropped in conversion", "path", l.Path)
+}))
+
+// or refuse to drop anything
+downgraded, err := convert.ToV210(v22Report, convert.WithStrictConversion())
+// err is a *convert.LossyConversionError listing every field that could not be carried over
+```
+
+Note that `sarif.NewReport` for `2.2` always generates a report level `guid`, so a strict downgrade of such a report reports that `guid` as a loss. Clear `Report.Guid` first if that is not wanted.
+
 ### Example report
 
 This example is taken directly from the [Microsoft SARIF pages](https://github.com/microsoft/sarif-tutorials/blob/master/docs/1-Introduction.md)

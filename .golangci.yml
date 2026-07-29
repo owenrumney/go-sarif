@@ -1,111 +1,144 @@
-linters-settings:
-  depguard:
-    rules:
-      main:
-        list-mode: lax
-        deny:
-          # Cannot use gomodguard, which examines go.mod, as "golang.org/x/exp/slices" is not a module and doesn't appear in go.mod.
-          - pkg: "golang.org/x/exp/slices"
-            desc: "Use 'slices' instead"
-          - pkg: "golang.org/x/exp/maps"
-            desc: "Use 'maps' or 'github.com/samber/lo' instead"
-  dupl:
-    threshold: 100
-  errcheck:
-    check-type-assertions: true
-    check-blank: true
-  gci:
-    sections:
-      - standard
-      - default
-      - prefix(github.com/aquasecurity/)
-      - blank
-      - dot
-  goconst:
-    min-len: 3
-    min-occurrences: 3
-  gocritic:
-    disabled-checks:
-      - appendAssign
-      - unnamedResult
-      - whyNoLint
-      - indexAlloc
-      - octalLiteral
-      - hugeParam
-      - rangeValCopy
-      - regexpSimplify
-      - sloppyReassign
-      - commentedOutCode
-    enabled-tags:
-      - diagnostic
-      - style
-      - performance
-      - experimental
-      - opinionated
-  gocyclo:
-    min-complexity: 20
-  gofmt:
-    simplify: false
-    rewrite-rules:
-      - pattern: 'interface{}'
-        replacement: 'any'
-  gosec:
-    excludes:
-      - G101
-      - G114
-      - G115
-      - G204
-      - G304
-      - G402
-  govet:
-    disable:
-      - shadow
-  misspell:
-    locale: US
-    ignore-words:
-      - behaviour
-      - licence
-      - optimise
-      - simmilar
-  perfsprint:
-    # Optimizes even if it requires an int or uint type cast.
-    int-conversion: true
-    # Optimizes into `err.Error()` even if it is only equivalent for non-nil errors.
-    err-error: true
-    # Optimizes `fmt.Errorf`.
-    errorf: true
-    # Optimizes `fmt.Sprintf` with only one argument.
-    sprintf1: false
-    # Optimizes into strings concatenation.
-    strconcat: false
-  revive:
-    ignore-generated-header: true
-  testifylint:
-    enable-all: true
+version: "2"
+run:
+  go: "1.24"
 linters:
-  disable-all: true
+  default: none
   enable:
     - bodyclose
     - depguard
-    - gci
     - goconst
     - gocritic
     - gocyclo
-    - gomodguard
+    - gomodguard_v2
     - gosec
     - govet
     - ineffassign
     - misspell
     - perfsprint
     - revive
-    - usetesting
     - testifylint
-    - typecheck
     - unconvert
     - unused
     - usestdlibvars
-
-run:
-  go: '1.24'
-  timeout: 30m
-
+    - usetesting
+  settings:
+    depguard:
+      rules:
+        main:
+          list-mode: lax
+          deny:
+            - pkg: golang.org/x/exp/slices
+              desc: Use 'slices' instead
+            - pkg: golang.org/x/exp/maps
+              desc: Use 'maps' or 'github.com/samber/lo' instead
+    dupl:
+      threshold: 100
+    errcheck:
+      check-type-assertions: true
+      check-blank: true
+    goconst:
+      min-len: 3
+      min-occurrences: 3
+    gocritic:
+      disabled-checks:
+        - appendAssign
+        - unnamedResult
+        - whyNoLint
+        - indexAlloc
+        - octalLiteral
+        - hugeParam
+        - rangeValCopy
+        - regexpSimplify
+        - sloppyReassign
+        - commentedOutCode
+      enabled-tags:
+        - diagnostic
+        - style
+        - performance
+        - experimental
+        - opinionated
+    gocyclo:
+      min-complexity: 20
+    gosec:
+      excludes:
+        - G101
+        - G114
+        - G115
+        - G204
+        - G304
+        - G402
+    govet:
+      disable:
+        - shadow
+    misspell:
+      locale: US
+      ignore-rules:
+        - behaviour
+        - licence
+        - optimise
+        - simmilar
+    perfsprint:
+      int-conversion: true
+      err-error: true
+      errorf: true
+      sprintf1: false
+      strconcat: false
+    testifylint:
+      enable-all: true
+  exclusions:
+    generated: lax
+    presets:
+      - comments
+      - common-false-positives
+      - legacy
+      - std-error-handling
+    rules:
+      # The builder methods are generated from the SARIF schema and name each
+      # receiver after the field it sets. Renaming them would touch nearly every
+      # method in both version trees and be undone by the next generation.
+      - linters:
+          - revive
+        text: 'receiver-naming:'
+      # The version trees are generated from the SARIF schema, which spells
+      # identifiers Uri/Id/Guid. Several of the names revive objects to are
+      # exported, so renaming them would break every consumer.
+      - path: pkg/report/v(210|22)/sarif/
+        linters:
+          - revive
+        text: 'var-naming:'
+      # The staged tests read as sentences, so their method names are snake case
+      # on purpose.
+      - path: _stage_test\.go
+        linters:
+          - revive
+        text: 'var-naming:'
+      - path: _test\.go
+        linters:
+          - gocritic
+        text: 'importShadow:'
+    paths:
+      - third_party$
+      - builtin$
+      - examples$
+formatters:
+  enable:
+    - gci
+  settings:
+    gci:
+      sections:
+        - standard
+        - default
+        - prefix(github.com/aquasecurity/)
+        - blank
+        - dot
+    gofmt:
+      simplify: false
+      rewrite-rules:
+        - pattern: interface{}
+          replacement: any
+  exclusions:
+    generated: lax
+    paths:
+      - third_party$
+      - builtin$
+      - examples$

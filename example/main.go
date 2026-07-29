@@ -38,7 +38,7 @@ func main() {
 	}
 
 	// create a new report object
-	report := report.NewV22Report()
+	sarifReport := report.NewV22Report()
 
 	// create a run for tfsec
 	run := sarif.NewRunWithInformationURI("tfsec", "https://tfsec.dev")
@@ -78,19 +78,19 @@ func main() {
 	}
 
 	// add the run to the report
-	report.AddRun(run)
+	sarifReport.AddRun(run)
 
-	if err := report.Validate(); err != nil {
+	if err := sarifReport.Validate(); err != nil {
 		panic(err)
 	}
 
 	println("Report is valid")
 
 	// print the report to stdout
-	// _ = report.PrettyWrite(os.Stdout)
+	// _ = sarifReport.PrettyWrite(os.Stdout)
 
 	// save the report
-	if err := report.WriteFile("example-report.sarif"); err != nil {
+	if err := sarifReport.WriteFile("example-report.sarif"); err != nil {
 		panic(err)
 	}
 

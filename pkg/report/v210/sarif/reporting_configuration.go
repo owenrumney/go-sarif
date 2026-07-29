@@ -22,7 +22,7 @@ type ReportingConfiguration struct {
 func NewReportingConfiguration() *ReportingConfiguration {
 	return &ReportingConfiguration{
 		Enabled: true,
-		Level:   "warning",
+		Level:   LevelWarning,
 		Rank:    -1.000000,
 	}
 }

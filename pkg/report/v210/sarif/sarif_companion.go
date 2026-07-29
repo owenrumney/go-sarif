@@ -19,7 +19,7 @@ func initializeArraysValueWithParent(val reflect.Value, structField reflect.Stru
 	}
 
 	switch val.Kind() {
-	case reflect.Ptr:
+	case reflect.Pointer:
 		if val.IsNil() {
 			return
 		}

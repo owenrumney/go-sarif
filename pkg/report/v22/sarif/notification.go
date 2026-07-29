@@ -36,7 +36,7 @@ type Notification struct {
 // NewNotification - creates a new
 func NewNotification() *Notification {
 	return &Notification{
-		Level:            "warning",
+		Level:            LevelWarning,
 		Locations:        make([]*Location, 0),
 		RelatedLocations: make([]*Location, 0),
 	}

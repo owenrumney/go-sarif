@@ -1,3 +1,3 @@
 package utils
 
-var DefaultLengthInt int = -1
+var DefaultLengthInt = -1

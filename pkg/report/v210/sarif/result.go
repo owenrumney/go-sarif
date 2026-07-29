@@ -102,7 +102,7 @@ func NewResult() *Result {
 		GraphTraversals:  make([]*GraphTraversal, 0),
 		Graphs:           make([]*Graph, 0),
 		Kind:             "fail",
-		Level:            "warning",
+		Level:            LevelWarning,
 		Locations:        make([]*Location, 0),
 		Rank:             -1.000000,
 		RelatedLocations: make([]*Location, 0),

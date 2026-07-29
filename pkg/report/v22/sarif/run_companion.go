@@ -4,8 +4,15 @@ import "github.com/owenrumney/go-sarif/v3/pkg/report/utils"
 
 // AddRule returns an existing ReportingDescriptor for the ruleID or creates a new ReportingDescriptor and returns a pointer to it
 func (run *Run) AddRule(ruleID string) *ReportingDescriptor {
+	if run.Tool == nil {
+		run.Tool = NewTool()
+	}
+	if run.Tool.Driver == nil {
+		run.Tool.Driver = NewToolComponent()
+	}
+
 	for _, rule := range run.Tool.Driver.Rules {
-		if *rule.ID == ruleID {
+		if rule.ID != nil && *rule.ID == ruleID {
 			return rule
 		}
 	}
@@ -21,7 +28,7 @@ func (run *Run) GetRuleIndex(ruleID string) int {
 	}
 
 	for i, rule := range run.Tool.Driver.Rules {
-		if *rule.ID == ruleID {
+		if rule.ID != nil && *rule.ID == ruleID {
 			return i
 		}
 	}
@@ -31,7 +38,7 @@ func (run *Run) GetRuleIndex(ruleID string) int {
 // AddDistinctArtifact will handle deduplication of simple artifact additions
 func (run *Run) AddDistinctArtifact(uri string) *Artifact {
 	for _, artifact := range run.Artifacts {
-		if *artifact.Location.URI == uri {
+		if artifact.Location != nil && artifact.Location.URI != nil && *artifact.Location.URI == uri {
 			return artifact
 		}
 	}

@@ -17,8 +17,9 @@ type Report struct {
 	// The SARIF format version of this log file.
 	Version string `json:"version"`
 
-	// The set of runs contained in this log file.
-	Runs []*Run `json:"runs,omitempty"`
+	// The set of runs contained in this log file. Required by the spec, so it is
+	// always emitted, even when empty.
+	Runs []*Run `json:"runs"`
 
 	// References to external property files that should be inlined with the content of a root log file.
 	InlineExternalProperties []*ExternalProperties `json:"inlineExternalProperties,omitempty"`
@@ -68,13 +69,13 @@ func (r *Report) Validate() error {
 		return err
 	}
 
-	var errors []string
+	var validationErrors []string
 
 	if !result.Valid() {
 		for _, desc := range result.Errors() {
-			errors = append(errors, fmt.Sprintf("%s\n", desc.String()))
+			validationErrors = append(validationErrors, fmt.Sprintf("%s\n", desc.String()))
 		}
-		return fmt.Errorf("validation failed: %v", errors)
+		return fmt.Errorf("validation failed: %v", validationErrors)
 	}
 
 	return nil
@@ -128,7 +129,7 @@ func FromBytes(content []byte, options ...OpenOption) (*Report, error) {
 
 // WriteFile will write the report to a file using a pretty formatter
 func (sarif *Report) WriteFile(filename string) error {
-	file, err := os.OpenFile(filename, os.O_CREATE|os.O_WRONLY, 0644)
+	file, err := os.OpenFile(filename, os.O_CREATE|os.O_WRONLY|os.O_TRUNC, 0644)
 	if err != nil {
 		return err
 	}
@@ -138,8 +139,8 @@ func (sarif *Report) WriteFile(filename string) error {
 
 // Write writes the JSON as a string with no formatting
 func (sarif *Report) Write(w io.Writer) error {
-	for _, run := range sarif.Runs {
-		run.DedupeArtifacts()
+	if err := sarif.dedupeArtifacts(); err != nil {
+		return err
 	}
 	marshal, err := json.Marshal(sarif)
 	if err != nil {
@@ -151,10 +152,22 @@ func (sarif *Report) Write(w io.Writer) error {
 
 // PrettyWrite writes the JSON output with indentation
 func (sarif *Report) PrettyWrite(w io.Writer) error {
+	if err := sarif.dedupeArtifacts(); err != nil {
+		return err
+	}
 	marshal, err := json.MarshalIndent(sarif, "", "  ")
 	if err != nil {
 		return err
 	}
 	_, err = w.Write(marshal)
 	return err
+}
+
+func (sarif *Report) dedupeArtifacts() error {
+	for _, run := range sarif.Runs {
+		if err := run.DedupeArtifacts(); err != nil {
+			return fmt.Errorf("failed to dedupe artifacts: %w", err)
+		}
+	}
+	return nil
 }
